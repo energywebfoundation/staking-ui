@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
@@ -20,7 +19,6 @@ describe('App: ewUIBoilerPlate', () => {
         AppComponent
       ],
       imports: [
-        TranslateModule.forRoot(),
         CoreModule,
         LayoutModule,
         SharedModule,

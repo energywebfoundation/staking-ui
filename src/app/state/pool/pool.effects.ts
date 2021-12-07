@@ -18,6 +18,7 @@ import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-
 import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
 import { WithdrawComponent } from '../../routes/ewt-patron/withdraw/withdraw.component';
 import { NotEnroledRoleInfoComponent } from '../../routes/ewt-patron/not-enroled-role-info/not-enroled-role-info.component';
+import { EnvService } from '../../shared/services/env/env.service';
 
 const {formatEther, parseEther} = utils;
 const REQUIRED_ROLE_FOR_STAKING = 'email.roles.verification.apps.energyweb.iam.ewc';
@@ -266,6 +267,7 @@ export class PoolEffects {
     this.actions$.pipe(
       ofType(PoolActions.getRoles),
       tap(() => this.loadingService.show()),
+      filter(() => this.envService.checkStakingVerification),
       switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
           did: this.iamService.signerService.did,
         })).pipe(
@@ -311,7 +313,8 @@ export class PoolEffects {
               private toastr: ToastrService,
               private dialog: MatDialog,
               private stakingService: StakingPoolServiceFacade,
-              private stakingPoolFacade: StakingPoolFacade) {
+              private stakingPoolFacade: StakingPoolFacade,
+              private envService: EnvService) {
   }
 
   private createPool(organization) {
