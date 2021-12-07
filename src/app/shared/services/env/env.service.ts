@@ -1,8 +1,6 @@
 export class EnvService {
 
   theme = 'default';
-  application = true;
-  staking = true;
 
   rpcUrl = 'https://volta-rpc-vkn5r5zx4ke71f9hcu0c.energyweb.org/';
   chainId = 73799;
