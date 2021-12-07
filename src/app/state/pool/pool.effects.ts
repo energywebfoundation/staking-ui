@@ -266,8 +266,8 @@ export class PoolEffects {
   getRoles$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.getRoles),
-      tap(() => this.loadingService.show()),
       filter(() => this.envService.checkStakingVerification),
+      tap(() => this.loadingService.show()),
       switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
           did: this.iamService.signerService.did,
         })).pipe(
