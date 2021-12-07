@@ -46,8 +46,6 @@
     "@ngrx/effects": "^11.1.1",
     "@ngrx/store": "^11.1.1",
     "@ngrx/store-devtools": "^11.1.1",
-    "@ngx-translate/core": "11.0.1",
-    "@ngx-translate/http-loader": "4.0.0",
     "@sentry/angular": "^6.2.0",
     "@zxing/browser": "0.0.9",
     "@zxing/library": "^0.18.6",
