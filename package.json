@@ -12,6 +12,7 @@
     "build-prod": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --prod --aot -c=production",
     "postbuild-prod": "node scripts/prod-env.js",
     "build": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --prod --aot -c=dev",
+    "analyze": "webpack-bundle-analyzer dist/stats.json",
     "postinstall": "node patch.js && patch-package",
     "test": "ng test --code-coverage",
     "test:headless": "ng test --karma-config=karma-headless.conf.js",
