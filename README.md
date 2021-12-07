@@ -37,6 +37,30 @@ Build the project for production:
 npm run build
 ```
 
+## Building
+To build this project for production you need to run 
+```angular2html
+npm run build-prod
+```
+When project is builded then in `dist` folder you have file `env.js` which is configuration file.
+In this file you can specify endpoints, custom configurations like theme etc.
+`stakingPoolFactoryAddress` - is for handling staking pool address contract.
+
+`showAzureLoginOption` - when true enables possibility to log in with Azure.
+
+`rpcUrl` - rpc url that should connect to.
+
+`chainId` - chain id that is used to connect to the blockchain
+
+`cacheServerUrl` - cache server url
+
+`natsServerUrl` - nats server url
+
+`kmsServerUrl` - kms server url.
+
+`checkStakingVerification` - when true enables staking pool role verification, if user contains role described in contract or not.
+If not then it will display a popup with information what is next.
+
 ## Active Maintainers
 - Dawid Gil (@dawidgil)
 
