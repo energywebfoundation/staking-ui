@@ -16,6 +16,7 @@ import { utils } from 'ethers';
 import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-pool-service-facade';
 import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
 import { dialogSpy, iamServiceSpy, loadingServiceSpy, toastrSpy } from '@tests';
+import { EnvService } from '../../shared/services/env/env.service';
 
 const {formatEther, parseEther} = utils;
 describe('PoolEffects', () => {
@@ -36,6 +37,7 @@ describe('PoolEffects', () => {
         {provide: ToastrService, useValue: toastrSpy},
         {provide: StakingPoolServiceFacade, useValue: stakingService},
         {provide: StakingPoolFacade, useValue: stakingPoolFacadeSpy},
+        {provide: EnvService, useValue: {}},
         provideMockStore(),
         provideMockActions(() => actions$),
       ],

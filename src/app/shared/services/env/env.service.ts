@@ -10,4 +10,5 @@ export class EnvService {
   kmsServerUrl = undefined;
   stakingPoolFactoryAddress = undefined;
   showAzureLoginOption = true;
+  checkStakingVerification
 }
