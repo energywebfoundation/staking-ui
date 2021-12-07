@@ -107,6 +107,7 @@ export class LoginService {
   }
 
   disconnect() {
+    this.clearSession();
     this.iamService.closeConnection().subscribe(() => {
       location.reload();
     });
