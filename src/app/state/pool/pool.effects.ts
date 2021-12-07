@@ -86,7 +86,7 @@ export class PoolEffects {
       ofType(PoolActions.getStakeSuccess),
       map(({stake}) => stake.status),
       filter((status: StakeStatus) => status === StakeStatus.NONSTAKING),
-      map(() => PoolActions.getAccountBalance())
+      mergeMap(() => [PoolActions.getAccountBalance(), PoolActions.totalStaked()])
     )
   );
 
