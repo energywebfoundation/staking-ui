@@ -19,7 +19,7 @@ export const initialState: AuthState = {
   walletProvider: undefined,
   accountInfo: undefined,
   metamask: {
-    present: true,
+    present: false,
     chainId: undefined
   },
   defaultChainId: undefined,
