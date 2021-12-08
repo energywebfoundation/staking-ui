@@ -64,34 +64,6 @@ describe('OrganizationEffects', () => {
     }));
   });
 
-  describe('updateHistory$', () => {
-    beforeEach(() => {
-      actions$ = new ReplaySubject(1);
-    });
-
-    it('should dispatch success actions with history and organization', waitForAsync(() => {
-      actions$.next(OrganizationActions.setHistory({element: {namespace: 'test'} as any}));
-      organizationServiceSpy.getHistory.and.returnValue(of({namespace: 'test', subOrgs: [{namespace: 'suborg'}]}));
-
-      effects.updateHistory$.subscribe(resultAction => {
-        expect(resultAction).toEqual(OrganizationActions.setHistorySuccess({
-          history: [{namespace: 'suborg'} as any],
-          element: {namespace: 'test', subOrgs: [{namespace: 'suborg'}]} as any
-        }));
-      });
-    }));
-
-    it('should dispatch failure action', waitForAsync(() => {
-      actions$.next(OrganizationActions.setHistory({element: {namespace: 'test'} as any}));
-      organizationServiceSpy.getHistory.and.returnValue(throwError({message: 'error'}));
-
-      effects.updateHistory$.subscribe(resultAction => {
-        expect(toastrSpy.error).toHaveBeenCalled();
-        expect(resultAction).toEqual(OrganizationActions.setHistoryFailure({error: 'error'}));
-      });
-    }));
-  });
-
   describe('updateSelectedOrganizationAfterEdit$', () => {
     beforeEach(() => {
       actions$ = new ReplaySubject(1);
@@ -135,22 +107,6 @@ describe('OrganizationEffects', () => {
       store.overrideSelector(OrganizationSelectors.getHierarchyLength, 1);
       effects.updateSelectedOrganizationAfterEdit$.subscribe(resultAction => {
         expect(resultAction).toEqual(OrganizationActions.setHistory({element: {namespace: 'test'} as any}));
-      });
-    }));
-
-  });
-
-  describe('createSubOrganization$', () => {
-    beforeEach(() => {
-      actions$ = new ReplaySubject(1);
-    });
-
-    it('should dispatch setHistory action after closing dialog when successfully created a sub org', waitForAsync(() => {
-      actions$.next(OrganizationActions.createSub({org: {namespace: 'parentOrg'} as any}));
-      dialogSpy.open.and.returnValue({afterClosed: () => of(true)});
-
-      effects.createSubOrganization$.subscribe(resultAction => {
-        expect(resultAction).toEqual(OrganizationActions.setHistory({element: {namespace: 'parentOrg'} as any}));
       });
     }));
 

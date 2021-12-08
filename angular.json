@@ -96,11 +96,11 @@
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
             },
-            "stag": {
+            "dev": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.stag.ts"
+                  "with": "src/environments/environment.dev.ts"
                 }
               ],
               "optimization": true,
@@ -114,29 +114,17 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "10mb",
-                  "maximumError": "10mb"
+                  "maximumWarning": "15mb",
+                  "maximumError": "30mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb"
                 }
-              ]
-            },
-            "dev": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
               ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dev.ts"
-                }
-              ]
-            }
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+            },
           }
         },
         "serve": {
@@ -199,33 +187,6 @@
             ]
           }
         },
-        "e2e": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "staking-pool-ui:serve",
-            "watch": true,
-            "headless": false
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "staking-pool-ui:serve:production"
-            }
-          }
-        },
-        "cypress-run": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "staking-pool-ui:serve"
-          }
-        },
-        "cypress-open": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "staking-pool-ui:serve",
-            "watch": true,
-            "headless": false
-          }
-        }
       }
     }
   },
