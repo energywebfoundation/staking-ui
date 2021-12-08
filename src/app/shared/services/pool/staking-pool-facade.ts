@@ -56,4 +56,8 @@ export class StakingPoolFacade {
   partialWithdraw(value: BigNumber) {
     return from(this.pool.partialWithdraw(value));
   }
+
+  getHourlyRatio() {
+    return from(this.pool.getRatio());
+  }
 }

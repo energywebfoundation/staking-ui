@@ -110,7 +110,10 @@ export const expirationDate = createSelector(
 export const ratio = createSelector(
   getStakeState,
   (state: PoolState) => {
-    return 0.05
+    if (!state?.ratio) {
+      return '';
+    }
+    return formatEther(state?.ratio);
   }
 );
 

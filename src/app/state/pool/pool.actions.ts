@@ -126,6 +126,14 @@ export const getContributorLimitSuccess = createAction(
   '[Pool] Get Contributor Limit Success',
   props<{ cap: BigNumber }>()
 );
+export const getRatio = createAction(
+  '[Pool] Get Ratio'
+);
+
+export const getRatioSuccess = createAction(
+  '[Pool] Get Ratio Success',
+  props<{ ratio: BigNumber }>()
+);
 
 export const stakingPoolFinishDate = createAction(
   '[Pool] Get Staking Pool Finish Date'
@@ -146,6 +154,11 @@ export const stakingPoolStartDateSuccess = createAction(
 
 export const getContributorLimitFailure = createAction(
   '[Pool] Get Contributor Limit Failure',
+  props<{ err: string }>()
+);
+
+export const getRatioFailure = createAction(
+  '[Pool] Get Ratio Failure',
   props<{ err: string }>()
 );
 

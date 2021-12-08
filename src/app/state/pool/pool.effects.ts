@@ -306,6 +306,20 @@ export class PoolEffects {
     )
   );
 
+  getRatio$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PoolActions.getRatio),
+      switchMap(() => this.stakingPoolFacade.getHourlyRatio().pipe(
+          map((ratio: BigNumber) => PoolActions.getRatioSuccess({ratio})),
+          catchError(err => {
+            console.error(err);
+            return of(PoolActions.getRatioFailure({err: err?.message}));
+          })
+        )
+      )
+    )
+  );
+
   constructor(private actions$: Actions,
               private store: Store<PoolState>,
               private iamService: IamService,
@@ -326,7 +340,7 @@ export class PoolEffects {
             return [PoolActions.getOrganizationDetails()];
           }
           return [PoolActions.getStake(), PoolActions.getOrganizationDetails(), PoolActions.getHardCap(), PoolActions.getContributorLimit(), PoolActions.stakingPoolFinishDate(),
-            PoolActions.stakingPoolStartDate(), PoolActions.totalStaked(), PoolActions.getRoles()];
+            PoolActions.stakingPoolStartDate(), PoolActions.totalStaked(), PoolActions.getRoles(), PoolActions.getRatio()];
         })
       );
   }
