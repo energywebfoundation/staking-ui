@@ -1,6 +1,6 @@
 <app-loading class="d-block"></app-loading>
 
-<div class="staking-container" *ngIf="(details$ | async) as details">
+<div class="staking-container">
   <app-staking-header></app-staking-header>
   <div class="content-wrapper">
     <div class="row">
@@ -11,16 +11,26 @@
               <img src="assets/img/ew-flex-single-logo.png" width="61px" height="61px">
               <div class="d-flex flex-column text-color ml-3 pt-3">
                 <h5 class="mb-0 small letter-spacing text-uppercase">Staking</h5>
-                <h2>{{details.orgName}}</h2>
+                <h2>Energy Web Token Staking</h2>
               </div>
             </div>
           </div>
           <div class="col-12 col-xl-8 description">
             <p>
-              {{details.description}}
+              This staking pool is operated by Energy Web on behalf of the Energy Web Community Fund. The Community Fund
+              is dedicated entirely to enhancing the open-source EW-DOS technology stack and expanding its real-world
+              use.
             </p>
-            <a *ngIf="details?.websiteUrl" [href]="details?.websiteUrl" target="_blank" class="mx-1">READ
-              MORE</a>
+            <p>
+              Energy Web (EW) is a global nonprofit organization accelerating a low-carbon, customer-centric electricity
+              system by unleashing the potential of open-source, decentralized technologies. EW focuses on building core
+              infrastructure and shared technology, speeding adoption of commercial solutions, and fostering a community
+              of practice.
+            </p>
+            <a href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf" target="_blank"
+               class="mx-1">
+              READ MORE
+            </a>
           </div>
         </div>
       </div>

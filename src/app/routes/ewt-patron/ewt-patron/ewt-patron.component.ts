@@ -14,7 +14,6 @@ export class EwtPatronComponent implements OnInit, OnDestroy {
   balance$ = this.store.select(PoolSelectors.getBalance);
   performance$ = this.store.select(PoolSelectors.getPerformance);
   annualReward$ = this.store.select(PoolSelectors.getAnnualReward);
-  details$ = this.store.select(PoolSelectors.getOrganizationDetails);
   hardCap$ = this.store.select(PoolSelectors.getOrganizationLimit);
   getTotalStakedPercent$ = this.store.select(PoolSelectors.getTotalStakedPercent);
   getTotalStaked$ = this.store.select(PoolSelectors.getTotalStaked);
