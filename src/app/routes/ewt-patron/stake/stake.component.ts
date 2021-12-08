@@ -27,7 +27,7 @@ export class StakeComponent {
   getContributorLimit$ = this.store.select(poolSelectors.getContributorLimit);
   calculatedPercent$ = this.store.select(poolSelectors.calculateStakedPercent);
   dates$ = this.store.select(poolSelectors.expirationDate);
-
+  ratio$ = this.store.select(poolSelectors.ratio);
 
   constructor(private store: Store) {
   }

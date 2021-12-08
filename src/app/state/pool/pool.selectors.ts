@@ -107,6 +107,12 @@ export const expirationDate = createSelector(
     return new Date(state?.endDate * 1000);
   }
 );
+export const ratio = createSelector(
+  getStakeState,
+  (state: PoolState) => {
+    return 0.05
+  }
+);
 
 export const calculateStakedPercent = createSelector(
   getContributorLimit,

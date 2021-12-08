@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthActions, PoolActions, PoolSelectors } from '@state';
 import { LoginService } from 'src/app/shared/services/login/login.service';
+import * as poolSelectors from '../../../state/pool/pool.selectors';
 
 @Component({
   selector: 'app-ewt-patron',
@@ -17,7 +18,7 @@ export class EwtPatronComponent implements OnInit, OnDestroy {
   hardCap$ = this.store.select(PoolSelectors.getOrganizationLimit);
   getTotalStakedPercent$ = this.store.select(PoolSelectors.getTotalStakedPercent);
   getTotalStaked$ = this.store.select(PoolSelectors.getTotalStaked);
-
+  ratio$ = this.store.select(poolSelectors.ratio);
   destroy$ = new Subject<void>();
 
   constructor(private store: Store,
