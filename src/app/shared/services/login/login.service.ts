@@ -83,7 +83,7 @@ export class LoginService {
           if (!loginSuccessful) {
             this.loadingService.hide();
             this.openSwal({
-              title: 'Ops!', text: `Something went wrong :(, ${did}, ${connected}, ${userClosedModal}`
+              title: 'Ops!', text: 'Something went wrong :('
             }, redirectOnChange);
           }
           return {success: Boolean(loginSuccessful), accountInfo};
