@@ -10,7 +10,7 @@
     window.__env.natsServerUrl = 'https://identityevents-dev.energyweb.org/';
     window.__env.kmsServerUrl = undefined;
     window.__env.stakingPoolFactoryAddress = '0x66B1Db1E267c300fAE039597cE5463C345906a73';
-    window.__env.checkStakingVerification = false;
+    window.__env.checkStakingVerification = true;
     window.__env.showAzureLoginOption = true;
 
 }(this));
