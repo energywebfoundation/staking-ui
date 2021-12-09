@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   AccountInfo,
   AssetsService,
-  CacheClient,
+  CacheClient, ChainConfig,
   ClaimData,
   ClaimsService,
   DidRegistry,
@@ -143,10 +143,14 @@ export class IamService {
     return await this.signerService.balance();
   }
 
-  private getChainConfig() {
-    const chainConfig: any = {
+  private getChainConfig(): Partial<ChainConfig> {
+    const chainConfig: Partial<ChainConfig> = {
       rpcUrl: this.envService.rpcUrl,
     };
+
+    if (this.envService.claimManagerAddress) {
+      chainConfig.claimManagerAddress = this.envService.claimManagerAddress;
+    }
 
     if (this.envService.stakingPoolFactoryAddress) {
       chainConfig.stakingPoolFactoryAddress = this.envService.stakingPoolFactoryAddress;
