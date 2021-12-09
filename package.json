@@ -43,7 +43,7 @@
     "core-js": "2.5.4",
     "fullcalendar": "3.9.0",
     "hammerjs": "^2.0.8",
-    "iam-client-lib": "4.0.0-alpha.4",
+    "iam-client-lib": "4.0.0-alpha.6",
     "modernizr": "3.7.1",
     "ngx-bootstrap": "4.2.0",
     "ngx-editor": "9.0.2",
