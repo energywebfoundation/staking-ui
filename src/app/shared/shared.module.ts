@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -14,14 +12,11 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BsDatepickerModule, DatepickerModule } from 'ngx-bootstrap/datepicker';
 
-import { ScrollableDirective } from './directives/scrollable/scrollable.directive';
-import { PreventPasteDirective } from './directives/prevent-paste.directive';
 import { MinifiedDidViewerDirective } from './directives/minified-did-viewer/minified-did-viewer.directive';
 import { MinifiedDidViewerDialogComponent } from './directives/minified-did-viewer/minified-did-viewer-dialog.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -29,16 +24,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatSortModule } from '@angular/material/sort';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -61,23 +49,17 @@ import { DidFormatMinifierModule } from './pipes/did-format-minifier/did-format-
 
 
 const MATERIAL_MODULES = [
-  MatAutocompleteModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
-  MatCheckboxModule,
   MatChipsModule,
   MatTableModule,
-  MatDatepickerModule,
   MatDialogModule,
-  MatExpansionModule,
   MatFormFieldModule,
-  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatRadioModule,
@@ -87,7 +69,6 @@ const MATERIAL_MODULES = [
   MatSlideToggleModule,
   MatSliderModule,
   MatSnackBarModule,
-  MatSortModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
@@ -101,10 +82,8 @@ const MATERIAL_MODULES = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AccordionModule.forRoot(),
     AlertModule.forRoot(),
     ButtonsModule.forRoot(),
-    CarouselModule.forRoot(),
     CollapseModule.forRoot(),
     DatepickerModule.forRoot(),
     BsDatepickerModule.forRoot(),
@@ -113,7 +92,6 @@ const MATERIAL_MODULES = [
     ProgressbarModule.forRoot(),
     RatingModule.forRoot(),
     TabsModule.forRoot(),
-    TimepickerModule.forRoot(),
     TooltipModule.forRoot(),
     PopoverModule.forRoot(),
     TypeaheadModule.forRoot(),
@@ -122,8 +100,6 @@ const MATERIAL_MODULES = [
     MATERIAL_MODULES
   ],
   declarations: [
-    ScrollableDirective,
-    PreventPasteDirective,
     MinifiedDidViewerDirective,
     MinifiedDidViewerDialogComponent,
     ReplaceUnderscorePipe,
@@ -133,10 +109,8 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AccordionModule,
     AlertModule,
     ButtonsModule,
-    CarouselModule,
     CollapseModule,
     DatepickerModule,
     BsDatepickerModule,
@@ -146,12 +120,9 @@ const MATERIAL_MODULES = [
     ProgressbarModule,
     RatingModule,
     TabsModule,
-    TimepickerModule,
     TooltipModule,
     PopoverModule,
     TypeaheadModule,
-    ScrollableDirective,
-    PreventPasteDirective,
     MinifiedDidViewerDirective,
     MATERIAL_MODULES,
     ReplaceUnderscorePipe,
