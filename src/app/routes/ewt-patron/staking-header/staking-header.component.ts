@@ -17,12 +17,11 @@ export class StakingHeaderComponent {
   accountInfo$ = combineLatest([
     this.store.select(AuthSelectors.getWalletProvider),
     this.store.select(AuthSelectors.getAccountInfo),
-    this.store.select(UserClaimSelectors.getUserName),
     this.store.select(UserClaimSelectors.getDid)
-  ]).pipe(map(([wallet, accountInfo, userName, did]) => {
+  ]).pipe(map(([wallet, accountInfo, did]) => {
     return {
       wallet,
-      userName,
+      userName: '',
       accountInfo,
       did
     };

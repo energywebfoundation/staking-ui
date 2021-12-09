@@ -8,7 +8,6 @@ import { UserEffects } from './user-claim/user.effects';
 import { AuthEffects } from './auth/auth.effects';
 import { StakeEffects } from './stake/stake.effects';
 import { environment } from 'src/environments/environment';
-import { OrganizationStoreSliceModule } from './governance/organization/organization-store-slice.module';
 import { LayoutStoreSliceModule } from './layout/layout-store-slice.module';
 
 
@@ -17,7 +16,6 @@ import { LayoutStoreSliceModule } from './layout/layout-store-slice.module';
     StoreModule.forRoot(rootReducer, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([UserEffects, StakeEffects, AuthEffects, PoolEffects]),
-    OrganizationStoreSliceModule,
     LayoutStoreSliceModule,
   ],
 })
