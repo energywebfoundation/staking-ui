@@ -78,10 +78,6 @@ export const getWithdrawalDelayFailure = createAction(
   props<{ err: string }>()
 );
 
-export const getOrganizationDetails = createAction(
-  '[Pool] Get Organization Details'
-);
-
 export const openWithdrawDialog = createAction(
   '[Pool] Open Withdraw Dialog'
 );
@@ -162,11 +158,3 @@ export const getRatioFailure = createAction(
   props<{ err: string }>()
 );
 
-export const getOrganizationDetailsSuccess = createAction(
-  '[Pool] Get Organization Details Success',
-  props<{ orgDetails: IOrganizationDefinition }>()
-);
-export const getOrganizationDetailsFailure = createAction(
-  '[Pool] Get Organization Details Failure',
-  props<{ err: string }>()
-);

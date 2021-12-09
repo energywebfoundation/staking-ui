@@ -32,7 +32,6 @@ describe('EwtPatronComponent', () => {
     };
     store.overrideSelector(PoolSelectors.getBalance, opt.balance);
     store.overrideSelector(PoolSelectors.getAnnualReward, opt.reward);
-    store.overrideSelector(PoolSelectors.getPerformance, opt.performance);
     store.overrideSelector(PoolSelectors.getTotalStaked, opt.totalStaked);
     store.overrideSelector(PoolSelectors.ratio, opt.ratio);
     store.overrideSelector(PoolSelectors.getOrganizationLimit, opt.orgLimit);

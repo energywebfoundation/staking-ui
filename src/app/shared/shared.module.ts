@@ -43,7 +43,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ReplaceUnderscorePipe } from './pipes/replace-underscore.pipe';
 import { CopyToClipboardModule } from './directives/copy-to-clipboard/copy-to-clipboard.module';
 import { DidFormatMinifierModule } from './pipes/did-format-minifier/did-format-minifier.module';
 
@@ -102,7 +101,6 @@ const MATERIAL_MODULES = [
   declarations: [
     MinifiedDidViewerDirective,
     MinifiedDidViewerDialogComponent,
-    ReplaceUnderscorePipe,
   ],
   exports: [
     CommonModule,
@@ -125,7 +123,6 @@ const MATERIAL_MODULES = [
     TypeaheadModule,
     MinifiedDidViewerDirective,
     MATERIAL_MODULES,
-    ReplaceUnderscorePipe,
     CopyToClipboardModule,
     DidFormatMinifierModule,
   ],

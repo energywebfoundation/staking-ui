@@ -18,10 +18,6 @@ export const getBalance = createSelector(
   (state: PoolState) => state?.balance
 );
 
-export const getPerformance = createSelector(
-  getStakeState,
-  (state: PoolState) => state.performance
-);
 
 export const getOrganization = createSelector(
   getStakeState,
@@ -67,11 +63,6 @@ export const getMaxPossibleAmountToStake = createSelector(
 export const isWithdrawingDelayFinished = createSelector(
   getStakeState,
   (state: PoolState) => state.withdrawing
-);
-
-export const getOrganizationDetails = createSelector(
-  getStakeState,
-  (state: PoolState) => state?.organizationDetails
 );
 
 export const getOrganizationLimit = createSelector(
