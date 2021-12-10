@@ -28,11 +28,7 @@ export class PoolEffects {
   initPool$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.initPool),
-      withLatestFrom(this.store.select(poolSelectors.getOrganization)),
-      filter(([, org]) => Boolean(org)),
-      switchMap(([, organization]) =>
-        this.createPool(organization)
-      )
+      switchMap(() => this.createPool())
     )
   );
 
@@ -40,9 +36,7 @@ export class PoolEffects {
     this.actions$.pipe(
       ofType(PoolActions.setOrganization),
       filter(() => Boolean(this.stakingPoolFacade.isPoolDefined())),
-      switchMap(() =>
-        this.createPool('')
-      )
+      switchMap(() => this.createPool())
     )
   );
 
@@ -86,7 +80,7 @@ export class PoolEffects {
       ofType(PoolActions.getStakeSuccess),
       map(({stake}) => stake.status),
       filter((status: StakeStatus) => status === StakeStatus.NONSTAKING),
-      map(() => PoolActions.getAccountBalance())
+      mergeMap(() => [PoolActions.getAccountBalance(), PoolActions.totalStaked()])
     )
   );
 
@@ -218,23 +212,6 @@ export class PoolEffects {
     ), {dispatch: false}
   );
 
-  getOrganizationDetails$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(PoolActions.getOrganizationDetails),
-      tap(() => this.loadingService.show('Getting Organization details')),
-      withLatestFrom(this.store.select(poolSelectors.getOrganization)),
-      switchMap(([, organization]) => from(this.iamService.getDefinition(organization)).pipe(
-          map((definition: IOrganizationDefinition) => PoolActions.getOrganizationDetailsSuccess({orgDetails: definition})),
-          catchError(err => {
-            console.error(err);
-            return of(PoolActions.getOrganizationDetailsFailure({err: err.message}));
-          }),
-          finalize(() => this.loadingService.hide())
-        )
-      )
-    )
-  );
-
   getOrganizationLimit$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.getHardCap),
@@ -306,6 +283,20 @@ export class PoolEffects {
     )
   );
 
+  getRatio$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PoolActions.getRatio),
+      switchMap(() => this.stakingPoolFacade.getHourlyRatio().pipe(
+          map((ratio: BigNumber) => PoolActions.getRatioSuccess({ratio})),
+          catchError(err => {
+            console.error(err);
+            return of(PoolActions.getRatioFailure({err: err?.message}));
+          })
+        )
+      )
+    )
+  );
+
   constructor(private actions$: Actions,
               private store: Store<PoolState>,
               private iamService: IamService,
@@ -317,17 +308,12 @@ export class PoolEffects {
               private envService: EnvService) {
   }
 
-  private createPool(organization) {
-    return from(this.stakingService.createPool(organization))
+  private createPool() {
+    return from(this.stakingService.createPool())
       .pipe(
-        mergeMap((pool) => {
-          if (!pool) {
-            this.toastr.error(`Organization ${organization} do not exist as a provider.`);
-            return [PoolActions.getOrganizationDetails()];
-          }
-          return [PoolActions.getStake(), PoolActions.getOrganizationDetails(), PoolActions.getHardCap(), PoolActions.getContributorLimit(), PoolActions.stakingPoolFinishDate(),
-            PoolActions.stakingPoolStartDate(), PoolActions.totalStaked(), PoolActions.getRoles()];
-        })
+        mergeMap(() => [PoolActions.getStake(), PoolActions.getHardCap(), PoolActions.getContributorLimit(),
+          PoolActions.stakingPoolFinishDate(), PoolActions.stakingPoolStartDate(), PoolActions.totalStaked(),
+          PoolActions.getRoles(), PoolActions.getRatio()])
       );
   }
 

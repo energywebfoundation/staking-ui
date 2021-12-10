@@ -10,15 +10,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ToastrService } from 'ngx-toastr';
 import * as PoolActions from './pool.actions';
-import { skip, take } from 'rxjs/operators';
-import * as poolSelectors from './pool.selectors';
 import { utils } from 'ethers';
 import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-pool-service-facade';
 import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
 import { dialogSpy, iamServiceSpy, loadingServiceSpy, toastrSpy } from '@tests';
 import { EnvService } from '../../shared/services/env/env.service';
 
-const {formatEther, parseEther} = utils;
+const {parseEther} = utils;
 describe('PoolEffects', () => {
 
   const stakingService = jasmine.createSpyObj('StakingPoolServiceFacade', ['init', 'createPool', 'putStake']);
@@ -45,47 +43,6 @@ describe('PoolEffects', () => {
     store = TestBed.inject(MockStore);
 
     effects = TestBed.inject(PoolEffects);
-  });
-
-  describe('initPool$', () => {
-    beforeEach(() => {
-      actions$ = new ReplaySubject(1);
-    });
-
-    it('should create a pool and call actions for getting stake and organization', waitForAsync(() => {
-      stakingService.createPool.and.returnValue(of(true));
-      store.overrideSelector(poolSelectors.getOrganization, 'org');
-      actions$.next(PoolActions.initPool());
-
-      effects.initPool$.pipe(take(1)).subscribe(resultAction => {
-        expect(resultAction).toEqual(PoolActions.getStake());
-      });
-      effects.initPool$.pipe(skip(1), take(1)).subscribe(resultAction => {
-        expect(resultAction).toEqual(PoolActions.getOrganizationDetails());
-      });
-    }));
-
-    it('should not create a pool when getting empty organization', waitForAsync(() => {
-      stakingService.createPool.and.returnValue(of(true));
-      store.overrideSelector(poolSelectors.getOrganization, '');
-      actions$.next(PoolActions.initPool());
-
-      effects.initPool$.subscribe(resultAction => {
-        expect(resultAction).toEqual(null);
-      });
-    }));
-
-    it('should not create a pool when getting an organization which is not a provider', () => {
-      stakingService.createPool.and.returnValue(of(false));
-      store.overrideSelector(poolSelectors.getOrganization, 'org');
-      actions$.next(PoolActions.initPool());
-
-      effects.initPool$.subscribe(resultAction => {
-        expect(toastrSpy.error).toHaveBeenCalled();
-        expect(resultAction).toEqual(PoolActions.getOrganizationDetails());
-      });
-
-    });
   });
 
   describe('putStake$', () => {

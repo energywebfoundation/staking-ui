@@ -22,6 +22,7 @@ export class AuthEffects {
   metamaskOptions$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.init),
+      tap(() => this.loadingService.show()),
       switchMap(() =>
         from(isMetamaskExtensionPresent())
           .pipe(
@@ -30,7 +31,8 @@ export class AuthEffects {
                 present: isMetamaskPresent,
                 chainId
               })
-            )
+            ),
+            finalize(() => this.loadingService.hide())
           )
       )
     )

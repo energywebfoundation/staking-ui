@@ -20,7 +20,6 @@ describe('StakingHeaderComponent', () => {
     store.overrideSelector(authSelectors.isUserLoggedIn, data?.isLoggedIn || true);
     store.overrideSelector(AuthSelectors.getWalletProvider, data?.walletProvider);
     store.overrideSelector(AuthSelectors.getAccountInfo, data?.accountInfo);
-    store.overrideSelector(UserClaimSelectors.getUserName, data?.userName);
   };
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({

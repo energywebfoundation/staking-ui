@@ -19,7 +19,7 @@ export class StakingPoolServiceFacade {
     return Boolean(this.stakingPoolService);
   }
 
-  async createPool(org: string) {
+  async createPool() {
     const pool = await this.stakingPoolService.getPool();
     this.stakingPoolFacade.setPool(pool);
     return Boolean(pool);

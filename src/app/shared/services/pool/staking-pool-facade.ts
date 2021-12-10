@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { StakingPoolService } from 'iam-client-lib';
 import { BigNumber } from 'ethers';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { LoadingService } from '../loading.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StakingPoolFacade {
   private pool: StakingPoolService;
+
+  constructor(private loadingService: LoadingService) {
+  }
 
   isPoolDefined(): boolean {
     return Boolean(this.pool);
@@ -18,42 +23,57 @@ export class StakingPoolFacade {
   }
 
   putStake(stake: BigNumber | number) {
-    return from(this.pool.putStake(stake));
+    return this.wrapWithLoadingService(this.pool.putStake(stake));
   }
 
   getStartDate() {
-    return from(this.pool.getStart());
+    return this.wrapWithLoadingService(this.pool.getStart());
   }
 
   getEndDate() {
-    return from(this.pool.getEnd());
+    return this.wrapWithLoadingService(this.pool.getEnd());
   }
 
   checkReward() {
-    return from(this.pool.checkReward());
+    return this.wrapWithLoadingService(this.pool.checkReward());
   }
 
   getStake() {
-    return from(this.pool.getStake());
+    return this.wrapWithLoadingService(this.pool.getStake());
   }
 
   withdraw() {
-    return from(this.pool.withdraw());
+    return this.wrapWithLoadingService(this.pool.withdraw());
   }
 
   getHardCap() {
-    return from(this.pool.getHardCap());
+    return this.wrapWithLoadingService(this.pool.getHardCap());
   }
 
   getContributionLimit() {
-    return from(this.pool.getContributionLimit());
+    return this.wrapWithLoadingService(this.pool.getContributionLimit());
   }
 
   getTotalStaked() {
-    return from(this.pool.getTotalStaked());
+    return this.wrapWithLoadingService(this.pool.getTotalStaked());
   }
 
   partialWithdraw(value: BigNumber) {
-    return from(this.pool.partialWithdraw(value));
+    return this.wrapWithLoadingService(this.pool.partialWithdraw(value));
+  }
+
+  getHourlyRatio() {
+    return this.wrapWithLoadingService(this.pool.getRatio());
+  }
+
+  private wrapWithLoadingService<T>(
+    source: Promise<T> | Observable<T>,
+    loaderConfig?: { message: string | string[]; cancelable?: boolean }
+  ) {
+    this.loadingService.show(
+      loaderConfig?.message || '',
+      !!loaderConfig?.cancelable
+    );
+    return from(source).pipe(finalize(() => this.loadingService.hide()));
   }
 }

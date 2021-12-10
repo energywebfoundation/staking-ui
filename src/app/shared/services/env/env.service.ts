@@ -8,7 +8,8 @@ export class EnvService {
   cacheServerUrl = 'https://identitycache-dev.energyweb.org/v1';
   natsServerUrl = 'https://identityevents-dev.energyweb.org/';
   kmsServerUrl = undefined;
-  stakingPoolFactoryAddress = undefined;
+  stakingPoolFactoryAddress;
+  claimManagerAddress;
   showAzureLoginOption = true;
   checkStakingVerification
 }

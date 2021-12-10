@@ -78,10 +78,6 @@ export const getWithdrawalDelayFailure = createAction(
   props<{ err: string }>()
 );
 
-export const getOrganizationDetails = createAction(
-  '[Pool] Get Organization Details'
-);
-
 export const openWithdrawDialog = createAction(
   '[Pool] Open Withdraw Dialog'
 );
@@ -126,6 +122,14 @@ export const getContributorLimitSuccess = createAction(
   '[Pool] Get Contributor Limit Success',
   props<{ cap: BigNumber }>()
 );
+export const getRatio = createAction(
+  '[Pool] Get Ratio'
+);
+
+export const getRatioSuccess = createAction(
+  '[Pool] Get Ratio Success',
+  props<{ ratio: BigNumber }>()
+);
 
 export const stakingPoolFinishDate = createAction(
   '[Pool] Get Staking Pool Finish Date'
@@ -149,11 +153,8 @@ export const getContributorLimitFailure = createAction(
   props<{ err: string }>()
 );
 
-export const getOrganizationDetailsSuccess = createAction(
-  '[Pool] Get Organization Details Success',
-  props<{ orgDetails: IOrganizationDefinition }>()
-);
-export const getOrganizationDetailsFailure = createAction(
-  '[Pool] Get Organization Details Failure',
+export const getRatioFailure = createAction(
+  '[Pool] Get Ratio Failure',
   props<{ err: string }>()
 );
+

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   AccountInfo,
   AssetsService,
-  CacheClient,
+  CacheClient, ChainConfig,
   ClaimData,
   ClaimsService,
   DidRegistry,
@@ -77,66 +77,8 @@ export class IamService {
     });
   }
 
-  get address() {
-    return this.signerService.address;
-  }
-
   get providerType() {
     return this.signerService.providerType;
-  }
-
-  issueClaim(data: { subject: string; claim: any }) {
-    return this.wrapWithLoadingService(this.claimsService.issueClaim(data));
-  }
-
-  getClaimsBySubject(did: string) {
-    return from(this.claimsService.getClaimsBySubject({
-      did
-    })).pipe(map(claims => claims.filter((claim) => !claim.isRejected)));
-  }
-
-  getAllowedRolesByIssuer(): Observable<IRole[]> {
-    return this.wrapWithLoadingService(this.domainsService.getAllowedRolesByIssuer(this.signerService.did) as any as Promise<IRole[]>);
-  }
-
-  getRolesDefinition(namespaces: string[]) {
-    return this.cacheClient.getRolesDefinition(namespaces);
-  }
-
-  registerAsset() {
-    return from(this.assetsService.registerAsset());
-  }
-
-  getUserClaims(did?: string) {
-    return from(this.claimsService.getUserClaims({did}));
-  }
-
-  createSelfSignedClaim(
-    {data, subject}: {
-      data: ClaimData;
-      subject?: string;
-    }) {
-    return from(this.claimsService.createSelfSignedClaim({data, subject}));
-  }
-
-  deleteOrganization(namespace: string, returnSteps: boolean) {
-    return this.domainsService.deleteOrganization({
-      namespace: namespace,
-      returnSteps,
-    });
-  }
-
-  getOrgHistory(namespace: string) {
-    return this.wrapWithLoadingService(
-      this.domainsService.getOrgHierarchy(namespace)
-    );
-  }
-
-  getAssetById(id) {
-    return this.wrapWithLoadingService(
-      this.assetsService.getAssetById({id}),
-      {message: 'Getting selected asset data...'}
-    );
   }
 
   closeConnection() {
@@ -189,15 +131,6 @@ export class IamService {
     };
   }
 
-  getDefinition(organization: string) {
-    return from(
-      this.domainsService.getDefinition({
-        type: NamespaceType.Organization,
-        namespace: organization,
-      })
-    );
-  }
-
   getDidDocument(data?: { did: string; includeClaims: boolean }) {
     return from(this.didRegistry.getDidDocument(data));
   }
@@ -210,36 +143,14 @@ export class IamService {
     return await this.signerService.balance();
   }
 
-  isOwner(namespace: string) {
-    return from(this.domainsService.isOwner({domain: namespace}));
-  }
-
-  getOrganizationsByOwner() {
-    return from(this.getENSTypesByOwner(NamespaceType.Organization));
-  }
-
-  async getENSTypesByOwner(ensType: NamespaceType) {
-    return await this.domainsService.getENSTypesByOwner({
-      type: ensType,
-      owner: this.address,
-    });
-  }
-
-  public wrapWithLoadingService<T>(
-    source: Promise<T> | Observable<T>,
-    loaderConfig?: { message: string | string[]; cancelable?: boolean }
-  ) {
-    this.loadingService.show(
-      loaderConfig?.message || '',
-      !!loaderConfig?.cancelable
-    );
-    return from(source).pipe(finalize(() => this.loadingService.hide()));
-  }
-
-  private getChainConfig() {
-    const chainConfig: any = {
+  private getChainConfig(): Partial<ChainConfig> {
+    const chainConfig: Partial<ChainConfig> = {
       rpcUrl: this.envService.rpcUrl,
     };
+
+    if (this.envService.claimManagerAddress) {
+      chainConfig.claimManagerAddress = this.envService.claimManagerAddress;
+    }
 
     if (this.envService.stakingPoolFactoryAddress) {
       chainConfig.stakingPoolFactoryAddress = this.envService.stakingPoolFactoryAddress;

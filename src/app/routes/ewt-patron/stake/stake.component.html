@@ -21,14 +21,14 @@
             </button>
           </div>
 
-          <mat-error *ngIf="amountToStake.hasError('min')">Minimum value is 0</mat-error>
+          <mat-error *ngIf="amountToStake.hasError('min')">Minimum value is {{MINIMAL_VALUE}}</mat-error>
           <mat-error *ngIf="amountToStake.hasError('required')">This field is <strong>required</strong></mat-error>
           <mat-error *ngIf="amountToStake.hasError('max')">The stake limit is {{contributorLimit}}. You already staked
             <ng-container *ngIf="(stakeAmount$ | async) as stakeAmount">
               {{stakeAmount}}
             </ng-container>
           </mat-error>
-          <mat-hint align="start" class="color-grey">Max. {{contributorLimit}} EWT per DID</mat-hint>
+          <mat-hint align="start" class="color-grey">Max. {{contributorLimit}} EWT per user</mat-hint>
         </mat-form-field>
       </ng-container>
 
@@ -37,36 +37,44 @@
           Reward payment interval
         </div>
         <div class="text-color">
-          Daily
+          Hourly
         </div>
       </div>
       <div class="mt-1 d-flex justify-content-between payment-details color-grey">
         <div class="info">
           Estimated daily reward
         </div>
+        <ng-container *ngIf="ratio$ | async as ratio">
         <div class="text-color"
-             matTooltip="0.0270% per day yields 10.355% per year when compounded daily or 9.855% per year not compounded."
+             [matTooltip]="ratio + '% per hour compounding yields 21.79% per year.'"
              matTooltipPosition="below">
-          0.03%
+          {{ratio}}%
+        </div>
+        </ng-container>
+      </div>
+      <div class="mt-1 d-flex justify-content-between payment-details color-grey" *ngIf="stakingPoolBegin$ | async as startDate">
+        <div class="info" [matTooltip]="startDate?.beginDate">
+          Staking pool {{startDate?.started ? 'began' : 'begins'}}
+        </div>
+        <div class="text-color">
+          {{startDate?.beginDate | date: 'dd-MMM-yy'}}
         </div>
       </div>
-      <div class="mt-1 d-flex justify-content-between payment-details color-grey">
-        <div class="info">
-          Staking pool expires
+      <div class="mt-1 d-flex justify-content-between payment-details color-grey" *ngIf="stakingPoolEnds | async as expirationDate">
+        <div class="info" [matTooltip]="expirationDate?.expirationDate">
+          Staking pool {{expirationDate?.ended ? 'expired' : 'expires'}}
         </div>
-        <div class="text-color"
-             matTooltip="0.0270% per day yields 10.355% per year when compounded daily or 9.855% per year not compounded."
-             matTooltipPosition="below">
-          {{dates$ | async | date: 'dd-MM-yy'}}
+        <div class="text-color">
+          {{expirationDate?.expirationDate | date: 'dd-MMM-yy'}}
         </div>
       </div>
       <div class="mt-4 color-grey">
-        By clicking "STAKE", you agree to the <span class="highlight">Terms & Conditions</span>.
+        By clicking "STAKE", you agree to the <span class="highlight">Terms of Participation</span>.
       </div>
       <div class="mt-2 d-flex justify-content-end align-items-center text-color">
         <!-- <mat-slide-toggle [formControl]="compound" class="slide-toggle">Compound</mat-slide-toggle> -->
         <button mat-raised-button class="stake-btn text-color text-uppercase" data-qa-id="stake"
-                [disabled]="isAmountInvalid()" (click)="stake()">
+                [disabled]="isAmountInvalid() || (isStakeDisabled$ | async)" (click)="stake()">
           Stake
         </button>
       </div>

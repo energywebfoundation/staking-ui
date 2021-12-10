@@ -6,23 +6,14 @@ export const USER_FEATURE_KEY = 'user';
 
 export interface UserClaimState {
   didDocument: any;
-  profile: Profile;
-  error?: string | null;
 }
 
 export const initialState: UserClaimState = {
   didDocument: null,
-  profile: null,
-  error: ''
 };
 
 const userReducer = createReducer(
   initialState,
-  on(userActions.setProfile, userActions.updateUserClaimsSuccess, userActions.updateLocalStateUserClaims, (state, {profile}) => ({
-    ...state,
-    profile
-  })),
-  on(userActions.clearUserClaim, (state) => ({...state, profile: null, didDocument: null})),
   on(userActions.setDidDocument, (state, {didDocument}) => ({...state, didDocument}))
 );
 
