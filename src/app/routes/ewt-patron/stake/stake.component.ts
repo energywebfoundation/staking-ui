@@ -7,6 +7,7 @@ import * as poolSelectors from '../../../state/pool/pool.selectors';
 import * as PoolActions from '../../../state/pool/pool.actions';
 import { MAX_STAKE_AMOUNT } from '../../../state/pool/models/const';
 import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
+import { beginsDate, stakingPoolEnds } from '../../../state/pool/pool.selectors';
 
 @Component({
   selector: 'app-stake',
@@ -29,7 +30,8 @@ export class StakeComponent {
   getContributorLimit$ = this.store.select(poolSelectors.getContributorLimit);
   calculatedPercent$ = this.store.select(poolSelectors.calculateStakedPercent);
   isStakeDisabled$ = this.store.select(poolSelectors.isStakeDisabled);
-  dates$ = this.store.select(poolSelectors.expirationDate);
+  stakingPoolEnds = this.store.select(poolSelectors.stakingPoolEnds);
+  stakingPoolBegin$ = this.store.select(poolSelectors.stakingPoolBegin);
   ratio$ = this.store.select(poolSelectors.ratio);
 
   constructor(private store: Store) {

@@ -52,12 +52,20 @@
         </div>
         </ng-container>
       </div>
-      <div class="mt-1 d-flex justify-content-between payment-details color-grey">
-        <div class="info">
-          Staking pool expires
+      <div class="mt-1 d-flex justify-content-between payment-details color-grey" *ngIf="stakingPoolBegin$ | async as startDate">
+        <div class="info" [matTooltip]="startDate.beginDate">
+          Staking pool {{startDate.started ? 'began' : 'begins'}}
         </div>
         <div class="text-color">
-          {{dates$ | async | date: 'dd-MMM-yy'}}
+          {{startDate.beginDate | date: 'dd-MMM-yy'}}
+        </div>
+      </div>
+      <div class="mt-1 d-flex justify-content-between payment-details color-grey" *ngIf="stakingPoolEnds | async as expirationDate">
+        <div class="info" [matTooltip]="expirationDate.expirationDate">
+          Staking pool {{expirationDate.ended ? 'expires' : 'expired'}}
+        </div>
+        <div class="text-color">
+          {{expirationDate.expirationDate | date: 'dd-MMM-yy'}}
         </div>
       </div>
       <div class="mt-4 color-grey">

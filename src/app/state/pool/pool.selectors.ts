@@ -18,9 +18,20 @@ export const getBalance = createSelector(
   (state: PoolState) => state?.balance
 );
 
-export const isStakeDisabled = createSelector(
+export const isStakingStarted = createSelector(
   getStakeState,
-  (state) => Date.now() - (state.startDate * 1000) < 0 || Date.now() - (state?.endDate * 1000) > 0
+  (state) => Date.now() - (state.startDate * 1000) < 0
+)
+
+export const isStakingEnded = createSelector(
+  getStakeState,
+  (state) => Date.now() - (state?.endDate * 1000) > 0
+)
+
+export const isStakeDisabled = createSelector(
+  isStakingStarted,
+  isStakingEnded,
+  (started, ended) => started || ended
 );
 
 export const getOrganization = createSelector(
@@ -102,6 +113,36 @@ export const expirationDate = createSelector(
     return new Date(state?.endDate * 1000);
   }
 );
+
+export const beginsDate = createSelector(
+  getStakeState,
+  (state: PoolState) => {
+    return new Date(state?.startDate * 1000);
+  }
+);
+
+export const stakingPoolBegin = createSelector(
+  beginsDate,
+  isStakingStarted,
+  (beginDate, started) => {
+    return {
+      beginDate,
+      started
+    };
+  }
+);
+
+export const stakingPoolEnds = createSelector(
+  expirationDate,
+  isStakingEnded,
+  (expirationDate, ended) => {
+    return {
+      expirationDate,
+      ended
+    };
+  }
+);
+
 export const ratio = createSelector(
   getStakeState,
   (state: PoolState) => {
