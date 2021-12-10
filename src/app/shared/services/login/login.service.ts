@@ -81,7 +81,7 @@ export class LoginService {
             this.iamListenerService.setListeners((config) => this.openSwal(config, redirectOnChange));
           }
           if (!loginSuccessful) {
-            this.logout();
+            this.disconnect();
           }
           return {success: Boolean(loginSuccessful), accountInfo};
         }),
@@ -105,9 +105,14 @@ export class LoginService {
 
   disconnect() {
     this.clearSession();
-    this.iamService.closeConnection().subscribe(() => {
+    if (this.iamService.signerService) {
+      this.iamService.closeConnection().subscribe(() => {
+        location.reload();
+      });
+    } else {
       location.reload();
-    });
+    }
+
   }
 
   setDeepLink(deepLink: any) {
