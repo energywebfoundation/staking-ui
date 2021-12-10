@@ -18,6 +18,10 @@ export const getBalance = createSelector(
   (state: PoolState) => state?.balance
 );
 
+export const isStakeDisabled = createSelector(
+  getStakeState,
+  (state) => Date.now() - (state.startDate * 1000) < 0 || Date.now() - (state?.endDate * 1000) > 0
+);
 
 export const getOrganization = createSelector(
   getStakeState,
