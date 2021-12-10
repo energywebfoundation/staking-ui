@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import { tap } from 'rxjs/operators';
@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import * as poolSelectors from '../../../state/pool/pool.selectors';
 import * as PoolActions from '../../../state/pool/pool.actions';
 import { MAX_STAKE_AMOUNT } from '../../../state/pool/models/const';
+import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
 
 @Component({
   selector: 'app-stake',
@@ -13,9 +14,10 @@ import { MAX_STAKE_AMOUNT } from '../../../state/pool/models/const';
   styleUrls: ['./stake.component.scss']
 })
 export class StakeComponent {
+  readonly MINIMAL_VALUE = 0.000000000000000001
   inputFocused: boolean;
   tokenAmount: number;
-  amountToStake = new FormControl('', [Validators.min(0), Validators.required, Validators.max(MAX_STAKE_AMOUNT)]);
+  amountToStake = new FormControl('', [Validators.min(this.MINIMAL_VALUE), Validators.required, Validators.max(MAX_STAKE_AMOUNT)]);
   maxAmount$ = this.store.select(poolSelectors.getMaxPossibleAmountToStake).pipe(tap(value => {
     this.setAmountValidators(value);
     this.tokenAmount = +value;
@@ -48,7 +50,7 @@ export class StakeComponent {
   }
 
   private putStake() {
-    this.store.dispatch(PoolActions.putStake({amount: this.amountToStake.value.toString()}));
+    this.store.dispatch(PoolActions.putStake({amount: exponentialToString(this.amountToStake.value)}));
   }
 
   stake() {
@@ -61,7 +63,7 @@ export class StakeComponent {
   }
 
   setAmountValidators(maxAmount: number) {
-    this.amountToStake.setValidators([Validators.min(0), Validators.required, Validators.max(maxAmount)]);
+    this.amountToStake.setValidators([Validators.min(this.MINIMAL_VALUE), Validators.required, Validators.max(maxAmount)]);
   }
 
 }

@@ -21,7 +21,7 @@
             </button>
           </div>
 
-          <mat-error *ngIf="amountToStake.hasError('min')">Minimum value is 0</mat-error>
+          <mat-error *ngIf="amountToStake.hasError('min')">Minimum value is {{MINIMAL_VALUE}}</mat-error>
           <mat-error *ngIf="amountToStake.hasError('required')">This field is <strong>required</strong></mat-error>
           <mat-error *ngIf="amountToStake.hasError('max')">The stake limit is {{contributorLimit}}. You already staked
             <ng-container *ngIf="(stakeAmount$ | async) as stakeAmount">
