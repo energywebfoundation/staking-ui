@@ -81,10 +81,7 @@ export class LoginService {
             this.iamListenerService.setListeners((config) => this.openSwal(config, redirectOnChange));
           }
           if (!loginSuccessful) {
-            this.loadingService.hide();
-            this.openSwal({
-              title: 'Ops!', text: 'Something went wrong :('
-            }, redirectOnChange);
+            this.logout();
           }
           return {success: Boolean(loginSuccessful), accountInfo};
         }),
