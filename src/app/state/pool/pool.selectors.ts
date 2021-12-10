@@ -20,7 +20,7 @@ export const getBalance = createSelector(
 
 export const isStakingStarted = createSelector(
   getStakeState,
-  (state) => Date.now() - (state.startDate * 1000) < 0
+  (state) => Date.now() - (state.startDate * 1000) > 0
 )
 
 export const isStakingEnded = createSelector(
@@ -31,7 +31,7 @@ export const isStakingEnded = createSelector(
 export const isStakeDisabled = createSelector(
   isStakingStarted,
   isStakingEnded,
-  (started, ended) => started || ended
+  (started, ended) => !started || ended
 );
 
 export const getOrganization = createSelector(

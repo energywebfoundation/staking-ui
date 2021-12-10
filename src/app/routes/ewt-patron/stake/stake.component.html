@@ -62,7 +62,7 @@
       </div>
       <div class="mt-1 d-flex justify-content-between payment-details color-grey" *ngIf="stakingPoolEnds | async as expirationDate">
         <div class="info" [matTooltip]="expirationDate.expirationDate">
-          Staking pool {{expirationDate.ended ? 'expires' : 'expired'}}
+          Staking pool {{expirationDate.ended ? 'expired' : 'expires'}}
         </div>
         <div class="text-color">
           {{expirationDate.expirationDate | date: 'dd-MMM-yy'}}
