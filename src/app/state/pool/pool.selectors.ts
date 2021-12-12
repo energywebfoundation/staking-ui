@@ -3,6 +3,8 @@ import { PoolState, USER_FEATURE_KEY } from './pool.reducer';
 import { Stake, StakeStatus } from 'iam-client-lib';
 import { utils } from 'ethers';
 import { MAX_STAKE_AMOUNT } from './models/const';
+import { getStatus } from '../role-enrolment/role-enrolment.selectors';
+import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
 
 const {formatEther} = utils;
 
@@ -31,7 +33,8 @@ export const isStakingEnded = createSelector(
 export const isStakeDisabled = createSelector(
   isStakingStarted,
   isStakingEnded,
-  (started, ended) => !started || ended
+  getStatus,
+  (started, ended, status) => !started || ended || status !== RoleEnrolmentStatus.ENROLED_SYNCED
 );
 
 export const getOrganization = createSelector(
