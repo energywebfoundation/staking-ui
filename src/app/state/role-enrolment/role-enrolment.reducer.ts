@@ -1,5 +1,6 @@
-import { Action, createReducer } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
+import * as RoleEnrolmentActions from './role-enrolment.actions';
 
 export const USER_FEATURE_KEY = 'role-enrolment';
 
@@ -13,6 +14,7 @@ export const initialState: RoleEnrolmentState = {
 
 const roleEnrolmentReducer = createReducer(
   initialState,
+  on(RoleEnrolmentActions.setStatus, (state, {status}) => ({...state, status}))
 );
 
 export function reducer(state: RoleEnrolmentState | undefined, action: Action) {

@@ -18,7 +18,6 @@ import { WithdrawComponent } from '../../routes/ewt-patron/withdraw/withdraw.com
 import { EnvService } from '../../shared/services/env/env.service';
 
 const {formatEther, parseEther} = utils;
-const REQUIRED_ROLE_FOR_STAKING = 'email.roles.verification.apps.energyweb.iam.ewc';
 
 @Injectable()
 export class PoolEffects {
