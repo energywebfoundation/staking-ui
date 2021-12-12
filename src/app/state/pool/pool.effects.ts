@@ -6,18 +6,15 @@ import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { PoolState } from './pool.reducer';
 import * as PoolActions from './pool.actions';
-import { catchError, filter, finalize, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { catchError, filter, finalize, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { from, of } from 'rxjs';
 import { BigNumber, utils } from 'ethers';
-import { RegistrationTypes, Stake, StakeStatus } from 'iam-client-lib';
+import { Stake, StakeStatus } from 'iam-client-lib';
 import { StakeSuccessComponent } from '../../routes/ewt-patron/stake-success/stake-success.component';
-import * as poolSelectors from './pool.selectors';
 import { ToastrService } from 'ngx-toastr';
-import { IOrganizationDefinition } from '@energyweb/iam-contracts';
 import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-pool-service-facade';
 import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
 import { WithdrawComponent } from '../../routes/ewt-patron/withdraw/withdraw.component';
-import { NotEnroledRoleInfoComponent } from '../../routes/ewt-patron/not-enroled-role-info/not-enroled-role-info.component';
 import { EnvService } from '../../shared/services/env/env.service';
 
 const {formatEther, parseEther} = utils;
@@ -240,35 +237,6 @@ export class PoolEffects {
     )
   );
 
-  getRoles$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(PoolActions.getRoles),
-      filter(() => this.envService.checkStakingVerification),
-      tap(() => this.loadingService.show()),
-      switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
-          did: this.iamService.signerService.did,
-        })).pipe(
-          filter((roles) => {
-            const length = roles.filter((item) =>
-              item.claimType === REQUIRED_ROLE_FOR_STAKING && item.registrationTypes.includes(RegistrationTypes.OnChain)).length;
-            if (length === 0) {
-              this.openNotEnroledRoleDialog();
-            }
-            return length > 0;
-          }),
-          switchMap(() => from(this.iamService.claimsService.hasOnChainRole(this.iamService.signerService.did, REQUIRED_ROLE_FOR_STAKING, 1))
-            .pipe(
-              filter((v) => !v),
-              map(() => {
-                this.openNotEnroledRoleDialog();
-              }),
-            )),
-          finalize(() => this.loadingService.hide())
-        )
-      ),
-    ), {dispatch: false}
-  );
-
   getContributorLimit$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.getContributorLimit),
@@ -312,16 +280,7 @@ export class PoolEffects {
     return from(this.stakingService.createPool())
       .pipe(
         mergeMap(() => [PoolActions.getStake(), PoolActions.getHardCap(), PoolActions.getContributorLimit(),
-          PoolActions.stakingPoolFinishDate(), PoolActions.stakingPoolStartDate(), PoolActions.totalStaked(),
-          PoolActions.getRoles(), PoolActions.getRatio()])
+          PoolActions.stakingPoolFinishDate(), PoolActions.stakingPoolStartDate(), PoolActions.totalStaked(), PoolActions.getRatio()])
       );
-  }
-
-  private openNotEnroledRoleDialog() {
-    this.dialog.open(NotEnroledRoleInfoComponent, {
-      width: '400px',
-      maxWidth: '100%',
-      disableClose: true,
-    });
   }
 }
