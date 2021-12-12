@@ -15,6 +15,7 @@ import { ConnectToWalletDialogComponent } from '../../modules/connect-to-wallet/
 import * as StakeActions from '../stake/stake.actions';
 import * as AuthSelectors from './auth.selectors';
 import { EnvService } from '../../shared/services/env/env.service';
+import * as RoleEnrolmentActions from '../role-enrolment/role-enrolment.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -94,7 +95,8 @@ export class AuthEffects {
       ofType(AuthActions.loginSuccess),
       mergeMap(() => [
         userActions.setUpUser(),
-        StakeActions.initStakingPool()
+        StakeActions.initStakingPool(),
+        RoleEnrolmentActions.detectActualStatus()
       ])
     )
   );
