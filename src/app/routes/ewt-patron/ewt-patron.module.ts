@@ -22,6 +22,11 @@ import { ConnectToWalletModule } from '../../modules/connect-to-wallet/connect-t
 import { StakingHeaderComponent } from './staking-header/staking-header.component';
 import { StakingFooterComponent } from './staking-footer/staking-footer.component';
 import { UserMenuModule } from '../../layout/components/user-menu/user-menu.module';
+import { EnrolmentStatusCheckComponent } from './enrolment/enrolment-status-check/enrolment-status-check.component';
+import { NotEnroledComponent } from './enrolment/not-enroled/not-enroled.component';
+import { NotApprovedComponent } from './enrolment/not-approved/not-approved.component';
+import { NotSyncedComponent } from './enrolment/not-synced/not-synced.component';
+import { ApprovedSyncedComponent } from './enrolment/approved-synced/approved-synced.component';
 
 
 @NgModule({
@@ -35,6 +40,11 @@ import { UserMenuModule } from '../../layout/components/user-menu/user-menu.modu
     LastDigitsPipe,
     StakingHeaderComponent,
     StakingFooterComponent,
+    EnrolmentStatusCheckComponent,
+    NotEnroledComponent,
+    NotApprovedComponent,
+    NotSyncedComponent,
+    ApprovedSyncedComponent,
   ],
   imports: [
     CommonModule,

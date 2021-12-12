@@ -1,0 +1,9 @@
+<mat-form-field class="staking-textfield" appearance="outline">
+  <mat-label class="ml-3 pl-1">EWT Stake Amount</mat-label>
+  <input matInput class="amount-input" data-qa-id="stake-amount" [formControl]="email"
+         autocomplete="off"
+         type="email"
+         min="0" maxlength="256" />
+
+  <mat-error *ngIf="email.hasError('min')">Minimum value is </mat-error>
+</mat-form-field>
