@@ -59,3 +59,26 @@
     }
   }
 }
+
+.stake-btn {
+  font-family: Rajdhani, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  border-radius: 16px;
+  letter-spacing: 1.25px;
+  background-color: #A566FF;
+  padding: 0 0 !important;
+  height: 44px;
+  width: 124px;
+
+  &.mat-raised-button[disabled] {
+    color: #AF76FF !important;
+    background-color: rgb(165 102 255 / 20%) !important;
+  }
+
+  &:hover {
+    background-color: #ad74ff;
+  }
+}

@@ -10,3 +10,13 @@ export const setStatus = createAction(
   '[ROLE ENROLMENT] Set Status',
   props<{ status: RoleEnrolmentStatus }>()
 );
+
+export const enrolFor = createAction(
+  '[ROLE ENROLMENT] Enrol For Patron Role',
+  props<{ email: string}>()
+);
+
+export const enrolForFailure = createAction(
+  '[ROLE ENROLMENT] Enrol For Patron Role Failure',
+  props<{ error: string}>()
+);

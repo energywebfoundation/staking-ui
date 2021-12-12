@@ -1,9 +1,21 @@
+
 <mat-form-field class="staking-textfield" appearance="outline">
-  <mat-label class="ml-3 pl-1">EWT Stake Amount</mat-label>
+  <mat-label class="ml-3 pl-1">Email</mat-label>
   <input matInput class="amount-input" data-qa-id="stake-amount" [formControl]="email"
          autocomplete="off"
          type="email"
          min="0" maxlength="256" />
 
-  <mat-error *ngIf="email.hasError('min')">Minimum value is </mat-error>
+  <mat-error *ngIf="email.hasError('required')">Email is required </mat-error>
+  <mat-error *ngIf="email.hasError('email')">Minimum value is </mat-error>
 </mat-form-field>
+<h5>
+  You must verify your email to stake. By clicking “SUBMIT”, you agree to the privacy policy
+</h5>
+<div class="mt-2 d-flex justify-content-end align-items-center text-color">
+  <!-- <mat-slide-toggle [formControl]="compound" class="slide-toggle">Compound</mat-slide-toggle> -->
+  <button mat-raised-button class="stake-btn text-color text-uppercase" data-qa-id="stake"
+          [disabled]="email.invalid" (click)="enrol()">
+    Submit
+  </button>
+</div>
