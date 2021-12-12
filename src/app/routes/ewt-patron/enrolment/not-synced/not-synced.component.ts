@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { RoleEnrolmentActions } from '@state';
 
 @Component({
   selector: 'app-not-synced',
   templateUrl: './not-synced.component.html',
   styleUrls: ['./not-synced.component.scss']
 })
-export class NotSyncedComponent implements OnInit {
+export class NotSyncedComponent {
 
-  constructor() { }
+  constructor(private store: Store) { }
 
-  ngOnInit(): void {
+  addRole() {
+    this.store.dispatch(RoleEnrolmentActions.addRole())
   }
 
 }

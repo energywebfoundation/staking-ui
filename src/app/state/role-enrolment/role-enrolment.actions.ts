@@ -13,10 +13,19 @@ export const setStatus = createAction(
 
 export const enrolFor = createAction(
   '[ROLE ENROLMENT] Enrol For Patron Role',
-  props<{ email: string}>()
+  props<{ email: string }>()
 );
 
 export const enrolForFailure = createAction(
   '[ROLE ENROLMENT] Enrol For Patron Role Failure',
-  props<{ error: string}>()
+  props<{ error: string }>()
+);
+
+export const addRole = createAction(
+  '[ROLE ENROLMENT] Add Role/Enrolment To Claim Manager',
+);
+
+export const addRoleFailure = createAction(
+  '[ROLE ENROLMENT] Add Role/Enrolment To Claim Manager Failure',
+  props<{ error: string }>()
 );

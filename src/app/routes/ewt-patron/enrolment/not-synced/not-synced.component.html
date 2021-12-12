@@ -1,1 +1,10 @@
-<p>not-synced works!</p>
+<p>Your email has been approved. Click “Add Role” to initiate a transaction to publicly add the role “EMAIL” to your EWC
+  wallet. This will NOT publicly disclose your email address or publicly link it to your EWC wallet. The transaction
+  will cost a small amount of EWT for gas.</p>
+<div class="mt-2 d-flex justify-content-end align-items-center text-color">
+  <!-- <mat-slide-toggle [formControl]="compound" class="slide-toggle">Compound</mat-slide-toggle> -->
+  <button mat-raised-button class="stake-btn text-color text-uppercase" data-qa-id="stake"
+          (click)="addRole()">
+    Add Role
+  </button>
+</div>
