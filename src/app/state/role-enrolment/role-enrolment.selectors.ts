@@ -11,4 +11,4 @@ export const getStatus = createSelector(
 export const getEnrolment = createSelector(
   getRoleEnrolmentState,
   (state) => state?.enrolment
-)
+);

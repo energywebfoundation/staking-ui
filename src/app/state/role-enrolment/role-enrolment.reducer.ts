@@ -10,7 +10,7 @@ export interface RoleEnrolmentState {
 }
 
 export const initialState: RoleEnrolmentState = {
-  status: RoleEnrolmentStatus.NOT_ENROLED,
+  status: RoleEnrolmentStatus.ENROLED_SYNCED,
   enrolment: null
 };
 
