@@ -2,7 +2,7 @@ name: Deploy to bucket
 
 on:
   push:
-    branches: ['develop', 'master']
+    branches: ['develop', 'master', 'dev-no-kyc']
 jobs:
   cancel-previous:
     name: 'Cancel Previous Runs'
@@ -27,6 +27,10 @@ jobs:
             echo "::set-output name=env_name::dev"
             echo "::set-output name=env_file::src/environments/environment.dev.ts"
             echo "::set-output name=build_script::npm run build"
+          elif [ "${{ github.ref }}" = "refs/heads/dev-no-kyc" ]; then
+            echo "::set-output name=env_name::dev-no-kyc"
+            echo "::set-output name=env_file::src/environments/environment.dev.ts"
+            echo "::set-output name=build_script::npm run build-no-kyc"
           elif [ "${{ github.ref }}" = "refs/heads/master" ]; then
             echo "::set-output name=env_name::staging"
             echo "::set-output name=env_file::src/environments/environment.prod.ts"
