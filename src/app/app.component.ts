@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { Store } from '@ngrx/store';
 import * as AuthActions from './state/auth/auth.actions';
+import { ThemesService } from './core/themes/themes.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent implements OnInit {
 
   constructor(private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer,
+              private themeService: ThemesService,
               private store: Store) {
     this.matIconRegistry.addSvgIcon(
       'wallet-icon',

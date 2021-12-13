@@ -112,6 +112,7 @@ a {
 }
 
 .staking-widget-xl-label {
+  font-weight: 600;
   font-family: Rajdhani, sans-serif;
   font-size: 24px;
 }
@@ -180,6 +181,17 @@ a {
     -webkit-mask-composite: destination-out;
     z-index: -1;
   }
+}
+
+.role-req {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 32px;
+  background: linear-gradient(276.95deg, rgba(253, 139, 24, 0.2) -198.51%, rgba(13, 10, 25, 0) 157.75%);
+  background-clip: padding-box;
+  border: 1px solid #FD8B18;
+  padding: 10px;
+  backdrop-filter: blur(4px);
 }
 
 .widget-main {
@@ -261,8 +273,8 @@ li {
 
 .limit-text {
   font-size: 16px;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #A6A5AC;
 }
 
 .highlight {

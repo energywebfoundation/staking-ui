@@ -118,8 +118,8 @@
     <div class="row">
       <div class="mt-3 d-flex flex-column col-xs-12 col-md-8">
         <mat-progress-bar mode="determinate" [value]="calculatedPercent$ | async"></mat-progress-bar>
-        <span class="limit-text text-color mt-1">{{calculatedPercent$ | async}}% of {{getContributorLimit$ | async }}
-          EWT Personal Limit</span>
+        <div class="limit-text text-color mt-2">{{calculatedPercent$ | async}}% of {{getContributorLimit$ | async }}
+          EWT Personal Limit</div>
       </div>
     </div>
   </div>

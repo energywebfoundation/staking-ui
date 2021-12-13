@@ -12,6 +12,8 @@
     "build-volta": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --prod --aot -c=production",
     "postbuild-volta": "node scripts/volta-env.js",
     "build-prod": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --prod --aot -c=production",
+    "postbuild-no-kyc": "node scripts/no-kyc-env.js",
+    "build-no-kyc": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --prod --aot -c=production",
     "postbuild-prod": "node scripts/prod-env.js",
     "build": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --prod --aot -c=dev",
     "analyze": "webpack-bundle-analyzer dist/stats.json",
