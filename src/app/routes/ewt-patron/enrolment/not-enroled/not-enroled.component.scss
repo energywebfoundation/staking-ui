@@ -1,7 +1,7 @@
 :host ::ng-deep {
   .staking-textfield {
     &.mat-form-field-appearance-outline .mat-form-field-outline {
-      background: #231F32 !important;
+      background: #21181F !important;
       color: transparent;
       border-radius: 16px;
     }
@@ -32,7 +32,7 @@
   }
 
   .staking-textfield.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: #33CBCB;
+    color: #da883d;
   }
 
   .staking-textfield .mat-form-field-subscript-wrapper {
@@ -58,6 +58,21 @@
       padding: 0.35em 0.6em !important;
     }
   }
+}
+
+.staking-widget-sm-label {
+  font-weight: 600;
+  font-family: Rajdhani, sans-serif;
+  font-size: 21px;
+}
+
+.highlight {
+  color: #32DCDC;
+}
+
+.staking-widget-xs-label {
+  font-size: 16px;
+  letter-spacing: 0.8;
 }
 
 .stake-btn {
