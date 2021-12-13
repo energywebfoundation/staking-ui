@@ -10,11 +10,11 @@ import { catchError, filter, finalize, map, mergeMap, switchMap, tap } from 'rxj
 import { from, of } from 'rxjs';
 import { BigNumber, utils } from 'ethers';
 import { Stake, StakeStatus } from 'iam-client-lib';
-import { StakeSuccessComponent } from '../../routes/ewt-patron/stake-success/stake-success.component';
+import { StakeSuccessComponent } from '../../modules/ewt-patron/stake-success/stake-success.component';
 import { ToastrService } from 'ngx-toastr';
 import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-pool-service-facade';
 import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
-import { WithdrawComponent } from '../../routes/ewt-patron/withdraw/withdraw.component';
+import { WithdrawComponent } from '../../modules/ewt-patron/withdraw/withdraw.component';
 import { EnvService } from '../../shared/services/env/env.service';
 
 const {formatEther, parseEther} = utils;
