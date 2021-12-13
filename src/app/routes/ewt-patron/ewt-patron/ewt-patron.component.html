@@ -43,9 +43,9 @@
       </div>
       <div class="col-xl-4 mt-3 mt-md-4">
         <!-- For the approved sync please change class role-req to staking-terms -->
-        <div class="role-req text-color mb-2 p-4" *ngIf="isStakingVerificationEnabled">
-          <app-enrolment-status-check></app-enrolment-status-check>
-        </div>
+          <div [ngClass]="{'role-req': !(isPatronSynced | async) }" class="staking-terms text-color mb-2 p-4" *ngIf="isStakingVerificationEnabled">
+            <app-enrolment-status-check></app-enrolment-status-check>
+          </div>
         <div class="staking-terms p-4">
           <div class="d-flex flex-row align-items-center ml-0 ml-md-2 mt-2">
             <img src="../../../../assets/img/staking/terms-condition-image.png" width="65" height="64">
@@ -65,17 +65,19 @@
             </ul>
           </div>
         </div>
-          <div class="staking-widget widget-inner my-2 p-4">
-            <div class="staking-widget-xs-label text-color mb-2">Staking pool stats</div>
-            <h3 class="mb-3 text-color">
-              <ng-container *ngIf="getTotalStaked$ | async as totalStaked">{{totalStaked | lastDigits}}
-              </ng-container>
-              <span class="staking-currency">EWT</span>
+        <div class="staking-widget widget-inner my-2 p-4">
+          <div class="staking-widget-xs-label text-color mb-2">Staking pool stats</div>
+          <h3 class="mb-3 text-color">
+            <ng-container *ngIf="getTotalStaked$ | async as totalStaked">{{totalStaked | lastDigits}}
+            </ng-container>
+            <span class="staking-currency">EWT</span>
 
-            </h3>
-            <mat-progress-bar mode="determinate" [value]="getTotalStakedPercent$ | async"></mat-progress-bar>
-            <div class="limit-text color-grey mt-2">{{getTotalStakedPercent$ | async}}% of {{hardCap$ | async }} EWT Staking Pool limit</div>
+          </h3>
+          <mat-progress-bar mode="determinate" [value]="getTotalStakedPercent$ | async"></mat-progress-bar>
+          <div class="limit-text color-grey mt-2">{{getTotalStakedPercent$ | async}}% of {{hardCap$ | async }} EWT
+            Staking Pool limit
           </div>
+        </div>
       </div>
     </div>
   </div>

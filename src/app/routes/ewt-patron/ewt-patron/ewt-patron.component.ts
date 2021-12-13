@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
-import { AuthActions, PoolActions, PoolSelectors } from '@state';
+import { AuthActions, PoolActions, PoolSelectors, RoleEnrolmentSelectors } from '@state';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import * as poolSelectors from '../../../state/pool/pool.selectors';
 import { EnvService } from '../../../shared/services/env/env.service';
@@ -18,6 +18,7 @@ export class EwtPatronComponent implements OnInit, OnDestroy {
   getTotalStaked$ = this.store.select(PoolSelectors.getTotalStaked);
   ratio$ = this.store.select(poolSelectors.ratio);
   isStakingVerificationEnabled = this.envService.checkStakingVerification;
+  isPatronSynced = this.store.select(RoleEnrolmentSelectors.isSynced)
   destroy$ = new Subject<void>();
 
   constructor(private store: Store,
