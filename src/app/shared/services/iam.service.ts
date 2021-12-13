@@ -3,7 +3,6 @@ import {
   AccountInfo,
   AssetsService,
   CacheClient, ChainConfig,
-  ClaimData,
   ClaimsService,
   DidRegistry,
   DomainsService,
@@ -13,10 +12,8 @@ import {
   initWithMetamask,
   initWithPrivateKeySigner,
   initWithWalletConnect,
-  IRole,
   MessagingMethod,
   MessagingService,
-  NamespaceType,
   ProviderType,
   setCacheConfig,
   setChainConfig,
@@ -25,12 +22,10 @@ import {
   StakingFactoryService,
 } from 'iam-client-lib';
 import { IDIDDocument } from '@ew-did-registry/did-resolver-interface';
-import { LoadingService } from './loading.service';
 import { safeAppSdk } from './gnosis.safe.service';
-import { from, Observable } from 'rxjs';
+import { from } from 'rxjs';
 import { LoginOptions } from './login/login.service';
 import { truthy } from '@operators';
-import { finalize, map } from 'rxjs/operators';
 import { EnvService } from './env/env.service';
 
 export const PROVIDER_TYPE = 'ProviderType';
@@ -59,7 +54,6 @@ export class IamService {
   cacheClient: CacheClient;
 
   constructor(
-    private loadingService: LoadingService,
     private envService: EnvService
   ) {
     // Set Cache Server
