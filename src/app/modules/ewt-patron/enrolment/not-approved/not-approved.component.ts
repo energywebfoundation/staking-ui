@@ -19,7 +19,6 @@ export class NotApprovedComponent {
   cancelRequest() {
     this.dialog.open(ConfirmationDialogComponent, {
       width: '400px',
-      maxHeight: '195px',
       maxWidth: '100%',
       disableClose: true
     }).afterClosed().pipe(truthy()).subscribe(() => this.store.dispatch(RoleEnrolmentActions.cancelEnrolmentRequest()));
