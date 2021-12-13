@@ -27,6 +27,7 @@ import { NotEnroledComponent } from './enrolment/not-enroled/not-enroled.compone
 import { NotApprovedComponent } from './enrolment/not-approved/not-approved.component';
 import { NotSyncedComponent } from './enrolment/not-synced/not-synced.component';
 import { ApprovedSyncedComponent } from './enrolment/approved-synced/approved-synced.component';
+import { ConfirmationDialogComponent } from './enrolment/confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { ApprovedSyncedComponent } from './enrolment/approved-synced/approved-sy
     NotApprovedComponent,
     NotSyncedComponent,
     ApprovedSyncedComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule,
