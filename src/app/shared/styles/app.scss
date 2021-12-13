@@ -5,7 +5,6 @@
 // Variables
 @import "app/variables";
 // Globals
-@import "app/material/colors";
 @import "app/utils-mixins";
 // Layout
 @import "app/layout";
@@ -22,9 +21,7 @@
 @import "app/bootstrap-custom";
 @import "app/button-extra";
 @import "app/dropdown-extra";
-@import "app/animate";
 @import "app/slim-scroll";
-@import "app/datepicker";
 @import "app/utils";
 @import "app/popup";
 
@@ -32,7 +29,6 @@
 @import "app/spinner";
 // Charts
 @import "app/radial-bar";
-@import "app/chart-easypie";
 // Form elements
 @import "app/form-tags-input";
 @import "app/file-upload";
