@@ -18,7 +18,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SharedModule } from '../../shared/shared.module';
 import { LayoutModule } from '../../layout/layout.module';
 import { LastDigitsPipe } from './pipes/last-digits.pipe';
-import { ConnectToWalletModule } from '../../modules/connect-to-wallet/connect-to-wallet.module';
+import { ConnectToWalletModule } from '../connect-to-wallet/connect-to-wallet.module';
 import { StakingHeaderComponent } from './staking-header/staking-header.component';
 import { StakingFooterComponent } from './staking-footer/staking-footer.component';
 import { UserMenuModule } from '../../layout/components/user-menu/user-menu.module';
@@ -28,7 +28,7 @@ import { NotApprovedComponent } from './enrolment/not-approved/not-approved.comp
 import { NotSyncedComponent } from './enrolment/not-synced/not-synced.component';
 import { ApprovedSyncedComponent } from './enrolment/approved-synced/approved-synced.component';
 import { ConfirmationDialogComponent } from './enrolment/confirmation-dialog/confirmation-dialog.component';
-
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,7 @@ import { ConfirmationDialogComponent } from './enrolment/confirmation-dialog/con
     NotSyncedComponent,
     ApprovedSyncedComponent,
     ConfirmationDialogComponent,
+    ProgressBarComponent
   ],
   imports: [
     CommonModule,

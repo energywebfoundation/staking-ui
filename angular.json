@@ -39,31 +39,13 @@
               "src/app/core/preloader/preloader.scss",
               "src/styles.scss",
               {
-                "input": "src/app/shared/styles/themes/theme-a.scss",
-                "bundleName": "theme-a",
-                "inject": false
-              },
-              {
                 "input": "src/app/shared/styles/themes/theme-b.scss",
                 "bundleName": "default",
-                "inject": false
-              },
-              {
-                "input": "src/app/shared/styles/themes/theme-c.scss",
-                "bundleName": "stedin",
                 "inject": false
               }
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "src/app/core/preloader/preloader.js",
-              "node_modules/popper.js/dist/umd/popper.js",
-              "node_modules/bootstrap/js/dist/util.js",
-              "node_modules/bootstrap/js/dist/modal.js",
-              "node_modules/bootstrap/js/dist/dropdown.js",
-              "node_modules/bootstrap/js/dist/tooltip.js",
-              "node_modules/moment/min/moment-with-locales.min.js",
-              "node_modules/fullcalendar/dist/fullcalendar.js"
+              "src/app/core/preloader/preloader.js"
             ]
           },
           "configurations": {
@@ -124,7 +106,7 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
-            },
+            }
           }
         },
         "serve": {
@@ -166,15 +148,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "src/app/core/preloader/preloader.js",
-              "node_modules/popper.js/dist/umd/popper.js",
-              "node_modules/bootstrap/js/dist/util.js",
-              "node_modules/bootstrap/js/dist/modal.js",
-              "node_modules/bootstrap/js/dist/dropdown.js",
-              "node_modules/bootstrap/js/dist/tooltip.js",
-              "node_modules/moment/min/moment-with-locales.min.js",
-              "node_modules/fullcalendar/dist/fullcalendar.js"
+              "src/app/core/preloader/preloader.js"
             ]
           }
         },
@@ -186,7 +160,7 @@
               "src/**/*.component.html"
             ]
           }
-        },
+        }
       }
     }
   },
