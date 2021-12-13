@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="col-xl-4 mt-3 mt-md-4">
-        <div class="col-md-6 col-lg-12 my-2">
+        <div class="col-md-6 col-lg-12 my-2" *ngIf="isStakingVerificationEnabled">
           <div class="staking-widget widget-inner px-4 py-4 text-color">
             <app-enrolment-status-check></app-enrolment-status-check>
           </div>

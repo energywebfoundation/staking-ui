@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { AuthActions, PoolActions, PoolSelectors } from '@state';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import * as poolSelectors from '../../../state/pool/pool.selectors';
+import { EnvService } from '../../../shared/services/env/env.service';
 
 @Component({
   selector: 'app-ewt-patron',
@@ -16,11 +17,13 @@ export class EwtPatronComponent implements OnInit, OnDestroy {
   getTotalStakedPercent$ = this.store.select(PoolSelectors.getTotalStakedPercent);
   getTotalStaked$ = this.store.select(PoolSelectors.getTotalStaked);
   ratio$ = this.store.select(poolSelectors.ratio);
+  isStakingVerificationEnabled = this.envService.checkStakingVerification;
   destroy$ = new Subject<void>();
 
   constructor(private store: Store,
               private activatedRoute: ActivatedRoute,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private envService: EnvService) {
   }
 
   ngOnDestroy(): void {
