@@ -8,3 +8,8 @@ export const getDid = createSelector(
   getUserState,
   (state: UserClaimState) => state?.didDocument?.id
 );
+
+export const getAddress = createSelector(
+  getDid,
+  (did) => did?.split(':')?.pop()
+);

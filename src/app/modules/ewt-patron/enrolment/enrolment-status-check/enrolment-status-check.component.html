@@ -1,4 +1,11 @@
 <ng-container [ngSwitch]="getStatus$ | async">
+  <p *ngIf="!(isSynced$ | async)">Your current wallet
+    <ng-container *ngIf="getAddress$ | async as address">
+      <span [matTooltip]="address">{{ address | didFormatMinifier}}</span>
+    </ng-container>
+    is not authorized to stake. If this is
+    not your staking wallet, change wallets in MetaMask and refresh the page.
+  </p>
   <app-not-enroled *ngSwitchCase="roleEnrolmentStatus.NOT_ENROLED"></app-not-enroled>
   <app-not-approved *ngSwitchCase="roleEnrolmentStatus.ENROLED_NOT_APPROVED"></app-not-approved>
   <app-not-synced *ngSwitchCase="roleEnrolmentStatus.ENROLED_APPROVED"></app-not-synced>
