@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import * as RoleEnrolmentActions from './role-enrolment.actions';
-import { catchError, filter, finalize, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, finalize, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { LoadingService } from '../../shared/services/loading.service';
 import { from, of } from 'rxjs';
@@ -11,6 +11,7 @@ import { Claim, RegistrationTypes } from 'iam-client-lib';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
 import { SwitchboardToastrService } from '../../shared/services/switchboard-toastr.service';
 import { truthy } from '@operators';
+import { RoleEnrolmentSelectors } from '@state';
 
 const REQUIRED_ROLE_FOR_STAKING = 'email.roles.verification.apps.energyweb.iam.ewc';
 const PATRON_ROLE_VERSION = 1;
@@ -27,7 +28,10 @@ export class RoleEnrolmentEffects {
           did: this.iamService.signerService.did,
           namespace: 'verification.apps.energyweb.iam.ewc'
         })).pipe(
-          map((roles) => RoleEnrolmentActions.setStatus({status: this.getStatus(roles)})),
+          map((roles) => roles
+            .filter(item => !item.isRejected)
+            .filter((item) => item.claimType === REQUIRED_ROLE_FOR_STAKING && item.registrationTypes.includes(RegistrationTypes.OnChain))),
+          mergeMap((roles) => [RoleEnrolmentActions.setStatus({status: this.getStatus(roles)}), RoleEnrolmentActions.setEnrolment({enrolment: roles[0]})]),
           finalize(() => this.loadingService.hide())
         )
       )
@@ -99,6 +103,27 @@ export class RoleEnrolmentEffects {
     )
   );
 
+  cancelEnrolmentRequest$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoleEnrolmentActions.cancelEnrolmentRequest),
+      tap(() => this.loadingService.show('Canceling enrolment request...')),
+      concatLatestFrom(() => this.store.select(RoleEnrolmentSelectors.getEnrolment)),
+      switchMap(([, enrolment]) => from(this.iamService.claimsService.deleteClaim({
+          id: enrolment.id,
+        }))
+          .pipe(
+            map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.NOT_ENROLED})),
+            catchError(err => {
+              console.log(err);
+              this.toastrService.error(err?.message);
+              return of(RoleEnrolmentActions.cancelEnrolmentRequestFailure({error: err}));
+            }),
+            finalize(() => this.loadingService.hide())
+          )
+      )
+    )
+  );
+
   constructor(private actions$: Actions,
               private store: Store,
               private envService: EnvService,
@@ -108,14 +133,11 @@ export class RoleEnrolmentEffects {
   }
 
 
-  private getStatus(roles) {
-    const enrolments = roles
-      .filter(item => !item.isRejected)
-      .filter((item) => item.claimType === REQUIRED_ROLE_FOR_STAKING && item.registrationTypes.includes(RegistrationTypes.OnChain));
+  private getStatus(enrolments) {
     if (enrolments.length === 0) {
       return RoleEnrolmentStatus.NOT_ENROLED;
     }
-    if (enrolments[0].isAccepted ) {
+    if (enrolments[0].isAccepted) {
       return RoleEnrolmentStatus.ENROLED_APPROVED;
     }
     return RoleEnrolmentStatus.ENROLED_NOT_APPROVED;

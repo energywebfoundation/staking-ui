@@ -6,17 +6,18 @@ export const USER_FEATURE_KEY = 'role-enrolment';
 
 export interface RoleEnrolmentState {
   status: RoleEnrolmentStatus;
-  element: any;
+  enrolment: any;
 }
 
 export const initialState: RoleEnrolmentState = {
   status: RoleEnrolmentStatus.NOT_ENROLED,
-  element: null
+  enrolment: null
 };
 
 const roleEnrolmentReducer = createReducer(
   initialState,
   on(RoleEnrolmentActions.setStatus, (state, {status}) => ({...state, status})),
+  on(RoleEnrolmentActions.setEnrolment, (state, {enrolment}) => ({...state, enrolment})),
 );
 
 export function reducer(state: RoleEnrolmentState | undefined, action: Action) {

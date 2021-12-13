@@ -5,5 +5,10 @@ export const getRoleEnrolmentState = createFeatureSelector<RoleEnrolmentState>(U
 
 export const getStatus = createSelector(
   getRoleEnrolmentState,
-  (state) => state.status
+  (state) => state?.status
 );
+
+export const getEnrolment = createSelector(
+  getRoleEnrolmentState,
+  (state) => state?.enrolment
+)
