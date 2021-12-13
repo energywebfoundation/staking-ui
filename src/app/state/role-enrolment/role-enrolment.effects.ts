@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import * as RoleEnrolmentActions from './role-enrolment.actions';
 import { catchError, filter, finalize, map, mergeMap, switchMap, tap } from 'rxjs/operators';
@@ -11,7 +11,6 @@ import { Claim, RegistrationTypes } from 'iam-client-lib';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
 import { SwitchboardToastrService } from '../../shared/services/switchboard-toastr.service';
 import { truthy } from '@operators';
-import { RoleEnrolmentSelectors } from '@state';
 
 const REQUIRED_ROLE_FOR_STAKING = 'email.roles.verification.apps.energyweb.iam.ewc';
 const PATRON_ROLE_VERSION = 1;
@@ -107,19 +106,25 @@ export class RoleEnrolmentEffects {
     this.actions$.pipe(
       ofType(RoleEnrolmentActions.cancelEnrolmentRequest),
       tap(() => this.loadingService.show('Canceling enrolment request...')),
-      concatLatestFrom(() => this.store.select(RoleEnrolmentSelectors.getEnrolment)),
-      switchMap(([, enrolment]) => from(this.iamService.claimsService.deleteClaim({
-          id: enrolment.id,
-        }))
-          .pipe(
-            map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.NOT_ENROLED})),
-            catchError(err => {
-              console.log(err);
-              this.toastrService.error(err?.message);
-              return of(RoleEnrolmentActions.cancelEnrolmentRequestFailure({error: err}));
-            }),
-            finalize(() => this.loadingService.hide())
+      switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
+          did: this.iamService.signerService.did,
+          namespace: 'verification.apps.energyweb.iam.ewc'
+        })).pipe(
+          map(roles => roles.filter(item => !item.isRejected)),
+          switchMap((roles) => from(this.iamService.claimsService.deleteClaim({
+              id: roles[0].id,
+            }))
+              .pipe(
+                map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.NOT_ENROLED})),
+                catchError(err => {
+                  console.log(err);
+                  this.toastrService.error(err?.message);
+                  return of(RoleEnrolmentActions.cancelEnrolmentRequestFailure({error: err}));
+                }),
+                finalize(() => this.loadingService.hide())
+              )
           )
+        )
       )
     )
   );
