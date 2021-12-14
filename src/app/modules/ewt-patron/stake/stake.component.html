@@ -42,13 +42,13 @@
       </div>
       <div class="mt-1 d-flex justify-content-between payment-details color-grey">
         <div class="info">
-          Estimated hourly reward
+          Estimated daily reward
         </div>
         <ng-container *ngIf="ratio$ | async as ratio">
         <div class="text-color"
              [matTooltip]="ratio + '% per hour compounding yields 21.79% per year.'"
              matTooltipPosition="below">
-          {{ratio}}%
+          {{ratio | hourToDailyReward}}%
         </div>
         </ng-container>
       </div>
@@ -69,8 +69,10 @@
         </div>
       </div>
       <div class="mt-4 color-grey">
-        By clicking "STAKE", you agree to the <span class="highlight">Terms & Conditions</span>.
+        By clicking "STAKE", you agree to the 
+        <a href="https://stake-ewt.io/terms" target="_blank" class="highlight">Terms & Conditions</a>
       </div>
+      
       <div class="mt-2 d-flex justify-content-end align-items-center text-color">
         <!-- <mat-slide-toggle [formControl]="compound" class="slide-toggle">Compound</mat-slide-toggle> -->
         <button mat-raised-button class="stake-btn text-color text-uppercase" data-qa-id="stake"
