@@ -43,8 +43,7 @@ export class NotEnroledComponent {
     return (control: AbstractControl): ValidationErrors | null => {
       const [, domain] = control.value.split("@");
       const whiteListedDomains = EMAIL_DOMAINS_WHITELIST;
-      const isWhitelisted =
-        whiteListedDomains?.indexOf(domain) >= 0 ? true : false;
+      const isWhitelisted = whiteListedDomains?.indexOf(domain) >= 0;
       const isDisposable = disposableDomains.includes(domain) && !isWhitelisted;
       if (isDisposable) {
         return { disposableDomain: true };
