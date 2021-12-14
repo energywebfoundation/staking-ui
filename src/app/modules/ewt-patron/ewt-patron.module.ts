@@ -29,6 +29,7 @@ import { NotSyncedComponent } from './enrolment/not-synced/not-synced.component'
 import { ApprovedSyncedComponent } from './enrolment/approved-synced/approved-synced.component';
 import { ConfirmationDialogComponent } from './enrolment/confirmation-dialog/confirmation-dialog.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { HourlyToDailyRewardModule } from '../../shared/pipes/hourly-to-daily-reward/hourly-to-daily-reward.module';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     SharedModule,
     LayoutModule,
     ConnectToWalletModule,
-    UserMenuModule
+    UserMenuModule,
+    HourlyToDailyRewardModule
   ],
 
 })
