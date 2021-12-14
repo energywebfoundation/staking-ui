@@ -11,7 +11,7 @@ fs.readFile(envConfig, 'utf8', function (err, data) {
         .replace('cacheServerUrl = \'https://identitycache-dev.energyweb.org/v1\'', 'cacheServerUrl = \'https://identitycache.energyweb.org/v1\'')
         .replace('natsServerUrl = \'https://identityevents-dev.energyweb.org/\'', 'natsServerUrl = \'https://identityevents.energyweb.org/\'')
         .replace('kmsServerUrl = undefined', 'kmsServerUrl = \'https://kms.energyweb.org/connect/new\'')
-        .replace('window.__env.claimManagerAddress = \'0xC3dD7ED75779b33F5Cfb709E0aB02b71fbFA3210\'', 'window.__env.claimManagerAddress = \'0x561785174DF7f564f2591bA52B253c0F663427aB\'');
+        .replace('window.__env.claimManagerAddress = \'0xC3dD7ED75779b33F5Cfb709E0aB02b71fbFA3210\'', 'window.__env.claimManagerAddress = \'0x23b026631A6f265d17CFee8aa6ced1B244f3920C\'');
 
     fs.writeFile(envConfig, result, 'utf8', function (err) {
         if (err) return console.log(err);
