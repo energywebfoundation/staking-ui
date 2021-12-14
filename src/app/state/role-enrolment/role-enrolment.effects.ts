@@ -2,15 +2,27 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import * as RoleEnrolmentActions from './role-enrolment.actions';
-import { catchError, filter, finalize, map, mergeMap, switchMap, tap } from 'rxjs/operators';
+import {
+  catchError,
+  filter,
+  finalize,
+  map,
+  mapTo,
+  mergeMap,
+  switchMap,
+  takeUntil,
+  takeWhile,
+  tap
+} from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { LoadingService } from '../../shared/services/loading.service';
-import { from, of } from 'rxjs';
+import { from, interval, of, timer } from 'rxjs';
 import { IamService } from '../../shared/services/iam.service';
 import { Claim, RegistrationTypes } from 'iam-client-lib';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
 import { SwitchboardToastrService } from '../../shared/services/switchboard-toastr.service';
 import { truthy } from '@operators';
+import * as RoleEnrolmentSelectors from './role-enrolment.selectors';
 
 const REQUIRED_ROLE_FOR_STAKING = 'email.roles.verification.apps.energyweb.iam.ewc';
 const PATRON_ROLE_VERSION = 1;
@@ -124,12 +136,44 @@ export class RoleEnrolmentEffects {
                 finalize(() => this.loadingService.hide())
               )
           ),
-        finalize(() => this.loadingService.hide())
+          finalize(() => this.loadingService.hide())
         )
       )
     )
   );
 
+  searchForEnroledRole$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoleEnrolmentActions.setStatus),
+      filter(({status}) => status === RoleEnrolmentStatus.ENROLED_NOT_APPROVED),
+      tap(() => this.pool = true),
+      switchMap(() => timer(0, 30000)
+        .pipe(
+          switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
+            did: this.iamService.signerService.did,
+            namespace: 'verification.apps.energyweb.iam.ewc'
+          })).pipe(
+            map((roles) => {
+              const isNotRejected = roles.filter(item => !item.isRejected)[0];
+              if (isNotRejected?.isAccepted) {
+                this.pool = false;
+                return RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.ENROLED_APPROVED});
+              }
+
+              const allRejected = roles.filter(item => item.isRejected);
+              if (!isNotRejected && allRejected) {
+                this.pool = false;
+                this.toastrService.info('Enrolment Rejected! Probably you used this email twice or from restricted domain', 'Email Enrolment', {disableTimeOut: true})
+              }
+            })
+          )),
+          takeWhile(() => this.pool)
+        )
+      )
+    ), {dispatch: false}
+  );
+
+  private pool = true;
   constructor(private actions$: Actions,
               private store: Store,
               private envService: EnvService,

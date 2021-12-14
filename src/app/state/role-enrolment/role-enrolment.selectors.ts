@@ -18,3 +18,8 @@ export const getEnrolment = createSelector(
   getRoleEnrolmentState,
   (state) => state?.enrolment
 );
+
+export const changeFromEnroledNotApprovedStatus = createSelector(
+  getRoleEnrolmentState,
+  (state) => state?.status === RoleEnrolmentStatus.ENROLED_NOT_APPROVED
+)
