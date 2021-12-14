@@ -10,6 +10,7 @@ export class ConnectButtonsComponent {
   @Input() metamaskPresent: boolean;
   @Input() metamaskDisabled: boolean;
   @Input() showEkcOption: boolean;
+  @Input() isWalletConnectEnabled: boolean;
 
   @Output() connectTo = new EventEmitter<ProviderType>();
 

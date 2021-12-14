@@ -6,7 +6,7 @@
   </button>
 </div>
 <div class="my-3">
-  <button mat-raised-button (click)="connectToWalletConnect()"
+  <button mat-raised-button *ngIf="isWalletConnectEnabled" (click)="connectToWalletConnect()"
           data-qa-id="mobile-wallet"
           class="btn btn-connect btn-connect-wallet w-100" type="submit">
     <img width="48px" height="40px" class="float-left pt-1 pl-1"

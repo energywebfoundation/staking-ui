@@ -16,6 +16,7 @@ export class ConnectToWalletDialogComponent {
   disableMetamaskButton$ = this.store.select(authSelectors.isMetamaskDisabled);
   isMetamaskExtensionAvailable$ = this.store.select(authSelectors.isMetamaskPresent);
   showEkcOption = this.envService.showAzureLoginOption;
+  isWalletConnectEnabled = this.envService.showAzureLoginOption;
 
   constructor(private store: Store,
               @Inject(MAT_DIALOG_DATA) public data: { navigateOnTimeout: boolean },
