@@ -71,7 +71,7 @@ export class RoleEnrolmentEffects {
               finalize(() => this.loadingService.hide())
             )),
         )
-      )
+      ),
     )
   );
 
@@ -112,7 +112,7 @@ export class RoleEnrolmentEffects {
         })).pipe(
           map(roles => roles.filter(item => !item.isRejected)),
           switchMap((roles) => from(this.iamService.claimsService.deleteClaim({
-              id: roles[0].id,
+              id: roles[0]?.id,
             }))
               .pipe(
                 map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.NOT_ENROLED})),
@@ -123,7 +123,8 @@ export class RoleEnrolmentEffects {
                 }),
                 finalize(() => this.loadingService.hide())
               )
-          )
+          ),
+        finalize(() => this.loadingService.hide())
         )
       )
     )
