@@ -13,6 +13,7 @@
 
   <mat-error *ngIf="email.hasError('required')">Email is required </mat-error>
   <mat-error *ngIf="email.hasError('email')">Minimum value is </mat-error>
+  <mat-error *ngIf="email.hasError('disposableDomain')">Email domain restricted</mat-error>
 </mat-form-field>
 <h5 class="text-color my-3">
   By clicking “SUBMIT”,&nbsp;&nbsp; you agree to the <span class="highlight">Privacy policy</span>
