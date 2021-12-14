@@ -8,6 +8,7 @@ import { from, Observable, of } from 'rxjs';
 import { IamListenerService } from '../iam-listener/iam-listener.service';
 import { catchError, delayWhen, filter, map, take } from 'rxjs/operators';
 import { swalLoginError } from './helpers/swal-login-error-handler';
+export const WALLET_CONNECT_KEY = 'walletconnect'
 
 export interface LoginOptions {
   providerType?: ProviderType;
@@ -56,6 +57,7 @@ export class LoginService {
   clearSession() {
     localStorage.removeItem(PROVIDER_TYPE);
     localStorage.removeItem(PUBLIC_KEY);
+    localStorage.removeItem(WALLET_CONNECT_KEY)
   }
 
   getSession() {
