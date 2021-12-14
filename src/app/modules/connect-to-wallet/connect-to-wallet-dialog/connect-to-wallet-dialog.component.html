@@ -3,6 +3,7 @@
     <app-connect-buttons [metamaskDisabled]="disableMetamaskButton$ | async"
                          [metamaskPresent]="isMetamaskExtensionAvailable$ | async"
                          [showEkcOption]="showEkcOption"
+                         [isWalletConnectEnabled]="isWalletConnectEnabled"
                          (connectTo)="login($event)"></app-connect-buttons>
   </div>
 </div>

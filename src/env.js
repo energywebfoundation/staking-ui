@@ -13,5 +13,6 @@
     window.__env.claimManagerAddress = '0xC3dD7ED75779b33F5Cfb709E0aB02b71fbFA3210';
     window.__env.checkStakingVerification = false;
     window.__env.showAzureLoginOption = false;
+    window.__env.isWalletConnectEnabled = false;
 
 }(this));

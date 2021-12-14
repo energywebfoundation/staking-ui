@@ -11,5 +11,6 @@ export class EnvService {
   stakingPoolFactoryAddress;
   claimManagerAddress;
   showAzureLoginOption = true;
+  isWalletConnectEnabled: boolean;
   checkStakingVerification
 }
