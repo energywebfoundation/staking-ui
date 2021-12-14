@@ -34,19 +34,19 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-8 mt-2 mt-xl-4">
+      <div class="col-xl-8 mt-4 mt-xl-4">
         <div class="row">
           <div class="col-md-12 mt-0 mt-md-0 mb-xl-3">
             <app-stake></app-stake>
           </div>
         </div>
       </div>
-      <div class="col-xl-4 mt-3 mt-md-4">
+      <div class="col-xl-4 mt-4 mt-md-4">
         <!-- For the approved sync please change class role-req to staking-terms -->
-          <div [ngClass]="{'role-req': !(isPatronSynced | async) }" class="staking-terms text-color mb-2 p-4" *ngIf="isStakingVerificationEnabled">
-            <app-enrolment-status-check></app-enrolment-status-check>
-          </div>
-        <div class="staking-terms p-4">
+        <div [ngClass]="{'role-req': (isPatronSynced | async) === false }" class="staking-terms text-color p-4" *ngIf="isStakingVerificationEnabled">
+          <app-enrolment-status-check></app-enrolment-status-check>
+        </div>
+        <div class="staking-terms p-4 mt-4">
           <div class="d-flex flex-row align-items-center ml-0 ml-md-2 mt-2">
             <img src="../../../../assets/img/staking/terms-condition-image.png" width="65" height="64">
             <div class="staking-widget-xl-label text-color ml-0 ml-md-2">Terms of Participation</div>
@@ -65,7 +65,7 @@
             </ul>
           </div>
         </div>
-        <div class="staking-widget widget-inner my-2 p-4">
+        <div class="staking-widget widget-inner mt-4 p-4">
           <div class="staking-widget-xs-label text-color mb-2">Staking pool stats</div>
           <h3 class="mb-3 text-color">
             <ng-container *ngIf="getTotalStaked$ | async as totalStaked">{{totalStaked | lastDigits}}
