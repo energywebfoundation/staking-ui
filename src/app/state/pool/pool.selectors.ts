@@ -73,6 +73,12 @@ export const getMaxPossibleAmountToStake = createSelector(
   }
 );
 
+export const amountBorderValues = createSelector(
+  getMaxPossibleAmountToStake,
+  getBalance,
+  (maxPossibleAmount, balance) => ({maxPossibleAmount, balance: +balance})
+)
+
 export const isWithdrawingDelayFinished = createSelector(
   getStakeState,
   (state: PoolState) => state.withdrawing
