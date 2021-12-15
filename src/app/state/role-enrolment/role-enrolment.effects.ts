@@ -2,21 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import * as RoleEnrolmentActions from './role-enrolment.actions';
-import {
-  catchError,
-  filter,
-  finalize,
-  map,
-  mapTo,
-  mergeMap,
-  switchMap,
-  takeUntil,
-  takeWhile,
-  tap
-} from 'rxjs/operators';
+import { catchError, filter, finalize, map, mergeMap, switchMap, takeWhile, tap } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { LoadingService } from '../../shared/services/loading.service';
-import { from, interval, of, timer } from 'rxjs';
+import { from, of, timer } from 'rxjs';
 import { IamService } from '../../shared/services/iam.service';
 import { Claim, RegistrationTypes } from 'iam-client-lib';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
@@ -109,25 +98,36 @@ export class RoleEnrolmentEffects {
   cancelEnrolmentRequest$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RoleEnrolmentActions.cancelEnrolmentRequest),
-      tap(() => this.loadingService.show('Canceling enrolment request...')),
+      tap(() => this.loadingService.show('Checking enrolment request...')),
       switchMap(() => this.getClaims().pipe(
-          map(roles => roles.filter(item => !item.isRejected)),
-          switchMap((roles) => from(this.iamService.claimsService.deleteClaim({
-              id: roles[0]?.id,
-            }))
-              .pipe(
-                map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.NOT_ENROLED})),
-                catchError(err => {
-                  console.log(err);
-                  this.toastrService.error(err?.message);
-                  return of(RoleEnrolmentActions.cancelEnrolmentRequestFailure({error: err}));
-                }),
-                finalize(() => this.loadingService.hide())
-              )
-          ),
+          map(roles => roles.filter(item => !item.isRejected)[0]),
+          map((role) => {
+            if (!role) {
+              return RoleEnrolmentActions.claimDoNotExist();
+            }
+            return RoleEnrolmentActions.deleteClaim({id: role.id});
+          }),
           finalize(() => this.loadingService.hide())
         )
       )
+    )
+  );
+
+  deleteClaim$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoleEnrolmentActions.deleteClaim),
+      tap(() => this.loadingService.show('Canceling enrolment request...')),
+      switchMap(({id}) => from(this.iamService.claimsService.deleteClaim({id}))
+          .pipe(
+            map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.NOT_ENROLED})),
+            catchError(err => {
+              console.log(err);
+              this.toastrService.error(err?.message);
+              return of(RoleEnrolmentActions.cancelEnrolmentRequestFailure({error: err}));
+            }),
+            finalize(() => this.loadingService.hide())
+          )
+      ),
     )
   );
 
@@ -135,31 +135,55 @@ export class RoleEnrolmentEffects {
     this.actions$.pipe(
       ofType(RoleEnrolmentActions.setStatus),
       filter(({status}) => status === RoleEnrolmentStatus.ENROLED_NOT_APPROVED),
-      tap(() => this.pool = true),
+      tap(() => this._pool = true),
       switchMap(() => timer(0, 30000)
         .pipe(
           switchMap(() => this.getClaims().pipe(
             map((roles) => {
               const isNotRejected = roles.filter(item => !item.isRejected)[0];
               if (isNotRejected?.isAccepted) {
-                this.pool = false;
-                return RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.ENROLED_APPROVED});
+                return RoleEnrolmentActions.enrolmentApproved();
               }
 
               const allRejected = roles.filter(item => item.isRejected);
               if (!isNotRejected && allRejected) {
-                this.pool = false;
-                this.toastrService.info('Enrolment Rejected! Probably you used this email twice or from restricted domain', 'Email Enrolment', {disableTimeOut: true});
+                return RoleEnrolmentActions.enrolmentRejected();
               }
+              return RoleEnrolmentActions.continuePooling();
             })
           )),
-          takeWhile(() => this.pool)
+          takeWhile(() => this._pool)
         )
       )
+    )
+  );
+
+  enrolmentRejected$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoleEnrolmentActions.enrolmentRejected),
+      map(() => {
+        this._pool = false;
+        this.toastrService.error('Enrolment Rejected! Probably you used this email twice or from restricted domain',
+          'Email Enrolment',
+          {disableTimeOut: true});
+      })
     ), {dispatch: false}
   );
 
-  private pool = true;
+  enrolmentApproved$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoleEnrolmentActions.enrolmentApproved),
+      map(() => {
+        this._pool = false;
+      })
+    ), {dispatch: false}
+  );
+
+  get pool() {
+    return this._pool;
+  }
+
+  private _pool = true;
 
   constructor(private actions$: Actions,
               private store: Store,

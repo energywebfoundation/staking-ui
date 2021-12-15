@@ -41,5 +41,26 @@ export const addRoleFailure = createAction(
 
 export const setEnrolment = createAction(
   '[ROLE ENROLMENT] Set Role Enrolment',
-  props<{enrolment: any}>()
-)
+  props<{ enrolment: any }>()
+);
+
+export const enrolmentRejected = createAction(
+  '[ROLE ENROLMENT] Enrolment Rejected',
+);
+
+export const enrolmentApproved = createAction(
+  '[ROLE ENROLMENT] Enrolment Approved',
+);
+
+export const continuePooling = createAction(
+  '[ROLE ENROLMENT] No Information, Continue Polling',
+);
+
+export const deleteClaim = createAction(
+  '[ROLE ENROLMENT] Delete Enroled Email Claim',
+  props<{id: string}>()
+);
+
+export const claimDoNotExist = createAction(
+  '[ROLE ENROLMENT] Claim Do Not Exist',
+);
