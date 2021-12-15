@@ -7,7 +7,8 @@ import * as poolSelectors from '../../../state/pool/pool.selectors';
 import * as PoolActions from '../../../state/pool/pool.actions';
 import { MAX_STAKE_AMOUNT } from '../../../state/pool/models/const';
 import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
-import { beginsDate, stakingPoolEnds } from '../../../state/pool/pool.selectors';
+
+export const MINIMAL_ETHEREUM_VALUE = 0.000000000000000001;
 
 @Component({
   selector: 'app-stake',
@@ -15,7 +16,7 @@ import { beginsDate, stakingPoolEnds } from '../../../state/pool/pool.selectors'
   styleUrls: ['./stake.component.scss']
 })
 export class StakeComponent {
-  readonly MINIMAL_VALUE = 0.000000000000000001
+  readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE;
   inputFocused: boolean;
   tokenAmount: number;
   amountToStake = new FormControl('', [Validators.min(this.MINIMAL_VALUE), Validators.required, Validators.max(MAX_STAKE_AMOUNT)]);

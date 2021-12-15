@@ -6,6 +6,8 @@ import * as poolSelectors from '../../../state/pool/pool.selectors';
 import { FormControl, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { parseStringToFloat } from '../../../utils/functions/parse-string-to-float/parse-string-to-float';
+import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
+import { MINIMAL_ETHEREUM_VALUE } from '../stake/stake.component';
 
 @Component({
   selector: 'app-withdraw',
@@ -13,6 +15,7 @@ import { parseStringToFloat } from '../../../utils/functions/parse-string-to-flo
   styleUrls: ['./withdraw.component.scss']
 })
 export class WithdrawComponent {
+  readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE
   maxAmount$ = this.store.select(poolSelectors.allTokens).pipe(tap(amount => this.setValidators(amount)));
   amount = new FormControl('', [Validators.required]);
   inputFocused;
@@ -24,7 +27,7 @@ export class WithdrawComponent {
     if (this.isAmountInvalid) {
       return;
     }
-    this.store.dispatch(PoolActions.withdrawReward({value: this.amount.value}));
+    this.store.dispatch(PoolActions.withdrawReward({value: exponentialToString(this.amount.value)}));
   }
 
   withdrawAll() {
@@ -43,7 +46,7 @@ export class WithdrawComponent {
   }
 
   private setValidators(amount: string) {
-    this.amount.setValidators([Validators.required, Validators.min(0), Validators.max(parseStringToFloat(amount))]);
+    this.amount.setValidators([Validators.required, Validators.min(this.MINIMAL_VALUE), Validators.max(parseStringToFloat(amount))]);
   }
 
 }
