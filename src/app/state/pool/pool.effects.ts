@@ -96,7 +96,7 @@ export class PoolEffects {
   putStake$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.putStake),
-      tap(() => this.loadingService.show('Staking your EWT')),
+      tap(() => this.loadingService.show('Staking EWT')),
       switchMap(({amount}) => {
           return this.stakingPoolFacade.putStake(parseEther(amount))
             .pipe(
@@ -124,7 +124,7 @@ export class PoolEffects {
   withdrawReward$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.withdrawReward),
-      tap(() => this.loadingService.show('Withdrawing your reward...')),
+      tap(() => this.loadingService.show('Unstaking EWT...')),
       switchMap(({value}) =>
         this.stakingPoolFacade.partialWithdraw(parseEther(value.toString())).pipe(
           mergeMap(() => {
