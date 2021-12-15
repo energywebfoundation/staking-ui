@@ -14,7 +14,6 @@ export const initialState: StakeState = {
 
 const stakeReducer = createReducer(
   initialState,
-  on(StakeActions.getAllServicesSuccess, (state, {providers}) => ({...state, providers}))
 );
 
 export function reducer(state: StakeState | undefined, action: Action) {

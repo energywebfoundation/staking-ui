@@ -37,11 +37,6 @@ export const isStakeDisabled = createSelector(
   (started, ended, status) => !started || ended || status !== RoleEnrolmentStatus.ENROLED_SYNCED
 );
 
-export const getOrganization = createSelector(
-  getStakeState,
-  (state: PoolState) => state?.organization
-);
-
 export const getAnnualReward = createSelector(
   getStakeState,
   (state: PoolState) => state.annualReward

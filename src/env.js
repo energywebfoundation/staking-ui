@@ -14,5 +14,6 @@
     window.__env.checkStakingVerification = true;
     window.__env.showAzureLoginOption = false;
     window.__env.isWalletConnectEnabled = false;
+    window.__env.patronRole = 'email.roles.verification.apps.energyweb.iam.ewc';
 
 }(this));

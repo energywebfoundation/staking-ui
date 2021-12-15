@@ -12,5 +12,6 @@ export class EnvService {
   claimManagerAddress;
   showAzureLoginOption = true;
   isWalletConnectEnabled: boolean;
-  checkStakingVerification
+  checkStakingVerification: boolean;
+  patronRole: string;
 }
