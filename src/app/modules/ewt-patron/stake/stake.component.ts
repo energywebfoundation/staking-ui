@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import { tap } from 'rxjs/operators';
@@ -33,7 +33,6 @@ export class StakeComponent {
   isStakeDisabled$ = this.store.select(poolSelectors.isStakeDisabled);
   stakingPoolEnds = this.store.select(poolSelectors.stakingPoolEnds);
   stakingPoolBegin$ = this.store.select(poolSelectors.stakingPoolBegin);
-  ratio$ = this.store.select(poolSelectors.ratio);
 
   constructor(private store: Store) {
   }
