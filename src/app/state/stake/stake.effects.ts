@@ -37,25 +37,6 @@ export class StakeEffects {
     )
   );
 
-  getAllServices$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(StakeActions.getAllServices),
-        tap(() => this.loadingService.show('Loading list of providers')),
-        switchMap(() => {
-            return combineLatest([
-              this.stakingService.allServices(),
-              from(this.iamService.domainsService.getENSTypesBySearchPhrase('iam.ewc', [SearchType.Org])),
-          ]
-          ).pipe(
-            filterProviders(),
-            map((providers: Provider[]) => StakeActions.getAllServicesSuccess({ providers })),
-            finalize(() => this.loadingService.hide())
-          );
-        }),
-      )
-  );
-
   constructor(private actions$: Actions,
               private store: Store<StakeState>,
               private iamService: IamService,

@@ -10,7 +10,6 @@ export interface PoolState {
   performance: number;
   annualReward: number;
   reward: BigNumber;
-  organization: string;
   userStake: Stake;
   withdrawing: boolean;
   contributorLimit: BigNumber;
@@ -26,7 +25,6 @@ export const initialState: PoolState = {
   performance: 100,
   annualReward: 10,
   reward: BigNumber.from(0),
-  organization: 'energyweb.iam.ewc',
   userStake: null,
   withdrawing: false,
   contributorLimit: null,

@@ -22,9 +22,7 @@ import { Claim, RegistrationTypes } from 'iam-client-lib';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
 import { SwitchboardToastrService } from '../../shared/services/switchboard-toastr.service';
 import { truthy } from '@operators';
-import * as RoleEnrolmentSelectors from './role-enrolment.selectors';
 
-const REQUIRED_ROLE_FOR_STAKING = 'email.roles.verification.apps.energyweb.iam.ewc';
 const PATRON_ROLE_VERSION = 1;
 
 @Injectable()
@@ -35,13 +33,10 @@ export class RoleEnrolmentEffects {
       ofType(RoleEnrolmentActions.detectActualStatus),
       filter(() => this.envService.checkStakingVerification),
       tap(() => this.loadingService.show()),
-      switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
-          did: this.iamService.signerService.did,
-          namespace: 'verification.apps.energyweb.iam.ewc'
-        })).pipe(
+      switchMap(() => this.getClaims().pipe(
           map((roles) => roles
             .filter(item => !item.isRejected)
-            .filter((item) => item.claimType === REQUIRED_ROLE_FOR_STAKING && item.registrationTypes.includes(RegistrationTypes.OnChain))),
+            .filter((item) => item.claimType === this.envService.patronRole && item.registrationTypes.includes(RegistrationTypes.OnChain))),
           mergeMap((roles) => [RoleEnrolmentActions.setStatus({status: this.getStatus(roles)}), RoleEnrolmentActions.setEnrolment({enrolment: roles[0]})]),
           finalize(() => this.loadingService.hide())
         )
@@ -54,7 +49,7 @@ export class RoleEnrolmentEffects {
       ofType(RoleEnrolmentActions.setStatus),
       filter(({status}) => status === RoleEnrolmentStatus.ENROLED_APPROVED),
       tap(() => this.loadingService.show()),
-      switchMap(() => from(this.iamService.claimsService.hasOnChainRole(this.iamService.signerService.did, REQUIRED_ROLE_FOR_STAKING, PATRON_ROLE_VERSION))
+      switchMap(() => from(this.iamService.claimsService.hasOnChainRole(this.iamService.signerService.did, this.envService.patronRole, PATRON_ROLE_VERSION))
         .pipe(
           truthy(),
           map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.ENROLED_SYNCED})),
@@ -67,10 +62,7 @@ export class RoleEnrolmentEffects {
     this.actions$.pipe(
       ofType(RoleEnrolmentActions.addRole),
       tap(() => this.loadingService.show('Adding role...')),
-      switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
-          did: this.iamService.signerService.did,
-          namespace: 'verification.apps.energyweb.iam.ewc'
-        })).pipe(
+      switchMap(() => this.getClaims().pipe(
           map(roles => roles.filter(item => !item.isRejected)),
           switchMap((roles: Claim[]) => from(this.iamService.claimsService.registerOnchain(roles[0]))
             .pipe(
@@ -98,7 +90,7 @@ export class RoleEnrolmentEffects {
               key: 'email',
               value: email
             }],
-            claimType: REQUIRED_ROLE_FOR_STAKING,
+            claimType: this.envService.patronRole,
             claimTypeVersion: PATRON_ROLE_VERSION
           }
         })).pipe(
@@ -118,10 +110,7 @@ export class RoleEnrolmentEffects {
     this.actions$.pipe(
       ofType(RoleEnrolmentActions.cancelEnrolmentRequest),
       tap(() => this.loadingService.show('Canceling enrolment request...')),
-      switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
-          did: this.iamService.signerService.did,
-          namespace: 'verification.apps.energyweb.iam.ewc'
-        })).pipe(
+      switchMap(() => this.getClaims().pipe(
           map(roles => roles.filter(item => !item.isRejected)),
           switchMap((roles) => from(this.iamService.claimsService.deleteClaim({
               id: roles[0]?.id,
@@ -149,10 +138,7 @@ export class RoleEnrolmentEffects {
       tap(() => this.pool = true),
       switchMap(() => timer(0, 30000)
         .pipe(
-          switchMap(() => from(this.iamService.claimsService.getClaimsByRequester({
-            did: this.iamService.signerService.did,
-            namespace: 'verification.apps.energyweb.iam.ewc'
-          })).pipe(
+          switchMap(() => this.getClaims().pipe(
             map((roles) => {
               const isNotRejected = roles.filter(item => !item.isRejected)[0];
               if (isNotRejected?.isAccepted) {
@@ -163,7 +149,7 @@ export class RoleEnrolmentEffects {
               const allRejected = roles.filter(item => item.isRejected);
               if (!isNotRejected && allRejected) {
                 this.pool = false;
-                this.toastrService.info('Enrolment Rejected! Probably you used this email twice or from restricted domain', 'Email Enrolment', {disableTimeOut: true})
+                this.toastrService.info('Enrolment Rejected! Probably you used this email twice or from restricted domain', 'Email Enrolment', {disableTimeOut: true});
               }
             })
           )),
@@ -174,12 +160,20 @@ export class RoleEnrolmentEffects {
   );
 
   private pool = true;
+
   constructor(private actions$: Actions,
               private store: Store,
               private envService: EnvService,
               private loadingService: LoadingService,
               private iamService: IamService,
               private toastrService: SwitchboardToastrService) {
+  }
+
+  private getClaims() {
+    return from(this.iamService.claimsService.getClaimsByRequester({
+      did: this.iamService.signerService.did,
+      namespace: this.envService.patronRole.split('.roles.').pop()
+    }));
   }
 
 
