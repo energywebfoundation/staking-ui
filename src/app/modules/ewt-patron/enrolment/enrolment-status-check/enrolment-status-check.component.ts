@@ -10,7 +10,7 @@ import { RoleEnrolmentStatus } from '../../../../state/role-enrolment/models/rol
 })
 export class EnrolmentStatusCheckComponent {
   getStatus$ = this.store.select(RoleEnrolmentSelectors.getStatus);
-  isSynced$ = this.store.select(RoleEnrolmentSelectors.isSynced);
+  emailNotApproved$ = this.store.select(RoleEnrolmentSelectors.emailNotApproved);
   getAddress$ = this.store.select(UserClaimSelectors.getAddress);
   roleEnrolmentStatus = RoleEnrolmentStatus;
   constructor(private store: Store) { }
