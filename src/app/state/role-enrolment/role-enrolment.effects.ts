@@ -24,7 +24,7 @@ import { SwitchboardToastrService } from '../../shared/services/switchboard-toas
 import { truthy } from '@operators';
 import * as RoleEnrolmentSelectors from './role-enrolment.selectors';
 
-const REQUIRED_ROLE_FOR_STAKING = 'email.roles.verification.apps.energyweb.iam.ewc';
+const REQUIRED_ROLE_FOR_STAKING = 'email.roles.verification.apps.energyweb.auth.ewc';
 const PATRON_ROLE_VERSION = 1;
 
 @Injectable()
