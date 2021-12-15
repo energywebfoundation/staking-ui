@@ -14,6 +14,11 @@ export const isSynced = createSelector(
   (state) => state?.status === RoleEnrolmentStatus.ENROLED_SYNCED
 );
 
+export const notContainingPatronRole = createSelector(
+  getRoleEnrolmentState,
+  (state) => state?.status !== RoleEnrolmentStatus.ENROLED_SYNCED
+);
+
 export const getEnrolment = createSelector(
   getRoleEnrolmentState,
   (state) => state?.enrolment

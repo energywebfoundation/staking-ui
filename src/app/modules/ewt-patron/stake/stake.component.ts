@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 import { tap } from 'rxjs/operators';
@@ -7,6 +7,7 @@ import * as poolSelectors from '../../../state/pool/pool.selectors';
 import * as PoolActions from '../../../state/pool/pool.actions';
 import { MAX_STAKE_AMOUNT } from '../../../state/pool/models/const';
 import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
+import { RoleEnrolmentSelectors } from '@state';
 
 export const MINIMAL_ETHEREUM_VALUE = 0.000000000000000001;
 
@@ -15,7 +16,7 @@ export const MINIMAL_ETHEREUM_VALUE = 0.000000000000000001;
   templateUrl: './stake.component.html',
   styleUrls: ['./stake.component.scss']
 })
-export class StakeComponent {
+export class StakeComponent implements OnInit {
   readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE;
   inputFocused: boolean;
   tokenAmount: number;
@@ -23,7 +24,8 @@ export class StakeComponent {
   amountBorderValues$ = this.store.select(poolSelectors.amountBorderValues).pipe(tap(({maxPossibleAmount, balance}) => {
     this.setAmountValidators(maxPossibleAmount, balance);
     this.tokenAmount = +maxPossibleAmount;
-  }))
+  }));
+  notContainingPatronRole$ = this.store.select(RoleEnrolmentSelectors.notContainingPatronRole);
 
   balance$ = this.store.select(poolSelectors.getBalance);
   earnedReward$ = this.store.select(poolSelectors.getReward);
@@ -36,6 +38,10 @@ export class StakeComponent {
   stakingPoolBegin$ = this.store.select(poolSelectors.stakingPoolBegin);
 
   constructor(private store: Store) {
+  }
+
+  ngOnInit() {
+    this.notContainingPatronRole$.subscribe((v) => v ? this.amountToStake.disable() : this.amountToStake.enable());
   }
 
   clear(e) {
