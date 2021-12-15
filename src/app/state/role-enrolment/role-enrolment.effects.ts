@@ -98,25 +98,36 @@ export class RoleEnrolmentEffects {
   cancelEnrolmentRequest$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RoleEnrolmentActions.cancelEnrolmentRequest),
-      tap(() => this.loadingService.show('Canceling enrolment request...')),
+      tap(() => this.loadingService.show('Checking enrolment request...')),
       switchMap(() => this.getClaims().pipe(
-          map(roles => roles.filter(item => !item.isRejected)),
-          switchMap((roles) => from(this.iamService.claimsService.deleteClaim({
-              id: roles[0]?.id,
-            }))
-              .pipe(
-                map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.NOT_ENROLED})),
-                catchError(err => {
-                  console.log(err);
-                  this.toastrService.error(err?.message);
-                  return of(RoleEnrolmentActions.cancelEnrolmentRequestFailure({error: err}));
-                }),
-                finalize(() => this.loadingService.hide())
-              )
-          ),
+          map(roles => roles.filter(item => !item.isRejected)[0]),
+          map((role) => {
+            if (!role) {
+              return RoleEnrolmentActions.claimDoNotExist();
+            }
+            return RoleEnrolmentActions.deleteClaim({id: role.id});
+          }),
           finalize(() => this.loadingService.hide())
         )
       )
+    )
+  );
+
+  deleteClaim$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoleEnrolmentActions.deleteClaim),
+      tap(() => this.loadingService.show('Canceling enrolment request...')),
+      switchMap(({id}) => from(this.iamService.claimsService.deleteClaim({id}))
+          .pipe(
+            map(() => RoleEnrolmentActions.setStatus({status: RoleEnrolmentStatus.NOT_ENROLED})),
+            catchError(err => {
+              console.log(err);
+              this.toastrService.error(err?.message);
+              return of(RoleEnrolmentActions.cancelEnrolmentRequestFailure({error: err}));
+            }),
+            finalize(() => this.loadingService.hide())
+          )
+      ),
     )
   );
 
@@ -138,7 +149,6 @@ export class RoleEnrolmentEffects {
               if (!isNotRejected && allRejected) {
                 return RoleEnrolmentActions.enrolmentRejected();
               }
-              // return;
               return RoleEnrolmentActions.continuePooling();
             })
           )),

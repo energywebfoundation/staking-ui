@@ -55,3 +55,12 @@ export const enrolmentApproved = createAction(
 export const continuePooling = createAction(
   '[ROLE ENROLMENT] No Information, Continue Polling',
 );
+
+export const deleteClaim = createAction(
+  '[ROLE ENROLMENT] Delete Enroled Email Claim',
+  props<{id: string}>()
+);
+
+export const claimDoNotExist = createAction(
+  '[ROLE ENROLMENT] Claim Do Not Exist',
+);
