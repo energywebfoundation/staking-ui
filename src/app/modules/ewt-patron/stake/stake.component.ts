@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -20,10 +20,11 @@ export class StakeComponent {
   inputFocused: boolean;
   tokenAmount: number;
   amountToStake = new FormControl('', [Validators.min(this.MINIMAL_VALUE), Validators.required, Validators.max(MAX_STAKE_AMOUNT)]);
-  maxAmount$ = this.store.select(poolSelectors.getMaxPossibleAmountToStake).pipe(tap(value => {
-    this.setAmountValidators(value);
-    this.tokenAmount = +value;
-  }));
+  amountBorderValues$ = this.store.select(poolSelectors.amountBorderValues).pipe(tap(({maxPossibleAmount, balance}) => {
+    this.setAmountValidators(maxPossibleAmount, balance);
+    this.tokenAmount = +maxPossibleAmount;
+  }))
+
   balance$ = this.store.select(poolSelectors.getBalance);
   earnedReward$ = this.store.select(poolSelectors.getReward);
   stakeAmount$ = this.store.select(poolSelectors.getStakeAmount);
@@ -65,8 +66,22 @@ export class StakeComponent {
     this.store.dispatch(PoolActions.openWithdrawDialog());
   }
 
-  setAmountValidators(maxAmount: number) {
-    this.amountToStake.setValidators([Validators.min(this.MINIMAL_VALUE), Validators.required, Validators.max(maxAmount)]);
+  setAmountValidators(maxAmount: number, balance: number) {
+    this.amountToStake.setValidators([Validators.min(this.MINIMAL_VALUE), Validators.required, Validators.max(maxAmount), this.checkIfValueIsSmallerThanBalance(balance)]);
+  }
+
+  private checkIfValueIsSmallerThanBalance(balance: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value) {
+        return null;
+      }
+      if (control.value > balance) {
+        return {
+          insufficientValue: true
+        }
+      }
+      return null;
+    };
   }
 
 }
