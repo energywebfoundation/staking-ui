@@ -9,7 +9,7 @@
     window.__env.cacheServerUrl = 'https://identitycache-dev.energyweb.org/v1';
     window.__env.natsServerUrl = 'https://identityevents-dev.energyweb.org/';
     window.__env.kmsServerUrl = undefined;
-    window.__env.stakingPoolFactoryAddress = '0x630FA5B60cF5A85321cC9E8cc1e6A32f4dF73e8e';
+    window.__env.stakingPoolFactoryAddress = '0xE0489B6128954C92b1d878596Df97D5b2acA378D';
     window.__env.claimManagerAddress = '0xC3dD7ED75779b33F5Cfb709E0aB02b71fbFA3210';
     window.__env.checkStakingVerification = true;
     window.__env.showAzureLoginOption = false;
