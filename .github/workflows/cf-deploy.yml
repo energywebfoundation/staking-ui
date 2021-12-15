@@ -36,7 +36,7 @@ jobs:
             echo "::set-output name=env_file::src/environments/environment.prod.ts"
             echo "::set-output name=build_script::npm run build-volta"
           elif [ "${{ github.ref }}" = "refs/heads/release" ]; then
-            echo "::set-output name=env_name::production"
+            echo "::set-output name=env_name::prod"
             echo "::set-output name=env_file::src/environments/environment.prod.ts"
             echo "::set-output name=build_script::npm run build-prod"
           fi
