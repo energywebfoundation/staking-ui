@@ -1,5 +1,5 @@
 <ng-container [ngSwitch]="getStatus$ | async">
-  <div class="d-flex flex-row align-items-start ml-0 ml-md-2 my-2" *ngIf="(isSynced$ | async) === false">
+  <div class="d-flex flex-row align-items-start ml-0 ml-md-2 my-2" *ngIf="emailNotApproved$ | async">
     <img src="../../../../assets/img/staking/warning-icon.png" width="42" height="42">
     <div class="staking-widget-xs-label ml-2">You haven’t verified your email for the current wallet
       <ng-container *ngIf="getAddress$ | async as address">

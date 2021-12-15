@@ -27,4 +27,9 @@ export const getEnrolment = createSelector(
 export const changeFromEnroledNotApprovedStatus = createSelector(
   getRoleEnrolmentState,
   (state) => state?.status === RoleEnrolmentStatus.ENROLED_NOT_APPROVED
-)
+);
+
+export const emailNotApproved = createSelector(
+  getRoleEnrolmentState,
+  (state) => state?.status === RoleEnrolmentStatus.ENROLED_NOT_APPROVED || state?.status === RoleEnrolmentStatus.NOT_ENROLED
+);
