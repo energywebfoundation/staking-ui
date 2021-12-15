@@ -45,7 +45,7 @@
     "codemirror": "5.42.0",
     "core-js": "2.5.4",
     "disposable-email-domains": "^1.0.59",
-    "iam-client-lib": "4.0.0-alpha.10",
+    "iam-client-lib": "^4.0.0-alpha.12",
     "ngx-spinner": "^11.0.2",
     "ngx-toastr": "13.2.1",
     "rxjs": "6.6.7",
