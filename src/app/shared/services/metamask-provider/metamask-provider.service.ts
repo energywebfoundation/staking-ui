@@ -23,7 +23,6 @@ export class MetamaskProviderService {
 
   public async importMetamaskConf() {
     const metamaskSettings = this.getMetamaskConfiguration();
-    console.log('metamaskSettings: ', metamaskSettings);
     try {
       const metamaskProvider: any = await detectMetamask({
         mustBeMetaMask: true,
