@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
 
 import { NotSyncedComponent } from './not-synced.component';
 
@@ -8,7 +9,8 @@ describe('NotSyncedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotSyncedComponent ]
+      declarations: [ NotSyncedComponent ],
+      imports: [Store]
     })
     .compileComponents();
   });

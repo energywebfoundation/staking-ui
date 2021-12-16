@@ -4,6 +4,7 @@ const env: Partial<typeof commonEnv> = {
   production: true,
   environmentName: "production",
   featureVisible: true,
+  application: true,
   theme: "default",
   rpcUrl: "https://rpc.energyweb.org/",
   chainId: 246,

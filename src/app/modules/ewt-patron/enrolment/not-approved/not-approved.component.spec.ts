@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
 
 import { NotApprovedComponent } from './not-approved.component';
 
@@ -8,7 +9,8 @@ describe('NotApprovedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotApprovedComponent ]
+      declarations: [ NotApprovedComponent ],
+      imports: [Store]
     })
     .compileComponents();
   });
