@@ -279,3 +279,20 @@ li {
 .highlight {
   color: #32DCDC;
 }
+
+.link-btn {
+  font-family: Rajdhani, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  border-radius: 16px;
+  letter-spacing: 1.25px;
+  background-color: #A566FF;
+  color: #FFFFFF;
+  
+  &:hover {
+    background-color: #ad74ff !important;
+    opacity: 1 !important;
+  }
+}

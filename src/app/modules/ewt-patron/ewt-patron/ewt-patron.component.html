@@ -8,7 +8,7 @@
         <div class="staking-card widget-main row p-3 p-md-5 pt-md-4 m-1 m-md-0">
           <div class="col-md-12">
             <div class="d-flex flex-row align-items-center">
-              <img src="assets/img/ew-logo.svg" width="61px" height="61px"/>
+              <img src="assets/img/ew-logo.svg" width="61px" height="61px" />
               <div class="d-flex flex-column text-color ml-3 pt-3">
                 <h5 class="mb-0 small letter-spacing text-uppercase">
                   Staking
@@ -38,12 +38,34 @@
               using our Decentralized Identifiers (DID) technology.
             </p>
             <a
-                href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf"
-                target="_blank"
-                class="mx-1"
+              href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf"
+              target="_blank"
+              class="mx-1"
             >
               READ MORE
             </a>
+            <div class="d-flex justify-content-start mt-3">
+              <a
+                mat-raised-button
+                class="link-btn"
+                data-qa-id="learn-stake"
+                href="https://energy-web-foundation.gitbook.io/energy-web/token/staking/how-to-stake-guide"
+                target="_blank"
+                color="accent"
+              >
+                Learn How to Stake EWT
+              </a>
+              <a
+                mat-raised-button
+                class="link-btn ml-3"
+                data-qa-id="learn-dsla"
+                href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf"
+                target="_blank"
+                color="accent"
+              >
+                Learn About dSLA
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -57,9 +79,9 @@
       <div class="col-xl-4 mt-4 mt-md-4">
         <!-- For the approved sync please change class role-req to staking-terms -->
         <div
-            [ngClass]="{ 'role-req': (isPatronSynced | async) === false }"
-            class="staking-terms text-color p-4"
-            *ngIf="isStakingVerificationEnabled"
+          [ngClass]="{ 'role-req': (isPatronSynced | async) === false }"
+          class="staking-terms text-color p-4"
+          *ngIf="isStakingVerificationEnabled"
         >
           <app-enrolment-status-check></app-enrolment-status-check>
         </div>
@@ -69,13 +91,13 @@
           </div>
           <h3 class="mb-3 text-color">
             <ng-container *ngIf="getTotalStaked$ | async as totalStaked"
-            >{{ totalStaked | lastDigits }}
+              >{{ totalStaked | lastDigits }}
             </ng-container>
             <span class="staking-currency">EWT</span>
           </h3>
           <mat-progress-bar
-              mode="determinate"
-              [value]="getTotalStakedPercent$ | async"
+            mode="determinate"
+            [value]="getTotalStakedPercent$ | async"
           ></mat-progress-bar>
           <div class="limit-text color-grey mt-2">
             {{ getTotalStakedPercent$ | async }}% of {{ hardCap$ | async }} EWT
@@ -85,9 +107,9 @@
         <div class="staking-terms p-4 mt-4">
           <div class="d-flex flex-row align-items-center ml-0 ml-md-2 mt-2">
             <img
-                src="../../../../assets/img/staking/terms-condition-image.png"
-                width="65"
-                height="64"
+              src="../../../../assets/img/staking/terms-condition-image.png"
+              width="65"
+              height="64"
             />
             <div class="staking-widget-xl-label text-color ml-0 ml-md-2">
               Terms of Participation
@@ -96,12 +118,21 @@
           <div>
             <ul class="staking-list d-flex flex-column mt-4 mr-3 pl-2">
               <li>Staked EWT can be withdrawn at any time</li>
-              <li>Hourly rewards will be compounded (added to the total stake and earn interest)</li>
-              <li>A small gas fee will be charged for Stake and Unstake operations</li>
-              <br>
               <li>
-                <a class="highlight" href="https://energy-web-foundation.gitbook.io/energy-web/how-tos-and-tutorials/patron-onboarding"
-                     target="_blank">Staking Guide</a>
+                Hourly rewards will be compounded (added to the total stake and
+                earn interest)
+              </li>
+              <li>
+                A small gas fee will be charged for Stake and Unstake operations
+              </li>
+              <br />
+              <li>
+                <a
+                  class="highlight"
+                  href="https://energy-web-foundation.gitbook.io/energy-web/token/staking/how-to-stake-guide"
+                  target="_blank"
+                  >Staking Guide</a
+                >
               </li>
             </ul>
           </div>
