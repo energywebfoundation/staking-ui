@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
+import { SharedModule } from '../../../../shared/shared.module';
 
 import { EnrolmentStatusCheckComponent } from './enrolment-status-check.component';
 
@@ -8,7 +10,9 @@ describe('EnrolmentStatusCheckComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EnrolmentStatusCheckComponent ]
+      declarations: [ EnrolmentStatusCheckComponent ],
+      providers: [ { provide: Store, useValue: {} }],
+      imports: [SharedModule]
     })
     .compileComponents();
   });

@@ -1,14 +1,12 @@
-import { constants } from './constants';
-
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import { commonEnv } from "./environment.common";
 
-export const environment = {
-  production: false,
-  featureVisible: true,
-  ...constants
-};
+const env: Partial<typeof commonEnv> = {};
+
+// Export all settings of common replaced by dev options
+export const environment = {...commonEnv, ...env};
 
 /*
  * For easier debugging in development mode, you can import the following file
