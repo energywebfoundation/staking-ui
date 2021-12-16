@@ -19,5 +19,5 @@ export const EnergyWebChainProviderSettings: MetamasSettings = {
   rpcUrl: "https://rpc.energyweb.org",
   currencyName: "EWT",
   currencySymbol: "EWT",
-  blockExlorerUrl: "http://explorer.energyweb.org",
+  blockExlorerUrl: "https://explorer.energyweb.org",
 };

@@ -15,7 +15,7 @@ export class MetamaskProviderService {
   constructor(private envService: EnvService) {}
 
   private getMetamaskConfiguration(): MetamasSettings {
-    if (this.envService.chainId === 73799) {
+    if (this.envService.chainId === 246) {
       return EnergyWebChainProviderSettings;
     }
     return VoltaProviderSettings;
@@ -23,6 +23,7 @@ export class MetamaskProviderService {
 
   public async importMetamaskConf() {
     const metamaskSettings = this.getMetamaskConfiguration();
+    console.log('metamaskSettings: ', metamaskSettings);
     try {
       const metamaskProvider: any = await detectMetamask({
         mustBeMetaMask: true,

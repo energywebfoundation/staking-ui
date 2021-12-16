@@ -22,9 +22,9 @@
          src="assets/img/icons/metamask-logo.svg"/>
     USE METAMASK
   </button>
-  <div class="d-flex justify-content-center mt-3" *ngIf="metamaskDisabled else cacheServerInfo"
+  <div class="d-flex flex-column justify-content-center mt-3 text-center" *ngIf="metamaskDisabled else cacheServerInfo"
        data-qa-id="no-volta">
-    <span class="opacity-50 pr-1 ">You are not connected to Energy Web Chain.</span>
+    <p class="opacity-50 pr-1 ">You are not connected to Energy Web Chain.</p>
     <a class="switch-network" (click)="importMetamaskConf()" target="_blank">Import configurations</a>
   </div>
   <ng-template #cacheServerInfo>
