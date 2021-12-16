@@ -1,11 +1,6 @@
 import { Injectable } from "@angular/core";
 import { EnvService } from "../env/env.service";
 import detectMetamask from "@metamask/detect-provider";
-import {
-  VoltaProviderSettings,
-  EnergyWebChainProviderSettings,
-  MetamaskSettings,
-} from "./metamask-provider-settings";
 
 @Injectable({
   providedIn: "root",
@@ -14,15 +9,7 @@ export class MetamaskProviderService {
 
   constructor(private envService: EnvService) {}
 
-  private getMetamaskConfiguration(): MetamaskSettings {
-    if (this.envService.chainId === 246) {
-      return EnergyWebChainProviderSettings;
-    }
-    return VoltaProviderSettings;
-  }
-
   public async importMetamaskConf() {
-    const metamaskSettings = this.getMetamaskConfiguration();
     try {
       const metamaskProvider: any = await detectMetamask({
         mustBeMetaMask: true,
@@ -37,14 +24,14 @@ export class MetamaskProviderService {
         params: [
           {
             chainId: `0x${this.envService.chainId.toString(16)}`, // Hexadecimal version of chain ID
-            chainName: metamaskSettings.networkName,
+            chainName: this.envService.networkName,
             nativeCurrency: {
-              name: metamaskSettings.currencyName,
-              symbol: metamaskSettings.currencySymbol,
+              name: this.envService.currencyName,
+              symbol: this.envService.currencySymbol,
               decimals: 18,
             },
-            rpcUrls: [metamaskSettings.rpcUrl],
-            blockExplorerUrls: [metamaskSettings.blockExlorerUrl],
+            rpcUrls: [this.envService.rpcUrl],
+            blockExplorerUrls: [this.envService.blockExlorerUrl],
             iconUrls: [""],
           },
         ],

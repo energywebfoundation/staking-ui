@@ -32,8 +32,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",
-              "src/manifest.json",
-              "src/env.js"
+              "src/manifest.json"
             ],
             "styles": [
               "src/app/core/preloader/preloader.scss",
@@ -56,6 +55,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -106,6 +106,14 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             }
           }
         },
@@ -120,6 +128,9 @@
             },
             "development": {
               "browserTarget": "staking-pool-ui:build:development"
+            },
+            "staging": {
+              "browserTarget": "<your-project-name>:build:staging"
             }
           },
           "defaultConfiguration": "development"
