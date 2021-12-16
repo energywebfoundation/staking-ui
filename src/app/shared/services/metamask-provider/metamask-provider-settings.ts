@@ -1,4 +1,4 @@
-export interface MetamasSettings {
+export interface MetamaskSettings {
     networkName: string;
     rpcUrl: string;
     currencyName: string;
@@ -6,7 +6,7 @@ export interface MetamasSettings {
     blockExlorerUrl: string;
 }
 
-export const VoltaProviderSettings: MetamasSettings  = {
+export const VoltaProviderSettings: MetamaskSettings  = {
   networkName: "EnergyWeb Volta Chain",
   rpcUrl: "https://volta-rpc.energyweb.org",
   currencyName: "Volta Token",
@@ -14,7 +14,7 @@ export const VoltaProviderSettings: MetamasSettings  = {
   blockExlorerUrl: "https://volta-explorer.energyweb.org",
 };
 
-export const EnergyWebChainProviderSettings: MetamasSettings = {
+export const EnergyWebChainProviderSettings: MetamaskSettings = {
   networkName: "EWC",
   rpcUrl: "https://rpc.energyweb.org",
   currencyName: "EWT",

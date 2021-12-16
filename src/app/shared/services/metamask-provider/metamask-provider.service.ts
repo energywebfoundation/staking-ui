@@ -4,7 +4,7 @@ import detectMetamask from "@metamask/detect-provider";
 import {
   VoltaProviderSettings,
   EnergyWebChainProviderSettings,
-  MetamasSettings,
+  MetamaskSettings,
 } from "./metamask-provider-settings";
 
 @Injectable({
@@ -14,7 +14,7 @@ export class MetamaskProviderService {
 
   constructor(private envService: EnvService) {}
 
-  private getMetamaskConfiguration(): MetamasSettings {
+  private getMetamaskConfiguration(): MetamaskSettings {
     if (this.envService.chainId === 246) {
       return EnergyWebChainProviderSettings;
     }
