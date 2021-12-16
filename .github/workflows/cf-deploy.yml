@@ -77,7 +77,6 @@ jobs:
       - name: Install npm packages
         run: |
           npm install
-          envsubst < src/environments/constants.template.ts > src/environments/constants.ts
       - name: Build branch
         run: |
           cp ${{ needs.env_name.outputs.env_file }} src/environments/environment.ts
