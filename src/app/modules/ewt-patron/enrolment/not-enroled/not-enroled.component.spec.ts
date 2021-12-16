@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
 
 import { NotEnroledComponent } from './not-enroled.component';
 
@@ -8,7 +9,8 @@ describe('NotEnroledComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotEnroledComponent ]
+      declarations: [ NotEnroledComponent ],
+      providers: [ { provide: Store, useValue: {} }]
     })
     .compileComponents();
   });

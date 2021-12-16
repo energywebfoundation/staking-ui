@@ -1,17 +1,24 @@
+import { Injectable } from "@angular/core";
+import { environment } from "../../../../environments/environment";
+
+@Injectable({
+  providedIn: "root",
+})
 export class EnvService {
-
-  theme = 'default';
-
-  rpcUrl = 'https://volta-rpc-vkn5r5zx4ke71f9hcu0c.energyweb.org/';
-  chainId = 73799;
-
-  cacheServerUrl = 'https://identitycache-dev.energyweb.org/v1';
-  natsServerUrl = 'https://identityevents-dev.energyweb.org/';
-  kmsServerUrl = undefined;
-  stakingPoolFactoryAddress;
-  claimManagerAddress;
-  showAzureLoginOption = true;
-  isWalletConnectEnabled: boolean;
-  checkStakingVerification: boolean;
-  patronRole: string;
+  theme = environment.theme;
+  rpcUrl = environment.rpcUrl;
+  chainId = environment.chainId;
+  cacheServerUrl = environment.cacheServerUrl;
+  natsServerUrl = environment.natsServerUrl;
+  kmsServerUrl = environment.kmsServerUrl;
+  stakingPoolFactoryAddress = environment.stakingPoolFactoryAddress;
+  checkStakingVerification = environment.checkStakingVerification;
+  showAzureLoginOption = environment.showAzureLoginOption;
+  isWalletConnectEnabled = environment.isWalletConnectEnabled;
+  patronRole = environment.patronRole;
+  claimManagerAddress = environment.claimManagerAddress;
+  networkName = environment.networkName;
+  currencyName = environment.currencyName;
+  currencySymbol = environment.currencySymbol;
+  blockExlorerUrl = environment.blockExlorerUrl;
 }

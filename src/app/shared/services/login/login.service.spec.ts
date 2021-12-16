@@ -56,13 +56,6 @@ describe('LoginService', () => {
     });
   }));
 
-  it('should return false when did is null', waitForAsync(() => {
-    iamServiceSpy.initializeConnection.and.returnValue(of({connected: true, userClosedModal: false}));
-    service.login().pipe(take(1)).subscribe(({success}) => {
-      expect(success).toBe(false);
-    });
-  }));
-
   it('should display random error with toastr', waitForAsync(() => {
     iamServiceSpy.initializeConnection.and.returnValue(throwError({message: 'Sample Error'}));
     service.login().pipe(take(1)).subscribe(({success}) => {
