@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { SharedModule } from '../../../../shared/shared.module';
 
 import { NotApprovedComponent } from './not-approved.component';
 
@@ -10,7 +12,8 @@ describe('NotApprovedComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ NotApprovedComponent ],
-      imports: [Store]
+      providers: [ { provide: Store, useValue: {} }],
+      imports: [SharedModule]
     })
     .compileComponents();
   });

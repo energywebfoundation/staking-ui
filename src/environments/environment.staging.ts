@@ -15,7 +15,7 @@ const env: Partial<typeof commonEnv> = {
   checkStakingVerification: true,
   showAzureLoginOption: false,
   isWalletConnectEnabled: false,
-  patronRole: "email.roles.verification.apps.energyweb.auth.ewc",
+  patronRole: "email.roles.verification.apps.energyweb.iam.ewc",
   claimManagerAddress: undefined,
 
   networkName: "EWC",

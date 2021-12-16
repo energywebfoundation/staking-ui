@@ -10,7 +10,7 @@ describe('NotSyncedComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ NotSyncedComponent ],
-      imports: [Store]
+      providers: [ { provide: Store, useValue: {} }]
     })
     .compileComponents();
   });

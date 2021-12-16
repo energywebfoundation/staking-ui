@@ -54,7 +54,7 @@ describe('ConnectButtonsComponent', () => {
     expect(metamaskBtn).toBeTruthy();
     expect(metamaskBtn.nativeElement.disabled).toBeTruthy();
     expect(noVolta).toBeTruthy();
-    expect(noVolta.nativeElement.innerText).toContain('You are not connected to Volta Network.');
+    expect(noVolta.nativeElement.innerText).toContain('You are not connected to Energy Web Chain.');
   });
 
   it('should dispatch login action with Metamask when clicking on metamask button', () => {
