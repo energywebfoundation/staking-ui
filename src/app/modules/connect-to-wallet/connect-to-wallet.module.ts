@@ -4,6 +4,7 @@ import { ConnectToWalletDialogComponent } from './connect-to-wallet-dialog/conne
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { ConnectButtonsComponent } from './connect-buttons/connect-buttons.component';
+import { MetamaskProviderService } from '../../shared/services/metamask-provider/metamask-provider.service';
 
 
 @NgModule({
@@ -19,6 +20,9 @@ import { ConnectButtonsComponent } from './connect-buttons/connect-buttons.compo
   exports: [
     ConnectToWalletDialogComponent,
     ConnectButtonsComponent
+  ],
+  providers: [
+    MetamaskProviderService
   ]
 })
 export class ConnectToWalletModule {
