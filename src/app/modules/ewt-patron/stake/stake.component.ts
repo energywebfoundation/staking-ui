@@ -8,8 +8,9 @@ import * as PoolActions from '../../../state/pool/pool.actions';
 import { MAX_STAKE_AMOUNT } from '../../../state/pool/models/const';
 import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
 import { RoleEnrolmentSelectors } from '@state';
-
-export const MINIMAL_ETHEREUM_VALUE = 0.000000000000000001;
+import { WithdrawComponent } from '../withdraw/withdraw.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_ethereum_value';
 
 @Component({
   selector: 'app-stake',
@@ -37,7 +38,7 @@ export class StakeComponent implements OnInit {
   stakingPoolEnds = this.store.select(poolSelectors.stakingPoolEnds);
   stakingPoolBegin$ = this.store.select(poolSelectors.stakingPoolBegin);
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -69,7 +70,12 @@ export class StakeComponent implements OnInit {
   }
 
   withdraw() {
-    this.store.dispatch(PoolActions.openWithdrawDialog());
+    this.dialog.open(WithdrawComponent, {
+      width: '400px',
+      maxWidth: '100%',
+      disableClose: true,
+      backdropClass: 'backdrop-shadow'
+    });
   }
 
   setAmountValidators(maxAmount: number, balance: number) {

@@ -7,7 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { parseStringToFloat } from '../../../utils/functions/parse-string-to-float/parse-string-to-float';
 import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
-import { MINIMAL_ETHEREUM_VALUE } from '../stake/stake.component';
+import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_ethereum_value';
 
 @Component({
   selector: 'app-withdraw',
