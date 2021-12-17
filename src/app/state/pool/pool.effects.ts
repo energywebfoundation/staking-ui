@@ -14,7 +14,6 @@ import { StakeSuccessComponent } from '../../modules/ewt-patron/stake-success/st
 import { ToastrService } from 'ngx-toastr';
 import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-pool-service-facade';
 import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
-import { WithdrawComponent } from '../../modules/ewt-patron/withdraw/withdraw.component';
 import { EnvService } from '../../shared/services/env/env.service';
 
 const {formatEther, parseEther} = utils;
@@ -192,20 +191,6 @@ export class PoolEffects {
           )
       )
     )
-  );
-
-  showProgressBar$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(PoolActions.openWithdrawDialog),
-      map(() => {
-        this.dialog.open(WithdrawComponent, {
-          width: '400px',
-          maxWidth: '100%',
-          disableClose: true,
-          backdropClass: 'backdrop-shadow'
-        });
-      })
-    ), {dispatch: false}
   );
 
   getOrganizationLimit$ = createEffect(() =>
