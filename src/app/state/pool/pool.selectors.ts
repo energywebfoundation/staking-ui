@@ -196,6 +196,6 @@ export const getIsLimitReached = createSelector(
     if (!amount) {
       return false;
     }
-    return Boolean(parseFloat(limit) === parseFloat(amount));
+    return Boolean(parseFloat(limit) - parseFloat(amount) < 1);
   }
 );
