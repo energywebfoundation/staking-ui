@@ -5,12 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class LastDigitsPipe implements PipeTransform {
 
-  transform(value: string | undefined | null, numberOfDigits: number = 3, ...args: unknown[]): unknown {
+  transform(value: string | undefined | null | number, numberOfDigits: number = 3, ...args: unknown[]): unknown {
     if (!value) {
       return value;
     }
 
-    const [integerNumber, fractional] = value.split('.');
+    const [integerNumber, fractional] = value.toString().split('.');
     if (fractional) {
       return integerNumber + '.' + fractional.substring(0, numberOfDigits);
     }

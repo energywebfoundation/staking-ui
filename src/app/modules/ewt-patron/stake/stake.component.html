@@ -120,11 +120,14 @@
           mat-raised-button
           class="stake-btn text-color text-uppercase"
           data-qa-id="stake"
-          [disabled]="isAmountInvalid() || (isStakeDisabled$ | async)"
+          [disabled]="isAmountInvalid() || (isStakeDisabled$ | async) || (getIsLimitReached$ | async)"
           (click)="stake()"
         >
           Stake
         </button>
+      </div>
+      <div *ngIf="getIsLimitReached$ | async" class="mt-2 d-flex justify-content-end align-items-center color-red">
+        <mat-icon class="mr-2">info</mat-icon> The staking pool is full
       </div>
     </div>
   </div>

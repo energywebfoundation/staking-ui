@@ -84,7 +84,7 @@
               [value]="getTotalStakedPercent$ | async"
           ></mat-progress-bar>
           <div class="limit-text color-grey mt-2">
-            {{ getTotalStakedPercent$ | async }}% of {{ hardCap$ | async }} EWT
+            {{ getTotalStakedPercent$ | async | lastDigits }}% of {{ hardCap$ | async }} EWT
             Staking Pool limit
           </div>
         </div>
