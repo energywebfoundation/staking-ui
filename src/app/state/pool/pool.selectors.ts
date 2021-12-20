@@ -181,10 +181,21 @@ export const getTotalStaked = createSelector(
 export const getTotalStakedPercent = createSelector(
   getOrganizationLimit,
   getTotalStaked,
-  (limit, amount) => {
+  (limit: string, amount: string) => {
     if (!amount) {
       return 0;
     }
-    return Math.round(((+amount * 100) / (+limit) * 100)) / 100;
+    return (((parseFloat(amount) * 100) / (parseFloat(limit)) * 100)) / 100;
+  }
+);
+
+export const getIsLimitReached = createSelector(
+  getOrganizationLimit,
+  getTotalStaked,
+  (limit: string, amount: string): boolean => {
+    if (!amount) {
+      return false;
+    }
+    return Boolean(parseFloat(limit) - parseFloat(amount) < 1);
   }
 );

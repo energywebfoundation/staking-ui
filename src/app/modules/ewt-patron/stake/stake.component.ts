@@ -37,6 +37,7 @@ export class StakeComponent implements OnInit {
   isStakeDisabled$ = this.store.select(poolSelectors.isStakeDisabled);
   stakingPoolEnds = this.store.select(poolSelectors.stakingPoolEnds);
   stakingPoolBegin$ = this.store.select(poolSelectors.stakingPoolBegin);
+  getIsLimitReached$ = this.store.select(poolSelectors.getIsLimitReached);
 
   constructor(private store: Store, private dialog: MatDialog) {
   }
