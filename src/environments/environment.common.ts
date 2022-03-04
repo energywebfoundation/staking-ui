@@ -16,7 +16,7 @@ export const commonEnv = {
   cacheServerUrl: 'https://identitycache-dev.energyweb.org/v1',
   natsServerUrl: 'https://identityevents-dev.energyweb.org/',
   kmsServerUrl: undefined,
-  stakingPoolFactoryAddress: '0xE0489B6128954C92b1d878596Df97D5b2acA378D',
+  stakingPoolFactoryAddress: '0xA6dB2E313b74f947aA27F2145F8AF5d46992E0A3',
   checkStakingVerification: true,
   showAzureLoginOption: false,
   isWalletConnectEnabled: false,
