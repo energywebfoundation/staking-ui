@@ -219,3 +219,21 @@ mat-progress-bar {
   border-radius: 5px;
 }
 
+.relative {
+  position: relative;
+}
+
+.circle-progress-circle {
+  position: absolute;
+  width: 159px;
+  height: 159px;
+  padding:25px;
+  background:yellow;
+  border-radius: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
