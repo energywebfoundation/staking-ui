@@ -2,7 +2,7 @@ name: Deploy to bucket
 
 on:
   push:
-    branches: ['develop']
+    branches: ['develop', 'master', 'dev-no-kyc', 'release']
 jobs:
   cancel-previous:
     name: 'Cancel Previous Runs'
@@ -16,15 +16,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get GHA environment name
-        id: env_name
+        id: env_name # TODO - Add sandbox ICS configuration, to use sandbox instead of dev
         run: |
           echo "Running on branch ${{ github.ref }}"
-          if [ "${{ github.ref }}" = "refs/heads/develop" ]; then
+          if [ "${{ github.ref }}" = "sandbox" ]; then
+            echo "::set-output name=env_name::sandbox"
+            echo "::set-output name=env_file::src/environments/environment.dev.ts"
+            echo "::set-output name=build_script::'npm run build'"
+          elif [ "${{ github.ref }}" = "refs/heads/develop" ]; then
             echo "::set-output name=env_name::dev"
             echo "::set-output name=env_file::src/environments/environment.dev.ts"
             echo "::set-output name=build_script::npm run build"
-          else
-            echo "Branch ${{ github.ref }} is not configured for deployment"
+          elif [ "${{ github.ref }}" = "refs/heads/dev-no-kyc" ]; then
+            echo "::set-output name=env_name::dev-no-kyc"
+            echo "::set-output name=env_file::src/environments/environment.dev.ts"
+            echo "::set-output name=build_script::npm run build-no-kyc"
+          elif [ "${{ github.ref }}" = "refs/heads/master" ]; then
+            echo "::set-output name=env_name::staging"
+            echo "::set-output name=env_file::src/environments/environment.prod.ts"
+            echo "::set-output name=build_script::npm run build-volta"
+          elif [ "${{ github.ref }}" = "refs/heads/release" ]; then
+            echo "::set-output name=env_name::prod"
+            echo "::set-output name=env_file::src/environments/environment.prod.ts"
+            echo "::set-output name=build_script::npm run build-prod"
           fi
       - name: Use specified environment secrets from previous step
         run: |
