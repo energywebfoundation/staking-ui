@@ -61,3 +61,7 @@
     }
   }
 }
+
+:host ::ng-deep mat-progress-spinner {
+  background:conic-gradient(from 158.26deg at 50.11% 49.89%, #A566FF 0deg, #8991F5 91.88deg, #71B5ED 144.37deg, #52E3E3 215.62deg, #9EF6F6 286.87deg, #BFFFFF 360deg);
+}

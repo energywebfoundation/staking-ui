@@ -53,6 +53,16 @@
           </div>
         </div>
       </div>
+      <div class="position-relative ">
+        <div class="circle-progress-circle">
+          Example how to create this element with hardcoded progress value
+        </div>
+        <circle-progress [innerStrokeWidth]="20"
+                         [space]="-20"
+                         [outerStrokeWidth]="20"
+                         [percent]="25">
+        </circle-progress>
+      </div>
       <div class="col-xl-8 mt-4 mt-xl-4">
         <div class="row">
           <div class="col-md-12 mt-0 mt-md-0 mb-xl-3">
@@ -79,10 +89,13 @@
             </ng-container>
             <span class="staking-currency">EWT</span>
           </h3>
-          <mat-progress-bar
-              mode="determinate"
-              [value]="getTotalStakedPercent$ | async"
-          ></mat-progress-bar>
+          <circle-progress [radius]="30"
+                           [innerStrokeWidth]="10"
+                           [space]="-10"
+                           [outerStrokeWidth]="10"
+                           [showSubtitle]="false"
+                           [percent]="getTotalStakedPercent$ | async">
+          </circle-progress>
           <div class="limit-text color-grey mt-2">
             {{ getTotalStakedPercent$ | async | lastDigits }}% of {{ hardCap$ | async }} EWT
             Staking Pool limit

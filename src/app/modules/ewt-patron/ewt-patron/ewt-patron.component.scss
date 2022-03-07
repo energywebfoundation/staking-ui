@@ -81,7 +81,7 @@ a {
   }
 
   .mat-progress-bar-fill::after {
-    background: linear-gradient(272.06deg, #25E8E8 0.21%, #6268F9 49.1%, #9B54FF 98.25%);
+    background: conic-gradient(from 158.26deg at 50.11% 49.89%, #A566FF 0deg, #8991F5 91.88deg, #71B5ED 144.37deg, #52E3E3 215.62deg, #9EF6F6 286.87deg, #BFFFFF 360deg);
   }
 
   .mat-progress-bar .mat-progress-bar-element, .mat-progress-bar .mat-progress-bar-fill::after {
@@ -290,9 +290,24 @@ li {
   letter-spacing: 1.25px;
   background-color: #A566FF;
   color: #FFFFFF;
-  
+
   &:hover {
     background-color: #ad74ff !important;
     opacity: 1 !important;
   }
+}
+
+.circle-progress-circle {
+  position: absolute;
+  width: 159px;
+  height: 159px;
+  padding:25px;
+  background:yellow;
+  border-radius: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
 }

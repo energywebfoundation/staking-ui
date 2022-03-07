@@ -8,59 +8,63 @@
       <h3 class="mb-0 text-color" data-qa-id="stake-balance">
         <ng-container *ngIf="balance$ | async as balance">{{
           balance | lastDigits
-        }}</ng-container>
+          }}</ng-container>
         <span class="staking-currency ml-2">EWT</span>
       </h3>
     </div>
     <div class="col-12 col-lg-7 pt-3 pt-lg-0">
       <ng-container *ngIf="getContributorLimit$ | async as contributorLimit">
         <ng-container *ngIf="stakingPoolEnds | async as poolEnds">
-        <mat-form-field class="staking-textfield" appearance="outline">
-          <mat-label class="ml-3 pl-1">EWT Stake Amount</mat-label>
-          <input
-            matInput
-            class="amount-input"
-            data-qa-id="stake-amount"
-            [formControl]="amountToStake"
-            autocomplete="off"
-            type="number"
-            [max]="(amountBorderValues$ | async)?.maxPossibleAmount"
-            min="0"
-            maxlength="256"
-            (focus)="inputFocused = true"/>
-          <div matSuffix class="d-flex" *ngIf="inputFocused">
-            <button
-              mat-icon-button
-              class="bg-transparent"
-              (click)="clear($event)"
-            >
-              <mat-icon>close</mat-icon>
-            </button>
-          </div>
+          <mat-form-field class="staking-textfield" appearance="outline">
+            <mat-label class="ml-3 pl-1">EWT Stake Amount</mat-label>
+            <input
+                matInput
+                class="amount-input"
+                data-qa-id="stake-amount"
+                [formControl]="amountToStake"
+                autocomplete="off"
+                type="number"
+                [max]="(amountBorderValues$ | async)?.maxPossibleAmount"
+                min="0"
+                maxlength="256"
+                (focus)="inputFocused = true"/>
+            <div matSuffix class="d-flex" *ngIf="inputFocused">
+              <button
+                  mat-icon-button
+                  class="bg-transparent"
+                  (click)="clear($event)"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
 
-          <mat-error *ngIf="amountToStake.hasError('min')"
+            <mat-error *ngIf="amountToStake.hasError('min')"
             >Minimum value is {{ MINIMAL_VALUE }}</mat-error
-          >
-          <mat-error *ngIf="amountToStake.hasError('insufficientValue')"
-            >Your account doesn’t have enough EWT</mat-error
-          >
-          <mat-error *ngIf="amountToStake.hasError('required')"
+            >
+            <mat-error *ngIf="amountToStake.hasError('insufficientValue')"
+            >Your account doesn’t have enough EWT
+            </mat-error
+            >
+            <mat-error *ngIf="amountToStake.hasError('required')"
             >This field is <strong>required</strong></mat-error
-          >
-          <mat-error *ngIf="amountToStake.hasError('max')"
+            >
+            <mat-error *ngIf="amountToStake.hasError('max')"
             >The stake limit is {{ contributorLimit }}. You already staked
-            <ng-container *ngIf="stakeAmount$ | async as stakeAmount">
-              {{ stakeAmount }}
-            </ng-container>
-          </mat-error>
-          <mat-hint *ngIf="!poolEnds.ended" align="start" class="color-grey">Max. {{ contributorLimit }} EWT per user</mat-hint>
-          <mat-hint *ngIf="poolEnds.ended" align="start" class="color-red">Pool Is Expired. Unstake Your EWT.</mat-hint>
-        </mat-form-field>
+              <ng-container *ngIf="stakeAmount$ | async as stakeAmount">
+                {{ stakeAmount }}
+              </ng-container>
+            </mat-error>
+            <mat-hint *ngIf="!poolEnds.ended" align="start" class="color-grey">Max. {{ contributorLimit }} EWT per
+              user
+            </mat-hint>
+            <mat-hint *ngIf="poolEnds.ended" align="start" class="color-red">Pool Is Expired. Unstake Your EWT.
+            </mat-hint>
+          </mat-form-field>
         </ng-container>
       </ng-container>
 
       <div
-        class="mt-4 d-flex justify-content-between color-grey payment-details"
+          class="mt-4 d-flex justify-content-between color-grey payment-details"
       >
         <div class="info">
           Reward payment interval
@@ -70,22 +74,22 @@
         </div>
       </div>
       <div
-        class="mt-1 d-flex justify-content-between payment-details color-grey"
+          class="mt-1 d-flex justify-content-between payment-details color-grey"
       >
         <div class="info">
           Estimated APY during booster period
         </div>
         <div
-          class="text-color"
-          matTooltip="0.054% per day compounding, 21.79% APY"
-          matTooltipPosition="below"
+            class="text-color"
+            matTooltip="0.054% per day compounding, 21.79% APY"
+            matTooltipPosition="below"
         >
           21.79%
         </div>
       </div>
       <div
-        class="mt-1 d-flex justify-content-between payment-details color-grey"
-        *ngIf="stakingPoolBegin$ | async as startDate"
+          class="mt-1 d-flex justify-content-between payment-details color-grey"
+          *ngIf="stakingPoolBegin$ | async as startDate"
       >
         <div class="info" [matTooltip]="startDate?.beginDate">
           Staking pool activation date
@@ -95,8 +99,8 @@
         </div>
       </div>
       <div
-        class="mt-1 d-flex justify-content-between payment-details color-grey"
-        *ngIf="stakingPoolEnds | async as expirationDate"
+          class="mt-1 d-flex justify-content-between payment-details color-grey"
+          *ngIf="stakingPoolEnds | async as expirationDate"
       >
         <div class="info" [matTooltip]="expirationDate?.expirationDate">
           Staking pool expiration date
@@ -108,33 +112,34 @@
       <div class="mt-4 color-grey">
         By clicking "STAKE", you acknowledge
         <a routerLink="/terms" target="_blank" class="highlight"
-          >this disclaimer</a
+        >this disclaimer</a
         >
       </div>
 
       <div
-        class="mt-2 d-flex justify-content-end align-items-center text-color"
+          class="mt-2 d-flex justify-content-end align-items-center text-color"
       >
         <!-- <mat-slide-toggle [formControl]="compound" class="slide-toggle">Compound</mat-slide-toggle> -->
         <button
-          mat-raised-button
-          class="stake-btn text-color text-uppercase"
-          data-qa-id="stake"
-          [disabled]="isAmountInvalid() || (isStakeDisabled$ | async) || (getIsLimitReached$ | async)"
-          (click)="stake()"
+            mat-raised-button
+            class="stake-btn text-color text-uppercase"
+            data-qa-id="stake"
+            [disabled]="isAmountInvalid() || (isStakeDisabled$ | async) || (getIsLimitReached$ | async)"
+            (click)="stake()"
         >
           Stake
         </button>
       </div>
       <div *ngIf="getIsLimitReached$ | async" class="mt-2 d-flex justify-content-end align-items-center color-red">
-        <mat-icon class="mr-2">info</mat-icon> The staking pool is full
+        <mat-icon class="mr-2">info</mat-icon>
+        The staking pool is full
       </div>
     </div>
   </div>
   <div>
     <app-divider></app-divider>
     <div
-      class="mt-3 d-flex justify-content-between align-items-center text-color"
+        class="mt-3 d-flex justify-content-between align-items-center text-color"
     >
       <div>
         <div class="staking-widget-xs-label highlight mb-2">
@@ -149,7 +154,7 @@
       </div>
     </div>
     <div
-      class="mt-3 d-flex justify-content-between align-items-center text-color"
+        class="mt-3 d-flex justify-content-between align-items-center text-color"
     >
       <div>
         <div class="staking-widget-xs-label text-color mb-2">
@@ -164,11 +169,11 @@
       </div>
       <div class="d-flex justify-content-end">
         <button
-          mat-raised-button
-          class="stake-btn text-color text-uppercase"
-          data-qa-id="withdraw"
-          [disabled]="isWithdrawDisabled$ | async"
-          (click)="withdraw()"
+            mat-raised-button
+            class="stake-btn text-color text-uppercase"
+            data-qa-id="withdraw"
+            [disabled]="isWithdrawDisabled$ | async"
+            (click)="withdraw()"
         >
           Unstake
         </button>
@@ -176,10 +181,13 @@
     </div>
     <div class="row">
       <div class="mt-3 d-flex flex-column col-xs-12 col-md-8">
-        <mat-progress-bar
-          mode="determinate"
-          [value]="calculatedPercent$ | async"
-        ></mat-progress-bar>
+        <circle-progress [radius]="30"
+                         [innerStrokeWidth]="10"
+                         [space]="-10"
+                         [outerStrokeWidth]="10"
+                         [showSubtitle]="false"
+                         [percent]="calculatedPercent$ | async">
+        </circle-progress>
         <div class="limit-text text-color mt-2">
           {{ calculatedPercent$ | async }}% of
           {{ getContributorLimit$ | async }} EWT Personal Limit
