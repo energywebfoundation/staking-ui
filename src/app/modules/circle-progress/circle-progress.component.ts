@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, OnChanges, Output, OnInit, OnDestroy, E
 import { DOCUMENT } from '@angular/common';
 import { Subscription, timer } from 'rxjs';
 
+// This is a copy of this component: https://github.com/bootsoon/ng-circle-progress
+// However original version do not support multiple gradients and is not actively maintained, that's why this copy occurred.
+
 export interface CircleProgressOptionsInterface {
   class?: string;
   backgroundGradient?: boolean;
