@@ -21,7 +21,7 @@ export const commonEnv = {
   showAzureLoginOption: false,
   isWalletConnectEnabled: false,
   patronRole: 'email.roles.verification.apps.energyweb.iam.ewc',
-  claimManagerAddress: "0xC3dD7ED75779b33F5Cfb709E0aB02b71fbFA3210",
+  claimManagerAddress: "0x5339adE9332A604A1c957B9bC1C6eee0Bcf7a031",
 
   networkName: "EnergyWeb Volta Chain",
   currencyName: "Volta Token",
