@@ -49,7 +49,6 @@ export interface CircleProgressOptionsInterface {
   showSubtitle?: boolean;
   showUnits?: boolean;
   showImage?: boolean;
-  showContent?: boolean;
   showBackground?: boolean;
   showInnerStroke?: boolean;
   clockwise?: boolean;
@@ -78,21 +77,21 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
   unitsFontSize = '10';
   unitsFontWeight = 'normal';
   unitsColor = '#444444';
-  outerStrokeGradient = false;
+  outerStrokeGradient = true;
   outerStrokeWidth = 8;
   outerStrokeColor = '#78C000';
   outerStrokeGradientStopColor = 'transparent';
   outerStrokeLinecap = 'round';
-  innerStrokeColor = '#C7E596';
+  innerStrokeColor = '#F7FCFF';
   innerStrokeWidth = 4;
   titleFormat = undefined;
   title: string | Array<String> = 'auto';
-  titleColor = '#444444';
+  titleColor = '#4B25C7';
   titleFontSize = '20';
   titleFontWeight = 'normal';
   subtitleFormat = undefined;
   subtitle: string | Array<String> = 'progress';
-  subtitleColor = '#A9A9A9';
+  subtitleColor = '#4B25C7';
   subtitleFontSize = '10';
   subtitleFontWeight = 'normal';
   imageSrc = undefined;
@@ -106,7 +105,6 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
   showSubtitle = true;
   showUnits = true;
   showImage = false;
-  showContent = false;
   showBackground = true;
   showInnerStroke = true;
   clockwise = true;
@@ -178,7 +176,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
                         [attr.stroke-linecap]="svg.path.strokeLinecap"
                         [attr.fill]="svg.path.fill"/>
             </ng-container>
-            <text *ngIf="!options.showContent && (options.showTitle || options.showUnits || options.showSubtitle)"
+            <text *ngIf="!options.showImage && (options.showTitle || options.showUnits || options.showSubtitle)"
                   alignment-baseline="baseline"
                   [attr.x]="svg.circle.cx"
                   [attr.y]="svg.circle.cy"
@@ -206,18 +204,13 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
                            [attr.fill]="svg.subtitle.color">{{tspan.span}}</tspan>
                 </ng-container>
             </text>
-<!--            <image *ngIf="options.showImage" preserveAspectRatio="none" -->
-<!--                [attr.height]="svg.image.height"-->
-<!--                [attr.width]="svg.image.width"-->
-<!--                [attr.xlink:href]="svg.image.src"-->
-<!--                [attr.x]="svg.image.x"-->
-<!--                [attr.y]="svg.image.y"-->
-<!--            />-->
-
-            <ng-container *ngIf="options.showContent">
-
-                <ng-content></ng-content>
-            </ng-container>
+            <image *ngIf="options.showImage" preserveAspectRatio="none" 
+                [attr.height]="svg.image.height"
+                [attr.width]="svg.image.width"
+                [attr.xlink:href]="svg.image.src"
+                [attr.x]="svg.image.x"
+                [attr.y]="svg.image.y"
+            />
         </svg>
     `,
   styleUrls: ['./circle-progress.component.scss']
@@ -282,7 +275,6 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
   @Input() showSubtitle: boolean;
   @Input() showUnits: boolean;
   @Input() showImage: boolean;
-  @Input() showContent: boolean;
   @Input() showBackground: boolean;
   @Input() showInnerStroke: boolean;
   @Input() clockwise: boolean;
@@ -354,9 +346,9 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
     // the centre of the circle
     let centre = { x: boxSize / 2, y: boxSize / 2 };
     // the start point of the arc
-    let startPoint = { x: centre.x, y: centre.y - this.options.radius };
+    let startPoint = { x: centre.x, y: centre.y + this.options.radius };
     // get the end point of the arc
-    let endPoint = this.polarToCartesian(centre.x, centre.y, this.options.radius, 360 * (this.options.clockwise ?
+    let endPoint = this.polarToCartesian(centre.x, centre.y, -this.options.radius, 360 * (this.options.clockwise ?
       circlePercent :
       (100 - circlePercent)) / 100);  // ####################
     // We'll get an end point with the same [x, y] as the start point when percent is 100%, so move x a little bit.
