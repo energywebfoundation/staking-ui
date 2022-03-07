@@ -12,23 +12,6 @@
         <span class="staking-currency ml-2">EWT</span>
       </h3>
     </div>
-    <div class="position-relative ">
-      <div class="circle-progress-circle">
-        Something
-      </div>
-    <circle-progress [innerStrokeWidth]="20"
-                     [space]="-20"
-                     [outerStrokeWidth]="20"
-                     [percent]="75">
-    </circle-progress>
-    </div>
-    <circle-progress [radius]="30"
-                     [innerStrokeWidth]="10"
-                     [space]="-10"
-                     [outerStrokeWidth]="10"
-                     [showSubtitle]="false"
-                     [percent]="75">
-    </circle-progress>
     <div class="col-12 col-lg-7 pt-3 pt-lg-0">
       <ng-container *ngIf="getContributorLimit$ | async as contributorLimit">
         <ng-container *ngIf="stakingPoolEnds | async as poolEnds">
@@ -198,6 +181,13 @@
     </div>
     <div class="row">
       <div class="mt-3 d-flex flex-column col-xs-12 col-md-8">
+        <circle-progress [radius]="30"
+                         [innerStrokeWidth]="10"
+                         [space]="-10"
+                         [outerStrokeWidth]="10"
+                         [showSubtitle]="false"
+                         [percent]="calculatedPercent$ | async">
+        </circle-progress>
         <div class="limit-text text-color mt-2">
           {{ calculatedPercent$ | async }}% of
           {{ getContributorLimit$ | async }} EWT Personal Limit
