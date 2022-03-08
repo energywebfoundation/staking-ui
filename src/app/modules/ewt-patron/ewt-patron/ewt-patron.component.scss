@@ -1,22 +1,19 @@
+@font-face {
+	font-family: 'Bw-Gradual';
+	src: local('BwGradual-Regular'), url('/assets/fonts/bw-gradual-font/BwGradual-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Sequel-Sans';
+	src: local('Sequel-Sans'), url('/assets/fonts/sequel-sans-font/Sequel-Sans-Book-Disp.woff2') format('woff2');
+}
+
 .staking-container {
-  background-color: #130E21;
+  background-color: #ECF0F3;
   background-image: url("../../../../assets/img/staking/staking-gradient-background.png");
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-
-  &::before {
-    content: " ";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background-image: url("../../../../assets/img/staking/staking-lines-background.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
 }
 
 .content-wrapper {
@@ -24,9 +21,23 @@
 }
 
 h2 {
-  font-family: Rajdhani, sans-serif;
-  font-size: 46px !important;
-  font-weight: 600 !important;
+  font-family: 'Bw-Gradual';
+  color: #492CC7;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 68px;
+  line-height: 89px;
+
+  span {
+    background: #492CC7;
+    background: linear-gradient(90deg, rgba(73,44,199,1) 0%, rgba(82,227,227,1) 48%, rgba(73,44,199,1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+  }
 
   @media screen and (max-width: 800px) {
     font-size: 38px !important;
@@ -62,8 +73,11 @@ h5 {
 
 
 p {
-  color: #A6A5AC;
-  line-height: 24px;
+  color: #1A1A1A;
+  font-family: 'Bw-Gradual';
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 28px;
 }
 
 a {
@@ -81,7 +95,7 @@ a {
   }
 
   .mat-progress-bar-fill::after {
-    background: conic-gradient(from 158.26deg at 50.11% 49.89%, #A566FF 0deg, #8991F5 91.88deg, #71B5ED 144.37deg, #52E3E3 215.62deg, #9EF6F6 286.87deg, #BFFFFF 360deg);
+    background: linear-gradient(272.06deg, #25E8E8 0.21%, #6268F9 49.1%, #9B54FF 98.25%);
   }
 
   .mat-progress-bar .mat-progress-bar-element, .mat-progress-bar .mat-progress-bar-fill::after {
@@ -91,6 +105,19 @@ a {
   .mat-progress-bar-buffer {
     background-color: #000000;
     border-radius: 100px;
+  }
+}
+
+.atoms-wrapper {
+  width: 800px;
+  height: auto;
+
+  @media screen and (max-width: 1440px) {
+      width: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+      width: 100%;
   }
 }
 
@@ -117,22 +144,8 @@ a {
 }
 
 .staking-card {
-  background: linear-gradient(337deg, #231F32 2%, #050608 98%);
-  border-radius: 64px;
+  background: transparent;
   height: auto;
-
-  &::before {
-    content: " ";
-    width: 800px;
-    height: 100%;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    background-image: url("../../../../assets/img/staking/staking-banner.png");
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    background-size: contain;
-  }
 
   @media screen and (max-width: 1200px) {
     &::before {
@@ -145,6 +158,27 @@ a {
       width: 100%;
       max-width: 380px;
     }
+  }
+}
+
+.stake-btn {
+  font-family: Rajdhani, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 16px;
+  border-radius: 16px;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+  border-radius: 50px;
+  color: #4B25C7;
+  padding: 0 0 !important;
+  height: 53px;
+  width: 183px;
+
+  &:hover {
+    background-color: #ad74ff;
   }
 }
 
@@ -290,7 +324,7 @@ li {
   letter-spacing: 1.25px;
   background-color: #A566FF;
   color: #FFFFFF;
-
+  
   &:hover {
     background-color: #ad74ff !important;
     opacity: 1 !important;
