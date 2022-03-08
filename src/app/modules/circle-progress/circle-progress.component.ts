@@ -349,9 +349,9 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
     // the centre of the circle
     let centre = { x: boxSize / 2, y: boxSize / 2 };
     // the start point of the arc
-    let startPoint = { x: centre.x, y: centre.y + this.options.radius };
+    let startPoint = { x: centre.x, y: centre.y + (circlePercent === 100 ? -this.options.radius : this.options.radius) };
     // get the end point of the arc
-    let endPoint = this.polarToCartesian(centre.x, centre.y, -this.options.radius, 360 * (this.options.clockwise ?
+    let endPoint = this.polarToCartesian(centre.x, centre.y, circlePercent === 100 ? this.options.radius : -this.options.radius, 360 * (this.options.clockwise ?
       circlePercent :
       (100 - circlePercent)) / 100);  // ####################
     // We'll get an end point with the same [x, y] as the start point when percent is 100%, so move x a little bit.
