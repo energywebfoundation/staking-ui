@@ -4,6 +4,7 @@ import * as RoleEnrolmentActions from '../../../../state/role-enrolment/role-enr
 import { MatDialog } from '@angular/material/dialog';
 import { truthy } from '@operators';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { RoleEnrolmentSelectors, UserClaimSelectors } from '@state';
 
 @Component({
   selector: 'app-not-approved',
@@ -11,7 +12,6 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./not-approved.component.scss']
 })
 export class NotApprovedComponent {
-
   constructor(private store: Store,
               private dialog: MatDialog) {
   }

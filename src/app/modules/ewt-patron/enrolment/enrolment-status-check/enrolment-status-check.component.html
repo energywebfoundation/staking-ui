@@ -1,14 +1,6 @@
 <ng-container [ngSwitch]="getStatus$ | async">
   <app-not-enroled *ngSwitchCase="roleEnrolmentStatus.NOT_ENROLED"></app-not-enroled>
   <app-not-approved *ngSwitchCase="roleEnrolmentStatus.ENROLED_NOT_APPROVED"></app-not-approved>
-  <div class="d-flex flex-row align-items-center my-2" *ngIf="emailNotApproved$ | async">
-    <div class="staking-widget-xs-label text-center">You haven’t verified your email for the current wallet
-      <ng-container *ngIf="getAddress$ | async as address">
-        <b [matTooltip]="address">{{ address | didFormatMinifier}}</b>
-      </ng-container>
-      If this is not your staking wallet, change wallets in MetaMask and refresh the page.
-    </div>
-  </div>
 
   <app-not-synced *ngSwitchCase="roleEnrolmentStatus.ENROLED_APPROVED"></app-not-synced>
   <app-approved-synced *ngSwitchCase="roleEnrolmentStatus.ENROLED_SYNCED"></app-approved-synced>
