@@ -1266,17 +1266,17 @@ color: #33CBCB;
 // Preloader
 
 .preloader {
-    background-color: #181423;
+    background-color: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);;
 }
 
 // Preloader
 .preloader {
-    background-color: $preloader-bg;
-    background-image: -webkit-linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* Chrome 10+, Saf5.1+ */
-    background-image: -moz-linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* FF3.6+ */
-    background-image: -ms-linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* IE10 */
-    background-image: -o-linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* Opera 11.10+ */
-    background-image: linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* W3C */
+    background-color: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
+    background-image: -webkit-linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* Chrome 10+, Saf5.1+ */
+    background-image: -moz-linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* FF3.6+ */
+    background-image: -ms-linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* IE10 */
+    background-image: -o-linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* Opera 11.10+ */
+    background-image: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* W3C */
 }
 
 .preloader-progress {

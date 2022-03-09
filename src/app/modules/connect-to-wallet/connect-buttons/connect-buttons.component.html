@@ -24,11 +24,11 @@
   </button>
   <div class="d-flex flex-column justify-content-center mt-3 text-center" *ngIf="metamaskDisabled else cacheServerInfo"
        data-qa-id="no-volta">
-    <div class="opacity-50 pr-1 ">You are not connected to Energy Web Chain.</div>
+    <div class="info pr-1 ">You are not connected to Energy Web Chain.</div>
     <a class="switch-network" (click)="importMetamaskConf()" target="_blank">Import configurations</a>
   </div>
   <ng-template #cacheServerInfo>
-    <div class="opacity-50 pr-1 mt-3">
+    <div class="pr-1 mt-3 info">
       You will be asked to sign a message to authenticate your wallet with the Identity and Access Management Cache
       Server. This allows the Cache Server to check if your wallet is authorized to stake.
     </div>
@@ -37,7 +37,7 @@
 
 <ng-template #noMetamask>
   <div class="mt-3 mb-3">
-    <div class="mt-1">
+    <div class="mt-1 info">
       MetaMask isn’t detected. Follow the
       <a href="https://energy-web-foundation.gitbook.io/energy-web/token/staking"
          target="_blank">Staking Guide</a> to install and configure MetaMask to work with Energy Web Chain.
