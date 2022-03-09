@@ -12,6 +12,9 @@ import { WithdrawComponent } from '../withdraw/withdraw.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_ethereum_value';
 import { StakeSuccessComponent } from '../stake-success/stake-success.component';
+import { ConfirmationDialogComponent } from '../enrolment/confirmation-dialog/confirmation-dialog.component';
+import { from } from 'rxjs';
+import SWAL from 'sweetalert';
 
 @Component({
   selector: 'app-stake',
@@ -78,6 +81,24 @@ export class StakeComponent implements OnInit {
       disableClose: true,
       backdropClass: 'backdrop-shadow'
     });
+  }
+
+  confirmDialog() {
+    this.dialog.open(ConfirmationDialogComponent, {
+      width: '400px',
+      maxWidth: '100%',
+      disableClose: true
+    })
+  }
+
+  swalDialog() {
+    from(SWAL({
+      title: 'Title',
+      text: `Please login again.`,
+      icon: 'warning',
+      button: 'Proceed',
+      closeOnClickOutside: false
+    } as any))
   }
 
   openConfiguration() {
