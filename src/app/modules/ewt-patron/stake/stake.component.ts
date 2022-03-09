@@ -11,6 +11,7 @@ import { RoleEnrolmentSelectors } from '@state';
 import { WithdrawComponent } from '../withdraw/withdraw.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_ethereum_value';
+import { StakeSuccessComponent } from '../stake-success/stake-success.component';
 
 @Component({
   selector: 'app-stake',
@@ -72,6 +73,15 @@ export class StakeComponent implements OnInit {
 
   withdraw() {
     this.dialog.open(WithdrawComponent, {
+      width: '400px',
+      maxWidth: '100%',
+      disableClose: true,
+      backdropClass: 'backdrop-shadow'
+    });
+  }
+
+  openConfiguration() {
+    this.dialog.open(StakeSuccessComponent, {
       width: '400px',
       maxWidth: '100%',
       disableClose: true,
