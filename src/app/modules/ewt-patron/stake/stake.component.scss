@@ -9,7 +9,10 @@
   background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%);
   background-clip: padding-box;
   padding: 100px;
-  backdrop-filter: blur(200px);
+  
+  @media screen and (max-width: 800px) {
+    padding: 20px;
+  }
 }
 
 h2 {
@@ -51,7 +54,7 @@ h5 {
   font-family: Rajdhani, sans-serif;
   font-size: 21px !important;
   letter-spacing: 1.25px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   color: #4B25C7;
 }
 
@@ -137,6 +140,7 @@ h6 {
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-outline-start {
     border-radius: 48px 0 0 48px;
+    width: 50px !important;
   }
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-outline-end {
@@ -155,7 +159,6 @@ h6 {
 
 .amount-input {
   color: #1A1A1A;
-  opacity: 0.8;
   font-family: "Sequel Sans", sans-serif;
 
   &::-webkit-outer-spin-button,
@@ -190,7 +193,6 @@ h6 {
 
 .payment-details {
   border-bottom: 1px solid #B3C6D2;
-  opacity: 0.8;
 }
 
 .stake-btn {
@@ -243,7 +245,7 @@ h6 {
 }
 
 .color-grey {
-  font-family: "BW-Gradual", sans-serif;
+  font-family: "BW-Gradual-Regular";
   color: #474747;
 }
 

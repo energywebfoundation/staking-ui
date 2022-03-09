@@ -1,4 +1,4 @@
-<div class="d-flex flex-row align-items-center my-2" *ngIf="emailNotApproved$ | async">
+<div class="d-flex flex-row align-items-center mt-2 mb-4" *ngIf="emailNotApproved$ | async">
   <div class="staking-widget-xs-label text-center">You haven’t verified your email for the current wallet
     <ng-container *ngIf="getAddress$ | async as address">
       <b [matTooltip]="address">{{ address | didFormatMinifier}}</b>

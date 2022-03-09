@@ -461,8 +461,7 @@ tr.mat-row {
 }
 
 .mat-dialog-container {
-    background: #2A2837;
-    color: #FFFFFF;
+    background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3;
 }
 
 .mat-dialog-title {
@@ -483,8 +482,7 @@ tr.mat-row {
 }
 
 .img-thumbnail {
-    background-color: #181424;
-    border: 1px solid #6e75aa;
+    background-color: F6FAFC;
 }
 
 .mat-divider {
@@ -505,12 +503,12 @@ tr.mat-row {
 }
 
 .did-wrapper {
-    background-color: #231f32;
-    color: #a6a5ab;
+    background-color: #F4FDFF;
+    color: #AAAAAA;
 
     &:hover {
         mat-icon {
-            color: #33CBCB;
+            color: #4C2CDF;
         }
     }
 }
@@ -817,7 +815,7 @@ mat-label {
 // dashboard
 
 .color-white {
-    color: #FFFFFF;
+    color: #492AC7;
 }
 
 .mat-option:nth-child(odd) {

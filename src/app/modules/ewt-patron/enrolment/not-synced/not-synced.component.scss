@@ -1,13 +1,14 @@
-
-.staking-widget-xs-label {
-  font-size: 16px;
-  letter-spacing: 0.8;
+.staking-widget-sm-label{
+  color: #000000;
+  font-weight: 400;
+  font-family: "BW-Gradual-Regular";
+  font-size: 18px;
 }
 
-.staking-widget-sm-label {
-  font-weight: 600;
-  font-family: Rajdhani, sans-serif;
-  font-size: 21px;
+.staking-widget-xs-label{
+  color: #242424;
+  font-weight: 400;
+  font-family: "BW-Gradual-Regular";
 }
 
 .stake-btn {
@@ -15,21 +16,23 @@
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
-  line-height: 16px;
-  border-radius: 16px;
   letter-spacing: 1.25px;
-  color: #fff;
-  background-color: #A566FF;
+  background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
+  color: #FFFFFF !important;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 34px;
   padding: 0 0 !important;
-  height: 44px;
-  width: 124px;
+  height: 48px;
+  width: 180px;
+  opacity: 1;
 
   &.mat-raised-button[disabled] {
-    color: #AF76FF !important;
-    background-color: rgb(165 102 255 / 20%) !important;
+    opacity: 0.5;
   }
 
   &:hover {
-    background-color: #ad74ff;
+    background-color: #4C2CDF;
   }
 }
+
+

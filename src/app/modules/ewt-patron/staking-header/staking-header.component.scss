@@ -40,21 +40,22 @@
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
-  line-height: 16px !important;
-  border-radius: 16px;
   letter-spacing: 1.25px;
-  background-color: #A566FF;
-  padding: 0 24px !important;
-  height: 42px;
-  width: auto;
+  background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
+  color: #FFFFFF !important;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 34px;
+  padding: 0 0 !important;
+  height: 48px;
+  width: 100%;
+  opacity: 1;
 
   &.mat-raised-button[disabled] {
-    color: #AF76FF !important;
-    background-color: rgb(165 102 255 / 20%) !important;
+    opacity: 0.5;
   }
 
   &:hover {
-    background-color: #ad74ff;
+    background-color: #4C2CDF;
   }
 }
 
@@ -62,8 +63,11 @@
 ::ng-deep {
   .mat-menu-panel {
     color: #A6A5AC !important;
-    background: #2E293E !important;
+    background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3 !important;
+    box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
+    border-radius: 48px !important;
     min-width: 260px !important;
     max-width: 300px !important;
+    padding: 15px;
   }
 }

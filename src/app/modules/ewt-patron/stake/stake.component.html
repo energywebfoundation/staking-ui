@@ -1,9 +1,9 @@
-<div>
+<!-- <div>
   <button (click)="openConfiguration()">Open Congratulations</button>
   <button (click)="withdraw()">Open Withdraw</button>
-</div>
+</div> -->
 <div class="d-flex staking-widget flex-column">
-  <div class="d-flex flex-row justify-content-between align-items-center mb-4 px-0 px-lg-4">
+  <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-5 mt-md-0">
     <h3>STAKE</h3>
     <div class="d-flex flex-row align-items-center">
       <div class="text-right">
@@ -91,13 +91,16 @@
         </div>
         <div class="col-lg-6 d-flex justify-content-start align-items-center flex-column mt-5">
           <h5 d-flex align-items-start>STAKING POOL</h5>
-          <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"
+          <!-- <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"
             [showSubtitle]="false" [percent]="calculatedPercent$ | async">
+          </circle-progress> -->
+          <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"
+            [showSubtitle]="false" [percent]="100">
           </circle-progress>
           <h6 class="d-flex align-items-end pt-5">You must verify your email to stake!</h6>
         </div>
       </div>
-      <div class="d-flex justify-content-lg-between align-items-center mt-4">
+      <div class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center my-4">
         <div class="color-grey">
           *by clicking "STAKE", you acknowledge this
           <a routerLink="/terms" target="_blank" class="highlight">disclaimer</a>
@@ -120,7 +123,7 @@
   </div>
   <div>
     <app-divider></app-divider>
-    <div class="d-flex flex-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-5">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-5">
       <h3>UNSTAKE</h3>
       <div class="d-flex flex-row align-items-center">
         <div class="text-right">
@@ -149,8 +152,11 @@
             <span class="staking-currency ml-2">EWT</span>
           </h4>
         </div>
-        <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"
+        <!-- <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"
           [showSubtitle]="false" [percent]="calculatedPercent$ | async">
+        </circle-progress> -->
+        <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"
+          [showSubtitle]="false" [percent]="60">
         </circle-progress>
       </div>
     </div>
