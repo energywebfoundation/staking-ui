@@ -53,14 +53,18 @@
             <div class="d-flex align-items-center position-absolute" style="height: 400px; z-index: 10;">
               <div class="circle-progress-circle position-absolute" style="z-index: 12;">
                 <div class="circular-title">STAKING POOL</div>
-                <div class="circular-percentage">60%</div>
+                <div class="circular-percentage">{{getTotalStakedPercent$ | async | lastDigits}}%</div>
               </div>
               <div class="position-relative" style="z-index: 13;">
-              <circle-progress [innerStrokeWidth]="49"
-                               [space]="-46"
-                               [outerStrokeWidth]="40"
-                               [percent]="60">
-              </circle-progress>
+                <circle-progress [innerStrokeWidth]="49"
+                                 [radius]="135"
+                                 [showTitle]="false"
+                                 [showSubtitle]="false"
+                                 [showUnits]="false"
+                                 [space]="-46"
+                                 [outerStrokeWidth]="40"
+                                 [percent]="getTotalStakedPercent$ | async">
+                </circle-progress>
               </div>
               <div class="circular-inner"></div>
             </div>
@@ -77,7 +81,7 @@
       <div class="col-xl-4 mt-4 mt-xl-4">
         <!-- For the approved sync please change class role-req to staking-terms -->
         <div [ngClass]="{ 'role-req': (isPatronSynced | async) === false }" class="staking-terms text-color p-4"
-          *ngIf="isStakingVerificationEnabled">
+             *ngIf="isStakingVerificationEnabled">
           <app-enrolment-status-check></app-enrolment-status-check>
         </div>
         <!-- <div class="staking-widget widget-inner mt-4 p-4">
@@ -97,7 +101,7 @@
         </div> -->
         <div class="staking-terms mt-4">
           <div class="d-flex flex-row align-items-center mx-2 mx-md-4 mt-2 mb-5">
-            <img src="../../../../assets/img/staking/terms-condition-image.png" width="55" height="auto" />
+            <img src="../../../../assets/img/staking/terms-condition-image.png" width="55" height="auto"/>
             <div class="staking-widget-xl-label text-color ml-3 ml-md-3">
               Terms of participation
             </div>
