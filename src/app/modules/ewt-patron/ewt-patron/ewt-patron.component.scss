@@ -24,9 +24,9 @@ h2 {
   font-family: 'Bw-Gradual';
   color: #492CC7;
   font-style: normal;
-  font-weight: 600;
-  font-size: 68px;
-  line-height: 89px;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 84px;
 
   span {
     background: #492CC7;
@@ -74,10 +74,11 @@ h5 {
 
 p {
   color: #1A1A1A;
-  font-family: 'Bw-Gradual';
-  font-weight: 200;
+  opacity: 0.8;
+  font-family: 'BW-Gradual', sans-serif;
+  font-weight: normal;
   font-size: 18px;
-  line-height: 28px;
+  line-height: 30px;
 }
 
 a {
@@ -126,9 +127,10 @@ a {
 }
 
 .staking-widget-xs-label {
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  color: #2E2E2E;
 }
 
 .staking-widget-sm-label {
@@ -139,8 +141,10 @@ a {
 
 .staking-widget-xl-label {
   font-weight: 600;
-  font-family: Rajdhani, sans-serif;
-  font-size: 24px;
+  font-family: 'BW-Gradual';
+  font-size: 36px;
+  color: #4B25C7;
+  line-height: 46px;
 }
 
 .staking-card {
@@ -165,26 +169,33 @@ a {
   font-family: Rajdhani, sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 16px;
   border-radius: 16px;
   letter-spacing: 2px;
   background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
   box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
   border-radius: 50px;
-  color: #4B25C7;
+  color: #4B25C7 !important;
   padding: 0 0 !important;
-  height: 53px;
-  width: 183px;
+  margin-top: 38px;
+  height: 48px;
+  width: 172px;
+
+  &.mat-raised-button[disabled] {
+    opacity: 0.5;
+  }
 
   &:hover {
-    background-color: #ad74ff;
+    background-color: #AFF6FC;
   }
 }
 
 .staking-terms {
-  background: rgba(13, 10, 25, 0.7);
-  border-radius: 32px;
+  background: linear-gradient(353.04deg, #FEFEFE -176.13%, rgba(152, 195, 205, 0.744792) -176.09%, rgba(255, 255, 255, 0) 174.24%);
+  backdrop-filter: blur(200px);
+  border-radius: 144px;
+  padding: 70px 24px 40px 24px;
 }
 
 .staking-widget {
@@ -218,13 +229,10 @@ a {
 
 .role-req {
   position: relative;
-  border: 1px solid transparent;
-  border-radius: 32px;
-  background: linear-gradient(276.95deg, rgba(253, 139, 24, 0.2) -198.51%, rgba(13, 10, 25, 0) 157.75%);
-  background-clip: padding-box;
-  border: 1px solid #FD8B18;
+  background: linear-gradient(353.64deg, rgba(65, 15, 227, 0) -63.58%, rgba(114, 108, 238, 0.08) 3.96%, rgba(165, 206, 249, 0.34001) 39.82%, rgba(191, 255, 255, 0.47) 96.52%);
+  backdrop-filter: blur(200px);
+  border-radius: 144px;
   padding: 10px;
-  backdrop-filter: blur(4px);
 }
 
 .widget-main {
@@ -259,7 +267,7 @@ a {
 
 ul li {
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
 ul {
@@ -269,17 +277,18 @@ ul {
 ul li:before {
   content: '';
   position: absolute;
-  border-right: 2px solid #33CBCB;
-  border-bottom: 2px solid #33CBCB;
-  width: 10px;
-  height: 10px;
+  border-radius: 50px;
+  background-color: #4B25C7;
+  width: 12px;
+  height: 12px;
   top: calc(5% - -10px);
   left: -23px;
   transform: translateY(-50%) rotate(-45deg);
 }
 
 li {
-  color: #FFF;
+  font-family: 'BW-Gradual';
+  color: #4F4F4F;
   font-size: 16px;
   letter-spacing: 0.30px;
   left: 17px;
@@ -311,7 +320,7 @@ li {
 }
 
 .highlight {
-  color: #32DCDC;
+  color: #63BDFE;
 }
 
 .link-btn {

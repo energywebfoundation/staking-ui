@@ -584,12 +584,13 @@ tr.mat-row {
 
 
 .mat-input-element {
-  color: #FFF;
-  caret-color: #FFF;
+  color: #1A1A1A;
+  opacity: 0.8;
   font-size: 14px;
 
   &[disabled] {
-    color: rgba(255, 255, 255, 0.4);
+    color: #000;
+    opacity: 0.4;
   }
 }
 
@@ -599,7 +600,8 @@ tr.mat-row {
 }
 
 .mat-select-value {
-    color: #ffffff;
+    color: #1A1A1A;
+    opacity: 0.8;
 }
 
 .mat-select-arrow {
@@ -607,7 +609,8 @@ tr.mat-row {
 }
 
 mat-label {
-    color: #FFF;
+    color: #1A1A1A;
+    opacity: 0.8;
 }
 
 .mat-filter-sort {

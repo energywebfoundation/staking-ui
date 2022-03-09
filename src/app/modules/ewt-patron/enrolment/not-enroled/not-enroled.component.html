@@ -1,7 +1,8 @@
 <div class="staking-widget-sm-label mb-3">
-  <div class="d-flex flex-row align-items-center ml-0 ml-md-2 mt-2">
-    <img src="../../../../assets/img/staking/warning-icon.png" width="42" height="42">
-    <div class="staking-widget-xl-label text-color ml-0 ml-md-2">You must verify your email to stake</div>
+  <div class="d-flex flex-column align-items-center mt-2">
+    <img src="../../../../assets/img/warning-icon2.png" class="warning-icon2"/>
+    <h4>Verify your email</h4>
+    <div class="staking-widget-sm-label text-center">You must verify your email to stake</div>
   </div>
 </div>
 <mat-form-field class="staking-textfield" appearance="outline">
@@ -15,10 +16,10 @@
   <mat-error *ngIf="email.hasError('email')">Minimum value is </mat-error>
   <mat-error *ngIf="email.hasError('disposableDomain')">Email domain restricted</mat-error>
 </mat-form-field>
-<h5 class="text-color my-3">
+<h5 class="my-3">
   By clicking “SUBMIT”,&nbsp;&nbsp; you acknowledge <a routerLink="/terms" target="_blank" class="highlight">this disclaimer</a>
 </h5>
-<div class="mt-2 d-flex justify-content-end align-items-center text-color">
+<div class="my-4 d-flex justify-content-center align-items-center text-color">
   <button mat-raised-button class="stake-btn text-color text-uppercase" data-qa-id="stake"
           [disabled]="email.invalid" (click)="enrol()">
     Submit
