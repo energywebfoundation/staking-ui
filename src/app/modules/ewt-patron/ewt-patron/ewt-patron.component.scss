@@ -1,22 +1,9 @@
 .staking-container {
-  background-color: #130E21;
+  background-color: #ECF0F3;
   background-image: url("../../../../assets/img/staking/staking-gradient-background.png");
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-
-  &::before {
-    content: " ";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background-image: url("../../../../assets/img/staking/staking-lines-background.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
 }
 
 .content-wrapper {
@@ -24,13 +11,28 @@
 }
 
 h2 {
-  font-family: Rajdhani, sans-serif;
-  font-size: 46px !important;
-  font-weight: 600 !important;
+  font-family: 'Bw-Gradual-Medium';
+  color: #492CC7;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 84px;
+
+  span {
+    background: #492CC7;
+    background: linear-gradient(90deg, rgba(73,44,199,1) 0%, rgba(82,227,227,1) 48%, rgba(73,44,199,1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+  }
 
   @media screen and (max-width: 800px) {
     font-size: 38px !important;
     margin-top: 8px;
+    line-height: inherit;
   }
 }
 
@@ -62,12 +64,19 @@ h5 {
 
 
 p {
-  color: #A6A5AC;
-  line-height: 24px;
+  color: #1A1A1A;
+  font-family: 'BW-Gradual-Light';
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 30px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 16px;
+  }
 }
 
 a {
-  color: #A566FF;
+  color: #106CC8;
   letter-spacing: 1.25px;
 
   &:hover {
@@ -81,7 +90,7 @@ a {
   }
 
   .mat-progress-bar-fill::after {
-    background: conic-gradient(from 158.26deg at 50.11% 49.89%, #A566FF 0deg, #8991F5 91.88deg, #71B5ED 144.37deg, #52E3E3 215.62deg, #9EF6F6 286.87deg, #BFFFFF 360deg);
+    background: linear-gradient(272.06deg, #25E8E8 0.21%, #6268F9 49.1%, #9B54FF 98.25%);
   }
 
   .mat-progress-bar .mat-progress-bar-element, .mat-progress-bar .mat-progress-bar-fill::after {
@@ -94,14 +103,29 @@ a {
   }
 }
 
+.atoms-wrapper {
+  bottom: -37px;
+  width: 760px;
+  height: auto;
+
+  @media screen and (max-width: 1440px) {
+      width: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+     visibility: hidden;
+  }
+}
+
 .description {
   position: relative;
 }
 
 .staking-widget-xs-label {
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  color: #2E2E2E;
 }
 
 .staking-widget-sm-label {
@@ -112,27 +136,15 @@ a {
 
 .staking-widget-xl-label {
   font-weight: 600;
-  font-family: Rajdhani, sans-serif;
-  font-size: 24px;
+  font-family: 'BW-Gradual-Medium';
+  font-size: 36px;
+  color: #4B25C7;
+  line-height: 46px;
 }
 
 .staking-card {
-  background: linear-gradient(337deg, #231F32 2%, #050608 98%);
-  border-radius: 64px;
+  background: transparent;
   height: auto;
-
-  &::before {
-    content: " ";
-    width: 800px;
-    height: 100%;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    background-image: url("../../../../assets/img/staking/staking-banner.png");
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    background-size: contain;
-  }
 
   @media screen and (max-width: 1200px) {
     &::before {
@@ -148,9 +160,37 @@ a {
   }
 }
 
+.stake-btn {
+  font-family: Rajdhani, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  border-radius: 16px;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+  border-radius: 50px;
+  color: #4B25C7 !important;
+  padding: 0 0 !important;
+  margin-top: 38px;
+  height: 48px;
+  width: 172px;
+
+  &.mat-raised-button[disabled] {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background-color: #AFF6FC;
+  }
+}
+
 .staking-terms {
-  background: rgba(13, 10, 25, 0.7);
-  border-radius: 32px;
+  background: linear-gradient(353.04deg, #FEFEFE -176.13%, rgba(152, 195, 205, 0.744792) -176.09%, rgba(255, 255, 255, 0) 174.24%);
+  backdrop-filter: blur(200px);
+  border-radius: 144px;
+  padding: 70px 24px 40px 24px;
 }
 
 .staking-widget {
@@ -184,13 +224,10 @@ a {
 
 .role-req {
   position: relative;
-  border: 1px solid transparent;
-  border-radius: 32px;
-  background: linear-gradient(276.95deg, rgba(253, 139, 24, 0.2) -198.51%, rgba(13, 10, 25, 0) 157.75%);
-  background-clip: padding-box;
-  border: 1px solid #FD8B18;
+  background: linear-gradient(353.64deg, rgba(65, 15, 227, 0) -63.58%, rgba(114, 108, 238, 0.08) 3.96%, rgba(165, 206, 249, 0.34001) 39.82%, rgba(191, 255, 255, 0.47) 96.52%);
+  backdrop-filter: blur(200px);
+  border-radius: 144px;
   padding: 10px;
-  backdrop-filter: blur(4px);
 }
 
 .widget-main {
@@ -225,7 +262,7 @@ a {
 
 ul li {
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
 ul {
@@ -235,17 +272,18 @@ ul {
 ul li:before {
   content: '';
   position: absolute;
-  border-right: 2px solid #33CBCB;
-  border-bottom: 2px solid #33CBCB;
-  width: 10px;
-  height: 10px;
+  border-radius: 50px;
+  background-color: #4B25C7;
+  width: 12px;
+  height: 12px;
   top: calc(5% - -10px);
   left: -23px;
   transform: translateY(-50%) rotate(-45deg);
 }
 
 li {
-  color: #FFF;
+  font-family: 'BW-Gradual-Regular';
+  color: #4F4F4F;
   font-size: 16px;
   letter-spacing: 0.30px;
   left: 17px;
@@ -277,7 +315,7 @@ li {
 }
 
 .highlight {
-  color: #32DCDC;
+  color: #63BDFE;
 }
 
 .link-btn {
@@ -290,7 +328,7 @@ li {
   letter-spacing: 1.25px;
   background-color: #A566FF;
   color: #FFFFFF;
-
+  
   &:hover {
     background-color: #ad74ff !important;
     opacity: 1 !important;
@@ -298,11 +336,12 @@ li {
 }
 
 .circle-progress-circle {
-  position: absolute;
-  width: 159px;
-  height: 159px;
+  width: 278px;
+  height: 278px;
   padding:25px;
-  background:yellow;
+  background-image: url(../../../../assets/img/preloader/circle-center.png);
+  background-size: 278px 278px;
+  backdrop-filter: blur(27.8158px);
   border-radius: 100%;
   margin: auto;
   top: 0;
@@ -310,4 +349,54 @@ li {
   left: 0;
   right: 0;
   text-align: center;
+}
+
+.circular-inner {
+  position: absolute;
+  width: 325px;
+  height: 325px;
+  padding:25px;
+  background-image: url(../../../../assets/img/preloader/circle-inner.png);
+  background-size: 325px 325px;
+  border-radius: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.circular-title{
+  margin-top: 70px;
+  position: relative;
+  font-family: Rajdhani;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 13px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #4B25C7;
+  z-index: 12;
+}
+
+.circular-percentage {
+  position: relative;
+  top: -8px;
+  font-family: Rajdhani;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 54px;
+  letter-spacing: 0.18px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #492cc7 40%, #52e3e3 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  z-index: 12;
 }

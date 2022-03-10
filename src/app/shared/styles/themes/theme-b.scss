@@ -5,7 +5,7 @@
 @import '../app/variables';
 
 :root {
-    --loader-color: #a567ff;
+    --loader-color: #FFFFFF;
     --warning-color: #FFA500;
 }
 
@@ -53,7 +53,11 @@ $offsidebar-color:        $body-color;
 /* ========================================================================
    Component: layout
  ========================================================================== */
-body, .wrapper .section-container {
+body {
+
+}
+
+ body, .wrapper .section-container {
     background-color: $content-bg;
 }
 
@@ -461,8 +465,7 @@ tr.mat-row {
 }
 
 .mat-dialog-container {
-    background: #2A2837;
-    color: #FFFFFF;
+    background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3;
 }
 
 .mat-dialog-title {
@@ -483,8 +486,7 @@ tr.mat-row {
 }
 
 .img-thumbnail {
-    background-color: #181424;
-    border: 1px solid #6e75aa;
+    background-color: F6FAFC;
 }
 
 .mat-divider {
@@ -505,12 +507,12 @@ tr.mat-row {
 }
 
 .did-wrapper {
-    background-color: #231f32;
-    color: #a6a5ab;
+    background-color: #F4FDFF;
+    color: #AAAAAA;
 
     &:hover {
         mat-icon {
-            color: #33CBCB;
+            color: #4C2CDF;
         }
     }
 }
@@ -584,12 +586,13 @@ tr.mat-row {
 
 
 .mat-input-element {
-  color: #FFF;
-  caret-color: #FFF;
+  color: #1A1A1A;
+  opacity: 0.8;
   font-size: 14px;
 
   &[disabled] {
-    color: rgba(255, 255, 255, 0.4);
+    color: #000;
+    opacity: 0.4;
   }
 }
 
@@ -599,7 +602,8 @@ tr.mat-row {
 }
 
 .mat-select-value {
-    color: #ffffff;
+    color: #1A1A1A;
+    opacity: 0.8;
 }
 
 .mat-select-arrow {
@@ -607,7 +611,8 @@ tr.mat-row {
 }
 
 mat-label {
-    color: #FFF;
+    color: #1A1A1A;
+    opacity: 0.8;
 }
 
 .mat-filter-sort {
@@ -648,6 +653,10 @@ mat-label {
 .btn-connect {
     background-color: #FFFFFF;
     color: #000000;
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 34px !important;
+    padding: 0 0 !important;
+    height: 48px;
 }
 
 .mat-slide-toggle-thumb {
@@ -814,7 +823,7 @@ mat-label {
 // dashboard
 
 .color-white {
-    color: #FFFFFF;
+    color: #492AC7;
 }
 
 .mat-option:nth-child(odd) {
@@ -1103,15 +1112,26 @@ color: #33CBCB;
 // pop up/message
 
 .swal-overlay {
-    background-color: rgba(66, 59, 90, 0.28);
+    background-color: rgba(38, 33, 51, 0.5);
 }
 
 .swal-modal {
-    background-color: #2A2837;
+    background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3;
+    height: auto !important;
+    box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
+    border-radius: 48px;
+    padding: 32px;
 }
 
 .swal-title {
-    color: #FFF;
+    font-family: 'BW-Gradual-Medium';
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: #000;
+}
+
+.swal-button-container {
+    width: 100%;
 }
 
 .swal-button {
@@ -1154,7 +1174,9 @@ color: #33CBCB;
 }
 
 .swal-text {
-    color: rgba(255, 255, 255, 0.8) !important;
+    font-family: 'BW-Gradual-Regular';
+    color: #000000;
+    font-weight: 400;
 }
 
 .swal-icon--success:after, .swal-icon--success:before {
@@ -1168,20 +1190,33 @@ color: #33CBCB;
 .swal-button--cancel {
     color: #33CBCB;
     border: 1px solid #33CBCB;
-    background-color: transparent;
+    background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+    box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+    border-radius: 50px;
 }
 .swal-button--confirm {
-    background-color: #33CBCB;
-    color: #fff;
-    border: 1px solid #33CBCB;
+    font-family: Rajdhani, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1.25px;
+    background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
+    color: #FFFFFF !important;
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 34px;
+    padding: 0 0 !important;
+    height: 48px;
+    width: 100%;
+    opacity: 1;
+
+    &:hover {
+        border: 0;
+        background-color: #4C2CDF;
+    }
 }
 
 .swal-footer {
-    border-top: 1px solid #363546 !important;
-}
-
-.swal-overlay {
-    background-color: rgba(16, 14, 22, .9) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.16) !important;
 }
 
 // Text Editor
@@ -1246,17 +1281,17 @@ color: #33CBCB;
 // Preloader
 
 .preloader {
-    background-color: #181423;
+    background-color: #ECF0F3;
 }
 
 // Preloader
-.preloader {
-    background-color: $preloader-bg;
-    background-image: -webkit-linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* Chrome 10+, Saf5.1+ */
-    background-image: -moz-linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* FF3.6+ */
-    background-image: -ms-linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* IE10 */
-    background-image: -o-linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* Opera 11.10+ */
-    background-image: linear-gradient(90deg, $preloader-bg 10%, darken($preloader-bg, 5%) 90%); /* W3C */
+.preloader { 
+    background-color: #ECF0F3;
+    background-image: url("../../../../assets/img/staking/staking-gradient-background.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 
 .preloader-progress {

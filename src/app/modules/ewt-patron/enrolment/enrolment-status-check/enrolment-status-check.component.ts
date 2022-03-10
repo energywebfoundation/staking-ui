@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { RoleEnrolmentSelectors, UserClaimSelectors } from '@state';
+import { RoleEnrolmentSelectors } from '@state';
 import { RoleEnrolmentStatus } from '../../../../state/role-enrolment/models/role-enrolment-status.enum';
 
 @Component({
@@ -10,8 +10,6 @@ import { RoleEnrolmentStatus } from '../../../../state/role-enrolment/models/rol
 })
 export class EnrolmentStatusCheckComponent {
   getStatus$ = this.store.select(RoleEnrolmentSelectors.getStatus);
-  emailNotApproved$ = this.store.select(RoleEnrolmentSelectors.emailNotApproved);
-  getAddress$ = this.store.select(UserClaimSelectors.getAddress);
   roleEnrolmentStatus = RoleEnrolmentStatus;
   constructor(private store: Store) { }
 

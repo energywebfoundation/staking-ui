@@ -1,9 +1,28 @@
+h4 {
+  color: #492CC7;
+  font-family: 'BW-Gradual-Medium';
+  font-weight: 700 !important;
+  font-size: 36px !important;
+}
+
+h5 {
+  color: #1A1A1A;
+  font-family: 'BW-Gradual-Regular';
+}
+
+.warning-icon2 {
+  position: relative;
+  width: 140px;
+  height: auto;
+}
+
 :host ::ng-deep {
   .staking-textfield {
     &.mat-form-field-appearance-outline .mat-form-field-outline {
-      background: #21181F !important;
+      background: #FFFFFF !important;
+      box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.08);
+      border-radius: 48px;
       color: transparent;
-      border-radius: 16px;
     }
   }
 
@@ -25,6 +44,8 @@
 
   .staking-textfield .mat-input-element {
     top: 1.3px !important;
+    color: #1A1A1A;
+    opacity: 0.8;
   }
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix {
@@ -32,7 +53,7 @@
   }
 
   .staking-textfield.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: #da883d;
+    color: #4B25C7;
   }
 
   .staking-textfield .mat-form-field-subscript-wrapper {
@@ -44,11 +65,12 @@
   }
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-outline-start {
-    border-radius: 16px 0 0 16px;
+    border-radius: 48px 0 0 48px;
+    width: 50px !important;
   }
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-outline-end {
-    border-radius: 0 16px 16px 0;
+    border-radius: 0 48px 48px 0;
   }
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-flex {
@@ -61,13 +83,15 @@
 }
 
 .staking-widget-sm-label {
-  font-weight: 600;
-  font-family: Rajdhani, sans-serif;
-  font-size: 21px;
+  color: #000000;
+  font-weight: 400;
+  font-family: 'BW-Gradual-Regular';
+  font-size: 18px;
 }
 
+
 .highlight {
-  color: #32DCDC;
+  color: #63BDFE;
 }
 
 .staking-widget-xs-label {
@@ -79,22 +103,23 @@
   font-family: Rajdhani, sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 16px;
   border-radius: 16px;
-  letter-spacing: 1.25px;
-  color: #fff;
-  background-color: #A566FF;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+  border-radius: 50px;
+  color: #4B25C7 !important;
   padding: 0 0 !important;
-  height: 44px;
-  width: 124px;
+  height: 48px;
+  width: 172px;
 
   &.mat-raised-button[disabled] {
-    color: #AF76FF !important;
-    background-color: rgb(165 102 255 / 20%) !important;
+    opacity: 0.5;
   }
 
   &:hover {
-    background-color: #ad74ff;
+    background-color: #AFF6FC;
   }
 }

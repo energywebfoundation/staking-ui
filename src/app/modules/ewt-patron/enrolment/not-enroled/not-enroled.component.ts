@@ -7,7 +7,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { RoleEnrolmentActions } from "@state";
+import { RoleEnrolmentActions, RoleEnrolmentSelectors, UserClaimSelectors } from '@state';
 import domains from "disposable-email-domains";
 
 const emailPattern =

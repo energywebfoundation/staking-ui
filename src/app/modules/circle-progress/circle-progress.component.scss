@@ -1,3 +1,11 @@
 .inner-circle {
-  filter: drop-shadow(0px 0px 6px #9EF6F6);
+  // filter: drop-shadow(8px 4px 20px #9FF7F7);
+}
+
+.outer-circle {
+  filter: box-shadow(0px 0px 6px #000000);
+}
+
+.inner-circle {
+  stroke: transparent;
 }

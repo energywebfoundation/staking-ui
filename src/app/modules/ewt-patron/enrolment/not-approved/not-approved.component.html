@@ -1,8 +1,10 @@
-<p>You have 24 hours to click the confirmation link in your inbox. Return to this page after you confirm your email.
-  If you accidentally entered the wrong email or ran out of time, click “Cancel” and try again.</p>
-<div class="mt-2 d-flex justify-content-end align-items-center text-color">
+<div class="staking-widget-xs-label text-center my-4">You have 24 hours to click the confirmation link in your inbox. Return to this page after you confirm your email.
+  If you accidentally entered the wrong email or ran out of time, click “Cancel” and try again.</div>
+<div class="mt-2 mb-4 d-flex justify-content-center align-items-center text-color">
   <button mat-raised-button class="stake-btn text-color text-uppercase" data-qa-id="stake"
           (click)="cancelRequest()">
     Cancel
   </button>
 </div>
+<app-not-verified-info></app-not-verified-info>
+

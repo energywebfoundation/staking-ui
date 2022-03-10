@@ -5,61 +5,69 @@
   <div class="content-wrapper">
     <div class="row">
       <div class="col-md-12 mb-md-0 mb-lg-0">
-        <div class="staking-card widget-main row p-3 p-md-5 pt-md-4 m-1 m-md-0">
-          <div class="col-md-12">
-            <div class="d-flex flex-row align-items-center">
-              <img src="assets/img/ew-logo.svg" width="61px" height="61px"/>
-              <div class="d-flex flex-column text-color ml-3 pt-3">
-                <h5 class="mb-0 small letter-spacing text-uppercase">
-                  Staking
-                </h5>
-                <h2>Energy Web Token Staking</h2>
+        <div class="staking-card widget-main row">
+          <div class="col-xl-6 d-flex align-items-center">
+            <div class="d-flex flex-column">
+              <div>
+                <h5 class="mb-0 small letter-spacing text-uppercase">Staking</h5>
+                <h2>Stake your <br><span>Energy Web Token</span></h2>
+              </div>
+              <div class="my-3">
+                <p>
+                  This staking pool is operated by Energy Web on behalf of the
+                  Energy Web Community Fund. The Community Fund is dedicated
+                  entirely to enhancing the open-source EW-DOS technology stack and
+                  expanding its real-world use.
+                </p>
+                <p>
+                  Energy Web Token Staking is the first step in deploying the
+                  decentralized Service Level Assurance (dSLA) platform. dSLA is the
+                  decentralized quality assurance and delivery mechanism for Utility
+                  Layer services on the Energy Web tech stack. Staking is a crucial
+                  component of dSLA, providing a decentralized curation and trust
+                  mechanism on the platform.
+                </p>
+                <p>
+                  EWT staking is probably the first blockchain staking mechanism
+                  that allows users to authenticate in a fully decentralized way,
+                  using our Decentralized Identifiers (DID) technology.
+                </p>
+                <!-- <div class="d-flex flex-column justify-content-start mt-3 mx-1">
+                  <a class="mb-2" data-qa-id="learn-stake"
+                    href="https://energy-web-foundation.gitbook.io/energy-web/token/staking" target="_blank">
+                    Learn How to Stake EWT
+                  </a>
+                  <a data-qa-id="learn-dsla"
+                    href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf" target="_blank">
+                    Learn About dSLA
+                  </a>
+                </div> -->
+
+                <button mat-raised-button class="stake-btn text-uppercase">Learn More
+                </button>
               </div>
             </div>
           </div>
-          <div class="col-12 col-xl-8 description">
-            <p>
-              This staking pool is operated by Energy Web on behalf of the
-              Energy Web Community Fund. The Community Fund is dedicated
-              entirely to enhancing the open-source EW-DOS technology stack and
-              expanding its real-world use.
-            </p>
-            <p>
-              Energy Web Token Staking is the first step in deploying the
-              decentralized Service Level Assurance (dSLA) platform. dSLA is the
-              decentralized quality assurance and delivery mechanism for Utility
-              Layer services on the Energy Web tech stack. Staking is a crucial
-              component of dSLA, providing a decentralized curation and trust
-              mechanism on the platform.
-            </p>
-            <p>
-              EWT staking is probably the first blockchain staking mechanism
-              that allows users to authenticate in a fully decentralized way,
-              using our Decentralized Identifiers (DID) technology.
-            </p>
-            <div class="d-flex flex-column justify-content-start mt-3 mx-1">
-              <a class="mb-2"
-                  data-qa-id="learn-stake"
-                 href="https://energy-web-foundation.gitbook.io/energy-web/token/staking"
-                 target="_blank">
-                Learn How to Stake EWT
-              </a>
-              <a data-qa-id="learn-dsla"
-                 href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf"
-                 target="_blank">
-                Learn About dSLA
-              </a>
+          <div class="col-xl-6 d-flex align-items-center justify-content-center">
+            <img class="position-relative atoms-wrapper" style="z-index: 14;" src="assets/img/bg-atoms.png"/>
+            <div class="d-flex align-items-center position-absolute" style="height: 400px; z-index: 10;">
+              <div class="circle-progress-circle position-absolute" style="z-index: 12;">
+                <div class="circular-title">STAKING POOL</div>
+                <div class="circular-percentage">{{getTotalStakedPercent$ | async | lastDigits}}%</div>
+              </div>
+              <div class="position-relative" style="z-index: 13;">
+                <circle-progress [innerStrokeWidth]="49"
+                                 [radius]="135"
+                                 [showTitle]="false"
+                                 [showSubtitle]="false"
+                                 [showUnits]="false"
+                                 [space]="-46"
+                                 [outerStrokeWidth]="40"
+                                 [percent]="getTotalStakedPercent$ | async">
+                </circle-progress>
+              </div>
+              <div class="circular-inner"></div>
             </div>
-          </div>
-          <div class="position-relative " style="height: 230px">
-            <div class="circle-progress-circle">
-              Example how to create this element with hardcoded progress value
-            </div>
-            <circle-progress [innerStrokeWidth]="20"
-                             [space]="-20"
-                             [outerStrokeWidth]="20"
-                             [percent]="25">
-            </circle-progress>
           </div>
         </div>
       </div>
@@ -70,50 +78,36 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-4 mt-4 mt-md-4">
+      <div class="col-xl-4 mt-4 mt-xl-4">
         <!-- For the approved sync please change class role-req to staking-terms -->
-        <div
-            [ngClass]="{ 'role-req': (isPatronSynced | async) === false }"
-            class="staking-terms text-color p-4"
-            *ngIf="isStakingVerificationEnabled"
-        >
+        <div [ngClass]="{ 'role-req': (isPatronSynced | async) === false }" class="staking-terms text-color p-4"
+             *ngIf="isStakingVerificationEnabled">
           <app-enrolment-status-check></app-enrolment-status-check>
         </div>
-        <div class="staking-widget widget-inner mt-4 p-4">
+        <!-- <div class="staking-widget widget-inner mt-4 p-4">
           <div class="staking-widget-xs-label text-color mb-2">
             Staking pool stats
           </div>
           <h3 class="mb-3 text-color">
-            <ng-container *ngIf="getTotalStaked$ | async as totalStaked"
-            >{{ totalStaked | lastDigits }}
+            <ng-container *ngIf="getTotalStaked$ | async as totalStaked">{{ totalStaked | lastDigits }}
             </ng-container>
             <span class="staking-currency">EWT</span>
           </h3>
-          <circle-progress [radius]="30"
-                           [innerStrokeWidth]="10"
-                           [space]="-10"
-                           [outerStrokeWidth]="10"
-                           [showSubtitle]="false"
-                           [percent]="getTotalStakedPercent$ | async">
-          </circle-progress>
+          <mat-progress-bar mode="determinate" [value]="getTotalStakedPercent$ | async"></mat-progress-bar>
           <div class="limit-text color-grey mt-2">
             {{ getTotalStakedPercent$ | async | lastDigits }}% of {{ hardCap$ | async }} EWT
             Staking Pool limit
           </div>
-        </div>
-        <div class="staking-terms p-4 mt-4">
-          <div class="d-flex flex-row align-items-center ml-0 ml-md-2 mt-2">
-            <img
-                src="../../../../assets/img/staking/terms-condition-image.png"
-                width="65"
-                height="64"
-            />
-            <div class="staking-widget-xl-label text-color ml-0 ml-md-2">
-              Terms of Participation
+        </div> -->
+        <div class="staking-terms mt-4">
+          <div class="d-flex flex-row align-items-center mx-2 mx-md-4 mt-2 mb-5">
+            <img src="../../../../assets/img/staking/terms-condition-image.png" width="55" height="auto"/>
+            <div class="staking-widget-xl-label text-color ml-3 ml-md-3">
+              Terms of participation
             </div>
           </div>
           <div>
-            <ul class="staking-list d-flex flex-column mt-4 mr-3 pl-2">
+            <ul class="staking-list d-flex flex-column mt-4 mr-3 mx-2 pl-4 pr-3">
               <li>Staked EWT can be withdrawn at any time</li>
               <li>
                 Hourly rewards will be compounded (added to the total stake and

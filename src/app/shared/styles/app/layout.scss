@@ -43,7 +43,7 @@ html,
 body {
     // overflow-x: hidden;
     height: 100%;
-    background-color: $content-bg;
+    background-color: #E5E5E5;
 }
 
 // Main wrapper
@@ -267,7 +267,7 @@ body {
         }
 
         h6 {
-            font-size: 10px !important; 
+            font-size: 10px !important;
         }
        }
     }
@@ -311,7 +311,7 @@ body {
 
 .h-responsive {
     height: 100%;
-}  
+}
 
 // Toggle and collapsed behavior overrides
 @include media-breakpoint-down(sm) {
@@ -337,7 +337,7 @@ body {
 
     .h-responsive {
         height: 100vh;
-    }  
+    }
 
     .csstransforms3d {
 
@@ -500,7 +500,7 @@ body {
                 margin-left: $aside-wd-collapsed-text;
             }
         }
-    }  
+    }
 }
 
 // end collapsed variation with text
@@ -621,11 +621,11 @@ _:-ms-lang(x),
     }
 }
 
-// Register Background 
+// Register Background
 
 .position-brand {
-    position: fixed; 
-    top: 0; 
+    position: fixed;
+    top: 0;
     z-index: 3;
 
     // img {
@@ -635,11 +635,11 @@ _:-ms-lang(x),
 
     // .welcome-header-logo {
     //     height: 44px;
-    //     width: auto; 
+    //     width: auto;
     // }
 }
 
-@media (max-width: 991px) { 
+@media (max-width: 991px) {
     .position-brand {
         position: fixed;
         width: 100%;
@@ -675,13 +675,13 @@ _:-ms-lang(x),
         }
 
         h6 {
-            font-size: 10px !important; 
+            font-size: 10px !important;
         }
        }
     }
 }
 
-@media (max-width: 700px) { 
+@media (max-width: 700px) {
     .position-brand {
         position: fixed;
         width: 100%;
@@ -771,12 +771,12 @@ _:-ms-lang(x),
 }
 
 .welcome-footer {
-    background-color: transparent; 
+    background-color: transparent;
     position: fixed;
     bottom: 0;
-    height: 56px; 
+    height: 56px;
     width: 100%;
-    bottom: 33px; 
+    bottom: 33px;
     z-index: 2;
     margin: 0 24px;
 }

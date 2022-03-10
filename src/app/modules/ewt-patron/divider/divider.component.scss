@@ -7,7 +7,9 @@
 .divider {
   width: 100%;
   height: 2px;
-  border-radius: 5px;
+  background: #B9DEF3;
+  opacity: 0.4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  background: linear-gradient(272.06deg, #25E8E8 0.21%, #6268F9 49.1%, #9B54FF 98.25%);
+
 }
