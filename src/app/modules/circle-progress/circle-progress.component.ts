@@ -77,9 +77,9 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
   maxPercent = 1000;
   renderOnClick = true;
   units = '%';
-  unitsFontSize = '10';
-  unitsFontWeight = 'normal';
-  unitsColor = '#444444';
+  unitsFontSize = '18';
+  unitsFontWeight = 'bold';
+  unitsColor = '#4B25C7';
   outerStrokeGradient = true;
   outerStrokeWidth = 8;
   outerStrokeColor = '#78C000';
@@ -90,8 +90,8 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
   titleFormat = undefined;
   title: string | Array<String> = 'auto';
   titleColor = '#4B25C7';
-  titleFontSize = '20';
-  titleFontWeight = 'normal';
+  titleFontSize = '18';
+  titleFontWeight = 'bold';
   subtitleFormat = undefined;
   subtitle: string | Array<String> = 'progress';
   subtitleColor = '#4B25C7';

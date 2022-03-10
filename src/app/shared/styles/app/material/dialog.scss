@@ -50,10 +50,9 @@ mat-datetimepicker-content {
 }
 
 .connect-to-wallet .mat-dialog-container {
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
-    border-radius: 5px;
+    background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3;
+    box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
+    border-radius: 48px;
 
     .mat-dialog-title {
         border-bottom: none !important;
@@ -335,7 +334,11 @@ mat-checkbox {
 }
 
 .backdrop-hide-content {
-    background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
+    background-color: #ECF0F3;
+    // background-image: url('../../../../assets/img/staking/staking-gradient-background.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 // bootstrap modal {

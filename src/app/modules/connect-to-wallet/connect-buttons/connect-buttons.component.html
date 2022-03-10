@@ -18,7 +18,7 @@
           data-qa-id="metamask"
           [disabled]="metamaskDisabled"
           class="btn btn-connect btn-connect-metamask w-100" type="submit">
-    <img width="48px" height="40px" class="float-left pt-1 ml-1"
+    <img width="48px" height="40px" class="float-left pt-1 pl-3 ml-1"
          src="assets/img/icons/metamask-logo.svg"/>
     USE METAMASK
   </button>
@@ -28,7 +28,7 @@
     <a class="switch-network" (click)="importMetamaskConf()" target="_blank">Import configurations</a>
   </div>
   <ng-template #cacheServerInfo>
-    <div class="pr-1 mt-3 info">
+    <div class="mt-3 text-center info">
       You will be asked to sign a message to authenticate your wallet with the Identity and Access Management Cache
       Server. This allows the Cache Server to check if your wallet is authorized to stake.
     </div>

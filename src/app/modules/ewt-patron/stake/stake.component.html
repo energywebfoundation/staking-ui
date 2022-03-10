@@ -1,11 +1,11 @@
-<!--<div>
+<!-- <div>
   <button (click)="openConfiguration()">Open Congratulations</button>
   <button (click)="withdraw()">Open Withdraw</button>
   <button (click)="confirmDialog()">Confirm dialog</button>
   <button (click)="swalDialog()">Swal dialog</button>
-</div>-->
+</div> -->
 <div class="d-flex staking-widget flex-column">
-  <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-5 mt-md-0">
+  <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-2 mb-lg-4 px-0 px-lg-4 mt-2 mt-lg-5">
     <h3>STAKE</h3>
     <div class="d-flex flex-row align-items-center">
       <div class="text-right">
@@ -21,7 +21,7 @@
     </div>
   </div>
   <app-divider></app-divider>
-  <div class="mt-5 px-0 px-lg-4">
+  <div class="mt-2 mt-lg-5 px-0 px-lg-4">
     <div>
       <ng-container *ngIf="getContributorLimit$ | async as contributorLimit">
         <ng-container *ngIf="stakingPoolEnds | async as poolEnds">
@@ -93,9 +93,13 @@
         </div>
         <div class="col-lg-6 d-flex justify-content-start align-items-center flex-column mt-5">
           <h5 d-flex align-items-start>STAKING POOL</h5>
-          <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"
-            [showSubtitle]="false" [percent]="calculatedPercent$ | async">
+          <div class="circular-text position-relative" style="z-index: 13;">
+          <circle-progress [radius]="60" [innerStrokeWidth]="20" [space]="-20" [outerStrokeWidth]="20"
+          [showSubtitle]="false" [percent]="calculatedPercent$ | async">
           </circle-progress>
+          </div>
+          <div class="circular-inner"></div>
+
         </div>
       </div>
       <div class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center my-4">
@@ -121,7 +125,7 @@
   </div>
   <div>
     <app-divider></app-divider>
-    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-5">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-3 mt-lg-5">
       <h3>UNSTAKE</h3>
       <div class="d-flex flex-row align-items-center">
         <div class="text-right">
@@ -130,7 +134,7 @@
             <ng-container *ngIf="earnedReward$ | async as earnedReward">
               {{ earnedReward | lastDigits: 6 }}
             </ng-container>
-            <span class="staking-currency ml-2">EWT</span>
+            <span class="staking-currency">EWT</span>
           </h4>
         </div>
         <img class="ml-3" src="assets/img/ew-logo.png" width="61px" height="61px" />
@@ -139,26 +143,26 @@
 
     <div class="d-flex justify-content-between align-items-center text-color mt-3 px-0 px-lg-4">
       <div class="d-flex flex-row justify-content-between align-items-center">
-        <div>
-          <div class="staking-widget-xs-label text-color mb-1 mr-4">
+        <div class="currently-staking d-flex flex-column justify-content-end align-items-end align-items-lg-start">
+          <div class="staking-widget-xs-label text-color mb-1 mr-0 mr-lg-4">
             Currently staking
           </div>
           <h4 class="mb-0" data-qa-id="current-stake">
             <ng-container *ngIf="stakeAmount$ | async as stakeAmount">
               {{ stakeAmount | lastDigits }}
             </ng-container>
-            <span class="staking-currency ml-2">EWT</span>
+            <span class="staking-currency">EWT</span>
           </h4>
         </div>
-         <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"
+        <div class="circular-text position-relative" style="z-index: 13;">
+         <circle-progress [radius]="40" [innerStrokeWidth]="15" [space]="-15" [outerStrokeWidth]="15"
           [showSubtitle]="false" [percent]="calculatedPercent$ | async">
         </circle-progress>
-<!--        <circle-progress [radius]="30" [innerStrokeWidth]="10" [space]="-10" [outerStrokeWidth]="10"-->
-<!--          [showSubtitle]="false" [percent]="60">-->
-<!--        </circle-progress>-->
+        </div>
+        <div class="circular-inner-3"></div>
       </div>
     </div>
-      <div class="d-flex justify-content-between align-items-center px-0 px-lg-4">
+      <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center px-0 px-lg-4">
         <div class="color-grey">
           {{ calculatedPercent$ | async }}% of
           {{ getContributorLimit$ | async }} EWT Personal Limit

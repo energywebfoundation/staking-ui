@@ -1,3 +1,8 @@
+.container {
+  background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3;
+  padding: 32px;
+}
+
 .text-color {
   color: #FFFFFF;
 }
@@ -57,4 +62,12 @@ h3 {
   font-size: 24px !important;
   font-weight: 600 !important;
   color: #000;
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    height: auto !important;
+    box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
+    border-radius: 48px;
+  }
 }

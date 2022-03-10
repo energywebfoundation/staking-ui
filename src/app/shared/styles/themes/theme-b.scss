@@ -5,7 +5,7 @@
 @import '../app/variables';
 
 :root {
-    --loader-color: #a567ff;
+    --loader-color: #FFFFFF;
     --warning-color: #FFA500;
 }
 
@@ -53,7 +53,11 @@ $offsidebar-color:        $body-color;
 /* ========================================================================
    Component: layout
  ========================================================================== */
-body, .wrapper .section-container {
+body {
+
+}
+
+ body, .wrapper .section-container {
     background-color: $content-bg;
 }
 
@@ -649,6 +653,10 @@ mat-label {
 .btn-connect {
     background-color: #FFFFFF;
     color: #000000;
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 34px !important;
+    padding: 0 0 !important;
+    height: 48px;
 }
 
 .mat-slide-toggle-thumb {
@@ -1104,11 +1112,15 @@ color: #33CBCB;
 // pop up/message
 
 .swal-overlay {
-    background-color: rgba(66, 59, 90, 0.28);
+    background-color: rgba(38, 33, 51, 0.5);
 }
 
 .swal-modal {
     background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3;
+    height: auto !important;
+    box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
+    border-radius: 48px;
+    padding: 32px;
 }
 
 .swal-title {
@@ -1116,6 +1128,10 @@ color: #33CBCB;
     font-size: 24px !important;
     font-weight: 600 !important;
     color: #000;
+}
+
+.swal-button-container {
+    width: 100%;
 }
 
 .swal-button {
@@ -1188,20 +1204,19 @@ color: #33CBCB;
     color: #FFFFFF !important;
     box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
     border-radius: 34px;
+    padding: 0 0 !important;
     height: 48px;
     width: 100%;
     opacity: 1;
+
     &:hover {
+        border: 0;
         background-color: #4C2CDF;
     }
 }
 
 .swal-footer {
-    border-top: 1px solid #B9DEF3 !important;
-}
-
-.swal-overlay {
-    background-color: rgba(16, 14, 22, .9) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.16) !important;
 }
 
 // Text Editor
@@ -1266,17 +1281,17 @@ color: #33CBCB;
 // Preloader
 
 .preloader {
-    background-color: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);;
+    background-color: #ECF0F3;
 }
 
 // Preloader
-.preloader {
-    background-color: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
-    background-image: -webkit-linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* Chrome 10+, Saf5.1+ */
-    background-image: -moz-linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* FF3.6+ */
-    background-image: -ms-linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* IE10 */
-    background-image: -o-linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* Opera 11.10+ */
-    background-image: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%); /* W3C */
+.preloader { 
+    background-color: #ECF0F3;
+    background-image: url("../../../../assets/img/staking/staking-gradient-background.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 
 .preloader-progress {
