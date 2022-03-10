@@ -124,13 +124,13 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
              [attr.viewBox]="svg.viewBox" preserveAspectRatio="xMidYMid meet"
              [attr.height]="svg.height" [attr.width]="svg.width" (click)="emitClickEvent($event)" [attr.class]="options.class">
             <defs>
-                <linearGradient *ngIf="options.outerStrokeGradient" [attr.id]="svg.outerLinearGradient.id">
+                <linearGradient *ngIf="options.outerStrokeGradient" [attr.id]="svg.outerLinearGradient.id" gradientTransform="rotate(-90 0.45 0.45)">
                   <stop offset="-0.03%" stop-color="#4C26C7" [attr.stop-opacity]="1"/>
                   <stop offset="46.66%" stop-color="#70B8F2" [attr.stop-opacity]="1"/>
                   <stop offset="69.91%" stop-color="#6DE9E9" [attr.stop-opacity]="1"/>
                   <stop offset="105.94%" stop-color="#BFFFFF" [attr.stop-opacity]="1"/>
                 </linearGradient>
-                <radialGradient *ngIf="options.backgroundGradient" [attr.id]="svg.radialGradient.id">
+                <radialGradient *ngIf="options.backgroundGradient" [attr.id]="svg.radialGradient.id" gradientTransform="rotate(-90 0.4 0.4)">
                     <stop offset="-0.03%" stop-color="#4C26C7" [attr.stop-opacity]="1"/>
                     <stop offset="46.66%" stop-color="#70B8F2" [attr.stop-opacity]="1"/>
                     <stop offset="69.91%" stop-color="#6DE9E9" [attr.stop-opacity]="1"/>
