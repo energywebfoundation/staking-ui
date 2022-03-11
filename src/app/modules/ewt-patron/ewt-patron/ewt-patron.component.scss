@@ -369,7 +369,7 @@ li {
 }
 
 .circular-title{
-  margin-top: 70px;
+  margin-top: 60px;
   position: relative;
   font-family: Rajdhani;
   font-style: normal;
@@ -384,7 +384,7 @@ li {
 
 .circular-percentage {
   position: relative;
-  top: -8px;
+  top: -7px;
   font-family: Rajdhani;
   font-style: normal;
   font-weight: bold;
@@ -399,4 +399,56 @@ li {
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
   z-index: 12;
+}
+
+.circular-desc{
+  margin-top: -17px;
+  font-family: Rajdhani;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.8px;
+  color: #4C83D1;
+  z-index: 12;
+}
+
+.dot {
+  height: 9px;
+  width: 9px;
+  background-color: #E2EBFF;
+  box-shadow: inset 0px 1.97286px 1.97286px #B5BECE;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
+}
+
+.dot-filled-wrapper {
+  margin-top: -21px;
+}
+.dot-filled {
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
+}
+
+.dot-filled.dot-filled-1 {
+  background: #5E44D4;
+}
+.dot-filled.dot-filled-2 {
+  background: #8D98FA;
+}
+.dot-filled.dot-filled-3 {
+  background: #6BC4F5;
+}
+.dot-filled.dot-filled-4 {
+  background: #8D98FA;
+}
+.dot-filled.dot-filled-5 {
+  background: #59F1F1;
+}
+.dot-filled.dot-filled-6 {
+  background: #ACFBFB;
 }
