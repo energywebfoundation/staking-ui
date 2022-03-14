@@ -11,7 +11,7 @@ const env: Partial<typeof commonEnv> = {
   cacheServerUrl: "https://identitycache.energyweb.org/v1",
   natsServerUrl: "https://identityevents.energyweb.org/",
   kmsServerUrl: "https://kms.energyweb.org/connect/new",
-  stakingPoolFactoryAddress: "0x3bb7D70fB32069C0987c6a0494634f48ebcE236c",
+  stakingPoolFactoryAddress: "0xc11aa8A6Ca3de02c7eB106Fb8e85cee051c7B2Fe",
   checkStakingVerification: true,
   showAzureLoginOption: false,
   isWalletConnectEnabled: false,
