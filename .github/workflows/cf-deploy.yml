@@ -2,7 +2,7 @@ name: Deploy to bucket
 
 on:
   push:
-    branches: ['develop']
+    branches: ['develop', 'release']
 jobs:
   cancel-previous:
     name: 'Cancel Previous Runs'
@@ -23,6 +23,10 @@ jobs:
             echo "::set-output name=env_name::dev"
             echo "::set-output name=env_file::src/environments/environment.dev.ts"
             echo "::set-output name=build_script::npm run build"
+          elif [ "${{ github.ref }}" = "refs/heads/release" ]; then
+            echo "::set-output name=env_name::prod"
+            echo "::set-output name=env_file::src/environments/environment.prod.ts"
+            echo "::set-output name=build_script::npm run build-prod"
           else
             echo "Branch ${{ github.ref }} is not configured for deployment"
           fi
