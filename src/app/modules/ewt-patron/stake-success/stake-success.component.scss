@@ -1,12 +1,13 @@
 .stake-success-container {
-  background: #13111B;
+  background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3;
   padding: 32px;
 }
 
 h3 {
-  font-family: Rajdhani, sans-serif;
-  font-size: 32px !important;
+  font-family: 'BW-Gradual-Medium'; 
+  font-size: 24px !important;
   font-weight: 600 !important;
+  color: #000;
 }
 
 .text-color {
@@ -14,10 +15,11 @@ h3 {
 }
 
 p {
-  font-size: 16px;
+  font-family: 'BW-Gradual-Regular';
+  font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.44px;
-  color: #A6A5AC;
+  color: #000000;
   font-weight: 400;
 }
 
@@ -26,16 +28,22 @@ p {
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
-  line-height: 16px;
-  border-radius: 16px;
   letter-spacing: 1.25px;
-  background-color: #A566FF;
+  background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
+  color: #FFFFFF !important;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 34px;
   padding: 0 0 !important;
-  height: 44px;
-  width: 124px;
+  height: 48px;
+  width: 100%;
+  opacity: 1;
+
+  &.mat-raised-button[disabled] {
+    opacity: 0.5;
+  }
 
   &:hover {
-    background-color: #ad74ff;
+    background-color: #4C2CDF;
   }
 }
 
@@ -63,8 +71,8 @@ p {
 ::ng-deep {
   .mat-dialog-container {
     height: auto !important;
-    box-shadow: 0px 0px 4px #a2a1ff, 0px 4px 20px rgb(193 192 255 / 25%);
-    border-radius: 24px;
+    box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
+    border-radius: 48px;
   }
 }
 

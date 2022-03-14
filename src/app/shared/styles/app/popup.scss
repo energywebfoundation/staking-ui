@@ -1,7 +1,9 @@
 
 .swal-title {
+    font-family: "BW-Gradual-Medium";
     font-size: 24px !important;
-    font-family: "Rajdhani", sans-serif;
+    font-weight: 600 !important;
+    color: #000;
 }
 
 .swal-button {
@@ -59,7 +61,7 @@
     justify-content: center;
     text-align: right;
     padding-top: 0;
-    margin: 20px 20px 5px 20px;
-    padding: 13px 16px;
+    margin: 20px 0 5px 0;
+    padding: 25px 0 10px 0;
     flex-wrap: wrap;
 }

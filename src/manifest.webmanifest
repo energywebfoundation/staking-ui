@@ -1,8 +1,8 @@
 {
   "name": "Staking",
   "short_name": "Staking",
-  "theme_color": "#A566FF",
-  "background_color": "#181524",
+  "theme_color": "#E5E5E5;",
+  "background_color": "#E5E5E5;",
   "display": "standalone",
   "start_url": ".",
   "icons": [

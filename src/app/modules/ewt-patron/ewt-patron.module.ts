@@ -30,6 +30,9 @@ import { ApprovedSyncedComponent } from './enrolment/approved-synced/approved-sy
 import { ConfirmationDialogComponent } from './enrolment/confirmation-dialog/confirmation-dialog.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { HourlyToDailyRewardModule } from '../../shared/pipes/hourly-to-daily-reward/hourly-to-daily-reward.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CircleProgressModule } from '../circle-progress/circle-progress.module';
+import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-verified-info.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,8 @@ import { HourlyToDailyRewardModule } from '../../shared/pipes/hourly-to-daily-re
     NotSyncedComponent,
     ApprovedSyncedComponent,
     ConfirmationDialogComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    NotVerifiedInfoComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +69,9 @@ import { HourlyToDailyRewardModule } from '../../shared/pipes/hourly-to-daily-re
     LayoutModule,
     ConnectToWalletModule,
     UserMenuModule,
-    HourlyToDailyRewardModule
+    HourlyToDailyRewardModule,
+    MatProgressSpinnerModule,
+    CircleProgressModule.forRoot()
   ],
 
 })

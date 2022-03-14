@@ -5,29 +5,13 @@
 
 .staking-widget {
   position: relative;
-  border: 1px solid transparent;
-  border-radius: 32px;
-  background: linear-gradient(320.92deg, rgba(37, 232, 232, 0.1) -1.22%, rgba(98, 104, 249, 0.1) 47.93%, rgba(155, 84, 255, 0.1) 95.01%);
+  border-radius: 144px;
+  background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%);
   background-clip: padding-box;
-  padding: 10px;
-  backdrop-filter: blur(4px);
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 32px;
-    padding: 1px;
-    background: linear-gradient(314.24deg, #25E8E8 1.72%, rgba(83, 134, 245, 0.16) 33.86%, rgba(98, 104, 249, 0.16) 62.17%, #9B54FF 97.07%);
-    mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: destination-out;
+  padding: 100px;
+  
+  @media screen and (max-width: 800px) {
+    padding: 20px;
   }
 }
 
@@ -42,29 +26,76 @@ h2 {
 }
 
 h3 {
-  font-weight: 600 !important;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 700 !important;
   letter-spacing: 0.25px !important;
-  font-size: 34px !important;
+  font-size: 64px !important;
+  color: #4B25C7;
 
   .staking-currency {
     font-size: 16px !important;
-    color: #A6A5AC;
+    color: #4B25C7;
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: 36px !important;
+    margin-top: 8px;
+    line-height: inherit;
+  }
+}
+
+h4 {
+  font-family: Rajdhani, sans-serif;
+  font-size: 42px !important;
+  color: #4B25C7;
+  font-weight: 700;
+  
+  span {
+    font-size: 18px;
+    font-weight: 500;
+
+    @media screen and (max-width: 800px) {
+      font-size: 14px !important;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: 30px !important;
   }
 }
 
 h5 {
+  font-family: Rajdhani, sans-serif;
+  font-size: 21px !important;
   letter-spacing: 1.25px !important;
   font-weight: 700 !important;
+  color: #4B25C7;
+}
+
+h6 {
+  font-family: 'Sequel-Sans' !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #4B25C7;
 }
 
 .text-color {
-  color: #FFFFFF;
+  font-family: 'Sequel-Sans';
+  font-weight: bold;
+  color: #4B25C7;
+}
+
+.circular-text {
+  font-family: Rajdhani, sans-serif;
 }
 
 .staking-widget-xs-label {
-  font-size: 12px;
-  letter-spacing: 1.5px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 2px;
   text-transform: uppercase;
+  color: #2E2E2E;
 }
 
 .limit-text {
@@ -82,9 +113,10 @@ h5 {
 ::ng-deep {
   .staking-textfield {
     &.mat-form-field-appearance-outline .mat-form-field-outline {
-      background: #231F32 !important;
+      background: #FFFFFF !important;
+      box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.08);
+      border-radius: 48px;
       color: transparent;
-      border-radius: 16px;
     }
   }
 
@@ -113,7 +145,7 @@ h5 {
   }
 
   .staking-textfield.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: #33CBCB;
+    color: #4B25C7;
   }
 
   .staking-textfield .mat-form-field-subscript-wrapper {
@@ -125,11 +157,12 @@ h5 {
   }
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-outline-start {
-    border-radius: 16px 0 0 16px;
+    border-radius: 48px 0 0 48px;
+    width: 50px !important;
   }
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-outline-end {
-    border-radius: 0 16px 16px 0;
+    border-radius: 0 48px 48px 0;
   }
 
   .staking-textfield.mat-form-field-appearance-outline .mat-form-field-flex {
@@ -143,7 +176,8 @@ h5 {
 
 
 .amount-input {
-  color: #FFFFFF;
+  color: #1A1A1A;
+  font-family: "Sequel Sans", sans-serif;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -176,8 +210,15 @@ h5 {
 }
 
 .payment-details {
-  font-family: Rajdhani, sans-serif;
-  font-weight: 600;
+  border-bottom: 1px solid #B3C6D2;
+}
+
+.currently-staking {
+  position: initial;
+  @media screen and (max-width: 1024px) {
+    position: absolute;
+    right: 44px;
+  }
 }
 
 .stake-btn {
@@ -185,26 +226,53 @@ h5 {
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
-  line-height: 16px;
-  border-radius: 16px;
   letter-spacing: 1.25px;
-  background-color: #A566FF;
+  background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
+  color: #FFFFFF !important;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 34px;
   padding: 0 0 !important;
-  height: 44px;
-  width: 124px;
+  height: 48px;
+  width: 180px;
+  opacity: 1;
 
   &.mat-raised-button[disabled] {
-    color: #AF76FF !important;
-    background-color: rgb(165 102 255 / 20%) !important;
+    opacity: 0.5;
   }
 
   &:hover {
-    background-color: #ad74ff;
+    background-color: #4C2CDF;
+  }
+}
+
+.unstake-btn {
+  font-family: Rajdhani, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  border-radius: 16px;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+  border-radius: 50px;
+  color: #4B25C7 !important;
+  padding: 0 0 !important;
+  height: 48px;
+  width: 172px;
+
+  &.mat-raised-button[disabled] {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background-color: #AFF6FC;
   }
 }
 
 .color-grey {
-  color: #A6A5AC;
+  font-family: "BW-Gradual-Regular";
+  color: #474747;
 }
 
 .color-red {
@@ -212,10 +280,43 @@ h5 {
 }
 
 .highlight {
-  color: #32DCDC;
+  color: #63BDFE;
 }
 
 mat-progress-bar {
   border-radius: 5px;
 }
 
+.circular-inner {
+  position: absolute;
+  width: 155px;
+  height: 155px;
+  padding:25px;
+  background-image: url(../../../../assets/img/preloader/circle-inner-sm.png);
+  background-size: 155px 155px;
+  border-radius: 100%;
+  margin: auto;
+  top: 25px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.circular-inner-3 {
+  position: relative;
+  width: 105px;
+  height: 105px;
+  padding: 25px;
+  background-image: url(../../../../assets/img/preloader/circle-inner-sm.png);
+  background-size: 105px 105px;
+  border-radius: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: -113px;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+}
