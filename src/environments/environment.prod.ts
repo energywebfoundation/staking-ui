@@ -1,4 +1,4 @@
-import { commonEnv } from "./environment.common";
+import { commonEnv } from './environment.common';
 
 const env: Partial<typeof commonEnv> = {
   production: true,
@@ -24,5 +24,4 @@ const env: Partial<typeof commonEnv> = {
   blockExlorerUrl: "https://explorer.energyweb.org",
 };
 
-export const environment = {...commonEnv, ...env};
-
+export const environment = { ...commonEnv, ...env };
