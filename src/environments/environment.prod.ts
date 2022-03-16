@@ -1,4 +1,4 @@
-import { commonEnv } from "./environment.common";
+import { commonEnv } from './environment.common';
 
 const env: Partial<typeof commonEnv> = {
   production: true,
@@ -11,7 +11,7 @@ const env: Partial<typeof commonEnv> = {
   cacheServerUrl: "https://identitycache.energyweb.org/v1",
   natsServerUrl: "https://identityevents.energyweb.org/",
   kmsServerUrl: "https://kms.energyweb.org/connect/new",
-  stakingPoolFactoryAddress: "0xD8DD92999572D1Dd3F3E215d3768430ce557F260",
+  stakingPoolFactoryAddress: "0xc11aa8A6Ca3de02c7eB106Fb8e85cee051c7B2Fe",
   checkStakingVerification: true,
   showAzureLoginOption: false,
   isWalletConnectEnabled: false,
@@ -24,5 +24,4 @@ const env: Partial<typeof commonEnv> = {
   blockExlorerUrl: "https://explorer.energyweb.org",
 };
 
-export const environment = {...commonEnv, ...env};
-
+export const environment = { ...commonEnv, ...env };
