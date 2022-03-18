@@ -6,7 +6,7 @@ const env: Partial<typeof commonEnv> = {
   featureVisible: true,
   application: true,
   theme: "default",
-  rpcUrl: "https://rpc.energyweb.org/",
+  rpcUrl: "https://consortia-rpc.energyweb.org/",
   chainId: 246,
   cacheServerUrl: "https://identitycache.energyweb.org/v1",
   natsServerUrl: "https://identityevents.energyweb.org/",
@@ -18,7 +18,7 @@ const env: Partial<typeof commonEnv> = {
   patronRole: "email.roles.verification.apps.energyweb.auth.ewc",
   claimManagerAddress: "0x23b026631A6f265d17CFee8aa6ced1B244f3920C",
 
-  networkName: "EWC",
+  networkName: "EWC Consortia RPC",
   currencyName: "EWT",
   currencySymbol: "EWT",
   blockExlorerUrl: "https://explorer.energyweb.org",
