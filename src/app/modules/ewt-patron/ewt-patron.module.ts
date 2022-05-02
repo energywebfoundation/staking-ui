@@ -33,6 +33,7 @@ import { HourlyToDailyRewardModule } from '../../shared/pipes/hourly-to-daily-re
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CircleProgressModule } from '../circle-progress/circle-progress.module';
 import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-verified-info.component';
+import { SnapshotsComponent } from './snapshots/snapshots.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-veri
     ApprovedSyncedComponent,
     ConfirmationDialogComponent,
     ProgressBarComponent,
-    NotVerifiedInfoComponent
+    NotVerifiedInfoComponent,
+    SnapshotsComponent,
   ],
   imports: [
     CommonModule,
