@@ -1,41 +1,32 @@
-
 .dot-filled-wrapper {
   margin-top: -21px;
 }
 
 :host {
-  height: 9px;
-  width: 9px;
-  background-color: #E2EBFF;
-  box-shadow: inset 0px 1.97286px 1.97286px #B5BECE;
+  height: 20px;
+  width: 20px;
+  background-color: #e2ebff;
+  box-shadow: inset 0px 1.97286px 1.97286px #b5bece;
   border-radius: 50%;
   display: inline-block;
   margin: 2px;
 
-  &.filled {
-    height: 9px;
-    width: 9px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 2px;
+  &.filled-1 {
+    background: #5e44d4;
   }
-
-  .filled .filled-1 {
-    background: #5E44D4;
+  &.filled-2 {
+    background: #8d98fa;
   }
-  .filled .filled-2 {
-    background: #8D98FA;
+  &.filled-3 {
+    background: #6bc4f5;
   }
-  .filled .filled-3 {
-    background: #6BC4F5;
+  &.filled-4 {
+    background: #8d98fa;
   }
-  .filled .filled-4 {
-    background: #8D98FA;
+  &.filled-5 {
+    background: #59f1f1;
   }
-  .filled .filled-5 {
-    background: #59F1F1;
-  }
-  .filled .filled-6 {
-    background: #ACFBFB;
+  &.filled-6 {
+    background: #acfbfb;
   }
 }

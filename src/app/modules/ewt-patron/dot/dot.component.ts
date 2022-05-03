@@ -1,10 +1,8 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-dot",
   templateUrl: "./dot.component.html",
   styleUrls: ["./dot.component.scss"]
 })
-export class DotComponent {
-  @Input() filledType: number;
-}
+export class DotComponent {}

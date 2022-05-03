@@ -35,6 +35,7 @@ import { CircleProgressModule } from '../circle-progress/circle-progress.module'
 import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-verified-info.component';
 import { SnapshotsComponent } from './snapshots/snapshots.component';
 import { DotComponent } from './dot/dot.component';
+import { SnapshotComponent } from './snapshots/snapshot/snapshot.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { DotComponent } from './dot/dot.component';
     NotVerifiedInfoComponent,
     SnapshotsComponent,
     DotComponent,
+    SnapshotComponent,
   ],
   imports: [
     CommonModule,
