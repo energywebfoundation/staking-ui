@@ -6,11 +6,6 @@
     <div class="row">
       <div class="col-md-12 mb-md-0 mb-lg-0">
         <div class="staking-card widget-main row">
-          <app-snapshots></app-snapshots>
-        </div>
-      </div>
-      <div class="col-md-12 mb-md-0 mb-lg-0">
-        <div class="staking-card widget-main row">
           <div class="col-xl-6 d-flex align-items-center">
             <div class="d-flex flex-column">
               <div>
@@ -55,12 +50,12 @@
                 <div class="mt-1">
                   <!-- Empty dots -->
 
-                  <app-dot></app-dot>
-                  <app-dot></app-dot>
-                  <app-dot></app-dot>
-                  <app-dot></app-dot>
-                  <app-dot></app-dot>
-                  <app-dot></app-dot>
+                  <app-dot class="small"></app-dot>
+                  <app-dot class="small"></app-dot>
+                  <app-dot class="small"></app-dot>
+                  <app-dot class="small"></app-dot>
+                  <app-dot class="small"></app-dot>
+                  <app-dot class="small"></app-dot>
                 </div>
                 <div class="dot-filled-wrapper">
                   <!-- Filled dots -->
@@ -138,7 +133,11 @@
           </div>
         </div>
       </div>
-
+      <div class="col-md-12 mb-md-0 mb-lg-0">
+        <div class="staking-card widget-main row">
+          <app-snapshots></app-snapshots>
+        </div>
+      </div>
     </div>
   </div>
   <app-staking-footer></app-staking-footer>
