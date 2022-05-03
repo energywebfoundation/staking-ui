@@ -34,6 +34,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CircleProgressModule } from '../circle-progress/circle-progress.module';
 import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-verified-info.component';
 import { SnapshotsComponent } from './snapshots/snapshots.component';
+import { DotComponent } from './dot/dot.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { SnapshotsComponent } from './snapshots/snapshots.component';
     ProgressBarComponent,
     NotVerifiedInfoComponent,
     SnapshotsComponent,
+    DotComponent,
   ],
   imports: [
     CommonModule,
