@@ -33,15 +33,15 @@
                   using our Decentralized Identifiers (DID) technology.
                 </p>
                 <a data-qa-id="learn-dsla"
-                   class="stake-btn text-uppercase d-flex justify-content-center align-items-center"
-                   href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf" target="_blank">
+                  class="stake-btn text-uppercase d-flex justify-content-center align-items-center"
+                  href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf" target="_blank">
                   Learn More
                 </a>
               </div>
             </div>
           </div>
           <div class="col-xl-6 d-flex align-items-center justify-content-center">
-            <img class="position-relative atoms-wrapper" style="z-index: 14;" src="assets/img/bg-atoms.png"/>
+            <img class="position-relative atoms-wrapper" style="z-index: 14;" src="assets/img/bg-atoms.png" />
             <div class="d-flex align-items-center position-absolute" style="height: 400px; z-index: 10;">
               <div class="circle-progress-circle position-absolute" style="z-index: 12;">
                 <div class="circular-title">STAKING POOL</div>
@@ -69,14 +69,8 @@
                 </div>
               </div>
               <div class="position-relative" style="z-index: 13;">
-                <circle-progress [innerStrokeWidth]="49"
-                                 [radius]="135"
-                                 [showTitle]="false"
-                                 [showSubtitle]="false"
-                                 [showUnits]="false"
-                                 [space]="-46"
-                                 [outerStrokeWidth]="40"
-                                 [percent]="getTotalStakedPercent$ | async">
+                <circle-progress [innerStrokeWidth]="49" [radius]="135" [showTitle]="false" [showSubtitle]="false"
+                  [showUnits]="false" [space]="-46" [outerStrokeWidth]="40" [percent]="getTotalStakedPercent$ | async">
                 </circle-progress>
               </div>
               <div class="circular-inner"></div>
@@ -94,7 +88,7 @@
       <div class="col-xl-4 mt-4 mt-xl-4">
         <!-- For the approved sync please change class role-req to staking-terms -->
         <div [ngClass]="{ 'role-req': (isPatronSynced | async) === false }" class="staking-terms text-color p-4"
-             *ngIf="isStakingVerificationEnabled">
+          *ngIf="isStakingVerificationEnabled">
           <app-enrolment-status-check></app-enrolment-status-check>
         </div>
         <!-- <div class="staking-widget widget-inner mt-4 p-4">
@@ -114,7 +108,7 @@
         </div> -->
         <div class="staking-terms mt-4">
           <div class="d-flex flex-row align-items-center mx-2 mx-md-4 mt-2 mb-5">
-            <img src="../../../../assets/img/staking/terms-condition-image.png" width="55" height="auto"/>
+            <img src="../../../../assets/img/staking/terms-condition-image.png" width="55" height="auto" />
             <div class="staking-widget-xl-label text-color ml-3 ml-md-3">
               Terms of participation
             </div>
@@ -133,10 +127,112 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12 mb-md-0 mb-lg-0">
+      <div class="col-md-12 mb-md-0 mb-lg-0 mt-5 mt-lg-4">
         <div class="staking-card widget-main row">
-          <app-snapshots></app-snapshots>
+          <div class="col-xl-6 d-flex align-items-center">
+            <div class="d-flex flex-column">
+              <div>
+                <h5 class="mb-0 small letter-spacing text-uppercase">Snapshots</h5>
+                <h2>Claim your<br><span>snapshot rewards</span></h2>
+              </div>
+              <div class="my-3">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. 
+                </p>
+                <a 
+                  class="snapshots-btn text-uppercase d-flex justify-content-center align-items-center mt-5"
+                  href="#" target="_blank">
+                  Connect your wallet
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 d-flex align-items-center justify-content-center">
+            <img class="snapshots-atoms-wrapper" src="../../../../assets/img/staking/snapshots-atom.png" />
+          </div>
         </div>
+      </div>
+      <div class="col-xl-8 mt-4 mt-xl-4">
+        <app-snapshots></app-snapshots>
+      </div>
+      <div class="col-xl-4 mt-4 mt-xl-4">
+        <div class="snapshots-notify mb-5">
+          <div class="staking-widget-sm-label mb-3">
+            <div class="d-flex flex-column align-items-center mt-2">
+              <img src="../../../../assets/img/staking/snapshots-check.png" class="success-icon py-3" />
+              <h4 class="text-center mb-5 px-4">Check your snapshots</h4>
+              <div class="staking-widget-md-label text-center mb-3 px-4">Press the button below to check your snapshots
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 mb-5 d-flex justify-content-center align-items-center text-color">
+            <button mat-raised-button class="stake-btn-secondary text-color text-uppercase mb-3">
+              Check Snapshots
+            </button>
+          </div>
+        </div>
+
+        <div class="snapshots-notify mb-5">
+          <div class="staking-widget-sm-label mb-3">
+            <div class="d-flex flex-column align-items-center mt-2">
+              <img src="../../../../assets/img/staking/staking-success-image.png" class="success-icon py-3" />
+              <h4 class="text-center mb-5 px-4">Congratulations</h4>
+              <div class="staking-widget-md-label text-center mb-3 px-4">You’re included in <br> snapshots 1 and 2
+              </div>
+            </div>
+            <div class="dots-wrapper pt-4 pb-3">
+              <app-dot class="filled-1"></app-dot>
+              <app-dot class="filled-2"></app-dot>
+              <app-dot class="filled-3"></app-dot>
+              <app-dot class="filled-4"></app-dot>
+              <app-dot class="filled-5"></app-dot>
+              <app-dot></app-dot>
+            </div>
+          </div>
+          <div class="mt-5 mb-5 d-flex flex-column justify-content-center align-items-center">
+            <button mat-raised-button class="stake-btn-secondary text-color text-uppercase mb-3">
+              Claim rewards
+            </button>
+            <div class="rewards-term text-center mt-4">
+              By clicking “CLAIM REWARDS”,<br> you acknowledge this <a routerLink="#" target="_blank" class="highlight">disclaimer</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="snapshots-stats">
+          <div class="staking-widget-sm-label mb-3">
+            <div class="d-flex flex-column mt-5">
+              <div class="d-flex flex-row align-items-center ml-4 pl-2">
+                <img src="../../../../assets/img/staking/stats-image.png" class="stats-icon" />
+                <h4 class="text-center mb-0">Your stats</h4>
+              </div>
+              <div class="stats d-flex flex-column justify-content-start align-items-start mt-4 ml-4 pt-2 pl-4">
+                <div class="staking-widget-xs-label text-color mb-1 mr-0 mr-lg-4 ml-2">
+                  Your account balance
+                </div>
+                <div class="stats-numbers mb-0 ml-2">
+                    200
+                  <span class="staking-currency">EWT</span>
+                </div>
+              </div>
+              <div class="stats d-flex flex-column justify-content-start align-items-start mt-4 ml-4 pt-2 pl-4">
+                <div class="staking-widget-xs-label text-color mb-1 mr-0 mr-lg-4 ml-1">
+                  Earned reward
+                </div>
+                <div class="stats-numbers mb-0 ml-1">
+                    3545.345
+                  <span class="staking-currency">EWT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-5 d-flex justify-content-center align-items-center text-color">
+            <button mat-raised-button class="stake-btn text-color text-uppercase mb-3">
+              Go to staking
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
