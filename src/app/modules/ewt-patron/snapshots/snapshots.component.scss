@@ -1,0 +1,40 @@
+:host {
+  background: linear-gradient(
+    353.41deg,
+    rgba(165, 102, 255, 0) -21.96%,
+    rgba(161, 170, 251, 0.151667) 23.98%,
+    rgba(160, 204, 249, 0.226331) 43.57%,
+    rgba(158, 246, 246, 0.32) 107.75%
+  );
+  border-radius: 144px;
+  padding: 100px;
+  position: relative;
+  background-clip: padding-box;
+  width: 100%;
+
+  @media screen and (max-width: 800px) {
+    padding: 20px;
+  }
+}
+
+.snapshot-title {
+  color: #4b25c7;
+  font-family: Rajdhani, sans-serif;
+  font-size: 72px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.revealed {
+  color: #2e2e2e;
+  font-size: 18px;
+  font-family: Rajdhani, sans-serif;
+}
+
+.dots-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}

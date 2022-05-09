@@ -1,0 +1,108 @@
+:host {
+  margin-bottom: 100px;
+}
+.snapshot-circle {
+  width: 127px;
+  height: 127px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &.past {
+    background: radial-gradient(
+      351.92% 130.17% at 336.54% -20.19%,
+      #937bff 66.62%,
+      #5e44d4 88.34%,
+      #553fba 100%
+    );
+    -webkit-box-shadow: 0px 0px 100px 25px rgba(80, 176, 176, 1);
+    -moz-box-shadow: 0px 0px 100px 25px rgba(80, 176, 176, 1);
+    box-shadow: 0px 0px 100px 20px rgba(80, 176, 176, 1);
+
+    .text {
+      background: linear-gradient(
+        182.2deg,
+        #d7e4ff 2.8%,
+        #e8f0ff 36.02%,
+        #cfe1ff 63.26%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &.present {
+    background: radial-gradient(
+      331.1% 122.47% at 336.54% -20.19%,
+      #a9a6fd 66.59%,
+      #8e8aff 80.07%,
+      #6d6ae2 98.31%
+    );
+    -webkit-box-shadow: 0px 0px 100px 25px rgba(80, 176, 176, 1);
+    -moz-box-shadow: 0px 0px 100px 25px rgba(80, 176, 176, 1);
+    box-shadow: 0px 0px 100px 20px rgba(80, 176, 176, 1);
+
+    .text {
+      background: linear-gradient(
+        182.25deg,
+        #daeaff 42.95%,
+        #f0f6fc 49.61%,
+        #e1f2ff 54.75%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &.future {
+    background: linear-gradient(
+      353.64deg,
+      rgba(65, 15, 227, 0) -63.58%,
+      rgba(114, 108, 238, 0.08) 3.96%,
+      rgba(165, 206, 249, 0.34001) 39.82%,
+      rgba(191, 255, 255, 0.47) 96.52%
+    );
+
+    .text {
+      background: linear-gradient(
+        190.88deg,
+        #4f31c7 -5.24%,
+        #a3b7e0 31.59%,
+        #abc5f2 51.1%,
+        #6250cd 97.28%
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+.title {
+  font-size: 18px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.number {
+  font-size: 52px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 700;
+  line-height: 52px;
+}
+
+.description-title {
+  color: #4b25c7;
+  font-size: 25px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 700;
+}
+
+.description {
+  color: #363636;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}

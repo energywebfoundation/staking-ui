@@ -1,0 +1,33 @@
+:host {
+  height: 20px;
+  width: 20px;
+  background-color: #e2ebff;
+  box-shadow: inset 0px 1.97286px 1.97286px #b5bece;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
+
+  &.small {
+    width: 9px;
+    height: 9px;
+  }
+
+  &.filled-1 {
+    background: #5e44d4;
+  }
+  &.filled-2 {
+    background: #8d98fa;
+  }
+  &.filled-3 {
+    background: #6bc4f5;
+  }
+  &.filled-4 {
+    background: #8d98fa;
+  }
+  &.filled-5 {
+    background: #59f1f1;
+  }
+  &.filled-6 {
+    background: #acfbfb;
+  }
+}
