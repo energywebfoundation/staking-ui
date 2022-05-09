@@ -35,6 +35,26 @@
   color: #A6A5AC;
 }
 
+.menu-snapshots {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  color: #4D27C8;
+  padding: 5px 0;
+
+  &:hover {
+    cursor: pointer;
+    color: #7874F3;
+  }
+
+  &.active {
+    border-bottom: 1px solid #4D27C8 !important;
+  }
+}
+
 .connect-btn {
   font-family: Rajdhani, sans-serif;
   font-style: normal;
