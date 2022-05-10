@@ -24,3 +24,6 @@
 @import "./app/shared/styles/app.scss";
 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html {
+  scroll-behavior: smooth;
+}
