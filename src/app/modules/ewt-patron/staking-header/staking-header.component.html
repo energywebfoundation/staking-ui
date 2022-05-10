@@ -1,4 +1,8 @@
-<div class="header-wrapper d-flex flex-grow-1 justify-content-end">
+<div class="header-wrapper d-flex flex-grow-1 align-items-center justify-content-end">
+  <div class="menu-container d-flex justify-content-end w-100 mr-5">
+    <!-- add active class to show border bottom -->
+    <div class="menu-snapshots">Snapshots</div>
+  </div>
   <ng-container *ngIf="(loggedIn$ | async)">
     <ng-container *ngIf="(accountInfo$ | async) as info">
       <div class="btn-user-info" [matMenuTriggerFor]="menu" data-qa-id="menu-trigger">
