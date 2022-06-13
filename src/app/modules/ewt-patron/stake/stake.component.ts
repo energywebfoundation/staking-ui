@@ -1,36 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import {
+  AbstractControl,
+  FormControl,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 
-import { tap } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
-import * as poolSelectors from '../../../state/pool/pool.selectors';
-import * as PoolActions from '../../../state/pool/pool.actions';
-import { MAX_STAKE_AMOUNT } from '../../../state/pool/models/const';
-import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
-import { RoleEnrolmentSelectors } from '@state';
-import { WithdrawComponent } from '../withdraw/withdraw.component';
-import { MatDialog } from '@angular/material/dialog';
-import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_ethereum_value';
-import { StakeSuccessComponent } from '../stake-success/stake-success.component';
-import { ConfirmationDialogComponent } from '../enrolment/confirmation-dialog/confirmation-dialog.component';
-import { from } from 'rxjs';
-import SWAL from 'sweetalert';
+import { tap } from "rxjs/operators";
+import { Store } from "@ngrx/store";
+import * as poolSelectors from "../../../state/pool/pool.selectors";
+import * as PoolActions from "../../../state/pool/pool.actions";
+import { MAX_STAKE_AMOUNT } from "../../../state/pool/models/const";
+import { exponentialToString } from "../../../utils/functions/exponential-to-string/exponential-to-string";
+import { RoleEnrolmentSelectors } from "@state";
+import { WithdrawComponent } from "../withdraw/withdraw.component";
+import { MatDialog } from "@angular/material/dialog";
+import { MINIMAL_ETHEREUM_VALUE } from "../../../../environments/models/minimal_ethereum_value";
 
 @Component({
-  selector: 'app-stake',
-  templateUrl: './stake.component.html',
-  styleUrls: ['./stake.component.scss']
+  selector: "app-stake",
+  templateUrl: "./stake.component.html",
+  styleUrls: ["./stake.component.scss"]
 })
 export class StakeComponent implements OnInit {
   readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE;
   inputFocused: boolean;
   tokenAmount: number;
-  amountToStake = new FormControl('', [Validators.min(this.MINIMAL_VALUE), Validators.required, Validators.max(MAX_STAKE_AMOUNT)]);
-  amountBorderValues$ = this.store.select(poolSelectors.amountBorderValues).pipe(tap(({maxPossibleAmount, balance}) => {
-    this.setAmountValidators(maxPossibleAmount, balance);
-    this.tokenAmount = +maxPossibleAmount;
-  }));
-  notContainingPatronRole$ = this.store.select(RoleEnrolmentSelectors.notContainingPatronRole);
+  amountToStake = new FormControl("", [
+    Validators.min(this.MINIMAL_VALUE),
+    Validators.required,
+    Validators.max(MAX_STAKE_AMOUNT)
+  ]);
+  amountBorderValues$ = this.store
+    .select(poolSelectors.amountBorderValues)
+    .pipe(
+      tap(({ maxPossibleAmount, balance }) => {
+        this.setAmountValidators(maxPossibleAmount, balance);
+        this.tokenAmount = +maxPossibleAmount;
+      })
+    );
+  notContainingPatronRole$ = this.store.select(
+    RoleEnrolmentSelectors.notContainingPatronRole
+  );
 
   balance$ = this.store.select(poolSelectors.getBalance);
   earnedReward$ = this.store.select(poolSelectors.getReward);
@@ -43,18 +55,19 @@ export class StakeComponent implements OnInit {
   stakingPoolBegin$ = this.store.select(poolSelectors.stakingPoolBegin);
   getIsLimitReached$ = this.store.select(poolSelectors.getIsLimitReached);
 
-  constructor(private store: Store, private dialog: MatDialog) {
-  }
+  constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit() {
-    this.notContainingPatronRole$.subscribe((v) => v ? this.amountToStake.disable() : this.amountToStake.enable());
+    this.notContainingPatronRole$.subscribe(v =>
+      v ? this.amountToStake.disable() : this.amountToStake.enable()
+    );
   }
 
   clear(e) {
     e.preventDefault();
     e.stopPropagation();
     this.inputFocused = false;
-    this.amountToStake.setValue('');
+    this.amountToStake.setValue("");
   }
 
   isAmountInvalid() {
@@ -66,7 +79,11 @@ export class StakeComponent implements OnInit {
   }
 
   private putStake() {
-    this.store.dispatch(PoolActions.putStake({amount: exponentialToString(this.amountToStake.value)}));
+    this.store.dispatch(
+      PoolActions.putStake({
+        amount: exponentialToString(this.amountToStake.value)
+      })
+    );
   }
 
   stake() {
@@ -76,42 +93,20 @@ export class StakeComponent implements OnInit {
 
   withdraw() {
     this.dialog.open(WithdrawComponent, {
-      width: '400px',
-      maxWidth: '100%',
+      width: "400px",
+      maxWidth: "100%",
       disableClose: true,
-      backdropClass: 'backdrop-shadow'
-    });
-  }
-
-  confirmDialog() {
-    this.dialog.open(ConfirmationDialogComponent, {
-      width: '400px',
-      maxWidth: '100%',
-      disableClose: true
-    })
-  }
-
-  swalDialog() {
-    from(SWAL({
-      title: 'Title',
-      text: `Please login again.`,
-      icon: 'warning',
-      button: 'Proceed',
-      closeOnClickOutside: false
-    } as any))
-  }
-
-  openConfiguration() {
-    this.dialog.open(StakeSuccessComponent, {
-      width: '400px',
-      maxWidth: '100%',
-      disableClose: true,
-      backdropClass: 'backdrop-shadow'
+      backdropClass: "backdrop-shadow"
     });
   }
 
   setAmountValidators(maxAmount: number, balance: number) {
-    this.amountToStake.setValidators([Validators.min(this.MINIMAL_VALUE), Validators.required, Validators.max(maxAmount), this.checkIfValueIsSmallerThanBalance(balance)]);
+    this.amountToStake.setValidators([
+      Validators.min(this.MINIMAL_VALUE),
+      Validators.required,
+      Validators.max(maxAmount),
+      this.checkIfValueIsSmallerThanBalance(balance)
+    ]);
   }
 
   private checkIfValueIsSmallerThanBalance(balance: number): ValidatorFn {
@@ -122,10 +117,9 @@ export class StakeComponent implements OnInit {
       if (control.value > balance) {
         return {
           insufficientValue: true
-        }
+        };
       }
       return null;
     };
   }
-
 }
