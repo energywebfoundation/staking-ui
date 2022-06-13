@@ -1,0 +1,30 @@
+:host {
+  &.xs {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #2e2e2e;
+  }
+
+  &.sm {
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.25px;
+  }
+
+  &.md {
+    font-weight: 400;
+    font-family: "BW-Gradual-Medium";
+    font-size: 24px;
+    color: #4b25c7;
+    letter-spacing: 0.25px;
+  }
+
+  &.xl {
+    font-weight: 600;
+    font-family: "BW-Gradual-Medium";
+    font-size: 36px;
+    color: #4b25c7;
+    line-height: 46px;
+  }
+}

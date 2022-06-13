@@ -45,3 +45,28 @@
 @import "app/material/md-list";
 @import "app/material/md-inputs";
 @import "app/material/ngmaterial";
+.stake-btn {
+  font-family: Rajdhani, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  border-radius: 16px;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+  border-radius: 50px;
+  color: #4B25C7 !important;
+  padding: 0 0 !important;
+  margin-top: 38px;
+  height: 48px;
+  width: 172px;
+
+  &.mat-raised-button[disabled] {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background-color: #AFF6FC;
+  }
+}
