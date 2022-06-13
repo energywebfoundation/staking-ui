@@ -66,6 +66,8 @@ describe('ConnectButtonsComponent', () => {
   });
 
   it('should dispatch login action with WalletConnect when clicking on wallet connect button', () => {
+    component.isWalletConnectEnabled = true;
+    fixture.detectChanges();
     const {mobileWalletBtn} = selectors(hostDebug);
     mobileWalletBtn.nativeElement.click();
 
