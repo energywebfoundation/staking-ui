@@ -50,7 +50,6 @@ export class IamService {
   messagingService: MessagingService;
   domainsService: DomainsService;
   stakingService: StakingFactoryService;
-  assetsService: AssetsService;
   cacheClient: CacheClient;
 
   constructor(
@@ -92,13 +91,11 @@ export class IamService {
         const {
           domainsService,
           stakingPoolService,
-          assetsService,
           connectToDidRegistry,
           cacheClient
         } = await connectToCacheServer();
         this.domainsService = domainsService;
         this.stakingService = stakingPoolService;
-        this.assetsService = assetsService;
         this.cacheClient = cacheClient;
         if (createDocument) {
           const {didRegistry, claimsService} = await connectToDidRegistry();
