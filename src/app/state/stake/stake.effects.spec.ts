@@ -15,7 +15,6 @@ import * as PoolActions from '../pool/pool.actions';
 import { skip, take } from 'rxjs/operators';
 import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-pool-service-facade';
 import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
-import * as LayoutActions from '../layout/layout.actions';
 import { dialogSpy, iamServiceSpy, loadingServiceSpy, toastrSpy } from '@tests';
 
 describe('StakeEffects', () => {
@@ -72,12 +71,6 @@ describe('StakeEffects', () => {
           .pipe(skip(1), take(1))
           .subscribe(resultAction => {
             expect(resultAction).toEqual(PoolActions.getAccountBalance());
-          });
-
-        effects.initStakingPoolService$
-          .pipe(skip(2), take(1))
-          .subscribe(resultAction => {
-            expect(resultAction).toEqual(LayoutActions.redirect());
           });
       })
     );

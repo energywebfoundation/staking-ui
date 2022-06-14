@@ -8,7 +8,6 @@ import { UserEffects } from './user-claim/user.effects';
 import { AuthEffects } from './auth/auth.effects';
 import { StakeEffects } from './stake/stake.effects';
 import { environment } from 'src/environments/environment';
-import { LayoutStoreSliceModule } from './layout/layout-store-slice.module';
 import { RoleEnrolmentStoreSliceModule } from './role-enrolment/role-enrolment-store-slice.module';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { RoleEnrolmentStoreSliceModule } from './role-enrolment/role-enrolment-s
       AuthEffects,
       PoolEffects
     ]),
-    LayoutStoreSliceModule,
     RoleEnrolmentStoreSliceModule
   ]
 })

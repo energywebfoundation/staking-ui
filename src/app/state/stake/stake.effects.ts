@@ -11,7 +11,6 @@ import { from } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-pool-service-facade';
 import * as PoolActions from '../pool/pool.actions';
-import * as LayoutActions from '../layout/layout.actions';
 
 @Injectable()
 export class StakeEffects {
@@ -21,14 +20,9 @@ export class StakeEffects {
       switchMap(() =>
         from(this.stakingService.init()).pipe(
           mergeMap(() => {
-            // Redirect action is needed here,
-            // because there is a race condition between redirection and staking pool initialization.
-            // When redirect is called before successful initialization of staking pool then we get errors
-            // while getting list of providers/organizations.
             return [
               PoolActions.initPool(),
               PoolActions.getAccountBalance(),
-              LayoutActions.redirect()
             ];
           })
         )
