@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { RoutesModule } from './routes/routes.module';
@@ -48,7 +47,6 @@ if (environment.SENTRY_DNS) {
     HttpClientModule,
     MatIconModule,
     BrowserAnimationsModule, // required for ng2-tag-input
-    CoreModule,
     LayoutModule,
     SharedModule.forRoot(),
     ToastrModule.forRoot(),

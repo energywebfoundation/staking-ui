@@ -1,13 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
-import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { RoutesModule } from './routes/routes.module';
 import { APP_BASE_HREF } from '@angular/common';
 import { provideMockStore } from '@ngrx/store/testing';
-import { ThemesService } from './core/themes/themes.service';
 
 describe('App: ewUIBoilerPlate', () => {
   beforeEach(() => {
@@ -15,11 +13,10 @@ describe('App: ewUIBoilerPlate', () => {
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [CoreModule, LayoutModule, SharedModule, RoutesModule],
+      imports: [LayoutModule, SharedModule, RoutesModule],
       providers: [
         provideMockStore(),
         { provide: APP_BASE_HREF, useValue: '/' },
-        { provide: ThemesService, useValue: {} }
       ]
     });
   });
