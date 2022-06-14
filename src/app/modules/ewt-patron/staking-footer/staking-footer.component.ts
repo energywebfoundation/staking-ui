@@ -5,5 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './staking-footer.component.html',
   styleUrls: ['./staking-footer.component.scss']
 })
-export class StakingFooterComponent {
-}
+export class StakingFooterComponent {}

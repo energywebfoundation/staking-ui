@@ -6,7 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./divider.component.scss']
 })
 export class DividerComponent {
-
-  constructor() {
-  }
 }

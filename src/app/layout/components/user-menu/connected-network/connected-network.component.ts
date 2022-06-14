@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
 import { ProviderType } from 'iam-client-lib';
 
 const ICON_MAP = new Map()
@@ -6,7 +11,6 @@ const ICON_MAP = new Map()
   .set(ProviderType.WalletConnect, 'assets/img/icons/wallet-connect-icon.svg')
   .set(ProviderType.EwKeyManager, 'assets/img/icons/key-manager-icon.svg')
   .set(ProviderType.MetaMask, 'assets/img/icons/metamask-logo.svg');
-
 
 @Component({
   selector: 'app-connected-network',
@@ -24,6 +28,8 @@ export class ConnectedNetworkComponent implements OnInit {
   }
 
   setIcon() {
-    ICON_MAP.has(this.wallet) ? this.walletIcon = ICON_MAP.get(this.wallet) : console.error('Not supported provider for icons.');
+    ICON_MAP.has(this.wallet)
+      ? (this.walletIcon = ICON_MAP.get(this.wallet))
+      : console.error('Not supported provider for icons.');
   }
 }

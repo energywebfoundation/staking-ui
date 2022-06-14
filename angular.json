@@ -40,7 +40,7 @@
               {
                 "input": "src/app/shared/styles/themes/theme-b.scss",
                 "bundleName": "default",
-                "inject": false
+                "inject": true
               }
             ],
             "scripts": [

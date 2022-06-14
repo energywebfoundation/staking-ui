@@ -30,38 +30,46 @@
 
 :host {
   &.card-progress-bad {
-    color: #FF0000;
+    color: #ff0000;
 
     ::ng-deep .mat-progress-bar-fill::after {
-      background-color: #FF0000;
+      background-color: #ff0000;
     }
   }
 
   &.card-progress-fair {
-    color: #FFA500;
+    color: #ffa500;
 
     ::ng-deep .mat-progress-bar-fill::after {
-      background-color: #FFA500;
+      background-color: #ffa500;
     }
   }
 
   &.card-progress-good {
-    color: #40AD87;
+    color: #40ad87;
 
     ::ng-deep .mat-progress-bar-fill::after {
-      background-color: #40AD87;
+      background-color: #40ad87;
     }
   }
 
   &.card-progress-excellent {
-    color: #0FB544;
+    color: #0fb544;
 
     ::ng-deep .mat-progress-bar-fill::after {
-      background-color: #0FB544;
+      background-color: #0fb544;
     }
   }
 }
 
 :host ::ng-deep mat-progress-spinner {
-  background:conic-gradient(from 158.26deg at 50.11% 49.89%, #A566FF 0deg, #8991F5 91.88deg, #71B5ED 144.37deg, #52E3E3 215.62deg, #9EF6F6 286.87deg, #BFFFFF 360deg);
+  background: conic-gradient(
+    from 158.26deg at 50.11% 49.89%,
+    #a566ff 0deg,
+    #8991f5 91.88deg,
+    #71b5ed 144.37deg,
+    #52e3e3 215.62deg,
+    #9ef6f6 286.87deg,
+    #bfffff 360deg
+  );
 }

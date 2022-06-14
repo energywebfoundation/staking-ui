@@ -18,17 +18,18 @@ export class StakingHeaderComponent {
     this.store.select(AuthSelectors.getWalletProvider),
     this.store.select(AuthSelectors.getAccountInfo),
     this.store.select(UserClaimSelectors.getDid)
-  ]).pipe(map(([wallet, accountInfo, did]) => {
-    return {
-      wallet,
-      userName: '',
-      accountInfo,
-      did
-    };
-  }));
+  ]).pipe(
+    map(([wallet, accountInfo, did]) => {
+      return {
+        wallet,
+        userName: '',
+        accountInfo,
+        did
+      };
+    })
+  );
 
-  constructor(private store: Store) {
-  }
+  constructor(private store: Store) {}
 
   logOut() {
     this.store.dispatch(AuthActions.logout());

@@ -11,20 +11,21 @@ describe('ConnectButtonsComponent', () => {
   let hostDebug;
   let connectToSpy;
   const setup = (opt?: {
-    metamaskPresent?: boolean,
-    metamaskDisabled?: boolean
+    metamaskPresent?: boolean;
+    metamaskDisabled?: boolean;
   }) => {
-    const options = {metamaskPresent: true, metamaskDisabled: false, ...opt};
+    const options = { metamaskPresent: true, metamaskDisabled: false, ...opt };
     component.metamaskPresent = options.metamaskPresent;
     component.metamaskDisabled = options.metamaskDisabled;
     fixture.detectChanges();
   };
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ConnectButtonsComponent]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ConnectButtonsComponent]
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ConnectButtonsComponent);
@@ -40,7 +41,7 @@ describe('ConnectButtonsComponent', () => {
 
   it('should check metamask presence', () => {
     setup();
-    const {metamaskBtn, noVolta} = selectors(hostDebug);
+    const { metamaskBtn, noVolta } = selectors(hostDebug);
 
     expect(metamaskBtn).toBeTruthy();
     expect(metamaskBtn.nativeElement.disabled).toBeFalsy();
@@ -48,25 +49,29 @@ describe('ConnectButtonsComponent', () => {
   });
 
   it('should display message about not connected to volta when user have metamask', () => {
-    setup({metamaskDisabled: true});
-    const {metamaskBtn, noVolta} = selectors(hostDebug);
+    setup({ metamaskDisabled: true });
+    const { metamaskBtn, noVolta } = selectors(hostDebug);
 
     expect(metamaskBtn).toBeTruthy();
     expect(metamaskBtn.nativeElement.disabled).toBeTruthy();
     expect(noVolta).toBeTruthy();
-    expect(noVolta.nativeElement.innerText).toContain('You are not connected to Energy Web Chain.');
+    expect(noVolta.nativeElement.innerText).toContain(
+      'You are not connected to Energy Web Chain.'
+    );
   });
 
   it('should dispatch login action with Metamask when clicking on metamask button', () => {
     setup();
-    const {metamaskBtn} = selectors(hostDebug);
+    const { metamaskBtn } = selectors(hostDebug);
     metamaskBtn.nativeElement.click();
 
     expect(connectToSpy).toHaveBeenCalledWith(ProviderType.MetaMask);
   });
 
   it('should dispatch login action with WalletConnect when clicking on wallet connect button', () => {
-    const {mobileWalletBtn} = selectors(hostDebug);
+    component.isWalletConnectEnabled = true;
+    fixture.detectChanges();
+    const { mobileWalletBtn } = selectors(hostDebug);
     mobileWalletBtn.nativeElement.click();
 
     expect(connectToSpy).toHaveBeenCalledWith(ProviderType.WalletConnect);
@@ -75,7 +80,7 @@ describe('ConnectButtonsComponent', () => {
   it('should dispatch login action with Azure when clicking on Use Azure button', () => {
     component.showEkcOption = true;
     fixture.detectChanges();
-    const {azureBtn} = selectors(hostDebug);
+    const { azureBtn } = selectors(hostDebug);
     azureBtn.nativeElement.click();
 
     expect(connectToSpy).toHaveBeenCalledWith(ProviderType.EKC);
@@ -83,7 +88,7 @@ describe('ConnectButtonsComponent', () => {
 
   it('should not find metamask button when is not available', () => {
     component.metamaskPresent = false;
-    const {metamaskBtn} = selectors(hostDebug);
+    const { metamaskBtn } = selectors(hostDebug);
 
     expect(metamaskBtn).toBeFalsy();
   });
@@ -91,19 +96,18 @@ describe('ConnectButtonsComponent', () => {
   it('should not display azureBtn when showing is set to false', () => {
     component.showEkcOption = false;
     fixture.detectChanges();
-    const {azureBtn} = selectors(hostDebug);
+    const { azureBtn } = selectors(hostDebug);
 
     expect(azureBtn).toBeNull();
   });
 });
 
 const selectors = (hostDebug: DebugElement) => {
-
   return {
     metamaskBtn: getElement(hostDebug)('metamask'),
     noVolta: getElement(hostDebug)('no-volta'),
     mobileWalletBtn: getElement(hostDebug)('mobile-wallet'),
     ewKeyBtn: getElement(hostDebug)('ew-key'),
-    azureBtn: getElement(hostDebug)('azure'),
+    azureBtn: getElement(hostDebug)('azure')
   };
 };

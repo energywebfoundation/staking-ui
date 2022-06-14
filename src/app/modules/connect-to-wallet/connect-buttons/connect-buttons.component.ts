@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { ProviderType } from "iam-client-lib";
-import { MetamaskProviderService } from "../../../shared/services/metamask-provider/metamask-provider.service";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ProviderType } from 'iam-client-lib';
+import { MetamaskProviderService } from '../../../shared/services/metamask-provider/metamask-provider.service';
 
 @Component({
-  selector: "app-connect-buttons",
-  templateUrl: "./connect-buttons.component.html",
-  styleUrls: ["./connect-buttons.component.scss"],
+  selector: 'app-connect-buttons',
+  templateUrl: './connect-buttons.component.html',
+  styleUrls: ['./connect-buttons.component.scss']
 })
 export class ConnectButtonsComponent {
   @Input() metamaskPresent: boolean;

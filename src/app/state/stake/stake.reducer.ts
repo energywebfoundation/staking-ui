@@ -1,5 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import * as StakeActions from './stake.actions';
+import { Action, createReducer } from '@ngrx/store';
 import { Provider } from './models/provider.interface';
 
 export const USER_FEATURE_KEY = 'stake';
@@ -12,9 +11,7 @@ export const initialState: StakeState = {
   providers: []
 };
 
-const stakeReducer = createReducer(
-  initialState,
-);
+const stakeReducer = createReducer(initialState);
 
 export function reducer(state: StakeState | undefined, action: Action) {
   return stakeReducer(state, action);

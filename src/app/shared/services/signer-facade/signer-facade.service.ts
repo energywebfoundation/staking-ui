@@ -6,9 +6,7 @@ import { ProviderEvent } from 'iam-client-lib/dist/src/modules/signer/signer.typ
   providedIn: 'root'
 })
 export class SignerFacadeService {
-
-  constructor(private iamService: IamService) {
-  }
+  constructor(private iamService: IamService) {}
 
   getDid() {
     return this.iamService.signerService.did;

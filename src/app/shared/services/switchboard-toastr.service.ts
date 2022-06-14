@@ -23,8 +23,7 @@ export class SwitchboardToastrService {
   private readonly maxMessagesNumber = 20;
   private messageList = new BehaviorSubject<SwitchboardToastr[]>([]);
 
-  constructor(private toastr: ToastrService) {
-  }
+  constructor(private toastr: ToastrService) {}
 
   getMessageList(): Observable<SwitchboardToastr[]> {
     return this.messageList.asObservable();
@@ -35,37 +34,62 @@ export class SwitchboardToastrService {
   }
 
   readAllItems(): void {
-    this.messageList.next(this.messageList.getValue().map(item => ({...item, isNew: false})));
+    this.messageList.next(
+      this.messageList.getValue().map(item => ({ ...item, isNew: false }))
+    );
   }
 
-  show(message?: string, title?: string, override?: Partial<IndividualConfig>, type?: string): any {
+  show(
+    message?: string,
+    title?: string,
+    override?: Partial<IndividualConfig>,
+    type?: string
+  ): any {
     this.toastr.show(message, title, override, type);
     this.updateMessageList(message, type);
-
   }
 
-  error(message?: string, title?: string, override?: Partial<IndividualConfig>): any {
+  error(
+    message?: string,
+    title?: string,
+    override?: Partial<IndividualConfig>
+  ): any {
     this.toastr.error(message, title, override);
     this.updateMessageList(message, MessageType.error);
   }
 
-  info(message?: string, title?: string, override?: Partial<IndividualConfig>): any {
+  info(
+    message?: string,
+    title?: string,
+    override?: Partial<IndividualConfig>
+  ): any {
     this.toastr.info(message, title, override);
     this.updateMessageList(message, MessageType.info);
   }
 
-  success(message?: string, title?: string, override?: Partial<IndividualConfig>): any {
+  success(
+    message?: string,
+    title?: string,
+    override?: Partial<IndividualConfig>
+  ): any {
     this.toastr.success(message, title, override);
     this.updateMessageList(message, MessageType.success);
   }
 
-  warning(message?: string, title?: string, override?: Partial<IndividualConfig>): any {
+  warning(
+    message?: string,
+    title?: string,
+    override?: Partial<IndividualConfig>
+  ): any {
     this.toastr.warning(message, title, override);
     this.updateMessageList(message, MessageType.warning);
   }
 
   private updateMessageList(message: string, type: string): void {
-    const list = [{message, type, isNew: true}, ...this.messageList.getValue()].slice(0, this.maxMessagesNumber);
+    const list = [
+      { message, type, isNew: true },
+      ...this.messageList.getValue()
+    ].slice(0, this.maxMessagesNumber);
     this.messageList.next(list);
   }
 }

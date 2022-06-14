@@ -1,3 +1,1 @@
-describe('Role Enrolment Selectors', () => {
-
-});
+describe('Role Enrolment Selectors', () => {});

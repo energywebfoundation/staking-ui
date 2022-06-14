@@ -1,25 +1,24 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations"; // this is needed!
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 import {
   APP_INITIALIZER,
   ErrorHandler,
   NgModule,
-  Provider,
-} from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
-import { AppComponent } from "./app.component";
-import { CoreModule } from "./core/core.module";
-import { LayoutModule } from "./layout/layout.module";
-import { SharedModule } from "./shared/shared.module";
-import { RoutesModule } from "./routes/routes.module";
-import { MatIconModule } from "@angular/material/icon";
-import { ToastrModule } from "ngx-toastr";
-import { ServiceWorkerModule } from "@angular/service-worker";
-import { environment } from "../environments/environment";
-import { ConfigService } from "./shared/services/config.service";
+  Provider
+} from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { LayoutModule } from './layout/layout.module';
+import { SharedModule } from './shared/shared.module';
+import { RoutesModule } from './routes/routes.module';
+import { MatIconModule } from '@angular/material/icon';
+import { ToastrModule } from 'ngx-toastr';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { ConfigService } from './shared/services/config.service';
 
-import * as Sentry from "@sentry/angular";
-import { StoreRootModule } from "./state/store-root.module";
-import { EnvService } from "./shared/services/env/env.service";
+import * as Sentry from '@sentry/angular';
+import { StoreRootModule } from './state/store-root.module';
+import { EnvService } from './shared/services/env/env.service';
 
 const providers: Provider[] = [
   EnvService,
@@ -29,16 +28,16 @@ const providers: Provider[] = [
     deps: [ConfigService],
     useFactory: (configService: ConfigService) => () =>
       configService.loadConfigData(),
-    multi: true,
-  },
+    multi: true
+  }
 ];
 
 if (environment.SENTRY_DNS) {
   providers.push({
     provide: ErrorHandler,
     useValue: Sentry.createErrorHandler({
-      showDialog: false,
-    }),
+      showDialog: false
+    })
   });
 }
 
@@ -48,17 +47,16 @@ if (environment.SENTRY_DNS) {
     HttpClientModule,
     MatIconModule,
     BrowserAnimationsModule, // required for ng2-tag-input
-    CoreModule,
     LayoutModule,
     SharedModule.forRoot(),
     ToastrModule.forRoot(),
     RoutesModule,
-    ServiceWorkerModule.register("ngsw-worker.js", {
-      enabled: environment.production,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
     }),
-    StoreRootModule,
+    StoreRootModule
   ],
   providers,
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

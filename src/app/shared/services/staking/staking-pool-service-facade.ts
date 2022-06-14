@@ -11,8 +11,10 @@ import { BigNumber } from 'ethers';
 export class StakingPoolServiceFacade {
   private stakingPoolService: StakingFactoryService;
 
-  constructor(private iamService: IamService, private stakingPoolFacade: StakingPoolFacade) {
-  }
+  constructor(
+    private iamService: IamService,
+    private stakingPoolFacade: StakingPoolFacade
+  ) {}
 
   async init() {
     this.stakingPoolService = this.iamService.stakingService;
@@ -39,5 +41,4 @@ export class StakingPoolServiceFacade {
     // return from(this.stakingPoolService.launchPool(pool));
     return of();
   }
-
 }

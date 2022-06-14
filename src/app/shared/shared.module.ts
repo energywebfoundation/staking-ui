@@ -18,7 +18,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CopyToClipboardModule } from './directives/copy-to-clipboard/copy-to-clipboard.module';
 import { DidFormatMinifierModule } from './pipes/did-format-minifier/did-format-minifier.module';
 
-
 const MATERIAL_MODULES = [
   MatButtonModule,
   MatButtonToggleModule,
@@ -30,7 +29,7 @@ const MATERIAL_MODULES = [
   MatProgressBarModule,
   MatRippleModule,
   MatTooltipModule,
-  MatNativeDateModule,
+  MatNativeDateModule
 ];
 
 // https://angular.io/styleguide#!#04-10
@@ -43,10 +42,7 @@ const MATERIAL_MODULES = [
     DidFormatMinifierModule,
     MATERIAL_MODULES
   ],
-  declarations: [
-    MinifiedDidViewerDirective,
-    MinifiedDidViewerDialogComponent,
-  ],
+  declarations: [MinifiedDidViewerDirective, MinifiedDidViewerDialogComponent],
   exports: [
     CommonModule,
     FormsModule,
@@ -55,7 +51,7 @@ const MATERIAL_MODULES = [
     MinifiedDidViewerDirective,
     MATERIAL_MODULES,
     CopyToClipboardModule,
-    DidFormatMinifierModule,
+    DidFormatMinifierModule
   ],
   entryComponents: [MinifiedDidViewerDialogComponent]
 })

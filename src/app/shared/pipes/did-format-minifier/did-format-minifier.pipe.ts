@@ -7,14 +7,15 @@ const LAST_CHARACTERS = 5;
   name: 'didFormatMinifier'
 })
 export class DidFormatMinifierPipe implements PipeTransform {
-
   transform(value: string): string | undefined {
     if (!value) {
       return value;
     }
 
     const lastColonIndex = value.lastIndexOf(':');
-    return `${value.substr(0, lastColonIndex + CHARACTERS_AFTER_LAST_COLON)}...${value.substr(value.length - LAST_CHARACTERS)}`;
+    return `${value.substr(
+      0,
+      lastColonIndex + CHARACTERS_AFTER_LAST_COLON
+    )}...${value.substr(value.length - LAST_CHARACTERS)}`;
   }
-
 }

@@ -8,7 +8,6 @@ import { reducer, USER_FEATURE_KEY } from './role-enrolment.reducer';
   imports: [
     StoreModule.forFeature(USER_FEATURE_KEY, reducer),
     EffectsModule.forFeature([RoleEnrolmentEffects])
-  ],
+  ]
 })
-export class RoleEnrolmentStoreSliceModule {
-}
+export class RoleEnrolmentStoreSliceModule {}

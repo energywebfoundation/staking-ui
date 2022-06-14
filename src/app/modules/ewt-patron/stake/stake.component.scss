@@ -6,10 +6,15 @@
 .staking-widget {
   position: relative;
   border-radius: 144px;
-  background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%);
+  background: linear-gradient(
+    349.41deg,
+    rgba(220, 255, 255, 0.22) -17.31%,
+    rgba(220, 255, 255, 0.26) 4.93%,
+    rgba(255, 255, 255, 0.28) 129.23%
+  );
   background-clip: padding-box;
   padding: 100px;
-  
+
   @media screen and (max-width: 800px) {
     padding: 20px;
   }
@@ -30,11 +35,11 @@ h3 {
   font-weight: 700 !important;
   letter-spacing: 0.25px !important;
   font-size: 64px !important;
-  color: #4B25C7;
+  color: #4b25c7;
 
   .staking-currency {
     font-size: 16px !important;
-    color: #4B25C7;
+    color: #4b25c7;
   }
 
   @media screen and (max-width: 800px) {
@@ -47,9 +52,9 @@ h3 {
 h4 {
   font-family: Rajdhani, sans-serif;
   font-size: 42px !important;
-  color: #4B25C7;
+  color: #4b25c7;
   font-weight: 700;
-  
+
   span {
     font-size: 18px;
     font-weight: 500;
@@ -69,20 +74,20 @@ h5 {
   font-size: 21px !important;
   letter-spacing: 1.25px !important;
   font-weight: 700 !important;
-  color: #4B25C7;
+  color: #4b25c7;
 }
 
 h6 {
   font-family: 'Sequel-Sans' !important;
   font-size: 16px !important;
   font-weight: 600 !important;
-  color: #4B25C7;
+  color: #4b25c7;
 }
 
 .text-color {
   font-family: 'Sequel-Sans';
   font-weight: bold;
-  color: #4B25C7;
+  color: #4b25c7;
 }
 
 .circular-text {
@@ -95,17 +100,17 @@ h6 {
   font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #2E2E2E;
+  color: #2e2e2e;
 }
 
 .limit-text {
   font-size: 16px;
   letter-spacing: 0.8px;
-  color: #A6A5AC;
+  color: #a6a5ac;
 }
 
 ::ng-deep mat-label {
-  color: #A6A5AC !important;
+  color: #a6a5ac !important;
   font-family: 'Roboto', sans-serif !important;
   font-weight: 400 !important;
 }
@@ -113,7 +118,7 @@ h6 {
 ::ng-deep {
   .staking-textfield {
     &.mat-form-field-appearance-outline .mat-form-field-outline {
-      background: #FFFFFF !important;
+      background: #ffffff !important;
       box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.08);
       border-radius: 48px;
       color: transparent;
@@ -128,11 +133,17 @@ h6 {
     padding: 0.9em 0.3em !important;
   }
 
-  .staking-textfield.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label, .mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+  .staking-textfield.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+    .mat-form-field-label,
+  .mat-form-field-appearance-outline.mat-form-field-can-float
+    .mat-input-server:focus
+    + .mat-form-field-label-wrapper
+    .mat-form-field-label {
     transform: translateY(-0.65em) scale(0.75) !important;
   }
 
-  .staking-textfield.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-outline-gap {
+  .staking-textfield.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+    .mat-form-field-outline-gap {
     border-top-color: initial;
   }
 
@@ -140,12 +151,14 @@ h6 {
     top: 1.3px !important;
   }
 
-  .staking-textfield.mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix {
-    right: .35em;
+  .staking-textfield.mat-form-field-appearance-outline .mat-form-field-prefix,
+  .mat-form-field-appearance-outline .mat-form-field-suffix {
+    right: 0.35em;
   }
 
-  .staking-textfield.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: #4B25C7;
+  .staking-textfield.mat-form-field-appearance-outline.mat-focused
+    .mat-form-field-outline-thick {
+    color: #4b25c7;
   }
 
   .staking-textfield .mat-form-field-subscript-wrapper {
@@ -156,12 +169,14 @@ h6 {
     top: 1.59em;
   }
 
-  .staking-textfield.mat-form-field-appearance-outline .mat-form-field-outline-start {
+  .staking-textfield.mat-form-field-appearance-outline
+    .mat-form-field-outline-start {
     border-radius: 48px 0 0 48px;
     width: 50px !important;
   }
 
-  .staking-textfield.mat-form-field-appearance-outline .mat-form-field-outline-end {
+  .staking-textfield.mat-form-field-appearance-outline
+    .mat-form-field-outline-end {
     border-radius: 0 48px 48px 0;
   }
 
@@ -174,43 +189,40 @@ h6 {
   }
 }
 
-
 .amount-input {
-  color: #1A1A1A;
-  font-family: "Sequel Sans", sans-serif;
+  color: #1a1a1a;
+  font-family: 'Sequel Sans', sans-serif;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
 
-  &[type=number] {
+  &[type='number'] {
     -moz-appearance: textfield; /* Firefox */
   }
 }
 
 .slide-toggle {
-
   &.mat-slide-toggle.mat-checked ::ng-deep {
     .mat-slide-toggle-thumb {
-      background-color: #FFFFFF;
+      background-color: #ffffff;
     }
 
     .mat-slide-toggle-bar {
-      background-color: #A566FF;
+      background-color: #a566ff;
     }
-
   }
 
   ::ng-deep {
     .mat-slide-toggle-bar {
-      background: #A6A5AC;
+      background: #a6a5ac;
     }
   }
 }
 
 .payment-details {
-  border-bottom: 1px solid #B3C6D2;
+  border-bottom: 1px solid #b3c6d2;
 }
 
 .currently-staking {
@@ -227,8 +239,13 @@ h6 {
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.25px;
-  background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
-  color: #FFFFFF !important;
+  background: linear-gradient(
+    82.68deg,
+    #4c26c7 -5.81%,
+    #6de9e9 98.14%,
+    #bfffff 121.71%
+  );
+  color: #ffffff !important;
   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
   border-radius: 34px;
   padding: 0 0 !important;
@@ -241,7 +258,7 @@ h6 {
   }
 
   &:hover {
-    background-color: #4C2CDF;
+    background-color: #4c2cdf;
   }
 }
 
@@ -253,10 +270,16 @@ h6 {
   line-height: 16px;
   border-radius: 16px;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  background: linear-gradient(180deg, #c7f5fd 0%, #e6fdff 32.23%, #c1d7fb 100%),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
   box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
   border-radius: 50px;
-  color: #4B25C7 !important;
+  color: #4b25c7 !important;
   padding: 0 0 !important;
   height: 48px;
   width: 172px;
@@ -266,12 +289,12 @@ h6 {
   }
 
   &:hover {
-    background-color: #AFF6FC;
+    background-color: #aff6fc;
   }
 }
 
 .color-grey {
-  font-family: "BW-Gradual-Regular";
+  font-family: 'BW-Gradual-Regular';
   color: #474747;
 }
 
@@ -280,7 +303,7 @@ h6 {
 }
 
 .highlight {
-  color: #63BDFE;
+  color: #63bdfe;
 }
 
 mat-progress-bar {
@@ -291,7 +314,7 @@ mat-progress-bar {
   position: absolute;
   width: 155px;
   height: 155px;
-  padding:25px;
+  padding: 25px;
   background-image: url(../../../../assets/img/preloader/circle-inner-sm.png);
   background-size: 155px 155px;
   border-radius: 100%;

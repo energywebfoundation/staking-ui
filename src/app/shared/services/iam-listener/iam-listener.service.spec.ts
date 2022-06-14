@@ -8,9 +8,7 @@ describe('IamListenerService', () => {
   const signerFacadeSpy = jasmine.createSpyObj(SignerFacadeService, ['on']);
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        {provide: SignerFacadeService, useValue: signerFacadeSpy}
-      ]
+      providers: [{ provide: SignerFacadeService, useValue: signerFacadeSpy }]
     });
     service = TestBed.inject(IamListenerService);
   });
@@ -20,8 +18,7 @@ describe('IamListenerService', () => {
   });
 
   it('should call 3 events', () => {
-    service.setListeners(() => {
-    });
+    service.setListeners(() => {});
     expect(signerFacadeSpy.on).toHaveBeenCalledTimes(3);
   });
 });

@@ -17,17 +17,18 @@ export const deepEqualObjects = (defaultObject, objectToCompare): boolean => {
     const areDates = isDate(val1) && isDate(val2);
 
     const equalDates = areDates && val1?.toString() === val2?.toString();
-    const equalObjects = areObjects && !areDates && deepEqualObjects(val1, val2);
+    const equalObjects =
+      areObjects && !areDates && deepEqualObjects(val1, val2);
     const equalValues = !areObjects && val1 === val2;
 
-    return (equalObjects || equalValues || equalDates);
+    return equalObjects || equalValues || equalDates;
   });
 };
 
-const isObject = (object) => {
+const isObject = object => {
   return object != null && typeof object === 'object';
 };
 
-const isDate = (object) => {
+const isDate = object => {
   return Object.prototype.toString.call(object) === '[object Date]';
 };

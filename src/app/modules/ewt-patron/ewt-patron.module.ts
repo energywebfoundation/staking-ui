@@ -36,6 +36,13 @@ import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-veri
 import { SnapshotsComponent } from './snapshots/snapshots.component';
 import { DotComponent } from './dot/dot.component';
 import { SnapshotComponent } from './snapshots/snapshot/snapshot.component';
+import { SnapshotSuccessComponent } from './snapshot-success/snapshot-success.component';
+import { CheckSnapshotComponent } from './check-snapshot/check-snapshot.component';
+import { SnapshotBoxComponent } from './snapshot-box/snapshot-box.component';
+import { SnapshotStatsComponent } from './snapshot-stats/snapshot-stats.component';
+import { LabelComponent } from './label/label.component';
+import { SnapshotBtnComponent } from './snapshot-btn/snapshot-btn.component';
+import { H4Component } from './h4/h4.component';
 
 @NgModule({
   declarations: [
@@ -59,10 +66,17 @@ import { SnapshotComponent } from './snapshots/snapshot/snapshot.component';
     SnapshotsComponent,
     DotComponent,
     SnapshotComponent,
+    SnapshotSuccessComponent,
+    CheckSnapshotComponent,
+    SnapshotBoxComponent,
+    SnapshotStatsComponent,
+    LabelComponent,
+    SnapshotBtnComponent,
+    H4Component
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([{path: '', component: EwtPatronComponent}]),
+    RouterModule.forChild([{ path: '', component: EwtPatronComponent }]),
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -78,8 +92,6 @@ import { SnapshotComponent } from './snapshots/snapshot/snapshot.component';
     HourlyToDailyRewardModule,
     MatProgressSpinnerModule,
     CircleProgressModule.forRoot()
-  ],
-
+  ]
 })
-export class EwtPatronModule {
-}
+export class EwtPatronModule {}

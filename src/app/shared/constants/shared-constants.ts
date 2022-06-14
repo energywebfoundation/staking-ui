@@ -1,3 +1,4 @@
 export const enum LoadingCount {
-  UP, DOWN
+  UP,
+  DOWN
 }

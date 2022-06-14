@@ -1,18 +1,20 @@
-const METAMASK_WRONG_NETWORK_ERROR = 'Cannot destructure property' ;
+const METAMASK_WRONG_NETWORK_ERROR = 'Cannot destructure property';
 const CACHE_SERVER_401_ERROR = 'Request failed with status code 401';
 const CACHE_SERVER_500_ERROR = 'Request failed with status code 500';
 
-export const swalLoginError = (message: string): { title: string; text: string; } => {
+export const swalLoginError = (
+  message: string
+): { title: string; text: string } => {
   if (message.includes(METAMASK_WRONG_NETWORK_ERROR)) {
     return {
       title: 'Wrong Network',
-      text: `Please check if you are connected to correct network.`,
+      text: `Please check if you are connected to correct network.`
     };
   }
   if (message === CACHE_SERVER_401_ERROR) {
     return {
       title: 'Session Expired',
-      text: 'Please proceed to login again',
+      text: 'Please proceed to login again'
     };
   }
 
@@ -21,7 +23,7 @@ export const swalLoginError = (message: string): { title: string; text: string; 
   if (message === CACHE_SERVER_500_ERROR) {
     return {
       title: 'Session Expired',
-      text: 'Please proceed to login again',
+      text: 'Please proceed to login again'
     };
   }
 

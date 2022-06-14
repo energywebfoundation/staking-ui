@@ -14,7 +14,9 @@ describe('EwtPatronComponent', () => {
   let component: EwtPatronComponent;
   let fixture: ComponentFixture<EwtPatronComponent>;
   let store: MockStore<StakeState>;
-  const loginServiceSpy = jasmine.createSpyObj(LoginService, ['isSessionActive']);
+  const loginServiceSpy = jasmine.createSpyObj(LoginService, [
+    'isSessionActive'
+  ]);
   const mockActivatedRoute = new MockActivatedRoute();
   const setUp = (options?: {
     balance?: string;
@@ -37,19 +39,20 @@ describe('EwtPatronComponent', () => {
     store.overrideSelector(PoolSelectors.getOrganizationLimit, opt.orgLimit);
   };
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [EwtPatronComponent, LastDigitsPipe],
-      providers: [
-        {provide: LoginService, useValue: loginServiceSpy},
-        {provide: ActivatedRoute, useValue: mockActivatedRoute},
-        provideMockStore()
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [EwtPatronComponent, LastDigitsPipe],
+        providers: [
+          { provide: LoginService, useValue: loginServiceSpy },
+          { provide: ActivatedRoute, useValue: mockActivatedRoute },
+          provideMockStore()
+        ],
+        schemas: [NO_ERRORS_SCHEMA]
+      }).compileComponents();
+      store = TestBed.inject(MockStore);
     })
-      .compileComponents();
-    store = TestBed.inject(MockStore);
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EwtPatronComponent);
@@ -64,7 +67,7 @@ describe('EwtPatronComponent', () => {
 
   it('should set an organization', () => {
     setUp();
-    mockActivatedRoute.testParams = {org: 'org'};
+    mockActivatedRoute.testParams = { org: 'org' };
     const dispatchSpy = spyOn(store, 'dispatch');
     fixture.detectChanges();
 
@@ -73,18 +76,20 @@ describe('EwtPatronComponent', () => {
 
   it('should dispatch action to reinitialize login', () => {
     setUp();
-    mockActivatedRoute.testParams = {org: 'org'};
+    mockActivatedRoute.testParams = { org: 'org' };
     const dispatchSpy = spyOn(store, 'dispatch');
     loginServiceSpy.isSessionActive.and.returnValue(true);
     fixture.detectChanges();
 
     component.ngOnInit();
-    expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.reinitializeAuthForPatron());
+    expect(dispatchSpy).toHaveBeenCalledWith(
+      AuthActions.reinitializeAuthForPatron()
+    );
   });
 
   it('should dispatch action to open login dialog', () => {
     setUp();
-    mockActivatedRoute.testParams = {org: 'org'};
+    mockActivatedRoute.testParams = { org: 'org' };
     const dispatchSpy = spyOn(store, 'dispatch');
     loginServiceSpy.isSessionActive.and.returnValue(false);
     fixture.detectChanges();

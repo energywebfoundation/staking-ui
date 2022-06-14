@@ -3,7 +3,15 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { AuthState } from './auth.reducer';
 import * as AuthActions from './auth.actions';
-import { catchError, filter, finalize, map, mergeMap, switchMap, tap } from 'rxjs/operators';
+import {
+  catchError,
+  filter,
+  finalize,
+  map,
+  mergeMap,
+  switchMap,
+  tap
+} from 'rxjs/operators';
 import { isMetamaskExtensionPresent, ProviderType } from 'iam-client-lib';
 import { from, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,22 +27,20 @@ import * as RoleEnrolmentActions from '../role-enrolment/role-enrolment.actions'
 
 @Injectable()
 export class AuthEffects {
-
   metamaskOptions$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.init),
       tap(() => this.loadingService.show()),
       switchMap(() =>
-        from(isMetamaskExtensionPresent())
-          .pipe(
-            map(({isMetamaskPresent, chainId}) =>
-              AuthActions.setMetamaskLoginOptions({
-                present: isMetamaskPresent,
-                chainId
-              })
-            ),
-            finalize(() => this.loadingService.hide())
-          )
+        from(isMetamaskExtensionPresent()).pipe(
+          map(({ isMetamaskPresent, chainId }) =>
+            AuthActions.setMetamaskLoginOptions({
+              present: isMetamaskPresent,
+              chainId
+            })
+          ),
+          finalize(() => this.loadingService.hide())
+        )
       )
     )
   );
@@ -42,52 +48,65 @@ export class AuthEffects {
   defaultChainId$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.init),
-      map(() => AuthActions.setDefaultChainId({defaultChainId: this.envService.chainId}))
+      map(() =>
+        AuthActions.setDefaultChainId({
+          defaultChainId: this.envService.chainId
+        })
+      )
     )
   );
 
   loginViaDialog$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.loginViaDialog),
-      tap(({provider, navigateOnTimeout}) => this.loginService.waitForSignature(provider, true, navigateOnTimeout)),
-      switchMap(({provider, navigateOnTimeout}) =>
-        this.loginService.login({
-          providerType: provider,
-          reinitializeMetamask: provider === ProviderType.MetaMask
-        }, navigateOnTimeout).pipe(
-          map(({ success, accountInfo }) => {
-            if (success) {
-              this.dialog.closeAll();
-              return AuthActions.loginSuccess({ accountInfo });
-            }
-            return AuthActions.loginFailure();
-          }),
-          catchError((err) => {
-            console.log(err);
-            return of(AuthActions.loginFailure());
-          }),
-          finalize(() => this.loginService.clearWaitSignatureTimer())
-        )
+      tap(({ provider, navigateOnTimeout }) =>
+        this.loginService.waitForSignature(provider, true, navigateOnTimeout)
+      ),
+      switchMap(({ provider, navigateOnTimeout }) =>
+        this.loginService
+          .login(
+            {
+              providerType: provider,
+              reinitializeMetamask: provider === ProviderType.MetaMask
+            },
+            navigateOnTimeout
+          )
+          .pipe(
+            map(({ success, accountInfo }) => {
+              if (success) {
+                this.dialog.closeAll();
+                return AuthActions.loginSuccess({ accountInfo });
+              }
+              return AuthActions.loginFailure();
+            }),
+            catchError(err => {
+              console.log(err);
+              return of(AuthActions.loginFailure());
+            }),
+            finalize(() => this.loginService.clearWaitSignatureTimer())
+          )
       )
     )
   );
 
-  openLoginDialog$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.openLoginDialog),
-      map(() => {
-        this.dialog.open(ConnectToWalletDialogComponent, {
-          width: '434px',
-          panelClass: 'connect-to-wallet',
-          backdropClass: 'backdrop-hide-content',
-          data: {
-            navigateOnTimeout: false
-          },
-          maxWidth: '100%',
-          disableClose: true
-        });
-      })
-    ), { dispatch: false }
+  openLoginDialog$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.openLoginDialog),
+        map(() => {
+          this.dialog.open(ConnectToWalletDialogComponent, {
+            width: '434px',
+            panelClass: 'connect-to-wallet',
+            backdropClass: 'backdrop-hide-content',
+            data: {
+              navigateOnTimeout: false
+            },
+            maxWidth: '100%',
+            disableClose: true
+          });
+        })
+      ),
+    { dispatch: false }
   );
 
   userSuccessfullyLoggedIn$ = createEffect(() =>
@@ -101,22 +120,29 @@ export class AuthEffects {
     )
   );
 
-  logout$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.logout),
-      map(() => this.loginService.disconnect())
-    ), {dispatch: false}
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logout),
+        map(() => this.loginService.disconnect())
+      ),
+    { dispatch: false }
   );
 
   reinitializeLoggedUser$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.reinitializeAuth, AuthActions.reinitializeAuthForPatron, AuthActions.reinitializeAuthForEnrol),
+      ofType(
+        AuthActions.reinitializeAuth,
+        AuthActions.reinitializeAuthForPatron,
+        AuthActions.reinitializeAuthForEnrol
+      ),
       filter(this.loginService.isSessionActive),
       concatLatestFrom(() => this.store.select(AuthSelectors.isUserLoggedIn)),
       filter(([, isLoggedIn]) => !isLoggedIn),
       tap(() => this.loadingService.show()),
       switchMap(() =>
-        this.loginService.login({ providerType: this.loginService.getSession().providerType })
+        this.loginService
+          .login({ providerType: this.loginService.getSession().providerType })
           .pipe(
             map(({ success, accountInfo }) => {
               if (success) {
@@ -124,10 +150,10 @@ export class AuthEffects {
               }
               return AuthActions.loginFailure();
             }),
-            catchError((err => {
+            catchError(err => {
               console.log(err);
               return of(AuthActions.loginFailure());
-            })),
+            }),
             finalize(() => {
               this.loadingService.hide();
             })
@@ -136,37 +162,46 @@ export class AuthEffects {
     )
   );
 
-  notPossibleToReinitializeUser$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.reinitializeAuth),
-      filter((e) => !this.loginService.isSessionActive()),
-      map(() => {
-        this.router.navigate(['welcome']);
-      })
-    ), { dispatch: false }
+  notPossibleToReinitializeUser$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.reinitializeAuth),
+        filter(e => !this.loginService.isSessionActive()),
+        map(() => {
+          this.router.navigate(['welcome']);
+        })
+      ),
+    { dispatch: false }
   );
 
   setWalletProviderAfterLogin$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.loginSuccess),
-      map(() => AuthActions.setProvider({walletProvider: this.loginService.getProviderType()}))
-    ));
-
-  navigateToDashboardWhenSessionIsActive$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.navigateWhenSessionActive),
-      filter(() => this.loginService.isSessionActive()),
-      map(() => this.router.navigate(['dashboard']))
-    ), {dispatch: false}
+      map(() =>
+        AuthActions.setProvider({
+          walletProvider: this.loginService.getProviderType()
+        })
+      )
+    )
   );
 
-  constructor(private actions$: Actions,
-              private store: Store<AuthState>,
-              private loginService: LoginService,
-              private loadingService: LoadingService,
-              private dialog: MatDialog,
-              private router: Router,
-              private envService: EnvService) {
-  }
+  navigateToDashboardWhenSessionIsActive$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.navigateWhenSessionActive),
+        filter(() => this.loginService.isSessionActive()),
+        map(() => this.router.navigate(['dashboard']))
+      ),
+    { dispatch: false }
+  );
 
+  constructor(
+    private actions$: Actions,
+    private store: Store<AuthState>,
+    private loginService: LoginService,
+    private loadingService: LoadingService,
+    private dialog: MatDialog,
+    private router: Router,
+    private envService: EnvService
+  ) {}
 }
