@@ -1,33 +1,33 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
   ValidationErrors,
   ValidatorFn,
   Validators
-} from "@angular/forms";
+} from '@angular/forms';
 
-import { tap } from "rxjs/operators";
-import { Store } from "@ngrx/store";
-import * as poolSelectors from "../../../state/pool/pool.selectors";
-import * as PoolActions from "../../../state/pool/pool.actions";
-import { MAX_STAKE_AMOUNT } from "../../../state/pool/models/const";
-import { exponentialToString } from "../../../utils/functions/exponential-to-string/exponential-to-string";
-import { RoleEnrolmentSelectors } from "@state";
-import { WithdrawComponent } from "../withdraw/withdraw.component";
-import { MatDialog } from "@angular/material/dialog";
-import { MINIMAL_ETHEREUM_VALUE } from "../../../../environments/models/minimal_ethereum_value";
+import { tap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import * as poolSelectors from '../../../state/pool/pool.selectors';
+import * as PoolActions from '../../../state/pool/pool.actions';
+import { MAX_STAKE_AMOUNT } from '../../../state/pool/models/const';
+import { exponentialToString } from '../../../utils/functions/exponential-to-string/exponential-to-string';
+import { RoleEnrolmentSelectors } from '@state';
+import { WithdrawComponent } from '../withdraw/withdraw.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_ethereum_value';
 
 @Component({
-  selector: "app-stake",
-  templateUrl: "./stake.component.html",
-  styleUrls: ["./stake.component.scss"]
+  selector: 'app-stake',
+  templateUrl: './stake.component.html',
+  styleUrls: ['./stake.component.scss']
 })
 export class StakeComponent implements OnInit {
   readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE;
   inputFocused: boolean;
   tokenAmount: number;
-  amountToStake = new FormControl("", [
+  amountToStake = new FormControl('', [
     Validators.min(this.MINIMAL_VALUE),
     Validators.required,
     Validators.max(MAX_STAKE_AMOUNT)
@@ -67,7 +67,7 @@ export class StakeComponent implements OnInit {
     e.preventDefault();
     e.stopPropagation();
     this.inputFocused = false;
-    this.amountToStake.setValue("");
+    this.amountToStake.setValue('');
   }
 
   isAmountInvalid() {
@@ -93,10 +93,10 @@ export class StakeComponent implements OnInit {
 
   withdraw() {
     this.dialog.open(WithdrawComponent, {
-      width: "400px",
-      maxWidth: "100%",
+      width: '400px',
+      maxWidth: '100%',
       disableClose: true,
-      backdropClass: "backdrop-shadow"
+      backdropClass: 'backdrop-shadow'
     });
   }
 

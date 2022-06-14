@@ -8,9 +8,8 @@ describe('SnapshotBtnComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SnapshotBtnComponent ]
-    })
-    .compileComponents();
+      declarations: [SnapshotBtnComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

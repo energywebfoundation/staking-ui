@@ -9,8 +9,7 @@ describe('PercentButtonsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PercentButtonsComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

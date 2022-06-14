@@ -11,8 +11,7 @@ describe('ProgressBarComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ProgressBarComponent],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

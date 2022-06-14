@@ -4,7 +4,7 @@
 }
 
 h3 {
-  font-family: 'BW-Gradual-Medium'; 
+  font-family: 'BW-Gradual-Medium';
   font-size: 24px !important;
   font-weight: 600 !important;
   color: #000;
@@ -19,9 +19,8 @@ p {
   font-weight: 400;
 }
 
-
 .text-color {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .stake-btn {
@@ -30,8 +29,13 @@ p {
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.25px;
-  background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
-  color: #FFFFFF !important;
+  background: linear-gradient(
+    82.68deg,
+    #4c26c7 -5.81%,
+    #6de9e9 98.14%,
+    #bfffff 121.71%
+  );
+  color: #ffffff !important;
   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
   border-radius: 34px;
   padding: 0 0 !important;
@@ -44,7 +48,7 @@ p {
   }
 
   &:hover {
-    background-color: #4C2CDF;
+    background-color: #4c2cdf;
   }
 }
 
@@ -56,10 +60,16 @@ p {
   line-height: 16px;
   border-radius: 16px;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  background: linear-gradient(180deg, #c7f5fd 0%, #e6fdff 32.23%, #c1d7fb 100%),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
   box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
   border-radius: 50px;
-  color: #4B25C7 !important;
+  color: #4b25c7 !important;
   padding: 0 0 !important;
   margin-top: 38px;
   height: 48px;
@@ -70,7 +80,7 @@ p {
   }
 
   &:hover {
-    background-color: #AFF6FC;
+    background-color: #aff6fc;
   }
 }
 
@@ -87,15 +97,15 @@ p {
 }
 
 .amount-input {
-  color: #1A1A1A;
-  font-family: "Sequel Sans", sans-serif;
+  color: #1a1a1a;
+  font-family: 'Sequel Sans', sans-serif;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
 
-  &[type=number] {
+  &[type='number'] {
     -moz-appearance: textfield; /* Firefox */
   }
 }

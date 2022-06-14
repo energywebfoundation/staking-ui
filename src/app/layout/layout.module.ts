@@ -4,16 +4,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    NgxSpinnerModule,
-  ],
-  declarations: [
-    LoadingComponent
-  ],
-  exports: [
-    LoadingComponent
-  ]
+  imports: [SharedModule, NgxSpinnerModule],
+  declarations: [LoadingComponent],
+  exports: [LoadingComponent]
 })
-export class LayoutModule {
-}
+export class LayoutModule {}

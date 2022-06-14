@@ -1,6 +1,7 @@
 :host {
   margin: 70px 0 0 0;
 }
+
 .snapshot-circle {
   position: relative;
   width: 127px;
@@ -10,6 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   &.past {
     background: radial-gradient(
       351.92% 130.17% at 336.54% -20.19%,
@@ -17,9 +19,9 @@
       #5e44d4 88.34%,
       #553fba 100%
     );
-    -webkit-box-shadow: 0px 0px 48px 46px rgba(191,255,255, 0.7);
-    -moz-box-shadow: 0px 0px 48px 46px rgba(191,255,255, 0.7);
-    box-shadow: 0px 0px 48px 46px rgba(191,255,255, 0.7);
+    -webkit-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
+    -moz-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
+    box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
 
     .text {
       background: linear-gradient(
@@ -40,9 +42,9 @@
       #8e8aff 80.07%,
       #6d6ae2 98.31%
     );
-    -webkit-box-shadow: 0px 0px 48px 46px rgba(191,255,255, 0.7);
-    -moz-box-shadow: 0px 0px 48px 46px rgba(191,255,255, 0.7);
-    box-shadow: 0px 0px 48px 46px rgba(191,255,255, 0.7);
+    -webkit-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
+    -moz-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
+    box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
 
     .text {
       background: linear-gradient(

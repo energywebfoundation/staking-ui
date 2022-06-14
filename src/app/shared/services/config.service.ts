@@ -9,7 +9,7 @@ export class ConfigService {
   public safeInfo: SafeInfo;
 
   loadConfigData() {
-    return new Promise<void>((resolve) => {
+    return new Promise<void>(resolve => {
       safeAppSdk.safe.getInfo().then((safeInfo: SafeInfo) => {
         this.safeInfo = safeInfo;
       });

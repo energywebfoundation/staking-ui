@@ -8,9 +8,8 @@ describe('H4Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ H4Component ]
-    })
-    .compileComponents();
+      declarations: [H4Component]
+    }).compileComponents();
   });
 
   beforeEach(() => {

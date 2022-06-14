@@ -16,8 +16,7 @@ import * as UserClaimSelectors from './user-claim/user.selectors';
 
 // === Layout ===
 import * as LayoutActions from './layout/layout.actions';
-import * as LayoutSelectors from './layout/layout.selectors';//
-
+import * as LayoutSelectors from './layout/layout.selectors'; //
 // === Role Enrolment ===
 import * as RoleEnrolmentActions from './role-enrolment/role-enrolment.actions';
 import * as RoleEnrolmentSelectors from './role-enrolment/role-enrolment.selectors';
@@ -26,19 +25,14 @@ export * from './store-root.module';
 export {
   AuthActions,
   AuthSelectors,
-
   PoolActions,
   PoolSelectors,
-
   StakeActions,
   StakeSelectors,
-
   UserClaimActions,
   UserClaimSelectors,
-
   LayoutActions,
   LayoutSelectors,
-
   RoleEnrolmentActions,
   RoleEnrolmentSelectors
 };

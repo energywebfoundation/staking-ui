@@ -1,17 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CheckSnapshotComponent } from './check-snapshot.component';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('CheckSnapshotComponent', () => {
   let component: CheckSnapshotComponent;
   let fixture: ComponentFixture<CheckSnapshotComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CheckSnapshotComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [CheckSnapshotComponent],
+        providers: [{ provide: MatDialog, useValue: {} }]
+      }).compileComponents();
     })
-    .compileComponents();
-  });
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CheckSnapshotComponent);

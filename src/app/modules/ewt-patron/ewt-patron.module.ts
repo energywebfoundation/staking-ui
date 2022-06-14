@@ -72,11 +72,11 @@ import { H4Component } from './h4/h4.component';
     SnapshotStatsComponent,
     LabelComponent,
     SnapshotBtnComponent,
-    H4Component,
+    H4Component
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([{path: '', component: EwtPatronComponent}]),
+    RouterModule.forChild([{ path: '', component: EwtPatronComponent }]),
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -92,8 +92,6 @@ import { H4Component } from './h4/h4.component';
     HourlyToDailyRewardModule,
     MatProgressSpinnerModule,
     CircleProgressModule.forRoot()
-  ],
-
+  ]
 })
-export class EwtPatronModule {
-}
+export class EwtPatronModule {}

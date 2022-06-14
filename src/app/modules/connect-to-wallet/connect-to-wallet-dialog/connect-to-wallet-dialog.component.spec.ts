@@ -15,27 +15,34 @@ describe('ConnectToWalletDialogComponent', () => {
   let store: MockStore;
 
   const setup = (options?: {
-    metamaskPresent?: boolean,
-    metamaskDisabled?: boolean
+    metamaskPresent?: boolean;
+    metamaskDisabled?: boolean;
   }) => {
-    store.overrideSelector(authSelectors.isMetamaskPresent, options?.metamaskPresent ?? true);
-    store.overrideSelector(authSelectors.isMetamaskDisabled, options?.metamaskDisabled ?? false);
+    store.overrideSelector(
+      authSelectors.isMetamaskPresent,
+      options?.metamaskPresent ?? true
+    );
+    store.overrideSelector(
+      authSelectors.isMetamaskDisabled,
+      options?.metamaskDisabled ?? false
+    );
     fixture.detectChanges();
   };
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ConnectToWalletDialogComponent],
-      providers: [
-        provideMockStore(),
-        {provide: MAT_DIALOG_DATA, useValue: {navigateOnTimeout: true}},
-        {provide: EnvService, useValue: {}}
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ConnectToWalletDialogComponent],
+        providers: [
+          provideMockStore(),
+          { provide: MAT_DIALOG_DATA, useValue: { navigateOnTimeout: true } },
+          { provide: EnvService, useValue: {} }
+        ],
+        schemas: [NO_ERRORS_SCHEMA]
+      }).compileComponents();
+      store = TestBed.inject(MockStore);
     })
-      .compileComponents();
-    store = TestBed.inject(MockStore);
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ConnectToWalletDialogComponent);
@@ -53,10 +60,11 @@ describe('ConnectToWalletDialogComponent', () => {
     fixture.detectChanges();
 
     component.login(ProviderType.MetaMask);
-    expect(dispatchSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-      provider: ProviderType.MetaMask,
-      navigateOnTimeout: true
-    }));
+    expect(dispatchSpy).toHaveBeenCalledWith(
+      jasmine.objectContaining({
+        provider: ProviderType.MetaMask,
+        navigateOnTimeout: true
+      })
+    );
   });
-
 });

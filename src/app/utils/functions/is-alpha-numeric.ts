@@ -1,5 +1,8 @@
-export const isAlphaNumericOnly = (event: any, includeDot?: boolean): boolean => {
-  const charCode = (event.which) ? event.which : event.keyCode;
+export const isAlphaNumericOnly = (
+  event: any,
+  includeDot?: boolean
+): boolean => {
+  const charCode = event.which ? event.which : event.keyCode;
 
   // Check if key is alphanumeric key
   return (

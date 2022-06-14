@@ -15,19 +15,24 @@ import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_
   styleUrls: ['./withdraw.component.scss']
 })
 export class WithdrawComponent {
-  readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE
-  maxAmount$ = this.store.select(poolSelectors.allTokens).pipe(tap(amount => this.setValidators(amount)));
+  readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE;
+  maxAmount$ = this.store
+    .select(poolSelectors.allTokens)
+    .pipe(tap(amount => this.setValidators(amount)));
   amount = new FormControl('', [Validators.required]);
   inputFocused;
 
-  constructor(private store: Store<StakeState>) {
-  }
+  constructor(private store: Store<StakeState>) {}
 
   withdraw() {
     if (this.isAmountInvalid) {
       return;
     }
-    this.store.dispatch(PoolActions.withdrawReward({value: exponentialToString(this.amount.value)}));
+    this.store.dispatch(
+      PoolActions.withdrawReward({
+        value: exponentialToString(this.amount.value)
+      })
+    );
   }
 
   withdrawAll() {
@@ -46,7 +51,10 @@ export class WithdrawComponent {
   }
 
   private setValidators(amount: string) {
-    this.amount.setValidators([Validators.required, Validators.min(this.MINIMAL_VALUE), Validators.max(parseStringToFloat(amount))]);
+    this.amount.setValidators([
+      Validators.required,
+      Validators.min(this.MINIMAL_VALUE),
+      Validators.max(parseStringToFloat(amount))
+    ]);
   }
-
 }

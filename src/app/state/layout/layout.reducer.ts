@@ -13,8 +13,11 @@ export const initialState: LayoutState = {
 
 const layoutReducer = createReducer(
   initialState,
-  on(LayoutActions.setRedirectUrl, (state, {url}) => ({...state, redirectUrl: url})),
-  on(LayoutActions.redirectSuccess, (state) => ({...state, redirectUrl: ''}))
+  on(LayoutActions.setRedirectUrl, (state, { url }) => ({
+    ...state,
+    redirectUrl: url
+  })),
+  on(LayoutActions.redirectSuccess, state => ({ ...state, redirectUrl: '' }))
 );
 
 export function reducer(state: LayoutState | undefined, action: Action) {

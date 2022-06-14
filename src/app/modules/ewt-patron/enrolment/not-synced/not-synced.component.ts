@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RoleEnrolmentActions } from '@state';
 
@@ -8,11 +8,9 @@ import { RoleEnrolmentActions } from '@state';
   styleUrls: ['./not-synced.component.scss']
 })
 export class NotSyncedComponent {
-
-  constructor(private store: Store) { }
+  constructor(private store: Store) {}
 
   addRole() {
-    this.store.dispatch(RoleEnrolmentActions.addRole())
+    this.store.dispatch(RoleEnrolmentActions.addRole());
   }
-
 }

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { of, ReplaySubject, throwError } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 import { UserEffects } from './user.effects';
 import { provideMockActions } from '@ngrx/effects/testing';
@@ -13,7 +13,6 @@ import { ToastrService } from 'ngx-toastr';
 import { dialogSpy, iamServiceSpy, loadingServiceSpy, toastrSpy } from '@tests';
 
 describe('UserEffects', () => {
-
   let actions$: ReplaySubject<any>;
   let effects: UserEffects;
   let store: MockStore<UserClaimState>;
@@ -22,13 +21,13 @@ describe('UserEffects', () => {
     TestBed.configureTestingModule({
       providers: [
         UserEffects,
-        {provide: IamService, useValue: iamServiceSpy},
-        {provide: LoadingService, useValue: loadingServiceSpy},
-        {provide: MatDialog, useValue: dialogSpy},
-        {provide: ToastrService, useValue: toastrSpy},
+        { provide: IamService, useValue: iamServiceSpy },
+        { provide: LoadingService, useValue: loadingServiceSpy },
+        { provide: MatDialog, useValue: dialogSpy },
+        { provide: ToastrService, useValue: toastrSpy },
         provideMockStore(),
-        provideMockActions(() => actions$),
-      ],
+        provideMockActions(() => actions$)
+      ]
     });
     store = TestBed.inject(MockStore);
 
@@ -37,6 +36,5 @@ describe('UserEffects', () => {
 
   it('should create', () => {
     expect(effects).toBeTruthy();
-  })
-
+  });
 });

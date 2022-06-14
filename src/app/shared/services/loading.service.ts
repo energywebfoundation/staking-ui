@@ -50,7 +50,10 @@ export class LoadingService {
     this._isLoading.next(this._counter);
   }
 
-  updateLocalLoadingFlag(loadingObj: { requests: any[], value: boolean }, method: LoadingCount) {
+  updateLocalLoadingFlag(
+    loadingObj: { requests: any[]; value: boolean },
+    method: LoadingCount
+  ) {
     if (loadingObj && loadingObj.requests) {
       if (method === LoadingCount.UP) {
         loadingObj.requests.push(true);

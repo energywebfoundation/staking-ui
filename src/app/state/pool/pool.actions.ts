@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { Stake } from 'iam-client-lib';
-import { IOrganizationDefinition } from '@energyweb/iam-contracts';
 import { BigNumber } from 'ethers';
 
 export const initPool = createAction('[Pool] Initialize Pool');
@@ -20,19 +19,17 @@ export const getStakeSuccess = createAction(
   '[Pool] Get Stake Success',
   props<{ stake: Stake }>()
 );
-export const getStakeFailure = createAction(
-  '[Pool] Get Stake Failure'
-);
+export const getStakeFailure = createAction('[Pool] Get Stake Failure');
 
-export const getAccountBalance = createAction('[Pool] Get Actual Account Balance');
+export const getAccountBalance = createAction(
+  '[Pool] Get Actual Account Balance'
+);
 export const getAccountSuccess = createAction(
   '[Pool] Get Actual Account Balance Success',
   props<{ balance: string }>()
 );
 
-export const setOrganization = createAction(
-  '[Pool] Set Organization For Pool',
-);
+export const setOrganization = createAction('[Pool] Set Organization For Pool');
 export const putStake = createAction(
   '[Pool] Put Stake',
   props<{ amount: string }>()
@@ -48,9 +45,7 @@ export const withdrawReward = createAction(
   props<{ value: string }>()
 );
 
-export const withdrawAllReward = createAction(
-  '[Pool] Withdraw All Reward'
-);
+export const withdrawAllReward = createAction('[Pool] Withdraw All Reward');
 
 export const withdrawRewardSuccess = createAction(
   '[Pool] Withdraw Reward Success'
@@ -70,7 +65,7 @@ export const displayConfirmationDialog = createAction(
 );
 
 export const withdrawalDelayExpired = createAction(
-  '[Pool] Withdrawal Delay Expired',
+  '[Pool] Withdrawal Delay Expired'
 );
 
 export const getWithdrawalDelayFailure = createAction(
@@ -78,13 +73,9 @@ export const getWithdrawalDelayFailure = createAction(
   props<{ err: string }>()
 );
 
-export const openWithdrawDialog = createAction(
-  '[Pool] Open Withdraw Dialog'
-);
+export const openWithdrawDialog = createAction('[Pool] Open Withdraw Dialog');
 
-export const getHardCap = createAction(
-  '[Pool] Get Hard Organization Limit'
-);
+export const getHardCap = createAction('[Pool] Get Hard Organization Limit');
 
 export const getHardCapSuccess = createAction(
   '[Pool] Get Hard Organization Limit Success',
@@ -96,13 +87,9 @@ export const getHardCapFailure = createAction(
   props<{ err: string }>()
 );
 
-export const getRoles = createAction(
-  '[Pool] Get User Roles'
-);
+export const getRoles = createAction('[Pool] Get User Roles');
 
-export const totalStaked = createAction(
-  '[Pool] Get Total Staked Amount'
-);
+export const totalStaked = createAction('[Pool] Get Total Staked Amount');
 
 export const totalStakedSuccess = createAction(
   '[Pool] Get Total Staked Amount Success',
@@ -114,17 +101,13 @@ export const totalStakedFailure = createAction(
   props<{ err: string }>()
 );
 
-export const getContributorLimit = createAction(
-  '[Pool] Get Contributor Limit'
-);
+export const getContributorLimit = createAction('[Pool] Get Contributor Limit');
 
 export const getContributorLimitSuccess = createAction(
   '[Pool] Get Contributor Limit Success',
   props<{ cap: BigNumber }>()
 );
-export const getRatio = createAction(
-  '[Pool] Get Ratio'
-);
+export const getRatio = createAction('[Pool] Get Ratio');
 
 export const getRatioSuccess = createAction(
   '[Pool] Get Ratio Success',
@@ -157,4 +140,3 @@ export const getRatioFailure = createAction(
   '[Pool] Get Ratio Failure',
   props<{ err: string }>()
 );
-

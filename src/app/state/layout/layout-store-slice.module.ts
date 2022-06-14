@@ -8,7 +8,6 @@ import { reducer, USER_FEATURE_KEY } from './layout.reducer';
   imports: [
     StoreModule.forFeature(USER_FEATURE_KEY, reducer),
     EffectsModule.forFeature([LayoutEffects])
-  ],
+  ]
 })
-export class LayoutStoreSliceModule {
-}
+export class LayoutStoreSliceModule {}

@@ -1,7 +1,12 @@
 :host {
   display: block;
   position: relative;
-  background: linear-gradient(349.56deg, #DCFFFF 9.46%, rgba(230, 255, 255, 0.80167) 60.56%, rgba(255, 255, 255, 0.28) 160.05%);
+  background: linear-gradient(
+    349.56deg,
+    #dcffff 9.46%,
+    rgba(230, 255, 255, 0.80167) 60.56%,
+    rgba(255, 255, 255, 0.28) 160.05%
+  );
   -webkit-backdrop-filter: blur(152.488px);
   backdrop-filter: blur(152.488px);
   border-radius: 144px;
@@ -17,7 +22,7 @@
 .stats-numbers {
   font-family: Rajdhani, sans-serif;
   font-size: 42px !important;
-  color: #4B25C7;
+  color: #4b25c7;
   font-weight: 700;
 
   span {

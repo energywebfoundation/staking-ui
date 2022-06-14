@@ -6,9 +6,7 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 
 @NgModule({
   imports: [],
-  providers: [
-    ThemesService,
-  ],
+  providers: [ThemesService],
   declarations: [],
   exports: []
 })

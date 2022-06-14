@@ -11,8 +11,7 @@ describe('StakeSuccessComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [StakeSuccessComponent],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

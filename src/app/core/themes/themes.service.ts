@@ -3,7 +3,6 @@ import { EnvService } from '../../shared/services/env/env.service';
 
 @Injectable()
 export class ThemesService {
-
   readonly defaultTheme = 'default';
   private styleTag: any;
 
@@ -33,5 +32,4 @@ export class ThemesService {
 
     head.appendChild(this.styleTag);
   }
-
 }

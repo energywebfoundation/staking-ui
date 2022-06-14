@@ -1,7 +1,12 @@
 .staking-widget {
   position: relative;
   border-radius: 144px;
-  background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%);
+  background: linear-gradient(
+    349.41deg,
+    rgba(220, 255, 255, 0.22) -17.31%,
+    rgba(220, 255, 255, 0.26) 4.93%,
+    rgba(255, 255, 255, 0.28) 129.23%
+  );
   padding: 100px;
 
   @media screen and (max-width: 800px) {
@@ -25,7 +30,7 @@
 
   .staking-currency {
     font-size: 16px !important;
-    color: #4B25C7;
+    color: #4b25c7;
   }
 }
 
@@ -33,7 +38,7 @@
   color: #2e2e2e;
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 2px;  
+  letter-spacing: 2px;
   font-family: Rajdhani, sans-serif;
 }
 

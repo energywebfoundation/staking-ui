@@ -6,7 +6,15 @@ import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { PoolState } from './pool.reducer';
 import * as PoolActions from './pool.actions';
-import { catchError, filter, finalize, map, mergeMap, switchMap, tap } from 'rxjs/operators';
+import {
+  catchError,
+  filter,
+  finalize,
+  map,
+  mergeMap,
+  switchMap,
+  tap
+} from 'rxjs/operators';
 import { from, of } from 'rxjs';
 import { BigNumber, utils } from 'ethers';
 import { Stake, StakeStatus } from 'iam-client-lib';
@@ -16,7 +24,7 @@ import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-
 import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
 import { EnvService } from '../../shared/services/env/env.service';
 
-const {formatEther, parseEther} = utils;
+const { formatEther, parseEther } = utils;
 
 @Injectable()
 export class PoolEffects {
@@ -38,29 +46,33 @@ export class PoolEffects {
   setFinishDateOfStakingPool$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.stakingPoolFinishDate),
-      switchMap(() => this.stakingPoolFacade.getEndDate()
-        .pipe(
-          map((d) => d.toNumber()),
-          map((date) => PoolActions.stakingPoolFinishDateSuccess({date}))
+      switchMap(() =>
+        this.stakingPoolFacade.getEndDate().pipe(
+          map(d => d.toNumber()),
+          map(date => PoolActions.stakingPoolFinishDateSuccess({ date }))
         )
       )
-    ));
+    )
+  );
 
   setStartDateOfStakingPool$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.stakingPoolStartDate),
-      switchMap(() => this.stakingPoolFacade.getStartDate()
-        .pipe(
-          map((d) => d.toNumber()),
-          map((date: number) => PoolActions.stakingPoolStartDateSuccess({date}))
+      switchMap(() =>
+        this.stakingPoolFacade.getStartDate().pipe(
+          map(d => d.toNumber()),
+          map((date: number) =>
+            PoolActions.stakingPoolStartDateSuccess({ date })
+          )
         )
       )
-    ));
+    )
+  );
 
   stakeIsInStakingStatus$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.getStakeSuccess),
-      map(({stake}) => stake.status),
+      map(({ stake }) => stake.status),
       filter((status: StakeStatus) => status === StakeStatus.STAKING),
       mergeMap(() => [
         PoolActions.getAccountBalance(),
@@ -73,9 +85,12 @@ export class PoolEffects {
   stakeIsInNonStakingStatus$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.getStakeSuccess),
-      map(({stake}) => stake.status),
+      map(({ stake }) => stake.status),
       filter((status: StakeStatus) => status === StakeStatus.NONSTAKING),
-      mergeMap(() => [PoolActions.getAccountBalance(), PoolActions.totalStaked()])
+      mergeMap(() => [
+        PoolActions.getAccountBalance(),
+        PoolActions.totalStaked()
+      ])
     )
   );
 
@@ -83,11 +98,10 @@ export class PoolEffects {
     this.actions$.pipe(
       ofType(PoolActions.getStake),
       switchMap(() =>
-        this.stakingPoolFacade.getStake()
-          .pipe(
-            filter<Stake>(Boolean),
-            map((stake) => PoolActions.getStakeSuccess({stake}))
-          )
+        this.stakingPoolFacade.getStake().pipe(
+          filter<Stake>(Boolean),
+          map(stake => PoolActions.getStakeSuccess({ stake }))
+        )
       )
     )
   );
@@ -96,27 +110,25 @@ export class PoolEffects {
     this.actions$.pipe(
       ofType(PoolActions.putStake),
       tap(() => this.loadingService.show('Staking EWT')),
-      switchMap(({amount}) => {
-          return this.stakingPoolFacade.putStake(parseEther(amount))
-            .pipe(
-              map(() => {
-                this.dialog.open(StakeSuccessComponent, {
-                  width: '400px',
-                  maxWidth: '100%',
-                  disableClose: true,
-                  backdropClass: 'backdrop-shadow'
-                });
-                return PoolActions.getStake();
-              }),
-              catchError(err => {
-                console.error(err);
-                this.toastr.error(err.message);
-                return of(PoolActions.putStakeFailure({err: err.message}));
-              }),
-              finalize(() => this.loadingService.hide())
-            );
-        }
-      )
+      switchMap(({ amount }) => {
+        return this.stakingPoolFacade.putStake(parseEther(amount)).pipe(
+          map(() => {
+            this.dialog.open(StakeSuccessComponent, {
+              width: '400px',
+              maxWidth: '100%',
+              disableClose: true,
+              backdropClass: 'backdrop-shadow'
+            });
+            return PoolActions.getStake();
+          }),
+          catchError(err => {
+            console.error(err);
+            this.toastr.error(err.message);
+            return of(PoolActions.putStakeFailure({ err: err.message }));
+          }),
+          finalize(() => this.loadingService.hide())
+        );
+      })
     )
   );
 
@@ -124,20 +136,25 @@ export class PoolEffects {
     this.actions$.pipe(
       ofType(PoolActions.withdrawReward),
       tap(() => this.loadingService.show('Unstaking EWT')),
-      switchMap(({value}) =>
-        this.stakingPoolFacade.partialWithdraw(parseEther(value.toString())).pipe(
-          mergeMap(() => {
-            this.dialog.closeAll();
-            return [PoolActions.withdrawRewardSuccess(), PoolActions.getStake()];
-          }),
-          catchError(err => {
-            console.error(err);
-            return of(PoolActions.withdrawRewardFailure({err}));
-          }),
-          finalize(() => {
-            this.loadingService.hide();
-          })
-        ),
+      switchMap(({ value }) =>
+        this.stakingPoolFacade
+          .partialWithdraw(parseEther(value.toString()))
+          .pipe(
+            mergeMap(() => {
+              this.dialog.closeAll();
+              return [
+                PoolActions.withdrawRewardSuccess(),
+                PoolActions.getStake()
+              ];
+            }),
+            catchError(err => {
+              console.error(err);
+              return of(PoolActions.withdrawRewardFailure({ err }));
+            }),
+            finalize(() => {
+              this.loadingService.hide();
+            })
+          )
       )
     )
   );
@@ -150,27 +167,29 @@ export class PoolEffects {
         this.stakingPoolFacade.withdraw().pipe(
           mergeMap(() => {
             this.dialog.closeAll();
-            return [PoolActions.withdrawRewardSuccess(), PoolActions.getStake()];
+            return [
+              PoolActions.withdrawRewardSuccess(),
+              PoolActions.getStake()
+            ];
           }),
           catchError(err => {
             console.error(err);
-            return of(PoolActions.withdrawRewardFailure({err}));
+            return of(PoolActions.withdrawRewardFailure({ err }));
           }),
           finalize(() => {
             this.loadingService.hide();
           })
-        ),
+        )
       )
     )
   );
-
 
   checkReward$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.checkReward),
       switchMap(() =>
         this.stakingPoolFacade.checkReward().pipe(
-          map((reward) => PoolActions.checkRewardSuccess({reward})),
+          map(reward => PoolActions.checkRewardSuccess({ reward })),
           catchError(err => {
             console.error(err);
             return of(PoolActions.checkRewardFailure(err));
@@ -184,11 +203,10 @@ export class PoolEffects {
     this.actions$.pipe(
       ofType(PoolActions.getAccountBalance),
       switchMap(() =>
-        from(this.iamService.getBalance())
-          .pipe(
-            map((balance) => formatEther(balance)),
-            map(balance => PoolActions.getAccountSuccess({balance}))
-          )
+        from(this.iamService.getBalance()).pipe(
+          map(balance => formatEther(balance)),
+          map(balance => PoolActions.getAccountSuccess({ balance }))
+        )
       )
     )
   );
@@ -196,11 +214,12 @@ export class PoolEffects {
   getOrganizationLimit$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.getHardCap),
-      switchMap(() => this.stakingPoolFacade.getHardCap().pipe(
-          map((cap: BigNumber) => PoolActions.getHardCapSuccess({cap})),
+      switchMap(() =>
+        this.stakingPoolFacade.getHardCap().pipe(
+          map((cap: BigNumber) => PoolActions.getHardCapSuccess({ cap })),
           catchError(err => {
             console.error(err);
-            return of(PoolActions.getHardCapFailure({err: err?.message}));
+            return of(PoolActions.getHardCapFailure({ err: err?.message }));
           })
         )
       )
@@ -210,11 +229,12 @@ export class PoolEffects {
   getTotalStaked = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.totalStaked),
-      switchMap(() => this.stakingPoolFacade.getTotalStaked().pipe(
-          map((cap: BigNumber) => PoolActions.totalStakedSuccess({cap})),
+      switchMap(() =>
+        this.stakingPoolFacade.getTotalStaked().pipe(
+          map((cap: BigNumber) => PoolActions.totalStakedSuccess({ cap })),
           catchError(err => {
             console.error(err);
-            return of(PoolActions.totalStakedFailure({err: err?.message}));
+            return of(PoolActions.totalStakedFailure({ err: err?.message }));
           })
         )
       )
@@ -224,11 +244,16 @@ export class PoolEffects {
   getContributorLimit$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.getContributorLimit),
-      switchMap(() => this.stakingPoolFacade.getContributionLimit().pipe(
-          map((cap: BigNumber) => PoolActions.getContributorLimitSuccess({cap})),
+      switchMap(() =>
+        this.stakingPoolFacade.getContributionLimit().pipe(
+          map((cap: BigNumber) =>
+            PoolActions.getContributorLimitSuccess({ cap })
+          ),
           catchError(err => {
             console.error(err);
-            return of(PoolActions.getContributorLimitFailure({err: err?.message}));
+            return of(
+              PoolActions.getContributorLimitFailure({ err: err?.message })
+            );
           })
         )
       )
@@ -238,33 +263,41 @@ export class PoolEffects {
   getRatio$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PoolActions.getRatio),
-      switchMap(() => this.stakingPoolFacade.getHourlyRatio().pipe(
-          map((ratio: BigNumber) => PoolActions.getRatioSuccess({ratio})),
+      switchMap(() =>
+        this.stakingPoolFacade.getHourlyRatio().pipe(
+          map((ratio: BigNumber) => PoolActions.getRatioSuccess({ ratio })),
           catchError(err => {
             console.error(err);
-            return of(PoolActions.getRatioFailure({err: err?.message}));
+            return of(PoolActions.getRatioFailure({ err: err?.message }));
           })
         )
       )
     )
   );
 
-  constructor(private actions$: Actions,
-              private store: Store<PoolState>,
-              private iamService: IamService,
-              private loadingService: LoadingService,
-              private toastr: ToastrService,
-              private dialog: MatDialog,
-              private stakingService: StakingPoolServiceFacade,
-              private stakingPoolFacade: StakingPoolFacade,
-              private envService: EnvService) {
-  }
+  constructor(
+    private actions$: Actions,
+    private store: Store<PoolState>,
+    private iamService: IamService,
+    private loadingService: LoadingService,
+    private toastr: ToastrService,
+    private dialog: MatDialog,
+    private stakingService: StakingPoolServiceFacade,
+    private stakingPoolFacade: StakingPoolFacade,
+    private envService: EnvService
+  ) {}
 
   private createPool() {
-    return from(this.stakingService.createPool())
-      .pipe(
-        mergeMap(() => [PoolActions.getStake(), PoolActions.getHardCap(), PoolActions.getContributorLimit(),
-          PoolActions.stakingPoolFinishDate(), PoolActions.stakingPoolStartDate(), PoolActions.totalStaked(), PoolActions.getRatio()])
-      );
+    return from(this.stakingService.createPool()).pipe(
+      mergeMap(() => [
+        PoolActions.getStake(),
+        PoolActions.getHardCap(),
+        PoolActions.getContributorLimit(),
+        PoolActions.stakingPoolFinishDate(),
+        PoolActions.stakingPoolStartDate(),
+        PoolActions.totalStaked(),
+        PoolActions.getRatio()
+      ])
+    );
   }
 }

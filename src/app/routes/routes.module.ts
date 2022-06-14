@@ -3,16 +3,7 @@ import { RouterModule } from '@angular/router';
 import { RoutingModule } from './routes';
 
 @NgModule({
-  imports: [
-    RoutingModule
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RoutingModule],
+  exports: [RouterModule]
 })
-export class RoutesModule {
-}
-
-
-
-
+export class RoutesModule {}

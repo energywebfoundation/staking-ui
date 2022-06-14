@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { SharedModule } from '../../../../shared/shared.module';
@@ -9,14 +9,18 @@ describe('ConfirmationDialogComponent', () => {
   let component: ConfirmationDialogComponent;
   let fixture: ComponentFixture<ConfirmationDialogComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ConfirmationDialogComponent ],
-      providers: [ { provide: Store, useValue: {} }, MatDialogRef],
-      imports: [SharedModule]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ConfirmationDialogComponent],
+        providers: [
+          { provide: Store, useValue: {} },
+          { provide: MatDialogRef, useValue: {} }
+        ],
+        imports: [SharedModule]
+      }).compileComponents();
     })
-    .compileComponents();
-  });
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ConfirmationDialogComponent);

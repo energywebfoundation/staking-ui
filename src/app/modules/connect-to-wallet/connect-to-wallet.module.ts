@@ -6,24 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { ConnectButtonsComponent } from './connect-buttons/connect-buttons.component';
 import { MetamaskProviderService } from '../../shared/services/metamask-provider/metamask-provider.service';
 
-
 @NgModule({
-  declarations: [
-    ConnectToWalletDialogComponent,
-    ConnectButtonsComponent
-  ],
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule
-  ],
-  exports: [
-    ConnectToWalletDialogComponent,
-    ConnectButtonsComponent
-  ],
-  providers: [
-    MetamaskProviderService
-  ]
+  declarations: [ConnectToWalletDialogComponent, ConnectButtonsComponent],
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
+  exports: [ConnectToWalletDialogComponent, ConnectButtonsComponent],
+  providers: [MetamaskProviderService]
 })
-export class ConnectToWalletModule {
-}
+export class ConnectToWalletModule {}

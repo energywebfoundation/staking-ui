@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
-import { SnapshotSuccessComponent } from "../snapshot-success/snapshot-success.component";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SnapshotSuccessComponent } from '../snapshot-success/snapshot-success.component';
 
 @Component({
-  selector: "app-check-snapshot",
-  templateUrl: "./check-snapshot.component.html",
-  styleUrls: ["./check-snapshot.component.scss"],
+  selector: 'app-check-snapshot',
+  templateUrl: './check-snapshot.component.html',
+  styleUrls: ['./check-snapshot.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckSnapshotComponent {
@@ -14,7 +14,7 @@ export class CheckSnapshotComponent {
   checkSnapshots() {
     this.dialog.open(SnapshotSuccessComponent, {
       width: '400px',
-      maxWidth: '100%',
+      maxWidth: '100%'
     });
   }
 }

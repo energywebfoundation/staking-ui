@@ -1,14 +1,15 @@
 <div style="height: 100%; width: 100%">
   <ngx-spinner
-      bdColor="rgba(38, 33, 51, 0.5)"
-      size="medium"
-      [color]="loaderColor"
-      type="ball-spin-fade"
-      class="text-center">
-    <p class="loading-text mt-4" *ngIf='!msg && !msgList' data-qa-id="loading">Loading...</p>
-    <p class="loading-text mt-4" *ngIf='msg'>{{ msg }}</p>
-    <ng-container *ngIf='msgList'>
-      <ng-container *ngFor="let message of msgList; let i = index;">
+    bdColor="rgba(38, 33, 51, 0.5)"
+    size="medium"
+    [color]="loaderColor"
+    type="ball-spin-fade"
+    class="text-center"
+  >
+    <p class="loading-text mt-4" *ngIf="!msg && !msgList" data-qa-id="loading">Loading...</p>
+    <p class="loading-text mt-4" *ngIf="msg">{{ msg }}</p>
+    <ng-container *ngIf="msgList">
+      <ng-container *ngFor="let message of msgList; let i = index">
         <p class="loading-text position-relative" style="top: 10px" *ngIf="!i">{{ message }}</p>
         <p class="loading-text position-relative" *ngIf="i">{{ message }}</p>
       </ng-container>

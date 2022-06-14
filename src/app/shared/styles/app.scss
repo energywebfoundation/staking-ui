@@ -1,50 +1,51 @@
 // Bootstrap
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
 // Variables
-@import "app/variables";
+@import 'app/variables';
 // Globals
-@import "app/utils-mixins";
+@import 'app/utils-mixins';
 // Layout
-@import "app/layout";
-@import "app/layout-extra";
-@import "app/layout-animation";
-@import "app/top-navbar";
-@import "app/sidebar";
-@import "app/offsidebar";
-@import "app/user-block";
-@import "app/settings";
+@import 'app/layout';
+@import 'app/layout-extra';
+@import 'app/layout-animation';
+@import 'app/top-navbar';
+@import 'app/sidebar';
+@import 'app/offsidebar';
+@import 'app/user-block';
+@import 'app/settings';
 // Common
-@import "app/typo";
-@import "app/bootstrap-reset";
-@import "app/bootstrap-custom";
-@import "app/button-extra";
-@import "app/dropdown-extra";
-@import "app/slim-scroll";
-@import "app/utils";
-@import "app/popup";
+@import 'app/typo';
+@import 'app/bootstrap-reset';
+@import 'app/bootstrap-custom';
+@import 'app/button-extra';
+@import 'app/dropdown-extra';
+@import 'app/slim-scroll';
+@import 'app/utils';
+@import 'app/popup';
 
 // Elements
-@import "app/spinner";
+@import 'app/spinner';
 // Charts
-@import "app/radial-bar";
+@import 'app/radial-bar';
 // Form elements
-@import "app/form-tags-input";
-@import "app/file-upload";
+@import 'app/form-tags-input';
+@import 'app/file-upload';
 // Tables
-@import "app/table-extras";
+@import 'app/table-extras';
 // Material
-@import "app/material/welcome";
-@import "app/material/cards";
-@import "app/material/table";
-@import "app/material/tab";
-@import "app/material/button";
-@import "app/material/dialog";
-@import "app/material/md-forms";
-@import "app/material/md-list";
-@import "app/material/md-inputs";
-@import "app/material/ngmaterial";
+@import 'app/material/welcome';
+@import 'app/material/cards';
+@import 'app/material/table';
+@import 'app/material/tab';
+@import 'app/material/button';
+@import 'app/material/dialog';
+@import 'app/material/md-forms';
+@import 'app/material/md-list';
+@import 'app/material/md-inputs';
+@import 'app/material/ngmaterial';
+
 .stake-btn {
   font-family: Rajdhani, sans-serif;
   font-style: normal;
@@ -53,10 +54,16 @@
   line-height: 16px;
   border-radius: 16px;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  background: linear-gradient(180deg, #c7f5fd 0%, #e6fdff 32.23%, #c1d7fb 100%),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
   box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
   border-radius: 50px;
-  color: #4B25C7 !important;
+  color: #4b25c7 !important;
   padding: 0 0 !important;
   margin-top: 38px;
   height: 48px;
@@ -67,6 +74,6 @@
   }
 
   &:hover {
-    background-color: #AFF6FC;
+    background-color: #aff6fc;
   }
 }

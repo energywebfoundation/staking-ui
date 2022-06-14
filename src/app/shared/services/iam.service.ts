@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {
   AccountInfo,
-  AssetsService,
-  CacheClient, ChainConfig,
+  CacheClient,
+  ChainConfig,
   ClaimsService,
   DidRegistry,
   DomainsService,
@@ -19,7 +19,7 @@ import {
   setChainConfig,
   setMessagingConfig,
   SignerService,
-  StakingFactoryService,
+  StakingFactoryService
 } from 'iam-client-lib';
 import { IDIDDocument } from '@ew-did-registry/did-resolver-interface';
 import { safeAppSdk } from './gnosis.safe.service';
@@ -52,12 +52,10 @@ export class IamService {
   stakingService: StakingFactoryService;
   cacheClient: CacheClient;
 
-  constructor(
-    private envService: EnvService
-  ) {
+  constructor(private envService: EnvService) {
     // Set Cache Server
     setCacheConfig(envService.chainId, {
-      url: envService.cacheServerUrl,
+      url: envService.cacheServerUrl
     });
 
     // Set RPC
@@ -66,7 +64,7 @@ export class IamService {
     // Set Messaging Options
     setMessagingConfig(envService.chainId, {
       messagingMethod: MessagingMethod.Nats,
-      natsServerUrl: envService.natsServerUrl,
+      natsServerUrl: envService.natsServerUrl
     });
   }
 
@@ -78,12 +76,16 @@ export class IamService {
     return from(this.signerService.closeConnection()).pipe(truthy());
   }
 
-  async initializeConnection({providerType, initCacheServer = true, createDocument = true}: LoginOptions) {
+  async initializeConnection({
+    providerType,
+    initCacheServer = true,
+    createDocument = true
+  }: LoginOptions) {
     try {
       const {
         signerService,
         messagingService,
-        connectToCacheServer,
+        connectToCacheServer
       } = await this.initSignerService(providerType);
       this.signerService = signerService;
       this.messagingService = messagingService;
@@ -98,7 +100,7 @@ export class IamService {
         this.stakingService = stakingPoolService;
         this.cacheClient = cacheClient;
         if (createDocument) {
-          const {didRegistry, claimsService} = await connectToDidRegistry();
+          const { didRegistry, claimsService } = await connectToDidRegistry();
           this.didRegistry = didRegistry;
           this.claimsService = claimsService;
         }
@@ -110,7 +112,7 @@ export class IamService {
         connected: false,
         userClosedModal: e.message === 'User closed modal',
         realtimeExchangeConnected: false,
-        accountInfo: undefined,
+        accountInfo: undefined
       };
     }
     return {
@@ -118,7 +120,7 @@ export class IamService {
       connected: true,
       userClosedModal: false,
       realtimeExchangeConnected: true,
-      accountInfo: this.signerService.accountInfo,
+      accountInfo: this.signerService.accountInfo
     };
   }
 
@@ -136,7 +138,7 @@ export class IamService {
 
   private getChainConfig(): Partial<ChainConfig> {
     const chainConfig: Partial<ChainConfig> = {
-      rpcUrl: this.envService.rpcUrl,
+      rpcUrl: this.envService.rpcUrl
     };
 
     if (this.envService.claimManagerAddress) {
@@ -149,16 +151,14 @@ export class IamService {
     return chainConfig;
   }
 
-  private async initSignerService(
-    providerType: ProviderType,
-  ) {
+  private async initSignerService(providerType: ProviderType) {
     switch (providerType) {
       case ProviderType.MetaMask:
         return initWithMetamask();
       case ProviderType.WalletConnect:
         return initWithWalletConnect();
       case ProviderType.EwKeyManager:
-        return initWithKms({kmsServerUrl: this.envService.kmsServerUrl});
+        return initWithKms({ kmsServerUrl: this.envService.kmsServerUrl });
       case ProviderType.PrivateKey:
         return initWithPrivateKeySigner(
           localStorage.getItem('PrivateKey'),

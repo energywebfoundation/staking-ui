@@ -11,7 +11,6 @@ import * as LayoutActions from './layout.actions';
 import * as LayoutSelectors from './layout.selectors';
 
 describe('LayoutEffects', () => {
-
   let actions$: ReplaySubject<any>;
   let effects: LayoutEffects;
   let store: MockStore<LayoutState>;
@@ -20,10 +19,10 @@ describe('LayoutEffects', () => {
     TestBed.configureTestingModule({
       providers: [
         LayoutEffects,
-        {provide: Router, useValue: routerSpy},
+        { provide: Router, useValue: routerSpy },
         provideMockStore(),
-        provideMockActions(() => actions$),
-      ],
+        provideMockActions(() => actions$)
+      ]
     });
     store = TestBed.inject(MockStore);
 
@@ -35,7 +34,7 @@ describe('LayoutEffects', () => {
       actions$ = new ReplaySubject(1);
     });
 
-    it('should redirect when redirectUrl is not an empty string', (done) => {
+    it('should redirect when redirectUrl is not an empty string', done => {
       actions$.next(LayoutActions.redirect());
       const redirectUrl = 'test';
       store.overrideSelector(LayoutSelectors.getRedirectUrl, redirectUrl);
@@ -47,5 +46,4 @@ describe('LayoutEffects', () => {
       });
     });
   });
-
 });

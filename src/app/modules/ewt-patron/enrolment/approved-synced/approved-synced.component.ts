@@ -5,5 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './approved-synced.component.html',
   styleUrls: ['./approved-synced.component.scss']
 })
-export class ApprovedSyncedComponent {
-}
+export class ApprovedSyncedComponent {}

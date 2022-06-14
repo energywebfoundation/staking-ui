@@ -16,10 +16,26 @@ export const initialState: RoleEnrolmentState = {
 
 const roleEnrolmentReducer = createReducer(
   initialState,
-  on(RoleEnrolmentActions.setStatus, (state, {status}) => ({...state, status})),
-  on(RoleEnrolmentActions.setEnrolment, (state, {enrolment}) => ({...state, enrolment})),
-  on(RoleEnrolmentActions.enrolmentRejected, RoleEnrolmentActions.claimDoNotExist, (state) => ({...state, status: RoleEnrolmentStatus.NOT_ENROLED})),
-  on(RoleEnrolmentActions.enrolmentApproved, (state) => ({...state, status: RoleEnrolmentStatus.ENROLED_APPROVED}))
+  on(RoleEnrolmentActions.setStatus, (state, { status }) => ({
+    ...state,
+    status
+  })),
+  on(RoleEnrolmentActions.setEnrolment, (state, { enrolment }) => ({
+    ...state,
+    enrolment
+  })),
+  on(
+    RoleEnrolmentActions.enrolmentRejected,
+    RoleEnrolmentActions.claimDoNotExist,
+    state => ({
+      ...state,
+      status: RoleEnrolmentStatus.NOT_ENROLED
+    })
+  ),
+  on(RoleEnrolmentActions.enrolmentApproved, state => ({
+    ...state,
+    status: RoleEnrolmentStatus.ENROLED_APPROVED
+  }))
 );
 
 export function reducer(state: RoleEnrolmentState | undefined, action: Action) {

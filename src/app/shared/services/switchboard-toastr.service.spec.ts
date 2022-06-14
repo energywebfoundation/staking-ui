@@ -1,34 +1,30 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SwitchboardToastr, SwitchboardToastrService } from './switchboard-toastr.service';
+import { SwitchboardToastrService } from './switchboard-toastr.service';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
 
 describe('SwitchboardToastrService', () => {
   let service: SwitchboardToastrService;
-  const toastrSpyObj = jasmine.createSpyObj('ToastrService',
-    [
-      'success',
-      'show',
-      'error',
-      'info',
-      'warning',
-    ]
-  );
+  const toastrSpyObj = jasmine.createSpyObj('ToastrService', [
+    'success',
+    'show',
+    'error',
+    'info',
+    'warning'
+  ]);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{provide: ToastrService, useValue: toastrSpyObj}]
+      providers: [{ provide: ToastrService, useValue: toastrSpyObj }]
     });
     service = TestBed.inject(SwitchboardToastrService);
-
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be run reset', (done) => {
+  it('should be run reset', done => {
     service.success('test');
     service.reset();
     service.getMessageList().subscribe(list => {
@@ -37,9 +33,13 @@ describe('SwitchboardToastrService', () => {
     });
   });
 
-  it('should be run readAllItems', (done) => {
+  it('should be run readAllItems', done => {
     service.success('test');
-    const expectedResult = {message: 'test', type: 'toast-success', isNew: false};
+    const expectedResult = {
+      message: 'test',
+      type: 'toast-success',
+      isNew: false
+    };
     service.readAllItems();
     service.getMessageList().subscribe(list => {
       expect(list).toEqual([expectedResult]);
@@ -54,7 +54,12 @@ describe('SwitchboardToastrService', () => {
     const type = 'type test';
 
     service.show(message, title, override, type);
-    expect(toastrSpyObj.show).toHaveBeenCalledWith(message, title, override, type);
+    expect(toastrSpyObj.show).toHaveBeenCalledWith(
+      message,
+      title,
+      override,
+      type
+    );
   });
 
   it('should be run error', () => {

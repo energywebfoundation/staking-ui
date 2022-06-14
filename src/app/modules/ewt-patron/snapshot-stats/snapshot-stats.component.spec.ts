@@ -8,9 +8,8 @@ describe('SnapshotStatsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SnapshotStatsComponent ]
-    })
-    .compileComponents();
+      declarations: [SnapshotStatsComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {
