@@ -21,4 +21,5 @@ export class EnvService {
   currencyName = environment.currencyName;
   currencySymbol = environment.currencySymbol;
   blockExlorerUrl = environment.blockExlorerUrl;
+  snapshotRoles = environment.snapshotRoles;
 }
