@@ -82,7 +82,6 @@
         </div>
       </div>
       <div class="col-xl-4 mt-4 mt-xl-4">
-        <!-- For the approved sync please change class role-req to staking-terms -->
         <div
           [ngClass]="{ 'role-req': (isPatronSynced | async) === false }"
           class="staking-terms text-color p-4"
@@ -90,21 +89,6 @@
         >
           <app-enrolment-status-check></app-enrolment-status-check>
         </div>
-        <!-- <div class="staking-widget widget-inner mt-4 p-4">
-          <div class="staking-widget-xs-label text-color mb-2">
-            Staking pool stats
-          </div>
-          <h3 class="mb-3 text-color">
-            <ng-container *ngIf="getTotalStaked$ | async as totalStaked">{{ totalStaked | lastDigits }}
-            </ng-container>
-            <span class="staking-currency">EWT</span>
-          </h3>
-          <mat-progress-bar mode="determinate" [value]="getTotalStakedPercent$ | async"></mat-progress-bar>
-          <div class="limit-text color-grey mt-2">
-            {{ getTotalStakedPercent$ | async | lastDigits }}% of {{ hardCap$ | async }} EWT
-            Staking Pool limit
-          </div>
-        </div> -->
         <div class="staking-terms mt-4">
           <div class="d-flex flex-row align-items-center mx-2 mx-md-4 mt-2 mb-5">
             <img src="../../../../assets/img/staking/terms-condition-image.png" width="55" height="auto" />
