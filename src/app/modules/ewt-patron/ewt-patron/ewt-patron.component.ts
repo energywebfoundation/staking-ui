@@ -27,6 +27,7 @@ export class EwtPatronComponent implements OnInit, OnDestroy {
   isStakingVerificationEnabled = this.envService.checkStakingVerification;
   isPatronSynced = this.store.select(RoleEnrolmentSelectors.isSynced);
   destroy$ = new Subject<void>();
+  numberOfSnapshots: number = this.envService.snapshotRoles.length;
 
   constructor(
     private store: Store,
