@@ -1,16 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SnapshotsComponent } from './snapshots.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('SnapshotsComponent', () => {
   let component: SnapshotsComponent;
   let fixture: ComponentFixture<SnapshotsComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [SnapshotsComponent]
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [SnapshotsComponent],
+      providers: [
+        provideMockStore()
+      ]
     }).compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SnapshotsComponent);

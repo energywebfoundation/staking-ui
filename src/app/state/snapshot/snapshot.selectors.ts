@@ -1,11 +1,44 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StakeState, USER_FEATURE_KEY } from './stake.reducer';
+import { SnapshotState, USER_FEATURE_KEY } from './snapshot.reducer';
+import { environment } from '../../../environments/environment';
+import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
+import { Claim } from 'iam-client-lib';
 
-export const getStakeState = createFeatureSelector<StakeState>(
-  USER_FEATURE_KEY
+export const getSnapshotState =
+  createFeatureSelector<SnapshotState>(USER_FEATURE_KEY);
+
+export const getRevealedSnapshots = createSelector(
+  getSnapshotState,
+  (state) => state.revealedSnapshots
 );
 
-export const getProviders = createSelector(
-  getStakeState,
-  state => state?.providers
-);
+export const getSnapshotInfoByNumber = (value: number) => {
+  const isSynced = (role): boolean =>
+    role.issuedToken && role.onChainProof && role.vp;
+  const isAccepted = (role: Claim): boolean => role.isAccepted;
+  const isRejected = (role: Claim): boolean => role.isRejected;
+
+  return createSelector(getRevealedSnapshots, (revealedSnapshots) => {
+    const snapshotsWithId = revealedSnapshots?.filter(
+      (role) => role.claimType === environment.snapshotRoles[value - 1]
+    );
+
+    if (snapshotsWithId?.filter(isSynced).length > 0) {
+      return RoleEnrolmentStatus.ENROLED_SYNCED;
+    }
+
+    if (snapshotsWithId?.filter(isAccepted).length > 0) {
+      return RoleEnrolmentStatus.ENROLED_APPROVED;
+    }
+
+    if (snapshotsWithId?.filter((role) => !isRejected(role)).length > 0) {
+      return RoleEnrolmentStatus.ENROLED_NOT_APPROVED;
+    }
+
+    if (snapshotsWithId?.filter((role) => isRejected(role)).length > 0) {
+      return RoleEnrolmentStatus.REJECTED;
+    }
+
+    return RoleEnrolmentStatus.NOT_ENROLED;
+  });
+};

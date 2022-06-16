@@ -1,78 +1,136 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { of, ReplaySubject } from 'rxjs';
 
-import { SnapshotEffects } from './stake.effects';
+import { SnapshotEffects } from './snapshot.effects';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { LoadingService } from '../../shared/services/loading.service';
-import { IamService } from '../../shared/services/iam.service';
-import { MatDialog } from '@angular/material/dialog';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { ToastrService } from 'ngx-toastr';
-import { StakeState } from './stake.reducer';
-import * as StakeActions from './stake.actions';
-import * as PoolActions from '../pool/pool.actions';
-import { skip, take } from 'rxjs/operators';
-import { StakingPoolServiceFacade } from '../../shared/services/staking/staking-pool-service-facade';
-import { StakingPoolFacade } from '../../shared/services/pool/staking-pool-facade';
-import { dialogSpy, iamServiceSpy, loadingServiceSpy, toastrSpy } from '@tests';
+import { SnapshotState } from './snapshot.reducer';
+import { ClaimsService } from '../../shared/services/claims/claims.service';
+import { EnvService } from '../../shared/services/env/env.service';
+import {
+  checkRevealedSnapshots,
+  checkRevealedSnapshotsSuccess,
+} from './snapshot.actions';
 
-describe('StakeEffects', () => {
-  const stakingService = jasmine.createSpyObj('StakingPoolServiceFacade', [
-    'init',
-    'createPool',
-    'putStake'
-  ]);
-  const stakingPoolFacadeSpy = jasmine.createSpyObj('StakingPoolFacade', [
-    'putStake',
-    'isPoolDefined'
-  ]);
+describe('SnapshotEffects', () => {
   let actions$: ReplaySubject<any>;
   let effects: SnapshotEffects;
-  let store: MockStore<StakeState>;
+  let store: MockStore<SnapshotState>;
+  let claimsServiceSpy;
+  let envService;
 
   beforeEach(() => {
+    claimsServiceSpy = jasmine.createSpyObj('ClaimsService', [
+      'getNotRejectedClaims',
+      'getClaims'
+    ]);
+
     TestBed.configureTestingModule({
       providers: [
         SnapshotEffects,
-        { provide: IamService, useValue: iamServiceSpy },
-        { provide: LoadingService, useValue: loadingServiceSpy },
-        { provide: MatDialog, useValue: dialogSpy },
-        { provide: ToastrService, useValue: toastrSpy },
-        { provide: StakingPoolServiceFacade, useValue: stakingService },
-        { provide: StakingPoolFacade, useValue: stakingPoolFacadeSpy },
+        { provide: ClaimsService, useValue: claimsServiceSpy },
         provideMockStore(),
-        provideMockActions(() => actions$)
-      ]
+        provideMockActions(() => actions$),
+      ],
     });
     store = TestBed.inject(MockStore);
 
     effects = TestBed.inject(SnapshotEffects);
+    envService = TestBed.inject(EnvService);
   });
 
-  describe('initStakingPoolService$', () => {
+  describe('checkEnrolments$', () => {
     beforeEach(() => {
       actions$ = new ReplaySubject(1);
     });
 
-    it(
-      'should return initPool action, getAccountBalance action and redirect action',
-      waitForAsync(() => {
-        actions$.next(StakeActions.initStakingPool());
-        stakingService.init.and.returnValue(of(true));
+    it('should return claims with snapshot rolename', (done) => {
+      const snapshotRoles: any[] = [
+        {
+          claimType: 'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
+          isRejected: false,
+          isAccepted: true,
+        },
+      ];
+      claimsServiceSpy.getClaims.and.returnValue(
+        of([...snapshotRoles, { claimType: 'test.roles.energyweb.iam.ewc' }])
+      );
+      actions$.next(checkRevealedSnapshots());
+      spyOnProperty(envService, 'snapshotRoles').and.returnValue([
+        'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
+      ]);
+      effects.checkEnrolments$.subscribe((resultAction) => {
+        expect(resultAction).toEqual(
+          checkRevealedSnapshotsSuccess({ snapshotRoles: snapshotRoles })
+        );
+        done();
+      });
+    });
 
-        effects.initStakingPoolService$
-          .pipe(take(1))
-          .subscribe(resultAction => {
-            expect(resultAction).toEqual(PoolActions.initPool());
-          });
+    it('should return only claim with snapshot 2 ', (done) => {
+      const snapshotRoles: any[] = [
+        {
+          claimType: 'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc',
+          isRejected: false,
+          isAccepted: true,
+        },
+      ];
+      claimsServiceSpy.getClaims.and.returnValue(
+        of([...snapshotRoles, { claimType: 'test.roles.energyweb.iam.ewc' }])
+      );
+      actions$.next(checkRevealedSnapshots());
+      spyOnProperty(envService, 'snapshotRoles').and.returnValue([
+        'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
+        'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc',
+        'snapshot3.roles.consortiapool.apps.energyweb.iam.ewc',
+      ]);
+      effects.checkEnrolments$.subscribe((resultAction) => {
+        expect(resultAction).toEqual(
+          checkRevealedSnapshotsSuccess({ snapshotRoles: snapshotRoles })
+        );
+        done();
+      });
+    });
 
-        effects.initStakingPoolService$
-          .pipe(skip(1), take(1))
-          .subscribe(resultAction => {
-            expect(resultAction).toEqual(PoolActions.getAccountBalance());
-          });
-      })
-    );
+    it('should return first three snapshots', (done) => {
+      const snapshotRoles: any[] = [          {
+        claimType: 'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc',
+        isRejected: false,
+        isAccepted: true,
+      },
+        {
+          claimType: 'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
+          isRejected: false,
+          isAccepted: true,
+        },
+        {
+          claimType: 'snapshot3.roles.consortiapool.apps.energyweb.iam.ewc',
+          isRejected: false,
+          isAccepted: true,
+        },]
+      claimsServiceSpy.getClaims.and.returnValue(
+        of([
+          ...snapshotRoles,
+          {
+            claimType: 'test.roles.energyweb.iam.ewc',
+            isRejected: false,
+            isAccepted: true,
+          },
+        ])
+      );
+      actions$.next(checkRevealedSnapshots());
+      spyOnProperty(envService, 'snapshotRoles').and.returnValue([
+        'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
+        'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc',
+        'snapshot3.roles.consortiapool.apps.energyweb.iam.ewc',
+      ]);
+      effects.checkEnrolments$.subscribe((resultAction) => {
+        expect(resultAction).toEqual(
+          checkRevealedSnapshotsSuccess({ snapshotRoles: snapshotRoles })
+        );
+        done();
+      });
+    });
   });
 });

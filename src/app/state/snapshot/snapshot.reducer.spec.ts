@@ -1,4 +1,4 @@
-import { initialState, reducer } from './stake.reducer';
+import { initialState, reducer } from './snapshot.reducer';
 
 xdescribe('Stake Reducer', () => {
   describe('unknown action', () => {

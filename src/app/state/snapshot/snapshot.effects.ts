@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { IamService } from '../../shared/services/iam.service';
-import { LoadingService } from '../../shared/services/loading.service';
 import { Store } from '@ngrx/store';
-import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
 import {
   checkRevealedSnapshots,
-  checkRevealedSnapshotsSuccess
+  checkRevealedSnapshotsSuccess,
 } from './snapshot.actions';
 import { map, switchMap } from 'rxjs/operators';
-import { from } from 'rxjs';
+import { EnvService } from '../../shared/services/env/env.service';
+import { ClaimsService } from '../../shared/services/claims/claims.service';
 
 @Injectable()
 export class SnapshotEffects {
@@ -18,18 +15,13 @@ export class SnapshotEffects {
     this.actions$.pipe(
       ofType(checkRevealedSnapshots),
       switchMap(() =>
-        this.getClaims().pipe(
-          map(roles => roles.filter(role => !role.isRejected)),
-          map(roles => roles.map(role => role.namespace)),
-          map(namespaces =>
-            namespaces.filter(
-              namespace =>
-                namespace.includes('snapshot') &&
-                namespace.includes('consortiapool.apps')
-            )
-          ),
-          map(roleNamespaces =>
-            checkRevealedSnapshotsSuccess({ snapshotRoles: roleNamespaces })
+        this.claimService.getClaims().pipe(
+          map((roles) => {
+            const snapshotRoles = new Set(this.envService.snapshotRoles);
+            return roles.filter((role) => snapshotRoles.has(role.claimType));
+          }),
+          map((snapshotRoles) =>
+            checkRevealedSnapshotsSuccess({ snapshotRoles })
           )
         )
       )
@@ -39,17 +31,7 @@ export class SnapshotEffects {
   constructor(
     private actions$: Actions,
     private store: Store,
-    private iamService: IamService,
-    private loadingService: LoadingService,
-    private toastr: ToastrService,
-    private dialog: MatDialog
+    private envService: EnvService,
+    private claimService: ClaimsService
   ) {}
-
-  private getClaims() {
-    return from(
-      this.iamService.claimsService.getClaimsByRequester({
-        did: this.iamService.signerService.did
-      })
-    );
-  }
 }
