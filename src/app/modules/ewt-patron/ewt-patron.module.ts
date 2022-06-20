@@ -44,6 +44,7 @@ import { LabelComponent } from './label/label.component';
 import { SnapshotBtnComponent } from './snapshot-btn/snapshot-btn.component';
 import { H4Component } from './h4/h4.component';
 import { TermsComponent } from './terms/terms.component';
+import { EnrolmentStatusDescriptionPipe } from './pipes/enrolment-status-description.pipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { TermsComponent } from './terms/terms.component';
     LabelComponent,
     SnapshotBtnComponent,
     H4Component,
-    TermsComponent
+    TermsComponent,
+    EnrolmentStatusDescriptionPipe
   ],
   imports: [
     CommonModule,
