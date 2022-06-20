@@ -43,6 +43,7 @@ import { SnapshotStatsComponent } from './snapshot-stats/snapshot-stats.componen
 import { LabelComponent } from './label/label.component';
 import { SnapshotBtnComponent } from './snapshot-btn/snapshot-btn.component';
 import { H4Component } from './h4/h4.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { H4Component } from './h4/h4.component';
     SnapshotStatsComponent,
     LabelComponent,
     SnapshotBtnComponent,
-    H4Component
+    H4Component,
+    TermsComponent
   ],
   imports: [
     CommonModule,

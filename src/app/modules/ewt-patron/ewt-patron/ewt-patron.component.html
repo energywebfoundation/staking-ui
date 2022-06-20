@@ -51,23 +51,9 @@
                 </div>
                 <div class="mt-1">
                   <!-- Empty dots -->
-
-                  <app-dot class="small"></app-dot>
-                  <app-dot class="small"></app-dot>
-                  <app-dot class="small"></app-dot>
-                  <app-dot class="small"></app-dot>
-                  <app-dot class="small"></app-dot>
-                  <app-dot class="small"></app-dot>
-                </div>
-                <div class="dot-filled-wrapper">
-                  <!-- Filled dots -->
-                  <!--add visible or invisible class to show or hide dot -->
-                  <span class="dot-filled dot-filled-1 invisible"></span>
-                  <span class="dot-filled dot-filled-2 invisible"></span>
-                  <span class="dot-filled dot-filled-3 invisible"></span>
-                  <span class="dot-filled dot-filled-4 invisible"></span>
-                  <span class="dot-filled dot-filled-5 invisible"></span>
-                  <span class="dot-filled dot-filled-6 invisible"></span>
+                  <ng-container *ngFor="let num of [1, 2, 3, 4, 5, 6]">
+                    <app-dot class="small" [ngClass]="num <= numberOfSnapshots ? 'filled-' + num : ''"></app-dot>
+                  </ng-container>
                 </div>
               </div>
               <div class="position-relative" style="z-index: 13;">
@@ -96,7 +82,6 @@
         </div>
       </div>
       <div class="col-xl-4 mt-4 mt-xl-4">
-        <!-- For the approved sync please change class role-req to staking-terms -->
         <div
           [ngClass]="{ 'role-req': (isPatronSynced | async) === false }"
           class="staking-terms text-color p-4"
@@ -104,40 +89,7 @@
         >
           <app-enrolment-status-check></app-enrolment-status-check>
         </div>
-        <!-- <div class="staking-widget widget-inner mt-4 p-4">
-          <div class="staking-widget-xs-label text-color mb-2">
-            Staking pool stats
-          </div>
-          <h3 class="mb-3 text-color">
-            <ng-container *ngIf="getTotalStaked$ | async as totalStaked">{{ totalStaked | lastDigits }}
-            </ng-container>
-            <span class="staking-currency">EWT</span>
-          </h3>
-          <mat-progress-bar mode="determinate" [value]="getTotalStakedPercent$ | async"></mat-progress-bar>
-          <div class="limit-text color-grey mt-2">
-            {{ getTotalStakedPercent$ | async | lastDigits }}% of {{ hardCap$ | async }} EWT
-            Staking Pool limit
-          </div>
-        </div> -->
-        <div class="staking-terms mt-4">
-          <div class="d-flex flex-row align-items-center mx-2 mx-md-4 mt-2 mb-5">
-            <img src="../../../../assets/img/staking/terms-condition-image.png" width="55" height="auto" />
-            <app-label size="xl" class="text-color ml-3 ml-md-3">
-              Terms of participation
-            </app-label>
-          </div>
-          <div>
-            <ul class="staking-list d-flex flex-column mt-4 mr-3 mx-2 pl-4 pr-3">
-              <li>Staked EWT can be withdrawn at any time</li>
-              <li>
-                Hourly rewards will be compounded (added to the total stake and earn interest)
-              </li>
-              <li>
-                A small gas fee will be charged for Stake and Unstake operations
-              </li>
-            </ul>
-          </div>
-        </div>
+        <app-terms class="staking-terms mt-4"></app-terms>
       </div>
       <div class="col-md-12 mb-md-0 mb-lg-0 mt-5 mt-lg-4">
         <div class="staking-card widget-main row">

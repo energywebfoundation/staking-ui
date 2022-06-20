@@ -26,5 +26,9 @@ export const commonEnv = {
   networkName: 'EnergyWeb Volta Chain',
   currencyName: 'Volta Token',
   currencySymbol: 'VT',
-  blockExlorerUrl: 'https://volta-explorer.energyweb.org'
+  blockExlorerUrl: 'https://volta-explorer.energyweb.org',
+  snapshotRoles: [
+    'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
+    'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc'
+  ]
 };

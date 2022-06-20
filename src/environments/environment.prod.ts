@@ -21,7 +21,8 @@ const env: Partial<typeof commonEnv> = {
   networkName: 'EWC Consortia RPC',
   currencyName: 'EWT',
   currencySymbol: 'EWT',
-  blockExlorerUrl: 'https://explorer.energyweb.org'
+  blockExlorerUrl: 'https://explorer.energyweb.org',
+  snapshotRoles: []
 };
 
 export const environment = { ...commonEnv, ...env };
