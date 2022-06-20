@@ -9,7 +9,7 @@ export const getSnapshotState =
 
 export const getUserSnapshotRoles = createSelector(
   getSnapshotState,
-  (state) => state.revealedSnapshots
+  (state) => state.userSnapshotRoles
 );
 
 export const getSnapshotStatusByNumber = (value: number) => {
