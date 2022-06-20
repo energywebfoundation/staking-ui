@@ -2,13 +2,29 @@ import { Injectable } from '@angular/core';
 import { forkJoin, from, Observable } from 'rxjs';
 import { IamService } from '../iam.service';
 import { filter, map } from 'rxjs/operators';
-import { Claim } from 'iam-client-lib';
+import { Claim, RegistrationTypes } from 'iam-client-lib';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClaimsService {
   constructor(private iamService: IamService) {}
+
+  createClaim(claimType: string) {
+    return from(
+      this.iamService.claimsService.createClaimRequest({
+        registrationTypes: [
+          RegistrationTypes.OnChain,
+          RegistrationTypes.OffChain,
+        ],
+        claim: {
+          fields: [],
+          claimType,
+          claimTypeVersion: 1,
+        },
+      })
+    );
+  }
 
   getClaims() {
     return from(

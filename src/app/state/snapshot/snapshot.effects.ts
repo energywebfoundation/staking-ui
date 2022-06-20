@@ -4,10 +4,13 @@ import { Store } from '@ngrx/store';
 import {
   checkRevealedSnapshots,
   checkRevealedSnapshotsSuccess,
+  checkSnapshots,
+  enrolToSnapshot,
 } from './snapshot.actions';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { ClaimsService } from '../../shared/services/claims/claims.service';
+import { getRevealedSnapshots, getSnapshotStatus } from './snapshot.selectors';
 
 @Injectable()
 export class SnapshotEffects {
@@ -24,6 +27,32 @@ export class SnapshotEffects {
             checkRevealedSnapshotsSuccess({ snapshotRoles })
           )
         )
+      )
+    )
+  );
+
+  checkSnapshots$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(checkSnapshots),
+        withLatestFrom(getRevealedSnapshots),
+        map(([, snapshotRoles]) => {
+          const snapshots = this.envService.snapshotRoles.map((role, index) => {
+            return getSnapshotStatus(snapshotRoles, index);
+          });
+          console.log(snapshots);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  enrolFor$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(enrolToSnapshot),
+      switchMap(({ claimType }) =>
+        this.claimService
+          .createClaim(claimType)
+          .pipe(map(() => checkRevealedSnapshots()))
       )
     )
   );
