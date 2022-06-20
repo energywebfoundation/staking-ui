@@ -10,7 +10,7 @@ import {
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { ClaimsService } from '../../shared/services/claims/claims.service';
-import { getRevealedSnapshots, getSnapshotStatus } from './snapshot.selectors';
+import { getUserSnapshotRoles, getSnapshotStatus } from './snapshot.selectors';
 
 @Injectable()
 export class SnapshotEffects {
@@ -35,7 +35,7 @@ export class SnapshotEffects {
     () =>
       this.actions$.pipe(
         ofType(checkSnapshots),
-        withLatestFrom(getRevealedSnapshots),
+        withLatestFrom(getUserSnapshotRoles),
         map(([, snapshotRoles]) => {
           const snapshots = this.envService.snapshotRoles.map((role, index) => {
             return getSnapshotStatus(snapshotRoles, index);

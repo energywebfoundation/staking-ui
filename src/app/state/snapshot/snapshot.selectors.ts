@@ -7,13 +7,13 @@ import { Claim } from 'iam-client-lib';
 export const getSnapshotState =
   createFeatureSelector<SnapshotState>(USER_FEATURE_KEY);
 
-export const getRevealedSnapshots = createSelector(
+export const getUserSnapshotRoles = createSelector(
   getSnapshotState,
   (state) => state.revealedSnapshots
 );
 
-export const getSnapshotInfoByNumber = (value: number) => {
-  return createSelector(getRevealedSnapshots, (revealedSnapshots) => {
+export const getSnapshotStatusByNumber = (value: number) => {
+  return createSelector(getUserSnapshotRoles, (revealedSnapshots) => {
     return getSnapshotStatus(revealedSnapshots, value);
   });
 };
