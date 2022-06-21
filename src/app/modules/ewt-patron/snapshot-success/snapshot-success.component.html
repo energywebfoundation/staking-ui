@@ -1,21 +1,15 @@
 <app-snapshot-box>
-  <div class="staking-widget-sm-label mb-3">
+  <div class="staking-widget-sm-label mb-3 d-flex flex-column">
     <div class="d-flex flex-column align-items-center mt-2">
-      <img src="../../../../assets/img/staking/staking-success-image.png" class="success-icon py-3" />
-      <app-h4 class="text-center mb-5 px-4">Congratulations</app-h4>
-      <app-label size="md" class="text-center mb-3 px-4"
-        >You’re included in <br />
-        snapshots 1 and 2
-      </app-label>
+      <ng-container *ngIf="acceptedSnapshots$ | async as acceptedSnapshots">
+        <img [src]="acceptedSnapshots | imagePath" class="success-icon py-3" />
+        <app-h4 class="text-center mb-5 px-4" *ngIf="acceptedSnapshots.length">Congratulations</app-h4>
+        <app-label size="md" class="text-center mb-3 px-4"
+          >{{ acceptedSnapshots | includedInSnapshots }}
+        </app-label>
+      </ng-container>
     </div>
-    <div class="dots-wrapper pt-4 pb-3">
-      <app-dot class="filled-1"></app-dot>
-      <app-dot class="filled-2"></app-dot>
-      <app-dot class="filled-3"></app-dot>
-      <app-dot class="filled-4"></app-dot>
-      <app-dot class="filled-5"></app-dot>
-      <app-dot></app-dot>
-    </div>
+    <app-user-snapshots class="pt-4 pb-3"></app-user-snapshots>
   </div>
   <div class="mt-5 mb-5 d-flex flex-column justify-content-center align-items-center">
     <app-snapshot-btn>Claim rewards</app-snapshot-btn>

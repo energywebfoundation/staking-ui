@@ -29,10 +29,7 @@ app-snapshot-box {
   color: #757575;
 }
 
-.dots-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0 auto;
+app-user-snapshots {
   width: 60%;
+  margin: 0 auto;
 }

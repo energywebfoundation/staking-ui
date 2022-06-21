@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getUserSnapshotRoles, getSnapshotStatusByNumber } from '../../../state/snapshot/snapshot.selectors';
+import { getSnapshotStatusByNumber } from '../../../state/snapshot/snapshot.selectors';
 
 @Component({
   selector: 'app-snapshots',
@@ -9,8 +9,6 @@ import { getUserSnapshotRoles, getSnapshotStatusByNumber } from '../../../state/
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SnapshotsComponent {
-  revealedSnapshotNumbers$ = this.store.select(getUserSnapshotRoles);
-
   constructor(private store: Store) {}
 
   snapshotStatus$(value: number): any{

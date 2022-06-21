@@ -7,12 +7,14 @@ import {
   checkSnapshots,
   enrolToSnapshots,
 } from './snapshot.actions';
-import { map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { finalize, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { ClaimsService } from '../../shared/services/claims/claims.service';
 import { getUserSnapshotRoles, getSnapshotStatus } from './snapshot.selectors';
 import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
 import { forkJoin } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { SnapshotSuccessComponent } from '../../modules/ewt-patron/snapshot-success/snapshot-success.component';
 
 @Injectable()
 export class SnapshotEffects {
@@ -56,6 +58,13 @@ export class SnapshotEffects {
             ...claims.map((claim) => {
               return this.claimService.createClaim(claim);
             })
+          ).pipe(
+            finalize(() => {
+              this.dialog.open(SnapshotSuccessComponent, {
+                  width: '400px',
+                  maxWidth: '100%'
+              })
+            })
           )
         )
       ),
@@ -66,6 +75,7 @@ export class SnapshotEffects {
     private actions$: Actions,
     private store: Store,
     private envService: EnvService,
-    private claimService: ClaimsService
+    private claimService: ClaimsService,
+    private dialog: MatDialog
   ) {}
 }

@@ -18,13 +18,28 @@ export const getSnapshotStatusByNumber = (value: number) => {
   });
 };
 
+export const getAcceptedSnapshots = createSelector(
+  getUserSnapshotRoles,
+  (userSnapshotRoles) => {
+    return environment.snapshotRoles
+      .map((roleName, index) => {
+        return {
+          index,
+          status:
+            getSnapshotStatus(userSnapshotRoles, index) ===
+            RoleEnrolmentStatus.ENROLED_SYNCED,
+        };
+      })
+      .filter((snapshot) => snapshot.status)
+      .map((snapshot) => snapshot.index);
+  }
+);
+
 export const getSnapshotStatus = (snapshotRoles, id) => {
   const isSynced = (role): boolean =>
     role.issuedToken && role.onChainProof && role.vp;
   const isAccepted = (role: Claim): boolean => role.isAccepted;
   const isRejected = (role: Claim): boolean => role.isRejected;
-
-  debugger;
 
   const snapshotsWithId = snapshotRoles?.filter(
     (role) => role.claimType === environment.snapshotRoles[id]
