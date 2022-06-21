@@ -13,19 +13,21 @@ export const getUserSnapshotRoles = createSelector(
 );
 
 export const getSnapshotStatusByNumber = (value: number) => {
-  return createSelector(getUserSnapshotRoles, (revealedSnapshots) => {
-    return getSnapshotStatus(revealedSnapshots, value);
+  return createSelector(getUserSnapshotRoles, (userSnapshotRoles) => {
+    return getSnapshotStatus(userSnapshotRoles, value);
   });
 };
 
-export const getSnapshotStatus = (revealedSnapshots, id) => {
+export const getSnapshotStatus = (snapshotRoles, id) => {
   const isSynced = (role): boolean =>
     role.issuedToken && role.onChainProof && role.vp;
   const isAccepted = (role: Claim): boolean => role.isAccepted;
   const isRejected = (role: Claim): boolean => role.isRejected;
 
-  const snapshotsWithId = revealedSnapshots?.filter(
-    (role) => role.claimType === environment.snapshotRoles[id - 1]
+  debugger;
+
+  const snapshotsWithId = snapshotRoles?.filter(
+    (role) => role.claimType === environment.snapshotRoles[id]
   );
 
   if (snapshotsWithId?.filter(isSynced).length > 0) {

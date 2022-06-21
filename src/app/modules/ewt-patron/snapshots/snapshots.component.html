@@ -6,7 +6,7 @@
       <div class="revealed">REVEALED SNAPSHOTS</div>
       <ng-container *ngIf="revealedSnapshotNumbers$ | async as revealedSnapshots">
         <div class="dots-wrapper">
-          <ng-container *ngFor="let num of [1, 2, 3, 4, 5, 6]">
+          <ng-container *ngFor="let num of [0, 1, 2, 3, 4, 5]">
             <ng-container *ngIf="snapshotStatus$(num) | async as snapshotStatus">
               <app-dot
                 [status]="snapshotStatus"

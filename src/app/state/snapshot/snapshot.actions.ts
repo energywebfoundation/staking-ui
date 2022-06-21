@@ -10,9 +10,9 @@ export const checkRevealedSnapshotsSuccess = createAction(
   props<{snapshotRoles: Claim[]}>()
 );
 
-export const enrolToSnapshot = createAction(
-  '[Snapshot] Enrol To Snapshot',
-  props<{claimType: string}>()
+export const enrolToSnapshots = createAction(
+  '[Snapshot] Enrol To Snapshots',
+  props<{claims: string[]}>()
 );
 
 export const checkSnapshots = createAction(

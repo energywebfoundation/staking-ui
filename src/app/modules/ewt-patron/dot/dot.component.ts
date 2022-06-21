@@ -26,6 +26,8 @@ export class DotComponent {
         return 'rejected';
       case RoleEnrolmentStatus.ENROLED_SYNCED:
         return 'synced';
+        case RoleEnrolmentStatus.ENROLED_NOT_APPROVED:
+        return 'waiting';
       default:
         return '';
     }

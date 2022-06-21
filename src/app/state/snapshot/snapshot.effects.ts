@@ -5,12 +5,14 @@ import {
   checkRevealedSnapshots,
   checkRevealedSnapshotsSuccess,
   checkSnapshots,
-  enrolToSnapshot,
+  enrolToSnapshots,
 } from './snapshot.actions';
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { ClaimsService } from '../../shared/services/claims/claims.service';
 import { getUserSnapshotRoles, getSnapshotStatus } from './snapshot.selectors';
+import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
+import { forkJoin } from 'rxjs';
 
 @Injectable()
 export class SnapshotEffects {
@@ -31,30 +33,33 @@ export class SnapshotEffects {
     )
   );
 
-  checkSnapshots$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(checkSnapshots),
-        withLatestFrom(getUserSnapshotRoles),
-        map(([, snapshotRoles]) => {
-          const snapshots = this.envService.snapshotRoles.map((role, index) => {
-            return getSnapshotStatus(snapshotRoles, index);
-          });
-          console.log(snapshots);
-        })
-      ),
-    { dispatch: false }
+  checkSnapshots$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(checkSnapshots),
+      withLatestFrom(this.store.select(getUserSnapshotRoles)),
+      map(([, snapshotRoles]) => {
+        const snapshots = this.envService.snapshotRoles
+          .filter(
+            (role, index) => getSnapshotStatus(snapshotRoles, index) === RoleEnrolmentStatus.NOT_ENROLED
+          );
+        return enrolToSnapshots({ claims: snapshots });
+      })
+    )
   );
 
-  enrolFor$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(enrolToSnapshot),
-      switchMap(({ claimType }) =>
-        this.claimService
-          .createClaim(claimType)
-          .pipe(map(() => checkRevealedSnapshots()))
-      )
-    )
+  enrolForSnapshots$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(enrolToSnapshots),
+        switchMap(({ claims }) =>
+          forkJoin(
+            ...claims.map((claim) => {
+              return this.claimService.createClaim(claim);
+            })
+          )
+        )
+      ),
+    { dispatch: false }
   );
 
   constructor(

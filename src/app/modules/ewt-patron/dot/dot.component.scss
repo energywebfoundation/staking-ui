@@ -51,4 +51,7 @@
   &.synced {
     background: green;
   }
+  &.waiting {
+    background: blue;
+  }
 }
