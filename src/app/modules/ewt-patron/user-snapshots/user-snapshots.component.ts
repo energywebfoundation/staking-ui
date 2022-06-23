@@ -14,7 +14,6 @@ import { RoleEnrolmentStatus } from '../../../state/role-enrolment/models/role-e
 })
 export class UserSnapshotsComponent {
   revealedSnapshotNumbers$ = this.store.select(getUserSnapshotRoles);
-
   constructor(private store: Store) {}
 
   snapshotStatus$(value: number): Observable<RoleEnrolmentStatus> {
