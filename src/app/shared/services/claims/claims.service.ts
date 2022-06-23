@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, from, Observable } from 'rxjs';
+import { forkJoin, from, Observable, of } from 'rxjs';
 import { IamService } from '../iam.service';
 import { filter, map } from 'rxjs/operators';
 import { Claim, RegistrationTypes } from 'iam-client-lib';
+
+const registrationTypes = [
+  RegistrationTypes.OnChain,
+  RegistrationTypes.OffChain,
+];
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +18,7 @@ export class ClaimsService {
   createClaim(claimType: string) {
     return from(
       this.iamService.claimsService.createClaimRequest({
-        registrationTypes: [
-          RegistrationTypes.OnChain,
-          RegistrationTypes.OffChain,
-        ],
+        registrationTypes,
         claim: {
           requestorFields: [],
           claimType,
@@ -24,6 +26,16 @@ export class ClaimsService {
         },
       })
     );
+  }
+
+  publishApprovedClaim(claim: Claim) {
+    return from(this.iamService.claimsService.publishPublicClaim({
+      registrationTypes,
+      claim: {
+        claimType: claim.claimType,
+        token: claim.issuedToken
+      }
+    }));
   }
 
   getClaims() {
