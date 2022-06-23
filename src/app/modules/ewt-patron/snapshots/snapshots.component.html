@@ -6,38 +6,10 @@
   <app-divider></app-divider>
   <div class="mt-4 mt-lg-5">
     <div class="d-flex flex-wrap justify-content-center justify-content-md-between">
-      <ng-container *ngIf="snapshotStatus$(1) | async as snapshotStatus">
-        <app-snapshot type="past" number="1" [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
-      </ng-container>
-      <ng-container *ngIf="snapshotStatus$(2) | async as snapshotStatus">
-        <app-snapshot
-          type="present"
-          number="2"
-          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
-      </ng-container>
-      <ng-container *ngIf="snapshotStatus$(3) | async as snapshotStatus">
-        <app-snapshot
-          type="future"
-          number="3"
-          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
-      </ng-container>
-      <ng-container *ngIf="snapshotStatus$(4) | async as snapshotStatus">
-        <app-snapshot
-          type="future"
-          number="4"
-          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
-      </ng-container>
-      <ng-container *ngIf="snapshotStatus$(5) | async as snapshotStatus">
-        <app-snapshot
-          type="future"
-          number="5"
-          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
-      </ng-container>
-      <ng-container *ngIf="snapshotStatus$(6) | async as snapshotStatus">
-        <app-snapshot
-          type="future"
-          number="6"
-          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
+      <ng-container *ngFor="let num of [0, 1, 2, 3, 4, 5]">
+        <ng-container *ngIf="snapshotStatus$(num) | async as snapshotStatus">
+          <app-snapshot [status]="snapshotStatus" [number]="num" [matTooltip]="snapshotStatus | enrolmentStatusDescription" (click)="dotClickHandler(num, snapshotStatus)"></app-snapshot>
+        </ng-container>
       </ng-container>
     </div>
   </div>
