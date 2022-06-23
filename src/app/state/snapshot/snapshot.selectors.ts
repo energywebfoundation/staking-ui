@@ -7,38 +7,59 @@ import { Claim } from 'iam-client-lib';
 export const getSnapshotState =
   createFeatureSelector<SnapshotState>(USER_FEATURE_KEY);
 
-export const getRevealedSnapshots = createSelector(
+export const getUserSnapshotRoles = createSelector(
   getSnapshotState,
-  (state) => state.revealedSnapshots
+  (state) => state.userSnapshotRoles
 );
 
-export const getSnapshotInfoByNumber = (value: number) => {
+export const getSnapshotStatusByNumber = (value: number) => {
+  return createSelector(getUserSnapshotRoles, (userSnapshotRoles) => {
+    return getSnapshotStatus(userSnapshotRoles, value);
+  });
+};
+
+export const getAcceptedSnapshots = createSelector(
+  getUserSnapshotRoles,
+  (userSnapshotRoles) => {
+    return environment.snapshotRoles
+      .map((roleName, index) => {
+        return {
+          index,
+          status:
+            getSnapshotStatus(userSnapshotRoles, index) ===
+            RoleEnrolmentStatus.ENROLED_SYNCED,
+        };
+      })
+      .filter((snapshot) => snapshot.status)
+      .map((snapshot) => snapshot.index);
+  }
+);
+
+export const getSnapshotStatus = (snapshotRoles, id) => {
   const isSynced = (role): boolean =>
     role.issuedToken && role.onChainProof && role.vp;
   const isAccepted = (role: Claim): boolean => role.isAccepted;
   const isRejected = (role: Claim): boolean => role.isRejected;
 
-  return createSelector(getRevealedSnapshots, (revealedSnapshots) => {
-    const snapshotsWithId = revealedSnapshots?.filter(
-      (role) => role.claimType === environment.snapshotRoles[value - 1]
-    );
+  const snapshotsWithId = snapshotRoles?.filter(
+    (role) => role.claimType === environment.snapshotRoles[id]
+  );
 
-    if (snapshotsWithId?.filter(isSynced).length > 0) {
-      return RoleEnrolmentStatus.ENROLED_SYNCED;
-    }
+  if (snapshotsWithId?.filter(isSynced).length > 0) {
+    return RoleEnrolmentStatus.ENROLED_SYNCED;
+  }
 
-    if (snapshotsWithId?.filter(isAccepted).length > 0) {
-      return RoleEnrolmentStatus.ENROLED_APPROVED;
-    }
+  if (snapshotsWithId?.filter(isAccepted).length > 0) {
+    return RoleEnrolmentStatus.ENROLED_APPROVED;
+  }
 
-    if (snapshotsWithId?.filter((role) => !isRejected(role)).length > 0) {
-      return RoleEnrolmentStatus.ENROLED_NOT_APPROVED;
-    }
+  if (snapshotsWithId?.filter((role) => !isRejected(role)).length > 0) {
+    return RoleEnrolmentStatus.ENROLED_NOT_APPROVED;
+  }
 
-    if (snapshotsWithId?.filter((role) => isRejected(role)).length > 0) {
-      return RoleEnrolmentStatus.REJECTED;
-    }
+  if (snapshotsWithId?.filter((role) => isRejected(role)).length > 0) {
+    return RoleEnrolmentStatus.REJECTED;
+  }
 
-    return RoleEnrolmentStatus.NOT_ENROLED;
-  });
+  return RoleEnrolmentStatus.NOT_ENROLED;
 };

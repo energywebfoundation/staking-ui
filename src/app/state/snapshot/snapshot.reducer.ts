@@ -5,18 +5,18 @@ import { Claim } from 'iam-client-lib';
 export const USER_FEATURE_KEY = 'snapshot';
 
 export interface SnapshotState {
-  revealedSnapshots: Claim[];
+  userSnapshotRoles: Claim[];
 }
 
 export const initialState: SnapshotState = {
-  revealedSnapshots: [],
+  userSnapshotRoles: [],
 };
 
 const snapshotReducer = createReducer(
   initialState,
   on(checkRevealedSnapshotsSuccess, (state, { snapshotRoles }) => ({
     ...state,
-    revealedSnapshots: snapshotRoles,
+    userSnapshotRoles: snapshotRoles,
   }))
 );
 

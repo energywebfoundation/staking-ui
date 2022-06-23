@@ -5,6 +5,7 @@ import {
   Input,
 } from '@angular/core';
 import { RoleEnrolmentStatus } from '../../../state/role-enrolment/models/role-enrolment-status.enum';
+import { snapshotInfo } from '../snapshots/models/snapshot-info';
 
 @Component({
   selector: 'app-dot',
@@ -19,15 +20,6 @@ export class DotComponent {
   }
 
   private getEnrolmentStatus(value: RoleEnrolmentStatus): string {
-    switch (value) {
-      case RoleEnrolmentStatus.ENROLED_APPROVED:
-        return 'approved';
-      case RoleEnrolmentStatus.REJECTED:
-        return 'rejected';
-      case RoleEnrolmentStatus.ENROLED_SYNCED:
-        return 'synced';
-      default:
-        return '';
-    }
+    return snapshotInfo.has(value) ? snapshotInfo.get(value).cssClass : '';
   }
 }

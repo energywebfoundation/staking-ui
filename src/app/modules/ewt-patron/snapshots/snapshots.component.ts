@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  getRevealedSnapshots,
-  getSnapshotInfoByNumber,
-} from '../../../state/snapshot/snapshot.selectors';
+import { getSnapshotStatusByNumber } from '../../../state/snapshot/snapshot.selectors';
 
 @Component({
   selector: 'app-snapshots',
@@ -12,11 +9,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SnapshotsComponent {
-  revealedSnapshotNumbers$ = this.store.select(getRevealedSnapshots);
-
   constructor(private store: Store) {}
 
-  snapshotStatus$(value: number): any {
-    return this.store.select(getSnapshotInfoByNumber(value));
+  snapshotStatus$(value: number): any{
+    return this.store.select(getSnapshotStatusByNumber(value));
   }
 }

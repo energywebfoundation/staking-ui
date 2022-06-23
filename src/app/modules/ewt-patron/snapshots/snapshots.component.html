@@ -4,18 +4,7 @@
     <h3 class="snapshot-title">SNAPSHOTS</h3>
     <div class="d-flex flex-column align-items-center">
       <div class="revealed">REVEALED SNAPSHOTS</div>
-      <ng-container *ngIf="revealedSnapshotNumbers$ | async as revealedSnapshots">
-        <div class="dots-wrapper">
-          <ng-container *ngFor="let num of [1, 2, 3, 4, 5, 6]">
-            <ng-container *ngIf="snapshotStatus$(num) | async as snapshotStatus">
-              <app-dot
-                [status]="snapshotStatus"
-                [ngClass]="revealedSnapshots.includes(num) ? 'filled-' + num : ''"
-                [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-dot>
-            </ng-container>
-          </ng-container>
-        </div>
-      </ng-container>
+      <app-user-snapshots></app-user-snapshots>
     </div>
   </div>
   <app-divider></app-divider>
@@ -34,21 +23,24 @@
         <app-snapshot
           type="future"
           number="3"
-          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot> </ng-container
-      ><ng-container *ngIf="snapshotStatus$(4) | async as snapshotStatus">
+          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
+      </ng-container>
+      <ng-container *ngIf="snapshotStatus$(4) | async as snapshotStatus">
         <app-snapshot
           type="future"
-          number="3"
-          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot> </ng-container
-      ><ng-container *ngIf="snapshotStatus$(5) | async as snapshotStatus">
+          number="4"
+          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
+      </ng-container>
+      <ng-container *ngIf="snapshotStatus$(5) | async as snapshotStatus">
         <app-snapshot
           type="future"
-          number="3"
-          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot> </ng-container
-      ><ng-container *ngIf="snapshotStatus$(6) | async as snapshotStatus">
+          number="5"
+          [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
+      </ng-container>
+      <ng-container *ngIf="snapshotStatus$(6) | async as snapshotStatus">
         <app-snapshot
           type="future"
-          number="3"
+          number="6"
           [matTooltip]="snapshotStatus | enrolmentStatusDescription"></app-snapshot>
       </ng-container>
     </div>

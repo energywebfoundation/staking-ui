@@ -45,6 +45,9 @@ import { SnapshotBtnComponent } from './snapshot-btn/snapshot-btn.component';
 import { H4Component } from './h4/h4.component';
 import { TermsComponent } from './terms/terms.component';
 import { EnrolmentStatusDescriptionPipe } from './pipes/enrolment-status-description.pipe';
+import { UserSnapshotsComponent } from './user-snapshots/user-snapshots.component';
+import { IncludedInSnapshotsPipe } from './pipes/included-in-snapshots.pipe';
+import { ImagePathPipe } from './snapshot-success/pipes/image-path.pipe';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,10 @@ import { EnrolmentStatusDescriptionPipe } from './pipes/enrolment-status-descrip
     SnapshotBtnComponent,
     H4Component,
     TermsComponent,
-    EnrolmentStatusDescriptionPipe
+    EnrolmentStatusDescriptionPipe,
+    UserSnapshotsComponent,
+    IncludedInSnapshotsPipe,
+    ImagePathPipe,
   ],
   imports: [
     CommonModule,
@@ -95,7 +101,7 @@ import { EnrolmentStatusDescriptionPipe } from './pipes/enrolment-status-descrip
     UserMenuModule,
     HourlyToDailyRewardModule,
     MatProgressSpinnerModule,
-    CircleProgressModule.forRoot()
-  ]
+    CircleProgressModule.forRoot(),
+  ],
 })
 export class EwtPatronModule {}
