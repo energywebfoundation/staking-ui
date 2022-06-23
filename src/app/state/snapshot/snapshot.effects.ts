@@ -5,12 +5,19 @@ import {
   checkRevealedSnapshots,
   checkRevealedSnapshotsSuccess,
   checkSnapshots,
+  enrolToSnapshotRole,
   enrolToSnapshots,
 } from './snapshot.actions';
-import { finalize, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  filter,
+  finalize,
+  map,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { ClaimsService } from '../../shared/services/claims/claims.service';
-import { getUserSnapshotRoles, getSnapshotStatus } from './snapshot.selectors';
+import { getSnapshotStatus, getUserSnapshotRoles } from './snapshot.selectors';
 import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
 import { forkJoin } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -40,13 +47,25 @@ export class SnapshotEffects {
       ofType(checkSnapshots),
       withLatestFrom(this.store.select(getUserSnapshotRoles)),
       map(([, snapshotRoles]) => {
-        const snapshots = this.envService.snapshotRoles
-          .filter(
-            (role, index) => getSnapshotStatus(snapshotRoles, index) === RoleEnrolmentStatus.NOT_ENROLED
-          );
+        const snapshots = this.envService.snapshotRoles.filter(
+          (role, index) =>
+            getSnapshotStatus(snapshotRoles, index) ===
+            RoleEnrolmentStatus.NOT_ENROLED
+        );
         return enrolToSnapshots({ claims: snapshots });
       })
     )
+  );
+
+  enrolForSnapshot$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(enrolToSnapshotRole),
+        map(({ id }) => this.envService.snapshotRoles[id]),
+        filter(Boolean),
+        switchMap((role: string) => this.claimService.createClaim(role))
+      ),
+    { dispatch: false }
   );
 
   enrolForSnapshots$ = createEffect(
@@ -61,9 +80,9 @@ export class SnapshotEffects {
           ).pipe(
             finalize(() => {
               this.dialog.open(SnapshotSuccessComponent, {
-                  width: '400px',
-                  maxWidth: '100%'
-              })
+                width: '400px',
+                maxWidth: '100%',
+              });
             })
           )
         )
