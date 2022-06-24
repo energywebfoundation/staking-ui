@@ -34,26 +34,25 @@ const MATERIAL_MODULES = [
 
 // https://angular.io/styleguide#!#04-10
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CopyToClipboardModule,
-    DidFormatMinifierModule,
-    MATERIAL_MODULES
-  ],
-  declarations: [MinifiedDidViewerDirective, MinifiedDidViewerDialogComponent],
-  exports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MinifiedDidViewerDirective,
-    MATERIAL_MODULES,
-    CopyToClipboardModule,
-    DidFormatMinifierModule
-  ],
-  entryComponents: [MinifiedDidViewerDialogComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CopyToClipboardModule,
+        DidFormatMinifierModule,
+        MATERIAL_MODULES
+    ],
+    declarations: [MinifiedDidViewerDirective, MinifiedDidViewerDialogComponent],
+    exports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        MinifiedDidViewerDirective,
+        MATERIAL_MODULES,
+        CopyToClipboardModule,
+        DidFormatMinifierModule
+    ]
 })
 
 // https://github.com/ocombe/ng2-translate/issues/209
