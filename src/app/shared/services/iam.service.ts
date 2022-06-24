@@ -164,10 +164,6 @@ export class IamService {
           localStorage.getItem('PrivateKey'),
           this.envService.rpcUrl
         );
-      case ProviderType.Gnosis:
-        return initWithGnosis(safeAppSdk);
-      case ProviderType.EKC:
-        return initWithEKC();
     }
   }
 }

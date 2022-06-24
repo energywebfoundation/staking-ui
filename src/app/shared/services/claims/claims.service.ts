@@ -18,7 +18,7 @@ export class ClaimsService {
           RegistrationTypes.OffChain,
         ],
         claim: {
-          fields: [],
+          requestorFields: [],
           claimType,
           claimTypeVersion: 1,
         },
