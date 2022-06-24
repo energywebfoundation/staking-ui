@@ -81,7 +81,7 @@ export class SnapshotEffects {
           .filter((role) => role.claimType === roleName)
           .filter((role) => !role.isRejected)
           .filter((role) => role.isAccepted)
-          .pop()
+          .shift()
       ),
       switchMap((claim: Claim) =>
         this.claimService
