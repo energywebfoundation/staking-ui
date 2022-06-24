@@ -24,6 +24,7 @@ export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
   .set(RoleEnrolmentStatus.REJECTED, {
     message: 'Rejected status, needs description for it',
     cssClass: 'rejected',
+    action: (id) => enrolToSnapshotRole({ id }),
   })
   .set(RoleEnrolmentStatus.ENROLED_APPROVED, {
     message:
