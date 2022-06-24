@@ -39,7 +39,6 @@
     "@ngrx/store-devtools": "^11.1.1",
     "@sentry/angular": "^6.2.0",
     "@types/disposable-email-domains": "^1.0.2",
-    "codemirror": "5.42.0",
     "core-js": "2.5.4",
     "disposable-email-domains": "^1.0.59",
     "iam-client-lib": "^4.0.0-alpha.12",
@@ -49,7 +48,6 @@
     "simple-line-icons": "2.4.1",
     "sweetalert": "2.1.2",
     "tslib": "^2.0.0",
-    "uuid": "^8.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
