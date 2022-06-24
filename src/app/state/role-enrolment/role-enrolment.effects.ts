@@ -16,7 +16,7 @@ import { EnvService } from '../../shared/services/env/env.service';
 import { LoadingService } from '../../shared/services/loading.service';
 import { from, of, timer } from 'rxjs';
 import { IamService } from '../../shared/services/iam.service';
-import { Claim, RegistrationTypes } from 'iam-client-lib';
+import { Claim, RegisterOnchainOptions, RegistrationTypes } from 'iam-client-lib';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
 import { SwitchboardToastrService } from '../../shared/services/switchboard-toastr.service';
 import { truthy } from '@operators';
@@ -84,7 +84,7 @@ export class RoleEnrolmentEffects {
         this.getClaims().pipe(
           map(roles => roles.filter(item => !item.isRejected)),
           switchMap((roles: Claim[]) =>
-            from(this.iamService.claimsService.registerOnchain(roles[0])).pipe(
+            from(this.iamService.claimsService.registerOnchain(roles[0] as RegisterOnchainOptions)).pipe(
               map(() =>
                 RoleEnrolmentActions.setStatus({
                   status: RoleEnrolmentStatus.ENROLED_SYNCED
@@ -112,7 +112,7 @@ export class RoleEnrolmentEffects {
           this.iamService.claimsService.createClaimRequest({
             registrationTypes: [RegistrationTypes.OnChain],
             claim: {
-              fields: [
+              requestorFields: [
                 {
                   key: 'email',
                   value: email
