@@ -7,6 +7,7 @@ import {
   checkSnapshots,
   enrolToSnapshotRole,
   enrolToSnapshots,
+  syncSnapshotEnrolment,
 } from './snapshot.actions';
 import {
   filter,
@@ -22,6 +23,7 @@ import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-sta
 import { forkJoin } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SnapshotSuccessComponent } from '../../modules/ewt-patron/snapshot-success/snapshot-success.component';
+import { Claim } from 'iam-client-lib';
 
 @Injectable()
 export class SnapshotEffects {
@@ -66,6 +68,27 @@ export class SnapshotEffects {
         switchMap((role: string) => this.claimService.createClaim(role))
       ),
     { dispatch: false }
+  );
+
+  publishSnapshot$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(syncSnapshotEnrolment),
+      map(({ id }) => this.envService.snapshotRoles[id]),
+      filter(Boolean),
+      withLatestFrom(this.store.select(getUserSnapshotRoles)),
+      map(([roleName, roles]) =>
+        roles
+          .filter((role) => role.claimType === roleName)
+          .filter((role) => !role.isRejected)
+          .filter((role) => role.isAccepted)
+          .pop()
+      ),
+      switchMap((claim: Claim) =>
+        this.claimService
+          .publishApprovedClaim(claim)
+          .pipe(map(() => checkRevealedSnapshots()))
+      )
+    )
   );
 
   enrolForSnapshots$ = createEffect(
