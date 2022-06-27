@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, from, Observable, of } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { IamService } from '../iam.service';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Claim, RegistrationTypes } from 'iam-client-lib';
 
 const registrationTypes = [
@@ -18,7 +18,7 @@ export class ClaimsService {
   createClaim(claimType: string) {
     return from(
       this.iamService.claimsService.createClaimRequest({
-        registrationTypes,
+        registrationTypes: [RegistrationTypes.OnChain],
         claim: {
           requestorFields: [],
           claimType,
