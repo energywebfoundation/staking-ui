@@ -59,28 +59,4 @@ export class ClaimsService {
       map((roles) => roles.filter((role) => !role.isRejected))
     );
   }
-
-  getOnlySyncedOnChainRoles(claims: Claim[]): Observable<Claim[]> {
-    return forkJoin(
-      claims
-        .filter((claim) => claim.isAccepted)
-        .map((claim) =>
-          from(
-            this.iamService.claimsService.hasOnChainRole(
-              this.iamService.signerService.did,
-              claim.claimType,
-              parseInt(claim.claimTypeVersion, 10)
-            )
-          ).pipe(
-            map((v) => {
-              return {
-                isSyncedOnChain: v,
-                ...claim,
-              };
-            }),
-            filter((v) => v.isSyncedOnChain)
-          )
-        )
-    );
-  }
 }
