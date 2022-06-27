@@ -20,7 +20,7 @@ import { EnvService } from '../../shared/services/env/env.service';
 import { ClaimsService } from '../../shared/services/claims/claims.service';
 import { getSnapshotStatus, getUserSnapshotRoles } from './snapshot.selectors';
 import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
-import { forkJoin } from 'rxjs';
+import { forkJoin, from } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SnapshotSuccessComponent } from '../../modules/ewt-patron/snapshot-success/snapshot-success.component';
 import { Claim } from 'iam-client-lib';
@@ -35,6 +35,13 @@ export class SnapshotEffects {
           map((roles) => {
             const snapshotRoles = new Set(this.envService.snapshotRoles);
             return roles.filter((role) => snapshotRoles.has(role.claimType));
+          }),
+          switchMap((roles: Claim[]) => {
+            return forkJoin([
+              ...roles.map((role) =>
+                from(this.claimService.hasOnChainRole(role))
+              ),
+            ]);
           }),
           map((snapshotRoles) =>
             checkRevealedSnapshotsSuccess({ snapshotRoles })

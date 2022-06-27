@@ -46,6 +46,14 @@ export class ClaimsService {
     );
   }
 
+  async hasOnChainRole(claim: Claim) {
+    const hasOnChainRole = await this.iamService.claimsService.hasOnChainRole(this.iamService.signerService.did, claim.claimType, +claim.claimTypeVersion);
+    return {
+      ...claim,
+      isSyncedOnChain: hasOnChainRole
+    }
+  }
+
   getNotRejectedClaims(): Observable<Claim[]> {
     return this.getClaims().pipe(
       map((roles) => roles.filter((role) => !role.isRejected))
