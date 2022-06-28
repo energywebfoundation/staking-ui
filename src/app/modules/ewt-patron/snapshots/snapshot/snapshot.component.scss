@@ -18,17 +18,41 @@
 :host {
   margin: 70px 0 0 0;
   &.approved .snapshot-circle {
-    background: yellow;
+    background: radial-gradient(
+        351.92% 330.17% at 336.54% -20.19%,
+        #fff495 66.62%,
+        #c6b30c 88.34%,
+        #bfac00 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
   }
   &.rejected .snapshot-circle {
-    background: red;
+    background: radial-gradient(
+      351.92% 330.17% at 336.54% -20.19%,
+      #ffa2a2 66.62%,
+      #ef5454 88.34%,
+      #c61717 100%
+    );
   }
   &.synced .snapshot-circle {
-    background: green;
+    background: radial-gradient(
+        351.92% 330.17% at 336.54% -20.19%,
+        #9dffc5 66.62%,
+        #3fc474 88.34%,
+        #089741 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+
     @include snapshotGlow;
   }
   &.waiting .snapshot-circle {
-    background: blue;
+    background: radial-gradient(
+        351.92% 330.17% at 336.54% -20.19%,
+        #937bff 66.62%,
+        #5e44d4 88.34%,
+        #553fba 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
   }
 }
 
@@ -42,71 +66,15 @@
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(
-    353.64deg,
-    rgba(65, 15, 227, 0) -63.58%,
-    rgba(114, 108, 238, 0.08) 3.96%,
-    rgba(165, 206, 249, 0.34001) 39.82%,
-    rgba(191, 255, 255, 0.47) 96.52%
-  );
-
-  .text {
-    background: linear-gradient(
-      190.88deg,
-      #4f31c7 -5.24%,
-      #a3b7e0 31.59%,
-      #abc5f2 51.1%,
-      #6250cd 97.28%
+  background: radial-gradient(
+      351.92% 330.17% at 336.54% -20.19%,
+      #d6d6d6 66.62%,
+      #929090 88.34%,
+      #6f6f6f 100%
     );
-
+  .text {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-
-  &.past {
-    background: radial-gradient(
-      351.92% 130.17% at 336.54% -20.19%,
-      #937bff 66.62%,
-      #5e44d4 88.34%,
-      #553fba 100%
-    );
-    -webkit-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
-    -moz-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
-    box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
-
-    .text {
-      background: linear-gradient(
-        182.2deg,
-        #d7e4ff 2.8%,
-        #e8f0ff 36.02%,
-        #cfe1ff 63.26%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  }
-
-  &.present {
-    background: radial-gradient(
-      331.1% 122.47% at 336.54% -20.19%,
-      #a9a6fd 66.59%,
-      #8e8aff 80.07%,
-      #6d6ae2 98.31%
-    );
-    -webkit-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
-    -moz-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
-    box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7);
-
-    .text {
-      background: linear-gradient(
-        182.25deg,
-        #daeaff 42.95%,
-        #f0f6fc 49.61%,
-        #e1f2ff 54.75%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
   }
 }
 
@@ -115,6 +83,12 @@
   font-family: Rajdhani, sans-serif;
   font-weight: 700;
   line-height: 16px;
+  background: linear-gradient(
+    182.25deg,
+    #daeaff 42.95%,
+    #f0f6fc 49.61%,
+    #e1f2ff 54.75%
+  );
 }
 
 .number {
@@ -122,6 +96,12 @@
   font-family: Rajdhani, sans-serif;
   font-weight: 700;
   line-height: 52px;
+  background: linear-gradient(
+    182.2deg,
+    #d7e4ff 2.8%,
+    #e8f0ff 36.02%,
+    #cfe1ff 63.26%
+  );
 }
 
 .description-header {
