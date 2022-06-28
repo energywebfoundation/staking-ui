@@ -11,8 +11,11 @@ export class SnapshotComponent {
   @Input() number: number;
   @Input() set status(value: RoleEnrolmentStatus) {
     this.enrolmentStatus = this.getEnrolmentStatus(value);
+    this.snapshotStatus = value;
   }
-  @Input() type: 'past' | 'present' | 'future';
+  snapshotStatus: RoleEnrolmentStatus;
+  header: string;
+  description: string;
 
   @HostBinding('class') enrolmentStatus: string;
 

@@ -48,6 +48,8 @@ import { EnrolmentStatusDescriptionPipe } from './pipes/enrolment-status-descrip
 import { UserSnapshotsComponent } from './user-snapshots/user-snapshots.component';
 import { IncludedInSnapshotsPipe } from './pipes/included-in-snapshots.pipe';
 import { ImagePathPipe } from './snapshot-success/pipes/image-path.pipe';
+import { EnrolmentStatusHeaderDescriptionPipe } from './pipes/enrolment-status-header-description.pipe';
+import { EnrolmentStatusLinkPipe } from './pipes/enrolment-status-link.pipe';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { ImagePathPipe } from './snapshot-success/pipes/image-path.pipe';
     UserSnapshotsComponent,
     IncludedInSnapshotsPipe,
     ImagePathPipe,
+    EnrolmentStatusHeaderDescriptionPipe,
+    EnrolmentStatusLinkPipe,
   ],
   imports: [
     CommonModule,

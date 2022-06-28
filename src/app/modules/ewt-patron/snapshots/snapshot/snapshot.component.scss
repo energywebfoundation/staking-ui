@@ -123,3 +123,20 @@
   font-weight: 700;
   line-height: 52px;
 }
+
+.description-header {
+  color: #4b25c7;
+  font-size: 24px;
+  font-family: Rajdhani, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.33006px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.description {
+  color: #363636;
+  font-size: 16px;
+  text-align: center;
+  flex-shrink: 1;
+}
