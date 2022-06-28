@@ -41,9 +41,9 @@ export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
     cssClass: 'approved',
     action: (id) => syncSnapshotEnrolment({ id }),
   })
-  .set(RoleEnrolmentStatus.ENROLED_NOT_APPROVED, {
+  .set(RoleEnrolmentStatus.SNAPSHOT_NOT_TAKEN, {
     header: 'Snapshot HAS not been taken yet...',
     message: 'Stake your Energy Web Tokens to be eligible for snapshots, more information about the snapshots',
     link: '#',
-    cssClass: 'waiting',
+    cssClass: 'not-taken',
   });

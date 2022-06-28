@@ -45,6 +45,10 @@ export const getSnapshotStatus = (snapshotRoles, id) => {
     (role) => role.claimType === environment.snapshotRoles[id]
   );
 
+  if (snapshotsWithId.length === 0) {
+    return RoleEnrolmentStatus.SNAPSHOT_NOT_TAKEN;
+  }
+
   if (snapshotsWithId?.filter(isSynced).length > 0) {
     return RoleEnrolmentStatus.ENROLED_SYNCED;
   }

@@ -1,7 +1,7 @@
 :host {
   height: 20px;
   width: 20px;
-  background-color: #e2ebff;
+  background-color: #5E44D4;
   box-shadow: inset 0px 1.97286px 1.97286px #b5bece;
   border-radius: 50%;
   display: inline-block;
@@ -43,15 +43,15 @@
   }
 
   &.approved {
-    background: yellow;
+    background: #e4d654;
   }
   &.rejected {
-    background: red;
+    background: #f05555;
   }
   &.synced {
-    background: green;
+    background: #58d38a;
   }
-  &.waiting {
-    background: blue;
+  &.not-taken {
+    background: #5E44D4;
   }
 }
