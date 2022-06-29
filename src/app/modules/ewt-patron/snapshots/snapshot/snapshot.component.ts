@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { RoleEnrolmentStatus } from '../../../../state/role-enrolment/models/role-enrolment-status.enum';
 import { snapshotInfo } from '../models/snapshot-info';
 
@@ -13,6 +13,7 @@ export class SnapshotComponent {
     this.enrolmentStatus = this.getEnrolmentStatus(value);
     this.snapshotStatus = value;
   }
+  @Output() bubbleClick = new EventEmitter<void>()
   snapshotStatus: RoleEnrolmentStatus;
   header: string;
   description: string;
