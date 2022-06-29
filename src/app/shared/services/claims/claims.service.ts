@@ -18,7 +18,7 @@ export class ClaimsService {
   createClaim(claimType: string) {
     return from(
       this.iamService.claimsService.createClaimRequest({
-        registrationTypes: [RegistrationTypes.OnChain],
+        registrationTypes,
         claim: {
           requestorFields: [],
           claimType,
@@ -30,7 +30,7 @@ export class ClaimsService {
 
   publishApprovedClaim(claim: Claim) {
     return from(this.iamService.claimsService.publishPublicClaim({
-      registrationTypes,
+      registrationTypes: [RegistrationTypes.OnChain],
       claim: {
         claimType: claim.claimType,
         token: claim.issuedToken
