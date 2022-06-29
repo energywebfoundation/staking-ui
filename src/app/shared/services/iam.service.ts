@@ -72,6 +72,10 @@ export class IamService {
     return this.signerService.providerType;
   }
 
+  get isEthSigner() {
+    return this.signerService.isEthSigner;
+  }
+
   closeConnection() {
     return from(this.signerService.closeConnection()).pipe(truthy());
   }
