@@ -67,6 +67,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }
 
 .title {
