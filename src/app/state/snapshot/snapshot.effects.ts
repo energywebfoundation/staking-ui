@@ -7,13 +7,13 @@ import {
   checkSnapshots,
   enrolToSnapshotRole,
   enrolToSnapshots,
-  syncSnapshotEnrolment,
+  syncSnapshotEnrolment, updateRevealedSnapshots,
 } from './snapshot.actions';
 import {
   filter,
   finalize,
   map,
-  switchMap,
+  switchMap, tap,
   withLatestFrom,
 } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
@@ -24,30 +24,21 @@ import { forkJoin, from } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SnapshotSuccessComponent } from '../../modules/ewt-patron/snapshot-success/snapshot-success.component';
 import { Claim } from 'iam-client-lib';
+import { LoadingService } from '../../shared/services/loading.service';
 
 @Injectable()
 export class SnapshotEffects {
   checkEnrolments$ = createEffect(() =>
     this.actions$.pipe(
       ofType(checkRevealedSnapshots),
-      switchMap(() =>
-        this.claimService.getClaims().pipe(
-          map((roles) => {
-            const snapshotRoles = new Set(this.envService.snapshotRoles);
-            return roles.filter((role) => snapshotRoles.has(role.claimType));
-          }),
-          switchMap((roles: Claim[]) => {
-            return forkJoin([
-              ...roles.map((role) =>
-                from(this.claimService.hasOnChainRole(role))
-              ),
-            ]);
-          }),
-          map((snapshotRoles) =>
-            checkRevealedSnapshotsSuccess({ snapshotRoles })
-          )
-        )
-      )
+      this.getSnapshotEnrolments(true),
+    )
+  );
+
+  updateEnrolments$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateRevealedSnapshots),
+      this.getSnapshotEnrolments(false)
     )
   );
 
@@ -122,11 +113,39 @@ export class SnapshotEffects {
     { dispatch: false }
   );
 
+  private getSnapshotEnrolments(showLoader: boolean) {
+    if (showLoader) {
+      this.loaderService.show();
+    }
+    return switchMap(() =>
+      this.claimService.getClaims().pipe(
+        map((roles) => {
+          const snapshotRoles = new Set(this.envService.snapshotRoles);
+          return roles.filter((role) => snapshotRoles.has(role.claimType));
+        }),
+        switchMap((roles: Claim[]) => {
+          return forkJoin([
+            ...roles.map((role) =>
+              from(this.claimService.hasOnChainRole(role))
+            ),
+          ]);
+        }),
+        map((snapshotRoles) => {
+          if (showLoader) {
+            this.loaderService.hide();
+          }
+          return checkRevealedSnapshotsSuccess({ snapshotRoles })
+        })
+      )
+    );
+  }
+
   constructor(
     private actions$: Actions,
     private store: Store,
     private envService: EnvService,
     private claimService: ClaimsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private loaderService: LoadingService
   ) {}
 }
