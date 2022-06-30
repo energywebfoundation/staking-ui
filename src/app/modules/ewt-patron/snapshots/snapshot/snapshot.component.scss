@@ -28,6 +28,11 @@
       #3fc474 88.34%,
       #089741 100%
     );
+
+    &:hover {
+      cursor: default;
+      opacity: 1;
+    }
   }
   &.not-taken .snapshot-circle {
     background: radial-gradient(
@@ -36,6 +41,11 @@
       #5e44d4 88.34%,
       #553fba 100%
     );
+
+    &:hover {
+      cursor: default;
+      opacity: 1;
+    }
   }
 }
 
