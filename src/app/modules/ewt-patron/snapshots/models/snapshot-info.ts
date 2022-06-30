@@ -32,7 +32,6 @@ export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
     message: "Make sure you don't miss out on the following snapshots, you need to stake your Energy Web Tokens to be eligible for the snapshots, more information about the snapshots",
     link: 'https://medium.com/energy-web-insights/energy-web-community-staking-pool-snapshots-explained-3a9c3eebf28b',
     cssClass: 'rejected',
-    action: (id) => enrolToSnapshotRole({ id }),
   })
   .set(RoleEnrolmentStatus.ENROLED_APPROVED, {
     header: 'You are included in a snapshot, claim your role now!',
