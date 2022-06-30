@@ -17,20 +17,20 @@ export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
   .set(RoleEnrolmentStatus.NOT_ENROLED, {
     message: 'A Snapshot is taken, check it now!',
     header: 'Check if you are included in the snapshot by clicking on the grey circle above!',
-    link: '#',
+    link: 'https://medium.com/energy-web-insights/energy-web-community-staking-pool-snapshots-explained-3a9c3eebf28b',
     cssClass: '',
     action: (id) => enrolToSnapshotRole({ id }),
   })
   .set(RoleEnrolmentStatus.ENROLED_SYNCED, {
     header: 'Congratulations, you are included in this snapshot!',
     message: 'Make sure you keep your Energy Web Tokens staked to be elible for future snapshots, more information about the snapshots',
-    link: '#',
+    link: 'https://medium.com/energy-web-insights/energy-web-community-staking-pool-snapshots-explained-3a9c3eebf28b',
     cssClass: 'synced',
   })
   .set(RoleEnrolmentStatus.REJECTED, {
     header: 'Oops... you are not included in this Snapshot!',
     message: "Make sure you don't miss out on the following snapshots, you need to stake your Energy Web Tokens to be eligible for the snapshots, more information about the snapshots",
-    link: '#',
+    link: 'https://medium.com/energy-web-insights/energy-web-community-staking-pool-snapshots-explained-3a9c3eebf28b',
     cssClass: 'rejected',
     action: (id) => enrolToSnapshotRole({ id }),
   })
@@ -44,6 +44,6 @@ export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
   .set(RoleEnrolmentStatus.SNAPSHOT_NOT_TAKEN, {
     header: 'Snapshot HAS not been taken yet...',
     message: 'Stake your Energy Web Tokens to be eligible for snapshots, more information about the snapshots',
-    link: '#',
+    link: 'https://medium.com/energy-web-insights/energy-web-community-staking-pool-snapshots-explained-3a9c3eebf28b',
     cssClass: 'not-taken',
   });
