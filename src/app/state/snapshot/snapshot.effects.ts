@@ -66,15 +66,17 @@ export class SnapshotEffects {
     )
   );
 
-  enrolForSnapshot$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(enrolToSnapshotRole),
-        map(({ id }) => this.envService.snapshotRoles[id]),
-        filter(Boolean),
-        switchMap((role: string) => this.claimService.createClaim(role))
-      ),
-    { dispatch: false }
+  enrolForSnapshot$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(enrolToSnapshotRole),
+      map(({ id }) => this.envService.snapshotRoles[id]),
+      filter(Boolean),
+      switchMap((role: string) =>
+        this.claimService
+          .createClaim(role)
+          .pipe(map(() => checkRevealedSnapshots()))
+      )
+    )
   );
 
   publishSnapshot$ = createEffect(() =>
