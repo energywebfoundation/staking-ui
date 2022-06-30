@@ -14,13 +14,6 @@ export const checkRevealedSnapshotsSuccess = createAction(
   props<{ snapshotRoles: Claim[] }>()
 );
 
-export const enrolToSnapshots = createAction(
-  '[Snapshot] Enrol To Snapshots',
-  props<{ claims: string[] }>()
-);
-
-export const checkSnapshots = createAction('[Snapshot] Check Snapshots');
-
 export const enrolToSnapshotRole = createAction(
   '[Snapshot] Enrol To Snapshot Role',
   props<{ id: number }>()

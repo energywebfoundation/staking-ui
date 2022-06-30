@@ -37,7 +37,6 @@ import { SnapshotsComponent } from './snapshots/snapshots.component';
 import { DotComponent } from './dot/dot.component';
 import { SnapshotComponent } from './snapshots/snapshot/snapshot.component';
 import { SnapshotSuccessComponent } from './snapshot-success/snapshot-success.component';
-import { CheckSnapshotComponent } from './check-snapshot/check-snapshot.component';
 import { SnapshotBoxComponent } from './snapshot-box/snapshot-box.component';
 import { SnapshotStatsComponent } from './snapshot-stats/snapshot-stats.component';
 import { LabelComponent } from './label/label.component';
@@ -74,7 +73,6 @@ import { EnrolmentStatusLinkPipe } from './pipes/enrolment-status-link.pipe';
     DotComponent,
     SnapshotComponent,
     SnapshotSuccessComponent,
-    CheckSnapshotComponent,
     SnapshotBoxComponent,
     SnapshotStatsComponent,
     LabelComponent,

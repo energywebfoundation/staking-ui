@@ -4,25 +4,23 @@ import { Store } from '@ngrx/store';
 import {
   checkRevealedSnapshots,
   checkRevealedSnapshotsSuccess,
-  checkSnapshots,
   enrolToSnapshotRole,
-  enrolToSnapshots,
-  syncSnapshotEnrolment, updateRevealedSnapshots,
+  syncSnapshotEnrolment,
+  updateRevealedSnapshots,
 } from './snapshot.actions';
 import {
   filter,
   finalize,
   map,
-  switchMap, tap,
+  switchMap,
+  tap,
   withLatestFrom,
 } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { ClaimsService } from '../../shared/services/claims/claims.service';
-import { getSnapshotStatus, getUserSnapshotRoles } from './snapshot.selectors';
-import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
-import { forkJoin, from } from 'rxjs';
+import { getUserSnapshotRoles } from './snapshot.selectors';
+import { forkJoin, from, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { SnapshotSuccessComponent } from '../../modules/ewt-patron/snapshot-success/snapshot-success.component';
 import { Claim } from 'iam-client-lib';
 import { LoadingService } from '../../shared/services/loading.service';
 
@@ -31,7 +29,7 @@ export class SnapshotEffects {
   checkEnrolments$ = createEffect(() =>
     this.actions$.pipe(
       ofType(checkRevealedSnapshots),
-      this.getSnapshotEnrolments(true),
+      this.getSnapshotEnrolments(true)
     )
   );
 
@@ -42,30 +40,17 @@ export class SnapshotEffects {
     )
   );
 
-  checkSnapshots$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(checkSnapshots),
-      withLatestFrom(this.store.select(getUserSnapshotRoles)),
-      map(([, snapshotRoles]) => {
-        const snapshots = this.envService.snapshotRoles.filter(
-          (role, index) =>
-            getSnapshotStatus(snapshotRoles, index) ===
-            RoleEnrolmentStatus.NOT_ENROLED
-        );
-        return enrolToSnapshots({ claims: snapshots });
-      })
-    )
-  );
-
   enrolForSnapshot$ = createEffect(() =>
     this.actions$.pipe(
       ofType(enrolToSnapshotRole),
+      tap(() => this.loadingService.show()),
       map(({ id }) => this.envService.snapshotRoles[id]),
       filter(Boolean),
       switchMap((role: string) =>
-        this.claimService
-          .createClaim(role)
-          .pipe(map(() => checkRevealedSnapshots()))
+        this.claimService.createClaim(role).pipe(
+          map(() => checkRevealedSnapshots()),
+          finalize(() => this.loadingService.hide())
+        )
       )
     )
   );
@@ -73,6 +58,7 @@ export class SnapshotEffects {
   publishSnapshot$ = createEffect(() =>
     this.actions$.pipe(
       ofType(syncSnapshotEnrolment),
+      tap(() => this.loadingService.show()),
       map(({ id }) => this.envService.snapshotRoles[id]),
       filter(Boolean),
       withLatestFrom(this.store.select(getUserSnapshotRoles)),
@@ -84,38 +70,17 @@ export class SnapshotEffects {
           .shift()
       ),
       switchMap((claim: Claim) =>
-        this.claimService
-          .publishApprovedClaim(claim)
-          .pipe(map(() => checkRevealedSnapshots()))
+        this.claimService.publishApprovedClaim(claim).pipe(
+          map(() => checkRevealedSnapshots()),
+          finalize(() => this.loadingService.hide())
+        )
       )
     )
   );
 
-  enrolForSnapshots$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(enrolToSnapshots),
-        switchMap(({ claims }) =>
-          forkJoin(
-            ...claims.map((claim) => {
-              return this.claimService.createClaim(claim);
-            })
-          ).pipe(
-            finalize(() => {
-              this.dialog.open(SnapshotSuccessComponent, {
-                width: '400px',
-                maxWidth: '100%',
-              });
-            })
-          )
-        )
-      ),
-    { dispatch: false }
-  );
-
   private getSnapshotEnrolments(showLoader: boolean) {
     if (showLoader) {
-      this.loaderService.show();
+      this.loadingService.show();
     }
     return switchMap(() =>
       this.claimService.getClaims().pipe(
@@ -132,9 +97,9 @@ export class SnapshotEffects {
         }),
         map((snapshotRoles) => {
           if (showLoader) {
-            this.loaderService.hide();
+            this.loadingService.hide();
           }
-          return checkRevealedSnapshotsSuccess({ snapshotRoles })
+          return checkRevealedSnapshotsSuccess({ snapshotRoles });
         })
       )
     );
@@ -146,6 +111,6 @@ export class SnapshotEffects {
     private envService: EnvService,
     private claimService: ClaimsService,
     private dialog: MatDialog,
-    private loaderService: LoadingService
+    private loadingService: LoadingService
   ) {}
 }
