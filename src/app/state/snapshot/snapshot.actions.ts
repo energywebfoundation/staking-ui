@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Claim } from 'iam-client-lib';
+import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
 
 export const checkRevealedSnapshots = createAction(
   '[Snapshot] Check Revealed Snapshots'
@@ -19,7 +20,17 @@ export const enrolToSnapshotRole = createAction(
   props<{ id: number }>()
 );
 
+export const enrolToSnapshotRoleSuccess = createAction(
+  '[Snapshot] Enrol To Snapshot Role Success',
+  props<{ status: RoleEnrolmentStatus }>()
+);
+
 export const syncSnapshotEnrolment = createAction(
   '[Snapshot] Sync Snapshot Role',
   props<{ id: number }>()
+);
+
+export const syncSnapshotEnrolmentSuccess = createAction(
+  '[Snapshot] Sync Snapshot Role Success',
+  props<{ status: RoleEnrolmentStatus }>()
 );

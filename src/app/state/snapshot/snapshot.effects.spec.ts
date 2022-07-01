@@ -22,7 +22,6 @@ describe('SnapshotEffects', () => {
 
   beforeEach(() => {
     claimsServiceSpy = jasmine.createSpyObj('ClaimsService', [
-      'getNotRejectedClaims',
       'getClaims'
     ]);
 

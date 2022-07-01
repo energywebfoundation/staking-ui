@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { from } from 'rxjs';
 import { IamService } from '../iam.service';
-import { map } from 'rxjs/operators';
 import { Claim, RegistrationTypes } from 'iam-client-lib';
+import { LoadingService } from '../loading.service';
 
 const registrationTypes = [
   RegistrationTypes.OnChain,
@@ -13,7 +13,8 @@ const registrationTypes = [
   providedIn: 'root',
 })
 export class ClaimsService {
-  constructor(private iamService: IamService) {}
+  constructor(private iamService: IamService,
+              private loadingService: LoadingService) {}
 
   createClaim(claimType: string) {
     return from(
@@ -38,7 +39,10 @@ export class ClaimsService {
     }));
   }
 
-  getClaims() {
+  getClaims(showLoader: boolean) {
+    if (showLoader) {
+      this.loadingService.show();
+    }
     return from(
       this.iamService.claimsService.getClaimsByRequester({
         did: this.iamService.signerService.did,
@@ -52,11 +56,5 @@ export class ClaimsService {
       ...claim,
       isSyncedOnChain: hasOnChainRole
     }
-  }
-
-  getNotRejectedClaims(): Observable<Claim[]> {
-    return this.getClaims().pipe(
-      map((roles) => roles.filter((role) => !role.isRejected))
-    );
   }
 }
