@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
+import { from, of } from 'rxjs';
 import { IamService } from '../iam.service';
 import { Claim, RegistrationTypes } from 'iam-client-lib';
 import { LoadingService } from '../loading.service';
+import { catchError, finalize } from 'rxjs/operators';
 
 const registrationTypes = [
   RegistrationTypes.OnChain,
@@ -13,8 +14,10 @@ const registrationTypes = [
   providedIn: 'root',
 })
 export class ClaimsService {
-  constructor(private iamService: IamService,
-              private loadingService: LoadingService) {}
+  constructor(
+    private iamService: IamService,
+    private loadingService: LoadingService
+  ) {}
 
   createClaim(claimType: string) {
     return from(
@@ -30,13 +33,15 @@ export class ClaimsService {
   }
 
   publishApprovedClaim(claim: Claim) {
-    return from(this.iamService.claimsService.publishPublicClaim({
-      registrationTypes: [RegistrationTypes.OnChain],
-      claim: {
-        claimType: claim.claimType,
-        token: claim.issuedToken
-      }
-    }));
+    return from(
+      this.iamService.claimsService.publishPublicClaim({
+        registrationTypes: [RegistrationTypes.OnChain],
+        claim: {
+          claimType: claim.claimType,
+          token: claim.issuedToken,
+        },
+      })
+    );
   }
 
   getClaims(showLoader: boolean) {
@@ -47,14 +52,28 @@ export class ClaimsService {
       this.iamService.claimsService.getClaimsByRequester({
         did: this.iamService.signerService.did,
       })
+    ).pipe(
+      catchError((err) => {
+        console.error(err);
+        return of(err);
+      }),
+      finalize(() => {
+        if (showLoader) {
+          this.loadingService.hide();
+        }
+      })
     );
   }
 
   async hasOnChainRole(claim: Claim) {
-    const hasOnChainRole = await this.iamService.claimsService.hasOnChainRole(this.iamService.signerService.did, claim.claimType, +claim.claimTypeVersion);
+    const hasOnChainRole = await this.iamService.claimsService.hasOnChainRole(
+      this.iamService.signerService.did,
+      claim.claimType,
+      +claim.claimTypeVersion
+    );
     return {
       ...claim,
-      isSyncedOnChain: hasOnChainRole
-    }
+      isSyncedOnChain: hasOnChainRole,
+    };
   }
 }
