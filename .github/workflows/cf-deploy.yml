@@ -27,6 +27,10 @@ jobs:
             echo "::set-output name=env_name::prod"
             echo "::set-output name=env_file::src/environments/environment.prod.ts"
             echo "::set-output name=build_script::npm run build-prod"
+          elif [ "${{ github.ref }}" = "refs/heads/prod-snapshot-testing" ]; then
+            echo "::set-output name=env_name::prod-snapshot"
+            echo "::set-output name=env_file::src/environments/environment.prod.ts"
+            echo "::set-output name=build_script::npm run build-prod"
           else
             echo "Branch ${{ github.ref }} is not configured for deployment"
           fi
