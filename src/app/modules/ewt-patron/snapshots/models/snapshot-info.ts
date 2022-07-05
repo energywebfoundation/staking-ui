@@ -47,7 +47,7 @@ export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
     cssClass: 'not-taken',
   })
   .set(RoleEnrolmentStatus.ENROLED_NOT_APPROVED, {
-    header: "Delay with checking status",
-    message: "There is likely an issue with the snapshot process. The staking team is investigating",
+    header: "Checking if you're included...",
+    message: 'Please wait a moment or refresh the page.',
     cssClass: ''
   });
