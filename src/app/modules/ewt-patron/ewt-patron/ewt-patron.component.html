@@ -52,7 +52,7 @@
                 <div class="mt-1">
                   <!-- Empty dots -->
                   <ng-container *ngFor="let num of [1, 2, 3, 4, 5, 6]">
-                    <app-dot class="small" [ngClass]="num <= numberOfSnapshots ? 'filled-' + num : ''"></app-dot>
+                    <app-dot class="small default-grey" [ngClass]="num <= numberOfSnapshots ? 'filled-' + num : ''"></app-dot>
                   </ng-container>
                 </div>
               </div>
