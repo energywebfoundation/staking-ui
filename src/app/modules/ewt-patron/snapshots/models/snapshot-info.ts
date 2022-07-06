@@ -15,9 +15,8 @@ export interface SnapshotInfo {
 
 export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
   .set(RoleEnrolmentStatus.NOT_ENROLED, {
-    message: 'A Snapshot is taken, check it now!',
-    header: 'Check if you are included in the snapshot by clicking on the grey circle above!',
-    link: 'https://medium.com/energy-web-insights/energy-web-community-staking-pool-snapshots-explained-3a9c3eebf28b',
+    header: 'A Snapshot is taken, check it now!',
+    message: 'Check if you are included in the snapshot by clicking on the grey circle above!',
     cssClass: '',
     action: (id) => enrolToSnapshotRole({ id }),
   })
