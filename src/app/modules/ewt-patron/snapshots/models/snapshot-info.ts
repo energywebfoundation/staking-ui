@@ -22,7 +22,7 @@ export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
   })
   .set(RoleEnrolmentStatus.ENROLED_SYNCED, {
     header: 'Congratulations, you are included in this snapshot!',
-    message: 'Make sure you keep your Energy Web Tokens staked to be elible for future snapshots, more information about the snapshots',
+    message: 'Make sure you keep your Energy Web Tokens staked to be eligible for future snapshots, more information about the snapshots',
     link: 'https://medium.com/energy-web-insights/energy-web-community-staking-pool-snapshots-explained-3a9c3eebf28b',
     cssClass: 'synced',
   })
