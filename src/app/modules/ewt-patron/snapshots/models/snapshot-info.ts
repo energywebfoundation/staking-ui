@@ -17,7 +17,7 @@ export const snapshotInfo = new Map<RoleEnrolmentStatus, SnapshotInfo>()
   .set(RoleEnrolmentStatus.NOT_ENROLED, {
     header: 'A Snapshot is taken, check it now!',
     message: 'Check if you are included in the snapshot by clicking on the grey circle above!',
-    cssClass: '',
+    cssClass: 'not-enrolled',
     action: (id) => enrolToSnapshotRole({ id }),
   })
   .set(RoleEnrolmentStatus.ENROLED_SYNCED, {
