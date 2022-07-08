@@ -7,11 +7,12 @@ import * as Sentry from '@sentry/angular';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-environment.SENTRY_DNS && Sentry.init({
-  dsn: environment.SENTRY_DNS,
-  environment: environment.SENTRY_ENVIRONMENT,
-  release: environment.SENTRY_RELEASE,
-});
+environment.SENTRY_DNS &&
+  Sentry.init({
+    dsn: environment.SENTRY_DNS,
+    environment: environment.SENTRY_ENVIRONMENT,
+    release: environment.SENTRY_RELEASE
+  });
 
 if (environment.production) {
   enableProdMode();

@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { HourlyToDailyRewardPipe } from "./hourly-to-daily-reward.pipe";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HourlyToDailyRewardPipe } from './hourly-to-daily-reward.pipe';
 
 @NgModule({
   declarations: [HourlyToDailyRewardPipe],
   imports: [CommonModule],
-  exports: [HourlyToDailyRewardPipe],
+  exports: [HourlyToDailyRewardPipe]
 })
 export class HourlyToDailyRewardModule {}

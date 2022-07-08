@@ -15,7 +15,7 @@
 }
 
 .btn-user-info {
-  color: #1A1A1A;
+  color: #1a1a1a;
   position: relative;
   z-index: 3;
   cursor: pointer;
@@ -28,11 +28,35 @@
 }
 
 .text-color {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .color-disabled {
-  color: #A6A5AC;
+  color: #a6a5ac;
+}
+
+.menu-snapshots {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  color: #4d27c8;
+  padding: 5px 0;
+
+  &:hover {
+    cursor: pointer;
+    color: #7874f3;
+  }
+
+  &.active {
+    border-bottom: 1px solid #4d27c8 !important;
+  }
+
+  a {
+    color: inherit;
+  }
 }
 
 .connect-btn {
@@ -41,8 +65,13 @@
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.25px;
-  background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
-  color: #FFFFFF !important;
+  background: linear-gradient(
+    82.68deg,
+    #4c26c7 -5.81%,
+    #6de9e9 98.14%,
+    #bfffff 121.71%
+  );
+  color: #ffffff !important;
   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
   border-radius: 34px;
   padding: 0 0 !important;
@@ -55,15 +84,20 @@
   }
 
   &:hover {
-    background-color: #4C2CDF;
+    background-color: #4c2cdf;
   }
 }
 
-
 ::ng-deep {
   .mat-menu-panel {
-    color: #A6A5AC !important;
-    background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3 !important;
+    color: #a6a5ac !important;
+    background: linear-gradient(
+        349.41deg,
+        rgba(220, 255, 255, 0.22) -17.31%,
+        rgba(220, 255, 255, 0.26) 4.93%,
+        rgba(255, 255, 255, 0.28) 129.23%
+      ),
+      #ecf0f3 !important;
     box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
     border-radius: 48px !important;
     min-width: 260px !important;

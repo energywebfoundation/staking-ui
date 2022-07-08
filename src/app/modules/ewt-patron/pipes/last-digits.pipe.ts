@@ -4,8 +4,11 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'lastDigits'
 })
 export class LastDigitsPipe implements PipeTransform {
-
-  transform(value: string | undefined | null | number, numberOfDigits: number = 3, ...args: unknown[]): unknown {
+  transform(
+    value: string | undefined | null | number,
+    numberOfDigits: number = 3,
+    ...args: unknown[]
+  ): unknown {
     if (!value) {
       return value;
     }
@@ -16,5 +19,4 @@ export class LastDigitsPipe implements PipeTransform {
     }
     return integerNumber;
   }
-
 }

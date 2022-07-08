@@ -1,21 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Store } from '@ngrx/store';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SharedModule } from '../../../../shared/shared.module';
 
 import { EnrolmentStatusCheckComponent } from './enrolment-status-check.component';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 describe('EnrolmentStatusCheckComponent', () => {
   let component: EnrolmentStatusCheckComponent;
   let fixture: ComponentFixture<EnrolmentStatusCheckComponent>;
+  let store: MockStore;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ EnrolmentStatusCheckComponent ],
-      providers: [ { provide: Store, useValue: {} }],
-      imports: [SharedModule]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [EnrolmentStatusCheckComponent],
+        providers: [provideMockStore()],
+        imports: [SharedModule]
+      }).compileComponents();
+
+      store = TestBed.inject(MockStore);
     })
-    .compileComponents();
-  });
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EnrolmentStatusCheckComponent);

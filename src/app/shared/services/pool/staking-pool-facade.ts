@@ -11,8 +11,7 @@ import { LoadingService } from '../loading.service';
 export class StakingPoolFacade {
   private pool: StakingPoolService;
 
-  constructor(private loadingService: LoadingService) {
-  }
+  constructor(private loadingService: LoadingService) {}
 
   isPoolDefined(): boolean {
     return Boolean(this.pool);

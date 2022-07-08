@@ -1,0 +1,131 @@
+@mixin snapshotGlow {
+}
+.shadow {
+  @include snapshotGlow;
+}
+:host {
+  margin: 70px 0 0 0;
+  &.approved .snapshot-circle {
+    background: radial-gradient(
+      351.92% 330.17% at 336.54% -20.19%,
+      #fff495 66.62%,
+      #c6b30c 88.34%,
+      #bfac00 100%
+    );
+  }
+  &.rejected .snapshot-circle {
+    background: radial-gradient(
+      351.92% 330.17% at 336.54% -20.19%,
+      #ffa2a2 66.62%,
+      #ef5454 88.34%,
+      #c61717 100%
+    );
+    &:hover {
+      cursor: default;
+      opacity: 1;
+    }
+  }
+  &.synced .snapshot-circle {
+    background: radial-gradient(
+      351.92% 330.17% at 336.54% -20.19%,
+      #9dffc5 66.62%,
+      #3fc474 88.34%,
+      #089741 100%
+    );
+
+    &:hover {
+      cursor: default;
+      opacity: 1;
+    }
+  }
+  &.not-taken .snapshot-circle {
+    background: radial-gradient(
+      351.92% 330.17% at 336.54% -20.19%,
+      #937bff 66.62%,
+      #5e44d4 88.34%,
+      #553fba 100%
+    );
+
+    &:hover {
+      cursor: default;
+      opacity: 1;
+    }
+  }
+}
+
+.snapshot-circle {
+  position: relative;
+  width: 127px;
+  height: 127px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    351.92% 330.17% at 336.54% -20.19%,
+    #d6d6d6 66.62%,
+    #929090 88.34%,
+    #6f6f6f 100%
+  );
+
+  -webkit-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7),
+    -66.22054290771484px 6.622053623199463px 35.044921875px 0px #0000001f;
+  -moz-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7),
+    -66.22054290771484px 6.622053623199463px 35.044921875px 0px #0000001f;
+  box-shadow: -66.22054290771484px 6.622053623199463px 35.044921875px 0px
+      #0000001f,
+    0px 0px 48px 46px rgba(191, 255, 255, 0.7);
+
+  .text {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+.title {
+  font-size: 18px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 700;
+  line-height: 16px;
+  background: linear-gradient(
+    182.25deg,
+    #daeaff 42.95%,
+    #f0f6fc 49.61%,
+    #e1f2ff 54.75%
+  );
+}
+
+.number {
+  font-size: 52px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 700;
+  line-height: 52px;
+  background: linear-gradient(
+    182.2deg,
+    #d7e4ff 2.8%,
+    #e8f0ff 36.02%,
+    #cfe1ff 63.26%
+  );
+}
+
+.description-header {
+  color: #4b25c7;
+  font-size: 24px;
+  font-family: Rajdhani, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.33006px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.description {
+  color: #363636;
+  font-size: 16px;
+  text-align: center;
+  flex-shrink: 1;
+}

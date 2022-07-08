@@ -1,22 +1,29 @@
-<div class="header-wrapper d-flex flex-grow-1 justify-content-end">
-  <ng-container *ngIf="(loggedIn$ | async)">
-    <ng-container *ngIf="(accountInfo$ | async) as info">
+<div class="header-wrapper d-flex flex-grow-1 align-items-center justify-content-end">
+  <div class="menu-container d-flex justify-content-end w-100 mr-5">
+    <!-- add active class to show border bottom -->
+    <div class="menu-snapshots"><a href="#snapshot">Snapshots</a></div>
+  </div>
+  <ng-container *ngIf="loggedIn$ | async">
+    <ng-container *ngIf="accountInfo$ | async as info">
       <div class="btn-user-info" [matMenuTriggerFor]="menu" data-qa-id="menu-trigger">
-        <app-user-menu-trigger [userName]="info?.userName">
-        </app-user-menu-trigger>
+        <app-user-menu-trigger [userName]="info?.userName"> </app-user-menu-trigger>
       </div>
       <mat-menu #menu="matMenu" xPosition="before">
         <div class="d-flex justify-content-center flex-column py-2 px-3">
-          <app-connected-network [chainName]="info?.accountInfo?.chainName"
-                                 [wallet]="info?.wallet">
+          <app-connected-network [chainName]="info?.accountInfo?.chainName" [wallet]="info?.wallet">
           </app-connected-network>
           <div>
             <app-user-name [userName]="info?.userName"></app-user-name>
             <app-user-did [did]="info?.did"></app-user-did>
           </div>
           <app-divider></app-divider>
-          <button mat-raised-button data-qa-id="logout" class="connect-btn text-color text-uppercase my-2"
-                  (click)="logOut()">Disconnect from Metamask
+          <button
+            mat-raised-button
+            data-qa-id="logout"
+            class="connect-btn text-color text-uppercase my-2"
+            (click)="logOut()"
+          >
+            Disconnect from Metamask
           </button>
         </div>
       </mat-menu>

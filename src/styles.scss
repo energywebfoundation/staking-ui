@@ -16,11 +16,12 @@
 
 @import '~ngx-toastr/toastr';
 
-@import '~codemirror/lib/codemirror.css';
-
 //== Bootstrap
-@import "./app/shared/styles/bootstrap.scss";
+@import './app/shared/styles/bootstrap.scss';
 //== Application
-@import "./app/shared/styles/app.scss";
+@import './app/shared/styles/app.scss';
 
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+html {
+  scroll-behavior: smooth;
+}

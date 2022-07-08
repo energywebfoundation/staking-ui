@@ -10,15 +10,16 @@ xdescribe('WithdrawComponent', () => {
   let fixture: ComponentFixture<WithdrawComponent>;
   let store: MockStore;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [WithdrawComponent],
-      providers: [provideMockStore()],
-      schemas: [NO_ERRORS_SCHEMA]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [WithdrawComponent],
+        providers: [provideMockStore()],
+        schemas: [NO_ERRORS_SCHEMA]
+      }).compileComponents();
+      store = TestBed.inject(MockStore);
     })
-      .compileComponents();
-    store = TestBed.inject(MockStore);
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WithdrawComponent);
@@ -29,6 +30,5 @@ xdescribe('WithdrawComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-
   });
 });

@@ -1,7 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
 
-
 export const detectActualStatus = createAction(
   '[ROLE ENROLMENT] Detect Role Enrolment Status'
 );
@@ -22,7 +21,7 @@ export const enrolForFailure = createAction(
 );
 
 export const cancelEnrolmentRequest = createAction(
-  '[ROLE ENROLMENT] Cancel Enrolment Request',
+  '[ROLE ENROLMENT] Cancel Enrolment Request'
 );
 
 export const cancelEnrolmentRequestFailure = createAction(
@@ -31,7 +30,7 @@ export const cancelEnrolmentRequestFailure = createAction(
 );
 
 export const addRole = createAction(
-  '[ROLE ENROLMENT] Add Role/Enrolment To Claim Manager',
+  '[ROLE ENROLMENT] Add Role/Enrolment To Claim Manager'
 );
 
 export const addRoleFailure = createAction(
@@ -45,22 +44,22 @@ export const setEnrolment = createAction(
 );
 
 export const enrolmentRejected = createAction(
-  '[ROLE ENROLMENT] Enrolment Rejected',
+  '[ROLE ENROLMENT] Enrolment Rejected'
 );
 
 export const enrolmentApproved = createAction(
-  '[ROLE ENROLMENT] Enrolment Approved',
+  '[ROLE ENROLMENT] Enrolment Approved'
 );
 
 export const continuePooling = createAction(
-  '[ROLE ENROLMENT] No Information, Continue Polling',
+  '[ROLE ENROLMENT] No Information, Continue Polling'
 );
 
 export const deleteClaim = createAction(
   '[ROLE ENROLMENT] Delete Enroled Email Claim',
-  props<{id: string}>()
+  props<{ id: string }>()
 );
 
 export const claimDoNotExist = createAction(
-  '[ROLE ENROLMENT] Claim Do Not Exist',
+  '[ROLE ENROLMENT] Claim Do Not Exist'
 );

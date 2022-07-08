@@ -11,7 +11,6 @@ import { RoleEnrolmentStatus } from '../../../../state/role-enrolment/models/rol
 export class EnrolmentStatusCheckComponent {
   getStatus$ = this.store.select(RoleEnrolmentSelectors.getStatus);
   roleEnrolmentStatus = RoleEnrolmentStatus;
-  constructor(private store: Store) { }
 
-
+  constructor(private store: Store) {}
 }

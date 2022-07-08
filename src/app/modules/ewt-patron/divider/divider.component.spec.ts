@@ -9,8 +9,7 @@ describe('DividerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DividerComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

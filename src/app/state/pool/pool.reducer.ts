@@ -37,26 +37,52 @@ export const initialState: PoolState = {
 
 const poolReducer = createReducer(
   initialState,
-  on(PoolActions.checkRewardSuccess, (state, {reward}) => ({...state, reward})),
-  on(PoolActions.getAccountSuccess, (state, {balance}) => ({...state, balance})),
-  on(PoolActions.getStakeSuccess, (state, {stake}) => (
-    {
-      ...state,
-      userStake: {
-        amount: stake.amount,
-        status: stake.status,
-        depositEnd: stake.depositEnd,
-        depositStart: stake.depositStart
-      }
-    })),
-  on(PoolActions.withdrawalDelayExpired, (state) => ({...state, withdrawing: false})),
-  on(PoolActions.withdrawRewardSuccess, (state) => ({...state, reward: BigNumber.from(0)})),
-  on(PoolActions.getContributorLimitSuccess, (state, {cap}) => ({...state, contributorLimit: cap})),
-  on(PoolActions.getRatioSuccess, (state, {ratio}) => ({...state, ratio})),
-  on(PoolActions.getHardCapSuccess, (state, {cap}) => ({...state, organizationLimit: cap})),
-  on(PoolActions.totalStakedSuccess, (state, {cap}) => ({...state, totalStaked: cap})),
-  on(PoolActions.stakingPoolFinishDateSuccess, (state, {date}) => ({...state, endDate: date})),
-  on(PoolActions.stakingPoolStartDateSuccess, (state, {date}) => ({...state, startDate: date})),
+  on(PoolActions.checkRewardSuccess, (state, { reward }) => ({
+    ...state,
+    reward
+  })),
+  on(PoolActions.getAccountSuccess, (state, { balance }) => ({
+    ...state,
+    balance
+  })),
+  on(PoolActions.getStakeSuccess, (state, { stake }) => ({
+    ...state,
+    userStake: {
+      amount: stake.amount,
+      status: stake.status,
+      depositEnd: stake.depositEnd,
+      depositStart: stake.depositStart
+    }
+  })),
+  on(PoolActions.withdrawalDelayExpired, state => ({
+    ...state,
+    withdrawing: false
+  })),
+  on(PoolActions.withdrawRewardSuccess, state => ({
+    ...state,
+    reward: BigNumber.from(0)
+  })),
+  on(PoolActions.getContributorLimitSuccess, (state, { cap }) => ({
+    ...state,
+    contributorLimit: cap
+  })),
+  on(PoolActions.getRatioSuccess, (state, { ratio }) => ({ ...state, ratio })),
+  on(PoolActions.getHardCapSuccess, (state, { cap }) => ({
+    ...state,
+    organizationLimit: cap
+  })),
+  on(PoolActions.totalStakedSuccess, (state, { cap }) => ({
+    ...state,
+    totalStaked: cap
+  })),
+  on(PoolActions.stakingPoolFinishDateSuccess, (state, { date }) => ({
+    ...state,
+    endDate: date
+  })),
+  on(PoolActions.stakingPoolStartDateSuccess, (state, { date }) => ({
+    ...state,
+    startDate: date
+  }))
 );
 
 export function reducer(state: PoolState | undefined, action: Action) {

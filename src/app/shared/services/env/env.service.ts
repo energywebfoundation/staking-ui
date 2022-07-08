@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { environment } from "../../../../environments/environment";
+import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class EnvService {
   theme = environment.theme;
@@ -21,4 +21,9 @@ export class EnvService {
   currencyName = environment.currencyName;
   currencySymbol = environment.currencySymbol;
   blockExlorerUrl = environment.blockExlorerUrl;
+  get snapshotRoles() {
+    return environment.snapshotRoles;
+  }
+
+
 }

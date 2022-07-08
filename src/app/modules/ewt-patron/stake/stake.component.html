@@ -1,13 +1,13 @@
-<div class="d-flex staking-widget flex-column">
-  <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-2 mb-lg-4 px-0 px-lg-4 mt-2 mt-lg-5">
+<div class="d-flex staking-widget flex-column" id="stake">
+  <div
+    class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-2 mb-lg-4 px-0 px-lg-4 mt-2 mt-lg-5"
+  >
     <h3>STAKE</h3>
     <div class="d-flex flex-row align-items-center">
       <div class="text-right">
         <div class="staking-widget-xs-label mb-1">Your account balance</div>
         <h4 class="mb-0" data-qa-id="stake-balance">
-          <ng-container *ngIf="balance$ | async as balance">{{
-            balance | lastDigits
-            }}</ng-container>
+          <ng-container *ngIf="balance$ | async as balance">{{ balance | lastDigits }}</ng-container>
           <span class="staking-currency ml-2">EWT</span>
         </h4>
       </div>
@@ -21,9 +21,18 @@
         <ng-container *ngIf="stakingPoolEnds | async as poolEnds">
           <mat-form-field class="staking-textfield" appearance="outline">
             <mat-label class="ml-3 pl-1">EWT Stake Amount</mat-label>
-            <input matInput class="amount-input" data-qa-id="stake-amount" [formControl]="amountToStake"
-              autocomplete="off" type="number" [max]="(amountBorderValues$ | async)?.maxPossibleAmount" min="0"
-              maxlength="256" (focus)="inputFocused = true" />
+            <input
+              matInput
+              class="amount-input"
+              data-qa-id="stake-amount"
+              [formControl]="amountToStake"
+              autocomplete="off"
+              type="number"
+              [max]="(amountBorderValues$ | async)?.maxPossibleAmount"
+              min="0"
+              maxlength="256"
+              (focus)="inputFocused = true"
+            />
             <div matSuffix class="d-flex" *ngIf="inputFocused">
               <button mat-icon-button class="bg-transparent" (click)="clear($event)">
                 <mat-icon>close</mat-icon>
@@ -31,19 +40,21 @@
             </div>
 
             <mat-error *ngIf="amountToStake.hasError('min')">Minimum value is {{ MINIMAL_VALUE }}</mat-error>
-            <mat-error *ngIf="amountToStake.hasError('insufficientValue')">Your account doesn’t have enough EWT
+            <mat-error *ngIf="amountToStake.hasError('insufficientValue')"
+              >Your account doesn’t have enough EWT
             </mat-error>
             <mat-error *ngIf="amountToStake.hasError('required')">This field is <strong>required</strong></mat-error>
-            <mat-error *ngIf="amountToStake.hasError('max')">The stake limit is {{ contributorLimit }}. You already
-              staked
+            <mat-error *ngIf="amountToStake.hasError('max')"
+              >The stake limit is {{ contributorLimit }}. You already staked
               <ng-container *ngIf="stakeAmount$ | async as stakeAmount">
                 {{ stakeAmount }}
               </ng-container>
             </mat-error>
-            <mat-hint *ngIf="!poolEnds.ended" align="start" class="color-grey">Max. {{ contributorLimit }} EWT per
-              user
+            <mat-hint *ngIf="!poolEnds.ended" align="start" class="color-grey"
+              >Max. {{ contributorLimit }} EWT per user
             </mat-hint>
-            <mat-hint *ngIf="poolEnds.ended" align="start" class="color-red">Pool Is Expired. Unstake Your EWT.
+            <mat-hint *ngIf="poolEnds.ended" align="start" class="color-red"
+              >Pool Is Expired. Unstake Your EWT.
             </mat-hint>
           </mat-form-field>
         </ng-container>
@@ -66,34 +77,43 @@
               10.36%
             </div>
           </div>
-          <div class="mt-1 d-flex justify-content-between payment-details color-grey py-3"
-            *ngIf="stakingPoolBegin$ | async as startDate">
+          <div
+            class="mt-1 d-flex justify-content-between payment-details color-grey py-3"
+            *ngIf="stakingPoolBegin$ | async as startDate"
+          >
             <div class="info" [matTooltip]="startDate?.beginDate">
               Staking pool activation date
             </div>
             <div class="text-color">
-              {{ startDate?.beginDate | date: "dd-MMM-yy" }}
+              {{ startDate?.beginDate | date: 'dd-MMM-yy' }}
             </div>
           </div>
-          <div class="mt-1 d-flex justify-content-between payment-details color-grey py-3"
-            *ngIf="stakingPoolEnds | async as expirationDate">
+          <div
+            class="mt-1 d-flex justify-content-between payment-details color-grey py-3"
+            *ngIf="stakingPoolEnds | async as expirationDate"
+          >
             <div class="info" [matTooltip]="expirationDate?.expirationDate">
               Staking pool expiration date
             </div>
             <div class="text-color">
-              {{ expirationDate?.expirationDate | date: "dd-MMM-yy" }}
+              {{ expirationDate?.expirationDate | date: 'dd-MMM-yy' }}
             </div>
           </div>
         </div>
         <div class="col-lg-6 d-flex justify-content-start align-items-center flex-column mt-5">
           <h5 d-flex align-items-start>STAKING POOL</h5>
           <div class="circular-text position-relative" style="z-index: 13;">
-          <circle-progress [radius]="60" [innerStrokeWidth]="20" [space]="-20" [outerStrokeWidth]="20"
-          [showSubtitle]="false" [percent]="calculatedPercent$ | async">
-          </circle-progress>
+            <circle-progress
+              [radius]="60"
+              [innerStrokeWidth]="20"
+              [space]="-20"
+              [outerStrokeWidth]="20"
+              [showSubtitle]="false"
+              [percent]="calculatedPercent$ | async"
+            >
+            </circle-progress>
           </div>
           <div class="circular-inner"></div>
-
         </div>
       </div>
       <div class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center my-4">
@@ -104,9 +124,13 @@
 
         <div class="mt-2 d-flex justify-content-end align-items-center text-color">
           <!-- <mat-slide-toggle [formControl]="compound" class="slide-toggle">Compound</mat-slide-toggle> -->
-          <button mat-raised-button class="stake-btn text-color text-uppercase" data-qa-id="stake"
+          <button
+            mat-raised-button
+            class="stake-btn text-color text-uppercase"
+            data-qa-id="stake"
             [disabled]="isAmountInvalid() || (isStakeDisabled$ | async) || (getIsLimitReached$ | async)"
-            (click)="stake()">
+            (click)="stake()"
+          >
             Stake
           </button>
         </div>
@@ -119,7 +143,9 @@
   </div>
   <div>
     <app-divider></app-divider>
-    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-3 mt-lg-5">
+    <div
+      class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-3 mt-lg-5"
+    >
       <h3>UNSTAKE</h3>
       <div class="d-flex flex-row align-items-center">
         <div class="text-right">
@@ -149,22 +175,32 @@
           </h4>
         </div>
         <div class="circular-text position-relative" style="z-index: 13;">
-         <circle-progress [radius]="40" [innerStrokeWidth]="15" [space]="-15" [outerStrokeWidth]="15"
-          [showSubtitle]="false" [percent]="calculatedPercent$ | async">
-        </circle-progress>
+          <circle-progress
+            [radius]="40"
+            [innerStrokeWidth]="15"
+            [space]="-15"
+            [outerStrokeWidth]="15"
+            [showSubtitle]="false"
+            [percent]="calculatedPercent$ | async"
+          >
+          </circle-progress>
         </div>
         <div class="circular-inner-3"></div>
       </div>
     </div>
-      <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center px-0 px-lg-4">
-        <div class="color-grey">
-          {{ calculatedPercent$ | async }}% of
-          {{ getContributorLimit$ | async }} EWT Personal Limit
-        </div>
-        <button mat-raised-button class="unstake-btn text-uppercase" data-qa-id="withdraw"
-          [disabled]="isWithdrawDisabled$ | async" (click)="withdraw()">
-          Unstake
-      </button>
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center px-0 px-lg-4">
+      <div class="color-grey">
+        {{ calculatedPercent$ | async }}% of {{ getContributorLimit$ | async }} EWT Personal Limit
       </div>
+      <button
+        mat-raised-button
+        class="unstake-btn text-uppercase"
+        data-qa-id="withdraw"
+        [disabled]="isWithdrawDisabled$ | async"
+        (click)="withdraw()"
+      >
+        Unstake
+      </button>
+    </div>
   </div>
 </div>

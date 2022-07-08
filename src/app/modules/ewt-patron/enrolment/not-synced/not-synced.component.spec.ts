@@ -9,10 +9,9 @@ describe('NotSyncedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotSyncedComponent ],
-      providers: [ { provide: Store, useValue: {} }]
-    })
-    .compileComponents();
+      declarations: [NotSyncedComponent],
+      providers: [{ provide: Store, useValue: {} }]
+    }).compileComponents();
   });
 
   beforeEach(() => {

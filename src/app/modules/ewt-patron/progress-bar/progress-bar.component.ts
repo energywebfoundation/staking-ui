@@ -32,7 +32,6 @@ export class ProgressBarComponent implements OnInit {
     if (stakeRating >= 76) {
       return `${stakeRating}% (Excellent)`;
     }
-
   }
 
   getStakeRatingClass(stakeRating: number) {
@@ -51,11 +50,9 @@ export class ProgressBarComponent implements OnInit {
     if (stakeRating >= 76) {
       return 'card-progress-excellent';
     }
-
   }
 
   setStakeClasses() {
     this.stakeClasses = `${this.getStakeRatingClass(this.rating)} ${this.size}`;
   }
-
 }

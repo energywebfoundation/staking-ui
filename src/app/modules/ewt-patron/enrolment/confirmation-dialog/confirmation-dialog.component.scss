@@ -1,10 +1,16 @@
 .container {
-  background: linear-gradient(349.41deg, rgba(220, 255, 255, 0.22) -17.31%, rgba(220, 255, 255, 0.26) 4.93%, rgba(255, 255, 255, 0.28) 129.23%), #ECF0F3;
+  background: linear-gradient(
+      349.41deg,
+      rgba(220, 255, 255, 0.22) -17.31%,
+      rgba(220, 255, 255, 0.26) 4.93%,
+      rgba(255, 255, 255, 0.28) 129.23%
+    ),
+    #ecf0f3;
   padding: 32px;
 }
 
 .text-color {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .stake-btn {
@@ -13,8 +19,13 @@
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.25px;
-  background: linear-gradient(82.68deg, #4C26C7 -5.81%, #6DE9E9 98.14%, #BFFFFF 121.71%);
-  color: #FFFFFF !important;
+  background: linear-gradient(
+    82.68deg,
+    #4c26c7 -5.81%,
+    #6de9e9 98.14%,
+    #bfffff 121.71%
+  );
+  color: #ffffff !important;
   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
   border-radius: 34px;
   padding: 0 0 !important;
@@ -27,7 +38,7 @@
   }
 
   &:hover {
-    background-color: #4C2CDF;
+    background-color: #4c2cdf;
   }
 }
 
@@ -39,10 +50,16 @@
   line-height: 16px;
   border-radius: 16px;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #C7F5FD 0%, #E6FDFF 32.23%, #C1D7FB 100%), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  background: linear-gradient(180deg, #c7f5fd 0%, #e6fdff 32.23%, #c1d7fb 100%),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
   box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
   border-radius: 50px;
-  color: #4B25C7 !important;
+  color: #4b25c7 !important;
   padding: 0 0 !important;
   margin-top: 38px;
   height: 48px;
@@ -53,7 +70,7 @@
   }
 
   &:hover {
-    background-color: #AFF6FC;
+    background-color: #aff6fc;
   }
 }
 

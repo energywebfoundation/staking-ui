@@ -1,0 +1,47 @@
+.staking-widget {
+  position: relative;
+  border-radius: 144px;
+  background: linear-gradient(
+    349.41deg,
+    rgba(220, 255, 255, 0.22) -17.31%,
+    rgba(220, 255, 255, 0.26) 4.93%,
+    rgba(255, 255, 255, 0.28) 129.23%
+  );
+  padding: 100px;
+
+  @media screen and (max-width: 800px) {
+    padding: 20px;
+  }
+}
+
+.snapshot-title {
+  color: #4b25c7;
+  font-family: Rajdhani, sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 36px !important;
+    margin-top: 8px;
+    line-height: inherit;
+  }
+
+  .staking-currency {
+    font-size: 16px !important;
+    color: #4b25c7;
+  }
+}
+
+.snapshot-row {
+  flex: 1;
+}
+
+.revealed {
+  color: #2e2e2e;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-family: Rajdhani, sans-serif;
+}

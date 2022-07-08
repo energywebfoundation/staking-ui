@@ -1,13 +1,13 @@
 export const commonEnv = {
-  IDENTITY_CONTRACT_ADDRESS: "0x04eEe47DA1e717fb561263153946B0fDEf798351",
+  IDENTITY_CONTRACT_ADDRESS: '0x04eEe47DA1e717fb561263153946B0fDEf798351',
   trxRetry: 60, // 1 minute
   userIdle: 900, // 15 mins in seconds
-  SENTRY_DNS: "",
-  SENTRY_RELEASE: "",
-  SENTRY_ENVIRONMENT: "",
+  SENTRY_DNS: '',
+  SENTRY_RELEASE: '',
+  SENTRY_ENVIRONMENT: '',
 
   production: false,
-  environmentName: "development",
+  environmentName: 'development',
   featureVisible: true,
   application: true,
   theme: 'default',
@@ -21,10 +21,14 @@ export const commonEnv = {
   showAzureLoginOption: false,
   isWalletConnectEnabled: false,
   patronRole: 'email.roles.verification.apps.energyweb.iam.ewc',
-  claimManagerAddress: "0x5339adE9332A604A1c957B9bC1C6eee0Bcf7a031",
+  claimManagerAddress: '0x5339adE9332A604A1c957B9bC1C6eee0Bcf7a031',
 
-  networkName: "EnergyWeb Volta Chain",
-  currencyName: "Volta Token",
-  currencySymbol: "VT",
-  blockExlorerUrl: "https://volta-explorer.energyweb.org",
+  networkName: 'EnergyWeb Volta Chain',
+  currencyName: 'Volta Token',
+  currencySymbol: 'VT',
+  blockExlorerUrl: 'https://volta-explorer.energyweb.org',
+  snapshotRoles: [
+    'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
+    'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc',
+  ]
 };

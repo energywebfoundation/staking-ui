@@ -18,7 +18,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CopyToClipboardModule } from './directives/copy-to-clipboard/copy-to-clipboard.module';
 import { DidFormatMinifierModule } from './pipes/did-format-minifier/did-format-minifier.module';
 
-
 const MATERIAL_MODULES = [
   MatButtonModule,
   MatButtonToggleModule,
@@ -30,34 +29,30 @@ const MATERIAL_MODULES = [
   MatProgressBarModule,
   MatRippleModule,
   MatTooltipModule,
-  MatNativeDateModule,
+  MatNativeDateModule
 ];
 
 // https://angular.io/styleguide#!#04-10
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CopyToClipboardModule,
-    DidFormatMinifierModule,
-    MATERIAL_MODULES
-  ],
-  declarations: [
-    MinifiedDidViewerDirective,
-    MinifiedDidViewerDialogComponent,
-  ],
-  exports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MinifiedDidViewerDirective,
-    MATERIAL_MODULES,
-    CopyToClipboardModule,
-    DidFormatMinifierModule,
-  ],
-  entryComponents: [MinifiedDidViewerDialogComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CopyToClipboardModule,
+        DidFormatMinifierModule,
+        MATERIAL_MODULES
+    ],
+    declarations: [MinifiedDidViewerDirective, MinifiedDidViewerDialogComponent],
+    exports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        MinifiedDidViewerDirective,
+        MATERIAL_MODULES,
+        CopyToClipboardModule,
+        DidFormatMinifierModule
+    ]
 })
 
 // https://github.com/ocombe/ng2-translate/issues/209
