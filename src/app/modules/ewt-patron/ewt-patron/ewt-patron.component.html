@@ -32,17 +32,16 @@
                   data-qa-id="learn-dsla"
                   class="stake-btn text-uppercase d-flex justify-content-center align-items-center"
                   href="https://www.energyweb.org/wp-content/uploads/2021/12/dSLA-Lightpaper.pdf"
-                  target="_blank"
-                >
+                  target="_blank">
                   Learn More
                 </a>
               </div>
             </div>
           </div>
           <div class="col-xl-6 d-flex align-items-center justify-content-center">
-            <img class="position-relative atoms-wrapper" style="z-index: 14;" src="assets/img/bg-atoms.png" />
-            <div class="d-flex align-items-center position-absolute" style="height: 400px; z-index: 10;">
-              <div class="circle-progress-circle position-absolute" style="z-index: 12;">
+            <img class="position-relative atoms-wrapper" style="z-index: 14" src="assets/img/bg-atoms.png" />
+            <div class="d-flex align-items-center position-absolute" style="height: 400px; z-index: 10">
+              <div class="circle-progress-circle position-absolute" style="z-index: 12">
                 <div class="circular-title">STAKING POOL</div>
                 <div class="circular-percentage">{{ getTotalStakedPercent$ | async | lastDigits }}%</div>
                 <div class="circular-desc">
@@ -52,11 +51,13 @@
                 <div class="mt-1">
                   <!-- Empty dots -->
                   <ng-container *ngFor="let num of [1, 2, 3, 4, 5, 6]">
-                    <app-dot class="small default-grey" [ngClass]="num <= numberOfSnapshots ? 'filled-' + num : ''"></app-dot>
+                    <app-dot
+                      class="small default-grey"
+                      [ngClass]="num <= numberOfSnapshots ? 'filled-' + num : ''"></app-dot>
                   </ng-container>
                 </div>
               </div>
-              <div class="position-relative" style="z-index: 13;">
+              <div class="position-relative" style="z-index: 13">
                 <circle-progress
                   [innerStrokeWidth]="49"
                   [radius]="135"
@@ -65,8 +66,7 @@
                   [showUnits]="false"
                   [space]="-46"
                   [outerStrokeWidth]="40"
-                  [percent]="getTotalStakedPercent$ | async"
-                >
+                  [percent]="getTotalStakedPercent$ | async">
                 </circle-progress>
               </div>
               <div class="circular-inner"></div>
@@ -85,8 +85,7 @@
         <div
           [ngClass]="{ 'role-req': (isPatronSynced | async) === false }"
           class="staking-terms text-color p-4"
-          *ngIf="isStakingVerificationEnabled"
-        >
+          *ngIf="isStakingVerificationEnabled">
           <app-enrolment-status-check></app-enrolment-status-check>
         </div>
         <app-terms class="staking-terms mt-4"></app-terms>
@@ -97,15 +96,9 @@
             <div class="d-flex flex-column">
               <div>
                 <h5 class="mb-0 small letter-spacing text-uppercase">Snapshots</h5>
-                <h2>Claim your<br /><span>snapshot rewards</span></h2>
+                <h2>Check your <br /><span>snapshots</span></h2>
               </div>
-              <div class="my-3">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a,
-                  mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-                  tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.
-                </p>
-              </div>
+              <app-snapshot-reward-description class="my-3 d-block"></app-snapshot-reward-description>
             </div>
           </div>
           <div class="col-xl-6 d-flex align-items-center justify-content-center">

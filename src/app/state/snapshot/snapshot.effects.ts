@@ -108,7 +108,7 @@ export class SnapshotEffects {
         this._pool = true;
       }),
       switchMap(() =>
-        timer(0, 3000).pipe(
+        timer(0, 5000).pipe(
           this.getSnapshotEnrolments(false, this.envService.snapshotRoles),
           takeWhile(() => this._pool)
         )
