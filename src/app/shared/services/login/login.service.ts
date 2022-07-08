@@ -87,6 +87,9 @@ export class LoginService {
     loginOptions?: LoginOptions,
     redirectOnChange: boolean = true
   ): Observable<{ success: boolean; accountInfo?: AccountInfo | undefined }> {
+    if (!Boolean(localStorage.getItem(IS_ETH_SIGNER))) {
+      this.clearSession();
+    }
     return from(this.iamService.initializeConnection(loginOptions)).pipe(
       map(({ did, connected, userClosedModal, accountInfo }) => {
         const loginSuccessful = did && connected && !userClosedModal;
