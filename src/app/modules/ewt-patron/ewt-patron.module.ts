@@ -50,6 +50,7 @@ import { ImagePathPipe } from './snapshot-success/pipes/image-path.pipe';
 import { EnrolmentStatusHeaderDescriptionPipe } from './pipes/enrolment-status-header-description.pipe';
 import { EnrolmentStatusLinkPipe } from './pipes/enrolment-status-link.pipe';
 import { SnapshotRewardDescriptionComponent } from './snapshot-reward-description/snapshot-reward-description.component';
+import { SnapshotProcessComponent } from './snapshot-process/snapshot-process.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { SnapshotRewardDescriptionComponent } from './snapshot-reward-descriptio
     EnrolmentStatusHeaderDescriptionPipe,
     EnrolmentStatusLinkPipe,
     SnapshotRewardDescriptionComponent,
+    SnapshotProcessComponent,
   ],
   imports: [
     CommonModule,
