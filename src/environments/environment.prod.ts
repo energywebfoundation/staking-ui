@@ -22,7 +22,7 @@ const env: Partial<typeof commonEnv> = {
   currencyName: 'EWT',
   currencySymbol: 'EWT',
   blockExlorerUrl: 'https://explorer.energyweb.org',
-  snapshotRoles: ['snapshot1.roles.consortiapool.apps.energyweb.auth.ewc']
+  snapshotRoles: ['snapshot1.roles.consortiapool.apps.energyweb.auth.ewc', 'snapshot2.roles.consortiapool.apps.energyweb.auth.ewc']
 };
 
 export const environment = { ...commonEnv, ...env };
