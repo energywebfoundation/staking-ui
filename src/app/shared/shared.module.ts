@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CopyToClipboardModule } from './directives/copy-to-clipboard/copy-to-clipboard.module';
 import { DidFormatMinifierModule } from './pipes/did-format-minifier/did-format-minifier.module';
 import { SectionHeaderComponent } from './components/section-header/section-header.component';
+import { SectionContainerComponent } from './components/section-container/section-container.component';
 
 const MATERIAL_MODULES = [
   MatButtonModule,
@@ -47,6 +48,7 @@ const MATERIAL_MODULES = [
     MinifiedDidViewerDirective,
     MinifiedDidViewerDialogComponent,
     SectionHeaderComponent,
+    SectionContainerComponent,
   ],
   exports: [
     CommonModule,
@@ -58,6 +60,7 @@ const MATERIAL_MODULES = [
     CopyToClipboardModule,
     DidFormatMinifierModule,
     SectionHeaderComponent,
+    SectionContainerComponent,
   ],
 })
 

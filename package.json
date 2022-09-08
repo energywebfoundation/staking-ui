@@ -8,6 +8,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:hot": "ng serve --hmr",
     "build-volta": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --configuration production --aot -c=staging",
     "build-prod": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --configuration production --aot -c=production",
     "build": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --configuration production --aot -c=development",
