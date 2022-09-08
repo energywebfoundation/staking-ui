@@ -17,6 +17,7 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CopyToClipboardModule } from './directives/copy-to-clipboard/copy-to-clipboard.module';
 import { DidFormatMinifierModule } from './pipes/did-format-minifier/did-format-minifier.module';
+import { SectionHeaderComponent } from './components/section-header/section-header.component';
 
 const MATERIAL_MODULES = [
   MatButtonModule,
@@ -34,32 +35,37 @@ const MATERIAL_MODULES = [
 
 // https://angular.io/styleguide#!#04-10
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        CopyToClipboardModule,
-        DidFormatMinifierModule,
-        MATERIAL_MODULES
-    ],
-    declarations: [MinifiedDidViewerDirective, MinifiedDidViewerDialogComponent],
-    exports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterModule,
-        MinifiedDidViewerDirective,
-        MATERIAL_MODULES,
-        CopyToClipboardModule,
-        DidFormatMinifierModule
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CopyToClipboardModule,
+    DidFormatMinifierModule,
+    MATERIAL_MODULES,
+  ],
+  declarations: [
+    MinifiedDidViewerDirective,
+    MinifiedDidViewerDialogComponent,
+    SectionHeaderComponent,
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    MinifiedDidViewerDirective,
+    MATERIAL_MODULES,
+    CopyToClipboardModule,
+    DidFormatMinifierModule,
+    SectionHeaderComponent,
+  ],
 })
 
 // https://github.com/ocombe/ng2-translate/issues/209
 export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
-      ngModule: SharedModule
+      ngModule: SharedModule,
     };
   }
 }
