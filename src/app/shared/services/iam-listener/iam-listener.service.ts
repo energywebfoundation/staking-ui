@@ -5,11 +5,11 @@ import { SignerFacadeService } from '../signer-facade/signer-facade.service';
 export enum ProviderEventsEnum {
   AccountChanged = 'accountChanged',
   NetworkChanged = 'networkChanged',
-  Disconnected = 'disconnected'
+  Disconnected = 'disconnected',
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IamListenerService {
   constructor(private signerFacade: SignerFacadeService) {}
@@ -48,7 +48,7 @@ export class IamListenerService {
       text: `${message} Please login again.`,
       icon: 'warning',
       button: 'Proceed',
-      closeOnClickOutside: false
+      closeOnClickOutside: false,
     };
     callback(config);
   }
@@ -58,17 +58,17 @@ export class IamListenerService {
       case ProviderEvent.AccountChanged:
         return {
           title: 'Account Changed',
-          message: 'Account is changed.'
+          message: 'Account is changed.',
         };
       case ProviderEvent.NetworkChanged:
         return {
           title: 'Network Changed',
-          message: 'Network is changed.'
+          message: 'Network is changed.',
         };
       case ProviderEvent.Disconnected:
         return {
           title: 'Disconnected',
-          message: 'You are disconnected from your wallet.'
+          message: 'You are disconnected from your wallet.',
         };
     }
   }

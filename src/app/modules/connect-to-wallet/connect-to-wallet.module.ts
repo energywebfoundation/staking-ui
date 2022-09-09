@@ -10,6 +10,6 @@ import { MetamaskProviderService } from '../../shared/services/metamask-provider
   declarations: [ConnectToWalletDialogComponent, ConnectButtonsComponent],
   imports: [CommonModule, MatDialogModule, MatButtonModule],
   exports: [ConnectToWalletDialogComponent, ConnectButtonsComponent],
-  providers: [MetamaskProviderService]
+  providers: [MetamaskProviderService],
 })
 export class ConnectToWalletModule {}

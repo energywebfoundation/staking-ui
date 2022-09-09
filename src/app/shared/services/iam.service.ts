@@ -6,11 +6,8 @@ import {
   ClaimsService,
   DidRegistry,
   DomainsService,
-  initWithEKC,
   initWithGnosis,
-  initWithKms,
   initWithMetamask,
-  initWithPrivateKeySigner,
   initWithWalletConnect,
   MessagingMethod,
   MessagingService,
@@ -19,7 +16,7 @@ import {
   setChainConfig,
   setMessagingConfig,
   SignerService,
-  StakingFactoryService
+  StakingFactoryService,
 } from 'iam-client-lib';
 import { IDIDDocument } from '@ew-did-registry/did-resolver-interface';
 import { safeAppSdk } from './gnosis.safe.service';
@@ -41,7 +38,7 @@ export type InitializeData = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IamService {
   signerService: SignerService;
@@ -55,7 +52,7 @@ export class IamService {
   constructor(private envService: EnvService) {
     // Set Cache Server
     setCacheConfig(envService.chainId, {
-      url: envService.cacheServerUrl
+      url: envService.cacheServerUrl,
     });
 
     // Set RPC
@@ -64,7 +61,7 @@ export class IamService {
     // Set Messaging Options
     setMessagingConfig(envService.chainId, {
       messagingMethod: MessagingMethod.Nats,
-      natsServerUrl: envService.natsServerUrl
+      natsServerUrl: envService.natsServerUrl,
     });
   }
 
@@ -83,14 +80,11 @@ export class IamService {
   async initializeConnection({
     providerType,
     initCacheServer = true,
-    createDocument = true
+    createDocument = true,
   }: LoginOptions) {
     try {
-      const {
-        signerService,
-        messagingService,
-        connectToCacheServer
-      } = await this.initSignerService(providerType);
+      const { signerService, messagingService, connectToCacheServer } =
+        await this.initSignerService(providerType);
       this.signerService = signerService;
       this.messagingService = messagingService;
       if (initCacheServer) {
@@ -98,7 +92,7 @@ export class IamService {
           domainsService,
           stakingPoolService,
           connectToDidRegistry,
-          cacheClient
+          cacheClient,
         } = await connectToCacheServer();
         this.domainsService = domainsService;
         this.stakingService = stakingPoolService;
@@ -116,7 +110,7 @@ export class IamService {
         connected: false,
         userClosedModal: e.message === 'User closed modal',
         realtimeExchangeConnected: false,
-        accountInfo: undefined
+        accountInfo: undefined,
       };
     }
     return {
@@ -124,7 +118,7 @@ export class IamService {
       connected: true,
       userClosedModal: false,
       realtimeExchangeConnected: true,
-      accountInfo: this.signerService.accountInfo
+      accountInfo: this.signerService.accountInfo,
     };
   }
 
@@ -142,7 +136,7 @@ export class IamService {
 
   private getChainConfig(): Partial<ChainConfig> {
     const chainConfig: Partial<ChainConfig> = {
-      rpcUrl: this.envService.rpcUrl
+      rpcUrl: this.envService.rpcUrl,
     };
 
     if (this.envService.claimManagerAddress) {
@@ -150,7 +144,8 @@ export class IamService {
     }
 
     if (this.envService.stakingPoolFactoryAddress) {
-      chainConfig.stakingPoolFactoryAddress = this.envService.stakingPoolFactoryAddress;
+      chainConfig.stakingPoolFactoryAddress =
+        this.envService.stakingPoolFactoryAddress;
     }
     return chainConfig;
   }

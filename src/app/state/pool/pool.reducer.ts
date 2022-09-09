@@ -32,18 +32,18 @@ export const initialState: PoolState = {
   endDate: null,
   startDate: null,
   totalStaked: null,
-  ratio: null
+  ratio: null,
 };
 
 const poolReducer = createReducer(
   initialState,
   on(PoolActions.checkRewardSuccess, (state, { reward }) => ({
     ...state,
-    reward
+    reward,
   })),
   on(PoolActions.getAccountSuccess, (state, { balance }) => ({
     ...state,
-    balance
+    balance,
   })),
   on(PoolActions.getStakeSuccess, (state, { stake }) => ({
     ...state,
@@ -51,37 +51,37 @@ const poolReducer = createReducer(
       amount: stake.amount,
       status: stake.status,
       depositEnd: stake.depositEnd,
-      depositStart: stake.depositStart
-    }
+      depositStart: stake.depositStart,
+    },
   })),
-  on(PoolActions.withdrawalDelayExpired, state => ({
+  on(PoolActions.withdrawalDelayExpired, (state) => ({
     ...state,
-    withdrawing: false
+    withdrawing: false,
   })),
-  on(PoolActions.withdrawRewardSuccess, state => ({
+  on(PoolActions.withdrawRewardSuccess, (state) => ({
     ...state,
-    reward: BigNumber.from(0)
+    reward: BigNumber.from(0),
   })),
   on(PoolActions.getContributorLimitSuccess, (state, { cap }) => ({
     ...state,
-    contributorLimit: cap
+    contributorLimit: cap,
   })),
   on(PoolActions.getRatioSuccess, (state, { ratio }) => ({ ...state, ratio })),
   on(PoolActions.getHardCapSuccess, (state, { cap }) => ({
     ...state,
-    organizationLimit: cap
+    organizationLimit: cap,
   })),
   on(PoolActions.totalStakedSuccess, (state, { cap }) => ({
     ...state,
-    totalStaked: cap
+    totalStaked: cap,
   })),
   on(PoolActions.stakingPoolFinishDateSuccess, (state, { date }) => ({
     ...state,
-    endDate: date
+    endDate: date,
   })),
   on(PoolActions.stakingPoolStartDateSuccess, (state, { date }) => ({
     ...state,
-    startDate: date
+    startDate: date,
   }))
 );
 

@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { ProviderType } from 'iam-client-lib';
 
@@ -16,7 +16,7 @@ const ICON_MAP = new Map()
   selector: 'app-connected-network',
   templateUrl: './connected-network.component.html',
   styleUrls: ['./connected-network.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConnectedNetworkComponent implements OnInit {
   @Input() chainName: string;

@@ -8,7 +8,7 @@ describe('Auth Selectors', () => {
       expect(
         authSelectors.isMetamaskDisabled.projector({
           metamask: { chainId: undefined },
-          defaultChainId: undefined
+          defaultChainId: undefined,
         })
       ).toBeFalsy();
     });
@@ -17,7 +17,7 @@ describe('Auth Selectors', () => {
       expect(
         authSelectors.isMetamaskDisabled.projector({
           metamask: { chainId: 123 },
-          defaultChainId: 1
+          defaultChainId: 1,
         })
       ).toBeTruthy();
     });
@@ -26,7 +26,7 @@ describe('Auth Selectors', () => {
       expect(
         authSelectors.isMetamaskDisabled.projector({
           metamask: { chainId: '0x12047' },
-          defaultChainId: 73799
+          defaultChainId: 73799,
         })
       ).toBeFalsy();
     });
@@ -36,7 +36,7 @@ describe('Auth Selectors', () => {
     it('should return false when metamask is not present', () => {
       expect(
         authSelectors.isMetamaskPresent.projector({
-          metamask: { present: false }
+          metamask: { present: false },
         })
       ).toBeFalsy();
     });
@@ -44,7 +44,7 @@ describe('Auth Selectors', () => {
     it('should return true when metamask is present ', () => {
       expect(
         authSelectors.isMetamaskPresent.projector({
-          metamask: { present: true }
+          metamask: { present: true },
         })
       ).toBeTruthy();
     });
@@ -74,7 +74,7 @@ describe('Auth Selectors', () => {
     it('should return defined wallet provider', () => {
       expect(
         authSelectors.getWalletProvider.projector({
-          walletProvider: ProviderType.WalletConnect
+          walletProvider: ProviderType.WalletConnect,
         })
       ).toBe(ProviderType.WalletConnect);
     });

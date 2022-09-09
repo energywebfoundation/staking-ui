@@ -17,7 +17,7 @@ describe('App: ewUIBoilerPlate', () => {
       providers: [
         provideMockStore(),
         { provide: APP_BASE_HREF, useValue: '/' },
-      ]
+      ],
     });
   });
 

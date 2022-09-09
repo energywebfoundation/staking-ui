@@ -4,8 +4,6 @@ import { NftContainerComponent } from './components/nft-container/nft-container.
 import { SharedModule } from '../../shared/shared.module';
 import { ClaimNftComponent } from './components/claim-nft/claim-nft.component';
 
-
-
 @NgModule({
   declarations: [NftContainerComponent, ClaimNftComponent],
   exports: [NftContainerComponent],

@@ -10,7 +10,7 @@ import { EnvService } from '../../../shared/services/env/env.service';
   selector: 'app-connect-to-wallet-dialog',
   templateUrl: './connect-to-wallet-dialog.component.html',
   styleUrls: ['./connect-to-wallet-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConnectToWalletDialogComponent {
   disableMetamaskButton$ = this.store.select(authSelectors.isMetamaskDisabled);
@@ -30,7 +30,7 @@ export class ConnectToWalletDialogComponent {
     this.store.dispatch(
       AuthActions.loginViaDialog({
         provider,
-        navigateOnTimeout: this.data?.navigateOnTimeout ?? true
+        navigateOnTimeout: this.data?.navigateOnTimeout ?? true,
       })
     );
   }

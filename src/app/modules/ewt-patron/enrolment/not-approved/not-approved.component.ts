@@ -8,7 +8,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 @Component({
   selector: 'app-not-approved',
   templateUrl: './not-approved.component.html',
-  styleUrls: ['./not-approved.component.scss']
+  styleUrls: ['./not-approved.component.scss'],
 })
 export class NotApprovedComponent {
   constructor(private store: Store, private dialog: MatDialog) {}
@@ -18,7 +18,7 @@ export class NotApprovedComponent {
       .open(ConfirmationDialogComponent, {
         width: '400px',
         maxWidth: '100%',
-        disableClose: true
+        disableClose: true,
       })
       .afterClosed()
       .pipe(truthy())

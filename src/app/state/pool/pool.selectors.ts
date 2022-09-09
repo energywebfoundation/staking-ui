@@ -21,12 +21,12 @@ export const getBalance = createSelector(
 
 export const isStakingStarted = createSelector(
   getStakeState,
-  state => Date.now() - state.startDate * 1000 > 0
+  (state) => Date.now() - state.startDate * 1000 > 0
 );
 
 export const isStakingEnded = createSelector(
   getStakeState,
-  state => Date.now() - state?.endDate * 1000 > 0
+  (state) => Date.now() - state?.endDate * 1000 > 0
 );
 
 export const isStakeDisabled = createSelector(
@@ -124,7 +124,7 @@ export const stakingPoolBegin = createSelector(
   (beginDate, started) => {
     return {
       beginDate,
-      started
+      started,
     };
   }
 );
@@ -135,7 +135,7 @@ export const stakingPoolEnds = createSelector(
   (expirationDate, ended) => {
     return {
       expirationDate,
-      ended
+      ended,
     };
   }
 );
@@ -158,7 +158,7 @@ export const calculateStakedPercent = createSelector(
   }
 );
 
-export const getTotalStaked = createSelector(getStakeState, state => {
+export const getTotalStaked = createSelector(getStakeState, (state) => {
   if (state.totalStaked) {
     return formatEther(state.totalStaked);
   }

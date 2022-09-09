@@ -36,8 +36,7 @@ export const getAcceptedSnapshots = createSelector(
 );
 
 export const getSnapshotStatus = (snapshotRoles, id) => {
-  const isSynced = (role): boolean =>
-    role.isSyncedOnChain
+  const isSynced = (role): boolean => role.isSyncedOnChain;
   const isAccepted = (role: Claim): boolean => role.isAccepted;
   const isRejected = (role: Claim): boolean => role.isRejected;
 

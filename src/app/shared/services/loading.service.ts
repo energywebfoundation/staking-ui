@@ -3,7 +3,7 @@ import { LoadingCount } from '../constants/shared-constants';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoadingService {
   private _isLoading: BehaviorSubject<number>;

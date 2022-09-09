@@ -8,7 +8,7 @@ import * as AuthActions from './state/auth/auth.actions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   constructor(
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // prevent empty links to reload the page
-    document.addEventListener('click', e => {
+    document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
       if (
         target.tagName === 'A' &&

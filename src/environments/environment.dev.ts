@@ -21,7 +21,7 @@ const env: Partial<typeof commonEnv> = {
   networkName: 'EnergyWeb Volta Chain',
   currencyName: 'Volta Token',
   currencySymbol: 'VT',
-  blockExlorerUrl: 'https://volta-explorer.energyweb.org'
+  blockExlorerUrl: 'https://volta-explorer.energyweb.org',
 };
 
 export const environment = { ...commonEnv, ...env };

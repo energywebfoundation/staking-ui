@@ -8,7 +8,7 @@ describe('IamListenerService', () => {
   const signerFacadeSpy = jasmine.createSpyObj(SignerFacadeService, ['on']);
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: SignerFacadeService, useValue: signerFacadeSpy }]
+      providers: [{ provide: SignerFacadeService, useValue: signerFacadeSpy }],
     });
     service = TestBed.inject(IamListenerService);
   });

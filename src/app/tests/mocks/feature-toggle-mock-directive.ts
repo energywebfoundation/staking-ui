@@ -2,11 +2,11 @@ import {
   Directive,
   OnInit,
   TemplateRef,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
 
 @Directive({
-  selector: '[appIsFeatureEnabled]'
+  selector: '[appIsFeatureEnabled]',
 })
 export class FeatureToggleMockDirective implements OnInit {
   private hasView = true;

@@ -9,18 +9,16 @@ describe('ConfirmationDialogComponent', () => {
   let component: ConfirmationDialogComponent;
   let fixture: ComponentFixture<ConfirmationDialogComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ConfirmationDialogComponent],
-        providers: [
-          { provide: Store, useValue: {} },
-          { provide: MatDialogRef, useValue: {} }
-        ],
-        imports: [SharedModule]
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ConfirmationDialogComponent],
+      providers: [
+        { provide: Store, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
+      imports: [SharedModule],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ConfirmationDialogComponent);

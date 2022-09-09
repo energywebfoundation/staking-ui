@@ -31,7 +31,7 @@ const MATERIAL_MODULES = [
   MatProgressBarModule,
   MatRippleModule,
   MatTooltipModule,
-  MatNativeDateModule
+  MatNativeDateModule,
 ];
 
 // https://angular.io/styleguide#!#04-10

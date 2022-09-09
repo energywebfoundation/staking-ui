@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
-  Component, EventEmitter,
-  Input, Output,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
 } from '@angular/core';
 
 @Component({
@@ -13,6 +15,5 @@ import {
 export class ClaimNftComponent {
   @Input() imageUrl: string;
   @Output() claim = new EventEmitter<void>();
-  claimNFT() {
-  }
+  claimNFT() {}
 }

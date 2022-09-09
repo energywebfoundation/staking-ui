@@ -9,17 +9,15 @@ describe('EnrolmentStatusCheckComponent', () => {
   let fixture: ComponentFixture<EnrolmentStatusCheckComponent>;
   let store: MockStore;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [EnrolmentStatusCheckComponent],
-        providers: [provideMockStore()],
-        imports: [SharedModule]
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [EnrolmentStatusCheckComponent],
+      providers: [provideMockStore()],
+      imports: [SharedModule],
+    }).compileComponents();
 
-      store = TestBed.inject(MockStore);
-    })
-  );
+    store = TestBed.inject(MockStore);
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EnrolmentStatusCheckComponent);

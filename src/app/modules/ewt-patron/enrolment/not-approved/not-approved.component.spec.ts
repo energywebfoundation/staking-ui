@@ -12,7 +12,7 @@ describe('NotApprovedComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [NotApprovedComponent],
       providers: [{ provide: Store, useValue: {} }],
-      imports: [SharedModule]
+      imports: [SharedModule],
     }).compileComponents();
   });
 
