@@ -3,7 +3,6 @@ import { SnapshotState, USER_FEATURE_KEY } from './snapshot.reducer';
 import { environment } from '../../../environments/environment';
 import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
 import { Claim } from 'iam-client-lib';
-import { getRoleEnrolmentState } from '../role-enrolment/role-enrolment.selectors';
 
 export const getSnapshotState =
   createFeatureSelector<SnapshotState>(USER_FEATURE_KEY);
@@ -13,26 +12,54 @@ export const getUserSnapshotRoles = createSelector(
   (state) => state.userSnapshotRoles
 );
 
+export const getSnapshotRoles = createSelector(
+  getSnapshotState,
+  (state) => state.snapshotRoles
+);
+
 export const getSnapshotStatusByNumber = (value: number) => {
   return createSelector(getUserSnapshotRoles, (userSnapshotRoles) => {
     return getSnapshotStatus(userSnapshotRoles, value);
   });
 };
 
-export const getAcceptedSnapshots = createSelector(
+export const getUserAcceptedSnapshots = createSelector(
   getUserSnapshotRoles,
-  (userSnapshotRoles) => {
-    return environment.snapshotRoles
+  getSnapshotRoles,
+  (userSnapshotRoles, snapshotRoles) =>
+    snapshotRoles
       .map((roleName, index) => {
         return {
           index,
+          roleName,
           status:
             getSnapshotStatus(userSnapshotRoles, index) ===
             RoleEnrolmentStatus.ENROLED_SYNCED,
         };
       })
       .filter((snapshot) => snapshot.status)
-      .map((snapshot) => snapshot.index);
+);
+
+export const getUserAcceptedSnapshotsIds = createSelector(
+  getUserAcceptedSnapshots,
+  (acceptedSnapshots) => acceptedSnapshots.map((snapshot) => snapshot.index)
+);
+
+export const canDisplayNFTSection = createSelector(
+  getSnapshotRoles,
+  getUserAcceptedSnapshots,
+  (snapshotRoles, userAcceptedSnapshots) => {
+    const requiredForNFT = snapshotRoles.filter(
+      (role) => !(role.includes('5') || role.includes('6'))
+    );
+
+    const approvedUserSnapshots = userAcceptedSnapshots.map(
+      (snapshot) => snapshot.roleName
+    );
+
+    return requiredForNFT.every((snapshot) =>
+      approvedUserSnapshots.includes(snapshot)
+    );
   }
 );
 
@@ -67,31 +94,3 @@ export const getSnapshotStatus = (snapshotRoles, id) => {
 
   return RoleEnrolmentStatus.NOT_ENROLED;
 };
-
-export const canDisplayNFTSection = createSelector(
-  getRoleEnrolmentState,
-  getUserSnapshotRoles,
-  (state, userSnapshotRoles) => {
-    const requiredForNFT = environment.snapshotRoles.filter(
-      (role) => !(role.includes('6'))
-    );
-
-    const approvedUserSnapshots = environment.snapshotRoles
-      .map((roleName, index) => {
-        return {
-          roleName,
-          status:
-            getSnapshotStatus(userSnapshotRoles, index) ===
-            RoleEnrolmentStatus.ENROLED_SYNCED,
-        };
-      })
-      .filter((snapshot) => snapshot.status)
-      .map((snapshot) => snapshot.roleName);
-
-    // return requiredForNFT.every((snapshot) =>
-    //   approvedUserSnapshots.includes(snapshot)
-    // );
-
-    return false;
-  }
-);
