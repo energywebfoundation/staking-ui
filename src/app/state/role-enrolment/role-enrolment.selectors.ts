@@ -26,8 +26,3 @@ export const emailNotApproved = createSelector(
     state?.status === RoleEnrolmentStatus.ENROLED_NOT_APPROVED ||
     state?.status === RoleEnrolmentStatus.NOT_ENROLED
 );
-
-export const canDisplayNFTSection = createSelector(
-  getRoleEnrolmentState,
-  (state) => true
-);

@@ -3,6 +3,7 @@ import { SnapshotState, USER_FEATURE_KEY } from './snapshot.reducer';
 import { environment } from '../../../environments/environment';
 import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
 import { Claim } from 'iam-client-lib';
+import { getRoleEnrolmentState } from '../role-enrolment/role-enrolment.selectors';
 
 export const getSnapshotState =
   createFeatureSelector<SnapshotState>(USER_FEATURE_KEY);
@@ -66,3 +67,29 @@ export const getSnapshotStatus = (snapshotRoles, id) => {
 
   return RoleEnrolmentStatus.NOT_ENROLED;
 };
+
+export const canDisplayNFTSection = createSelector(
+  getRoleEnrolmentState,
+  getUserSnapshotRoles,
+  (state, userSnapshotRoles) => {
+    const requiredForNFT = environment.snapshotRoles.filter(
+      (role) => !(role.includes('5') || role.includes('6'))
+    );
+
+    const approvedUserSnapshots = environment.snapshotRoles
+      .map((roleName, index) => {
+        return {
+          roleName,
+          status:
+            getSnapshotStatus(userSnapshotRoles, index) ===
+            RoleEnrolmentStatus.ENROLED_SYNCED,
+        };
+      })
+      .filter((snapshot) => snapshot.status)
+      .map((snapshot) => snapshot.roleName);
+
+    return requiredForNFT.every((snapshot) =>
+      approvedUserSnapshots.includes(snapshot)
+    );
+  }
+);
