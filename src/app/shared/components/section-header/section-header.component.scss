@@ -1,0 +1,18 @@
+.snapshot-title {
+  color: #4b25c7;
+  font-family: Rajdhani, sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+  margin-right: 10px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 36px !important;
+    margin-top: 8px;
+    line-height: inherit;
+  }
+
+  .staking-currency {
+    font-size: 16px !important;
+    color: #4b25c7;
+  }
+}

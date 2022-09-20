@@ -12,13 +12,13 @@ import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_
 @Component({
   selector: 'app-withdraw',
   templateUrl: './withdraw.component.html',
-  styleUrls: ['./withdraw.component.scss']
+  styleUrls: ['./withdraw.component.scss'],
 })
 export class WithdrawComponent {
   readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE;
   maxAmount$ = this.store
     .select(poolSelectors.allTokens)
-    .pipe(tap(amount => this.setValidators(amount)));
+    .pipe(tap((amount) => this.setValidators(amount)));
   amount = new FormControl('', [Validators.required]);
   inputFocused;
 
@@ -30,7 +30,7 @@ export class WithdrawComponent {
     }
     this.store.dispatch(
       PoolActions.withdrawReward({
-        value: exponentialToString(this.amount.value)
+        value: exponentialToString(this.amount.value),
       })
     );
   }
@@ -54,7 +54,7 @@ export class WithdrawComponent {
     this.amount.setValidators([
       Validators.required,
       Validators.min(this.MINIMAL_VALUE),
-      Validators.max(parseStringToFloat(amount))
+      Validators.max(parseStringToFloat(amount)),
     ]);
   }
 }

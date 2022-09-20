@@ -8,15 +8,13 @@ describe('NotVerifiedInfoComponent', () => {
   let fixture: ComponentFixture<NotVerifiedInfoComponent>;
   let store: MockStore;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [NotVerifiedInfoComponent],
-        providers: [provideMockStore()]
-      }).compileComponents();
-      store = TestBed.inject(MockStore);
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [NotVerifiedInfoComponent],
+      providers: [provideMockStore()],
+    }).compileComponents();
+    store = TestBed.inject(MockStore);
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NotVerifiedInfoComponent);

@@ -3,7 +3,7 @@ import { MinifiedDidViewerDialogComponent } from './minified-did-viewer-dialog.c
 import { MatDialog } from '@angular/material/dialog';
 
 @Directive({
-  selector: '[appMinifiedDidViewer]'
+  selector: '[appMinifiedDidViewer]',
 })
 export class MinifiedDidViewerDirective {
   @Input() appMinifiedDidViewer: string;
@@ -18,10 +18,10 @@ export class MinifiedDidViewerDirective {
           width: '420px',
           maxHeight: '195px',
           data: {
-            did: this.appMinifiedDidViewer
+            did: this.appMinifiedDidViewer,
           },
           maxWidth: '100%',
-          disableClose: true
+          disableClose: true,
         })
         .afterClosed()
         .subscribe(() => {

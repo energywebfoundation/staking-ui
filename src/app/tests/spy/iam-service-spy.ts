@@ -16,5 +16,5 @@ export const iamServiceSpy = jasmine.createSpyObj('IamService', [
   'getPublicKey',
   'getRolesDefinition',
   'getAllowedRolesByIssuer',
-  'getClaimsBySubject'
+  'getClaimsBySubject',
 ]);

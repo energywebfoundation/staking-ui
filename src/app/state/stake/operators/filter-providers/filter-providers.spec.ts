@@ -38,15 +38,15 @@ describe('FilterProviders', () => {
       const source$ = cold('-a-|', {
         a: [
           [{ org: 'iam.ewc' }],
-          [{ namespace: '' }, { namespace: 'iam.ewc', name: 'iam' }]
-        ] as any
+          [{ namespace: '' }, { namespace: 'iam.ewc', name: 'iam' }],
+        ] as any,
       });
       const expected$ = '-z-|';
 
       const result$ = source$.pipe(filterProviders());
 
       expectObservable(result$).toBe(expected$, {
-        z: [{ namespace: 'iam.ewc', org: 'iam.ewc', name: 'iam' }]
+        z: [{ namespace: 'iam.ewc', org: 'iam.ewc', name: 'iam' }],
       });
     });
   });

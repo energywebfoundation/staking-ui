@@ -10,12 +10,12 @@ describe('SwitchboardToastrService', () => {
     'show',
     'error',
     'info',
-    'warning'
+    'warning',
   ]);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: ToastrService, useValue: toastrSpyObj }]
+      providers: [{ provide: ToastrService, useValue: toastrSpyObj }],
     });
     service = TestBed.inject(SwitchboardToastrService);
   });
@@ -24,24 +24,24 @@ describe('SwitchboardToastrService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be run reset', done => {
+  it('should be run reset', (done) => {
     service.success('test');
     service.reset();
-    service.getMessageList().subscribe(list => {
+    service.getMessageList().subscribe((list) => {
       expect(list).toEqual([]);
       done();
     });
   });
 
-  it('should be run readAllItems', done => {
+  it('should be run readAllItems', (done) => {
     service.success('test');
     const expectedResult = {
       message: 'test',
       type: 'toast-success',
-      isNew: false
+      isNew: false,
     };
     service.readAllItems();
-    service.getMessageList().subscribe(list => {
+    service.getMessageList().subscribe((list) => {
       expect(list).toEqual([expectedResult]);
       done();
     });

@@ -16,8 +16,8 @@ describe('LayoutEffects', () => {
       providers: [
         RoleEnrolmentEffects,
         provideMockStore(),
-        provideMockActions(() => actions$)
-      ]
+        provideMockActions(() => actions$),
+      ],
     });
     store = TestBed.inject(MockStore);
 

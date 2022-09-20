@@ -26,8 +26,8 @@ describe('UserEffects', () => {
         { provide: MatDialog, useValue: dialogSpy },
         { provide: ToastrService, useValue: toastrSpy },
         provideMockStore(),
-        provideMockActions(() => actions$)
-      ]
+        provideMockActions(() => actions$),
+      ],
     });
     store = TestBed.inject(MockStore);
 

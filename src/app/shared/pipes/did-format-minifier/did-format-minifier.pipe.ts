@@ -4,7 +4,7 @@ const CHARACTERS_AFTER_LAST_COLON = 7;
 const LAST_CHARACTERS = 5;
 
 @Pipe({
-  name: 'didFormatMinifier'
+  name: 'didFormatMinifier',
 })
 export class DidFormatMinifierPipe implements PipeTransform {
   transform(value: string): string | undefined {

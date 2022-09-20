@@ -15,7 +15,7 @@ describe('EwtPatronComponent', () => {
   let fixture: ComponentFixture<EwtPatronComponent>;
   let store: MockStore<StakeState>;
   const loginServiceSpy = jasmine.createSpyObj(LoginService, [
-    'isSessionActive'
+    'isSessionActive',
   ]);
   const mockActivatedRoute = new MockActivatedRoute();
   const setUp = (options?: {
@@ -30,7 +30,7 @@ describe('EwtPatronComponent', () => {
       totalStaked: '100',
       ratio: '1',
       orgLimit: '1000',
-      ...options
+      ...options,
     };
     store.overrideSelector(PoolSelectors.getBalance, opt.balance);
     store.overrideSelector(PoolSelectors.getAnnualReward, opt.reward);
@@ -39,20 +39,18 @@ describe('EwtPatronComponent', () => {
     store.overrideSelector(PoolSelectors.getOrganizationLimit, opt.orgLimit);
   };
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [EwtPatronComponent, LastDigitsPipe],
-        providers: [
-          { provide: LoginService, useValue: loginServiceSpy },
-          { provide: ActivatedRoute, useValue: mockActivatedRoute },
-          provideMockStore()
-        ],
-        schemas: [NO_ERRORS_SCHEMA]
-      }).compileComponents();
-      store = TestBed.inject(MockStore);
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [EwtPatronComponent, LastDigitsPipe],
+      providers: [
+        { provide: LoginService, useValue: loginServiceSpy },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },
+        provideMockStore(),
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
+    store = TestBed.inject(MockStore);
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EwtPatronComponent);

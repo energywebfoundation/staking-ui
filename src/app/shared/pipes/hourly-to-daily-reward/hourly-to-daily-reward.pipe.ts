@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'hourToDailyReward'
+  name: 'hourToDailyReward',
 })
 export class HourlyToDailyRewardPipe implements PipeTransform {
   transform(hourlyRewards: string): number {

@@ -6,7 +6,7 @@ import { finalize } from 'rxjs/operators';
 import { LoadingService } from '../loading.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StakingPoolFacade {
   private pool: StakingPoolService;

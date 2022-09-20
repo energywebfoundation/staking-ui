@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.stake-btn {
+  font-family: Rajdhani, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1.25px;
+  background: linear-gradient(
+    82.68deg,
+    #4c26c7 -5.81%,
+    #6de9e9 98.14%,
+    #bfffff 121.71%
+  );
+  color: #ffffff !important;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 34px;
+  padding: 0 0 !important;
+  height: 48px;
+  width: 180px;
+  opacity: 1;
+
+  &.mat-raised-button[disabled] {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background-color: #4c2cdf;
+  }
+
+  align-self: center;
+}
+
+.nft-card {
+  border-radius: 17px;
+}

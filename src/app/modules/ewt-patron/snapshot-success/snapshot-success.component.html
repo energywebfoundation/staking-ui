@@ -4,9 +4,7 @@
       <ng-container *ngIf="acceptedSnapshots$ | async as acceptedSnapshots">
         <img [src]="acceptedSnapshots | imagePath" class="success-icon py-3" />
         <app-h4 class="text-center mb-5 px-4" *ngIf="acceptedSnapshots.length">Congratulations</app-h4>
-        <app-label size="md" class="text-center mb-3 px-4"
-          >{{ acceptedSnapshots | includedInSnapshots }}
-        </app-label>
+        <app-label size="md" class="text-center mb-3 px-4">{{ acceptedSnapshots | includedInSnapshots }} </app-label>
       </ng-container>
     </div>
     <app-user-snapshots class="pt-4 pb-3"></app-user-snapshots>

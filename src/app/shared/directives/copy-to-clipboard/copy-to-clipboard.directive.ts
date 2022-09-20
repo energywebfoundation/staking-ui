@@ -3,12 +3,12 @@ import {
   EventEmitter,
   HostListener,
   Input,
-  Output
+  Output,
 } from '@angular/core';
 import { SwitchboardToastrService } from '../../services/switchboard-toastr.service';
 
 @Directive({
-  selector: '[appCopyToClipboard]'
+  selector: '[appCopyToClipboard]',
 })
 export class CopyToClipboardDirective {
   @Input() public copyClipboard: string;

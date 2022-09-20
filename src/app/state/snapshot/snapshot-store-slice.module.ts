@@ -7,7 +7,7 @@ import { SnapshotEffects } from './snapshot.effects';
 @NgModule({
   imports: [
     StoreModule.forFeature(USER_FEATURE_KEY, reducer),
-    EffectsModule.forFeature([SnapshotEffects])
-  ]
+    EffectsModule.forFeature([SnapshotEffects]),
+  ],
 })
 export class SnapshotStoreSliceModule {}

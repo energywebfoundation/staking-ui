@@ -5,6 +5,6 @@ import { HourlyToDailyRewardPipe } from './hourly-to-daily-reward.pipe';
 @NgModule({
   declarations: [HourlyToDailyRewardPipe],
   imports: [CommonModule],
-  exports: [HourlyToDailyRewardPipe]
+  exports: [HourlyToDailyRewardPipe],
 })
 export class HourlyToDailyRewardModule {}

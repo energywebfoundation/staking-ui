@@ -5,29 +5,31 @@ import * as AuthActions from '../../../state/auth/auth.actions';
 import { combineLatest } from 'rxjs';
 import { AuthSelectors, UserClaimSelectors } from '@state';
 import { map } from 'rxjs/operators';
+import { canDisplayNFTSection } from '../../../state/snapshot/snapshot.selectors';
 
 @Component({
   selector: 'app-staking-header',
   templateUrl: './staking-header.component.html',
   styleUrls: ['./staking-header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StakingHeaderComponent {
   loggedIn$ = this.store.select(authSelectors.isUserLoggedIn);
   accountInfo$ = combineLatest([
     this.store.select(AuthSelectors.getWalletProvider),
     this.store.select(AuthSelectors.getAccountInfo),
-    this.store.select(UserClaimSelectors.getDid)
+    this.store.select(UserClaimSelectors.getDid),
   ]).pipe(
     map(([wallet, accountInfo, did]) => {
       return {
         wallet,
         userName: '',
         accountInfo,
-        did
+        did,
       };
     })
   );
+  showNFTSection$ = this.store.select(canDisplayNFTSection);
 
   constructor(private store: Store) {}
 

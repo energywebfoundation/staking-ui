@@ -29,5 +29,5 @@ export {
   UserClaimActions,
   UserClaimSelectors,
   RoleEnrolmentActions,
-  RoleEnrolmentSelectors
+  RoleEnrolmentSelectors,
 };

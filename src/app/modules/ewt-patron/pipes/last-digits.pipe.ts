@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'lastDigits'
+  name: 'lastDigits',
 })
 export class LastDigitsPipe implements PipeTransform {
   transform(

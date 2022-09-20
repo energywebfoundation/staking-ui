@@ -9,7 +9,7 @@ export const deepEqualObjects = (defaultObject, objectToCompare): boolean => {
     return false;
   }
 
-  return defaultKeys.every(key => {
+  return defaultKeys.every((key) => {
     const val1 = defaultObject[key];
     const val2 = objectToCompare[key];
 
@@ -25,10 +25,10 @@ export const deepEqualObjects = (defaultObject, objectToCompare): boolean => {
   });
 };
 
-const isObject = object => {
+const isObject = (object) => {
   return object != null && typeof object === 'object';
 };
 
-const isDate = object => {
+const isDate = (object) => {
   return Object.prototype.toString.call(object) === '[object Date]';
 };

@@ -10,7 +10,7 @@ describe('NotEnroledComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NotEnroledComponent],
-      providers: [{ provide: Store, useValue: {} }]
+      providers: [{ provide: Store, useValue: {} }],
     }).compileComponents();
   });
 

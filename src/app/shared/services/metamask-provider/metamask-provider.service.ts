@@ -3,7 +3,7 @@ import { EnvService } from '../env/env.service';
 import detectMetamask from '@metamask/detect-provider';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MetamaskProviderService {
   constructor(private envService: EnvService) {}
@@ -11,7 +11,7 @@ export class MetamaskProviderService {
   public async importMetamaskConf() {
     try {
       const metamaskProvider: any = await detectMetamask({
-        mustBeMetaMask: true
+        mustBeMetaMask: true,
       });
 
       if (!metamaskProvider) {
@@ -27,13 +27,13 @@ export class MetamaskProviderService {
             nativeCurrency: {
               name: this.envService.currencyName,
               symbol: this.envService.currencySymbol,
-              decimals: 18
+              decimals: 18,
             },
             rpcUrls: [this.envService.rpcUrl],
             blockExplorerUrls: [this.envService.blockExlorerUrl],
-            iconUrls: ['']
-          }
-        ]
+            iconUrls: [''],
+          },
+        ],
       });
       window.location.reload();
     } catch (addError) {
