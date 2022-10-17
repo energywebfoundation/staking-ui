@@ -73,7 +73,7 @@ export const canDisplayNFTSection = createSelector(
   getUserSnapshotRoles,
   (state, userSnapshotRoles) => {
     const requiredForNFT = environment.snapshotRoles.filter(
-      (role) => !(role.includes('5') || role.includes('6'))
+      (role) => !(role.includes('6'))
     );
 
     const approvedUserSnapshots = environment.snapshotRoles
