@@ -1,7 +1,7 @@
 import { canDisplayNFTSection } from './snapshot.selectors';
 
 describe('Snapshot Selectors', () => {
-  describe('canDisplayNFTSection', () => {
+  describe('canDisplayNFTSection', () =>  {
     it('should return false, when acceptedSnapshots do not fits', () => {
       expect(
         canDisplayNFTSection.projector(
