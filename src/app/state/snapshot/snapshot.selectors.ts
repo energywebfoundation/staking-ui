@@ -88,8 +88,10 @@ export const canDisplayNFTSection = createSelector(
       .filter((snapshot) => snapshot.status)
       .map((snapshot) => snapshot.roleName);
 
-    return requiredForNFT.every((snapshot) =>
-      approvedUserSnapshots.includes(snapshot)
-    );
+    // return requiredForNFT.every((snapshot) =>
+    //   approvedUserSnapshots.includes(snapshot)
+    // );
+
+    return false;
   }
 );
