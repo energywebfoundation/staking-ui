@@ -4,7 +4,7 @@ import {
   FormControl,
   ValidationErrors,
   ValidatorFn,
-  Validators
+  Validators,
 } from '@angular/forms';
 
 import { tap } from 'rxjs/operators';
@@ -21,7 +21,7 @@ import { MINIMAL_ETHEREUM_VALUE } from '../../../../environments/models/minimal_
 @Component({
   selector: 'app-stake',
   templateUrl: './stake.component.html',
-  styleUrls: ['./stake.component.scss']
+  styleUrls: ['./stake.component.scss'],
 })
 export class StakeComponent implements OnInit {
   readonly MINIMAL_VALUE = MINIMAL_ETHEREUM_VALUE;
@@ -30,7 +30,7 @@ export class StakeComponent implements OnInit {
   amountToStake = new FormControl('', [
     Validators.min(this.MINIMAL_VALUE),
     Validators.required,
-    Validators.max(MAX_STAKE_AMOUNT)
+    Validators.max(MAX_STAKE_AMOUNT),
   ]);
   amountBorderValues$ = this.store
     .select(poolSelectors.amountBorderValues)
@@ -58,7 +58,7 @@ export class StakeComponent implements OnInit {
   constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit() {
-    this.notContainingPatronRole$.subscribe(v =>
+    this.notContainingPatronRole$.subscribe((v) =>
       v ? this.amountToStake.disable() : this.amountToStake.enable()
     );
   }
@@ -81,7 +81,7 @@ export class StakeComponent implements OnInit {
   private putStake() {
     this.store.dispatch(
       PoolActions.putStake({
-        amount: exponentialToString(this.amountToStake.value)
+        amount: exponentialToString(this.amountToStake.value),
       })
     );
   }
@@ -96,7 +96,7 @@ export class StakeComponent implements OnInit {
       width: '400px',
       maxWidth: '100%',
       disableClose: true,
-      backdropClass: 'backdrop-shadow'
+      backdropClass: 'backdrop-shadow',
     });
   }
 
@@ -105,7 +105,7 @@ export class StakeComponent implements OnInit {
       Validators.min(this.MINIMAL_VALUE),
       Validators.required,
       Validators.max(maxAmount),
-      this.checkIfValueIsSmallerThanBalance(balance)
+      this.checkIfValueIsSmallerThanBalance(balance),
     ]);
   }
 
@@ -116,7 +116,7 @@ export class StakeComponent implements OnInit {
       }
       if (control.value > balance) {
         return {
-          insufficientValue: true
+          insufficientValue: true,
         };
       }
       return null;

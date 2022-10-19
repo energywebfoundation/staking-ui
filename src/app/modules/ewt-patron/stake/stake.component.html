@@ -1,8 +1,5 @@
 <div class="d-flex staking-widget flex-column" id="stake">
-  <div
-    class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-2 mb-lg-4 px-0 px-lg-4 mt-2 mt-lg-5"
-  >
-    <h3>STAKE</h3>
+  <app-section-header title="STAKE" class="mb-2 mb-lg-4 px-0 px-lg-4 mt-2 mt-lg-5">
     <div class="d-flex flex-row align-items-center">
       <div class="text-right">
         <div class="staking-widget-xs-label mb-1">Your account balance</div>
@@ -13,7 +10,7 @@
       </div>
       <img class="ml-3" src="assets/img/ew-logo.png" width="61px" height="61px" />
     </div>
-  </div>
+  </app-section-header>
   <app-divider></app-divider>
   <div class="mt-2 mt-lg-5 px-0 px-lg-4">
     <div>
@@ -31,8 +28,7 @@
               [max]="(amountBorderValues$ | async)?.maxPossibleAmount"
               min="0"
               maxlength="256"
-              (focus)="inputFocused = true"
-            />
+              (focus)="inputFocused = true" />
             <div matSuffix class="d-flex" *ngIf="inputFocused">
               <button mat-icon-button class="bg-transparent" (click)="clear($event)">
                 <mat-icon>close</mat-icon>
@@ -62,39 +58,27 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="mt-4 d-flex justify-content-between color-grey payment-details py-3">
-            <div class="info">
-              Reward payment interval
-            </div>
-            <div class="text-color">
-              Hourly
-            </div>
+            <div class="info">Reward payment interval</div>
+            <div class="text-color">Hourly</div>
           </div>
           <div class="mt-1 d-flex justify-content-between payment-details color-grey py-3">
-            <div class="info">
-              Estimated APY
-            </div>
+            <div class="info">Estimated APY</div>
             <div class="text-color" matTooltip="0.027% per day compounding, 10.36% APY" matTooltipPosition="below">
               10.36%
             </div>
           </div>
           <div
             class="mt-1 d-flex justify-content-between payment-details color-grey py-3"
-            *ngIf="stakingPoolBegin$ | async as startDate"
-          >
-            <div class="info" [matTooltip]="startDate?.beginDate">
-              Staking pool activation date
-            </div>
+            *ngIf="stakingPoolBegin$ | async as startDate">
+            <div class="info" [matTooltip]="startDate?.beginDate">Staking pool activation date</div>
             <div class="text-color">
               {{ startDate?.beginDate | date: 'dd-MMM-yy' }}
             </div>
           </div>
           <div
             class="mt-1 d-flex justify-content-between payment-details color-grey py-3"
-            *ngIf="stakingPoolEnds | async as expirationDate"
-          >
-            <div class="info" [matTooltip]="expirationDate?.expirationDate">
-              Staking pool expiration date
-            </div>
+            *ngIf="stakingPoolEnds | async as expirationDate">
+            <div class="info" [matTooltip]="expirationDate?.expirationDate">Staking pool expiration date</div>
             <div class="text-color">
               {{ expirationDate?.expirationDate | date: 'dd-MMM-yy' }}
             </div>
@@ -102,15 +86,14 @@
         </div>
         <div class="col-lg-6 d-flex justify-content-start align-items-center flex-column mt-5">
           <h5 d-flex align-items-start>STAKING POOL</h5>
-          <div class="circular-text position-relative" style="z-index: 13;">
+          <div class="circular-text position-relative" style="z-index: 13">
             <circle-progress
               [radius]="60"
               [innerStrokeWidth]="20"
               [space]="-20"
               [outerStrokeWidth]="20"
               [showSubtitle]="false"
-              [percent]="calculatedPercent$ | async"
-            >
+              [percent]="calculatedPercent$ | async">
             </circle-progress>
           </div>
           <div class="circular-inner"></div>
@@ -129,8 +112,7 @@
             class="stake-btn text-color text-uppercase"
             data-qa-id="stake"
             [disabled]="isAmountInvalid() || (isStakeDisabled$ | async) || (getIsLimitReached$ | async)"
-            (click)="stake()"
-          >
+            (click)="stake()">
             Stake
           </button>
         </div>
@@ -144,8 +126,7 @@
   <div>
     <app-divider></app-divider>
     <div
-      class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-3 mt-lg-5"
-    >
+      class="d-flex flex-column flex-lg-row justify-content-between align-items-center mb-4 px-0 px-lg-4 mt-3 mt-lg-5">
       <h3>UNSTAKE</h3>
       <div class="d-flex flex-row align-items-center">
         <div class="text-right">
@@ -164,9 +145,7 @@
     <div class="d-flex justify-content-between align-items-center text-color mt-3 px-0 px-lg-4">
       <div class="d-flex flex-row justify-content-between align-items-center">
         <div class="currently-staking d-flex flex-column justify-content-end align-items-end align-items-lg-start">
-          <div class="staking-widget-xs-label text-color mb-1 mr-0 mr-lg-4">
-            Currently staking
-          </div>
+          <div class="staking-widget-xs-label text-color mb-1 mr-0 mr-lg-4">Currently staking</div>
           <h4 class="mb-0" data-qa-id="current-stake">
             <ng-container *ngIf="stakeAmount$ | async as stakeAmount">
               {{ stakeAmount | lastDigits }}
@@ -174,15 +153,14 @@
             <span class="staking-currency">EWT</span>
           </h4>
         </div>
-        <div class="circular-text position-relative" style="z-index: 13;">
+        <div class="circular-text position-relative" style="z-index: 13">
           <circle-progress
             [radius]="40"
             [innerStrokeWidth]="15"
             [space]="-15"
             [outerStrokeWidth]="15"
             [showSubtitle]="false"
-            [percent]="calculatedPercent$ | async"
-          >
+            [percent]="calculatedPercent$ | async">
           </circle-progress>
         </div>
         <div class="circular-inner-3"></div>
@@ -197,8 +175,7 @@
         class="unstake-btn text-uppercase"
         data-qa-id="withdraw"
         [disabled]="isWithdrawDisabled$ | async"
-        (click)="withdraw()"
-      >
+        (click)="withdraw()">
         Unstake
       </button>
     </div>

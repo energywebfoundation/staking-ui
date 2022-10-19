@@ -8,14 +8,14 @@ export interface UserClaimState {
 }
 
 export const initialState: UserClaimState = {
-  didDocument: null
+  didDocument: null,
 };
 
 const userReducer = createReducer(
   initialState,
   on(userActions.setDidDocument, (state, { didDocument }) => ({
     ...state,
-    didDocument
+    didDocument,
   }))
 );
 

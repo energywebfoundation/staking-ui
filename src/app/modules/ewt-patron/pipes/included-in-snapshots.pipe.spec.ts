@@ -5,14 +5,14 @@ describe('CongratulationsPipe', () => {
 
   beforeEach(() => {
     pipe = new IncludedInSnapshotsPipe();
-  })
+  });
   it('create an instance', () => {
     expect(pipe).toBeTruthy();
   });
 
   it('should return text about including in one snapshot', () => {
     expect(pipe.transform([0])).toBe("You're included in snapshot 1");
-  })
+  });
 
   it('should return text about not included in any snapshot', () => {
     expect(pipe.transform([])).toBe("You're not included in any snapshot");
@@ -23,6 +23,8 @@ describe('CongratulationsPipe', () => {
   });
 
   it('should return text about included in 3 snapshots', () => {
-    expect(pipe.transform([0, 1, 2])).toBe("You're included in snapshot 1, 2 and 3");
+    expect(pipe.transform([0, 1, 2])).toBe(
+      "You're included in snapshot 1, 2 and 3"
+    );
   });
 });

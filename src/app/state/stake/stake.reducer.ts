@@ -8,7 +8,7 @@ export interface StakeState {
 }
 
 export const initialState: StakeState = {
-  providers: []
+  providers: [],
 };
 
 const stakeReducer = createReducer(initialState);

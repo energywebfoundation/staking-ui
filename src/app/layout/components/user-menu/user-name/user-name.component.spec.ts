@@ -9,13 +9,11 @@ describe('UserNameComponent', () => {
   let fixture: ComponentFixture<UserNameComponent>;
   let hostDebug: DebugElement;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [UserNameComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [UserNameComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserNameComponent);
@@ -35,5 +33,7 @@ describe('UserNameComponent', () => {
     expect(user.innerText).toContain('user');
   });
 });
-const getElement = hostDebug => (id, postSelector = '') =>
-  hostDebug.query(By.css(`[data-qa-id=${id}] ${postSelector}`));
+const getElement =
+  (hostDebug) =>
+  (id, postSelector = '') =>
+    hostDebug.query(By.css(`[data-qa-id=${id}] ${postSelector}`));

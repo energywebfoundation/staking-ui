@@ -4,7 +4,7 @@ import {
   FormControl,
   ValidationErrors,
   ValidatorFn,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { RoleEnrolmentActions } from '@state';
@@ -17,14 +17,14 @@ const EMAIL_DOMAINS_WHITELIST = 'yopmail.com;yopmail.fr';
 @Component({
   selector: 'app-not-enroled',
   templateUrl: './not-enroled.component.html',
-  styleUrls: ['./not-enroled.component.scss']
+  styleUrls: ['./not-enroled.component.scss'],
 })
 export class NotEnroledComponent {
   // TODO: validate against the same email domain blacklist used on backend against disposable emails
   email = new FormControl('', [
     Validators.pattern(emailPattern),
     Validators.required,
-    this.emailBlacklistValidator(domains)
+    this.emailBlacklistValidator(domains),
   ]);
 
   constructor(private store: Store) {}

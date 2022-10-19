@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { IamService, PROVIDER_TYPE } from '../iam.service';
 import { LoadingService } from '../loading.service';
 import { ToastrService } from 'ngx-toastr';
-import { AccountInfo, IS_ETH_SIGNER, ProviderType, PUBLIC_KEY } from 'iam-client-lib';
+import {
+  AccountInfo,
+  IS_ETH_SIGNER,
+  ProviderType,
+  PUBLIC_KEY,
+} from 'iam-client-lib';
 import SWAL from 'sweetalert';
 import { from, Observable, of } from 'rxjs';
 import { IamListenerService } from '../iam-listener/iam-listener.service';
@@ -27,12 +32,12 @@ export const LOGIN_TOASTR_UNDERSTANDABLE_ERRORS: LoginError[] = [
   {
     key: "Request of type 'wallet_requestPermissions'",
     message:
-      'Please check if you do not have pending notifications in your wallet'
-  }
+      'Please check if you do not have pending notifications in your wallet',
+  },
 ];
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
   private _throwTimeoutError = false;
@@ -58,7 +63,7 @@ export class LoginService {
     localStorage.setItem(PROVIDER_TYPE, this.iamService.providerType);
     localStorage.setItem(IS_ETH_SIGNER, this.iamService.isEthSigner.toString());
     return from(this.iamService.getPublicKey()).pipe(
-      map(key => localStorage.setItem(PUBLIC_KEY, key))
+      map((key) => localStorage.setItem(PUBLIC_KEY, key))
     );
   }
 
@@ -72,7 +77,7 @@ export class LoginService {
   getSession() {
     return {
       providerType: localStorage.getItem(PROVIDER_TYPE) as ProviderType,
-      publicKey: localStorage.getItem(PUBLIC_KEY)
+      publicKey: localStorage.getItem(PUBLIC_KEY),
     };
   }
 
@@ -94,7 +99,7 @@ export class LoginService {
       map(({ did, connected, userClosedModal, accountInfo }) => {
         const loginSuccessful = did && connected && !userClosedModal;
         if (loginSuccessful) {
-          this.iamListenerService.setListeners(config =>
+          this.iamListenerService.setListeners((config) =>
             this.openSwal(config, redirectOnChange)
           );
         }
@@ -107,7 +112,7 @@ export class LoginService {
       delayWhen(({ success }) => {
         if (success) return this.storeSession();
       }),
-      catchError(err => this.handleLoginErrors(err, redirectOnChange))
+      catchError((err) => this.handleLoginErrors(err, redirectOnChange))
     );
   }
 
@@ -150,28 +155,28 @@ export class LoginService {
     const messages = [
       {
         message: `Your ${connectionMessage}signature is being requested.`,
-        relevantProviders: 'all'
+        relevantProviders: 'all',
       },
       {
         message:
           'EW Key Manager should appear in a new browser tab or window. If you do not see it, please check your browser settings.',
-        relevantProviders: ProviderType.EwKeyManager
+        relevantProviders: ProviderType.EwKeyManager,
       },
       {
         message: `If you do not complete this within ${timeoutInMinutes} minute${
           timeoutInMinutes === 1 ? '' : 's'
         },
           your browser will refresh automatically.`,
-        relevantProviders: 'all'
-      }
+        relevantProviders: 'all',
+      },
     ];
     const waitForSignatureMessage = messages
       .filter(
-        m =>
+        (m) =>
           m.relevantProviders === walletProvider ||
           m.relevantProviders === 'all'
       )
-      .map(m => m.message);
+      .map((m) => m.message);
     this.loadingService.show(waitForSignatureMessage);
     this._timer = setTimeout(() => {
       this._displayTimeout(isConnectAndSign, navigateOnTimeout);
@@ -197,7 +202,7 @@ export class LoginService {
         icon: 'error',
         button: 'Proceed',
         closeOnClickOutside: false,
-        ...config
+        ...config,
       })
     )
       .pipe(take(1), filter(Boolean))
@@ -215,7 +220,7 @@ export class LoginService {
       this.loadingService.hide();
       this.openSwal(swalConfig, navigateOnTimeout);
     } else {
-      const loginError = LOGIN_TOASTR_UNDERSTANDABLE_ERRORS.filter(error =>
+      const loginError = LOGIN_TOASTR_UNDERSTANDABLE_ERRORS.filter((error) =>
         e.message.includes(error.key)
       )[0];
       this.toastr.error(loginError ? loginError.message : e.message);
@@ -236,7 +241,7 @@ export class LoginService {
       text: `The period to ${message} the requested signature has elapsed. Please login again.`,
       icon: 'error',
       button: 'Proceed',
-      closeOnClickOutside: false
+      closeOnClickOutside: false,
     };
 
     this.openSwal(config, navigateOnTimeout);

@@ -51,6 +51,7 @@ import { EnrolmentStatusHeaderDescriptionPipe } from './pipes/enrolment-status-h
 import { EnrolmentStatusLinkPipe } from './pipes/enrolment-status-link.pipe';
 import { SnapshotRewardDescriptionComponent } from './snapshot-reward-description/snapshot-reward-description.component';
 import { SnapshotProcessComponent } from './snapshot-process/snapshot-process.component';
+import { NftClaimModule } from '../nft-claim/nft-claim.module';
 
 @NgModule({
   declarations: [
@@ -108,6 +109,7 @@ import { SnapshotProcessComponent } from './snapshot-process/snapshot-process.co
     HourlyToDailyRewardModule,
     MatProgressSpinnerModule,
     CircleProgressModule.forRoot(),
+    NftClaimModule,
   ],
 })
 export class EwtPatronModule {}

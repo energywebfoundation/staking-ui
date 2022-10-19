@@ -8,7 +8,7 @@ describe('StakingFooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StakingFooterComponent]
+      declarations: [StakingFooterComponent],
     }).compileComponents();
   });
 

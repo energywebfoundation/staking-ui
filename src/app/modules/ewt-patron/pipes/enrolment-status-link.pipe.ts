@@ -3,14 +3,12 @@ import { RoleEnrolmentStatus } from '../../../state/role-enrolment/models/role-e
 import { snapshotInfo } from '../snapshots/models/snapshot-info';
 
 @Pipe({
-  name: 'enrolmentStatusLink'
+  name: 'enrolmentStatusLink',
 })
 export class EnrolmentStatusLinkPipe implements PipeTransform {
-
   transform(value: RoleEnrolmentStatus): string {
     return snapshotInfo.has(value)
       ? snapshotInfo.get(value).link
       : 'Not supported status!';
   }
-
 }

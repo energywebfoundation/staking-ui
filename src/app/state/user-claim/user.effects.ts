@@ -14,7 +14,9 @@ export class UserEffects {
       tap(() => this.loadingService.show()),
       switchMap(() =>
         this.iamService.getDidDocument().pipe(
-          map(didDocument => UserClaimActions.setDidDocument({ didDocument })),
+          map((didDocument) =>
+            UserClaimActions.setDidDocument({ didDocument })
+          ),
           finalize(() => this.loadingService.hide())
         )
       )

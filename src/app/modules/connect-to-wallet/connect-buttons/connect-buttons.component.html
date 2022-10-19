@@ -4,8 +4,7 @@
     (click)="connectToEKC()"
     class="btn btn-connect btn-connect-azure w-100"
     data-qa-id="azure"
-    type="submit"
-  >
+    type="submit">
     <img width="48px" height="40px" class="float-left pt-1 pl-1" src="assets/img/icons/azure-logo-icon.svg" />
     USE AZURE
   </button>
@@ -17,8 +16,7 @@
     (click)="connectToWalletConnect()"
     data-qa-id="mobile-wallet"
     class="btn btn-connect btn-connect-wallet w-100"
-    type="submit"
-  >
+    type="submit">
     <img width="48px" height="40px" class="float-left pt-1 pl-1" src="assets/img/icons/wallet-connect-icon.svg" /> USE
     MOBILE WALLET
   </button>
@@ -30,17 +28,15 @@
     data-qa-id="metamask"
     [disabled]="metamaskDisabled"
     class="btn btn-connect btn-connect-metamask w-100"
-    type="submit"
-  >
+    type="submit">
     <img width="48px" height="40px" class="float-left pt-1 pl-3 ml-1" src="assets/img/icons/metamask-logo.svg" />
     <span class="pr-4">USE METAMASK</span>
   </button>
   <div
     class="d-flex flex-column justify-content-center mt-3 text-center"
     *ngIf="metamaskDisabled; else cacheServerInfo"
-    data-qa-id="no-volta"
-  >
-    <div class="info pr-1 ">You are not connected to Energy Web Chain.</div>
+    data-qa-id="no-volta">
+    <div class="info pr-1">You are not connected to Energy Web Chain.</div>
     <a class="switch-network" (click)="importMetamaskConf()" target="_blank">Import configurations</a>
   </div>
   <ng-template #cacheServerInfo>

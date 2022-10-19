@@ -3,7 +3,7 @@ import { IamService } from '../iam.service';
 import { ProviderEvent } from 'iam-client-lib/dist/src/modules/signer/signer.types';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SignerFacadeService {
   constructor(private iamService: IamService) {}

@@ -10,9 +10,7 @@ describe('SnapshotsComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SnapshotsComponent],
-      providers: [
-        provideMockStore()
-      ]
+      providers: [provideMockStore()],
     }).compileComponents();
   }));
 

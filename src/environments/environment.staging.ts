@@ -21,7 +21,7 @@ const env: Partial<typeof commonEnv> = {
   networkName: 'EWC',
   currencyName: 'EWT',
   currencySymbol: 'EWT',
-  blockExlorerUrl: 'https://explorer.energyweb.org'
+  blockExlorerUrl: 'https://explorer.energyweb.org',
 };
 
 export const environment = { ...commonEnv, ...env };

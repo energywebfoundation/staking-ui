@@ -7,7 +7,7 @@ import { reducer, USER_FEATURE_KEY } from './role-enrolment.reducer';
 @NgModule({
   imports: [
     StoreModule.forFeature(USER_FEATURE_KEY, reducer),
-    EffectsModule.forFeature([RoleEnrolmentEffects])
-  ]
+    EffectsModule.forFeature([RoleEnrolmentEffects]),
+  ],
 })
 export class RoleEnrolmentStoreSliceModule {}

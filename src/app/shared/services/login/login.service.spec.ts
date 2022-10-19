@@ -14,7 +14,7 @@ import { ProviderType, PUBLIC_KEY } from 'iam-client-lib';
 describe('LoginService', () => {
   let service: LoginService;
   const iamListenerServiceSpy = jasmine.createSpyObj('IamListenerService', [
-    'setListeners'
+    'setListeners',
   ]);
 
   beforeEach(() => {
@@ -24,8 +24,8 @@ describe('LoginService', () => {
         { provide: ToastrService, useValue: toastrSpy },
         { provide: LoadingService, useValue: loadingServiceSpy },
         { provide: IamService, useValue: iamServiceSpy },
-        { provide: IamListenerService, useValue: iamListenerServiceSpy }
-      ]
+        { provide: IamListenerService, useValue: iamListenerServiceSpy },
+      ],
     });
     service = TestBed.inject(LoginService);
   });
@@ -36,47 +36,41 @@ describe('LoginService', () => {
 
   it('should pass further value for isSessionActive', () => {
     const localStore = { [PROVIDER_TYPE]: 'type', [PUBLIC_KEY]: 'public key' };
-    spyOn(window.localStorage, 'getItem').and.callFake(key =>
+    spyOn(window.localStorage, 'getItem').and.callFake((key) =>
       key in localStore ? localStore[key] : null
     );
     expect(service.isSessionActive()).toBe(true);
   });
 
-  it(
-    'should return true when login is successful',
-    waitForAsync(() => {
-      iamServiceSpy.initializeConnection.and.returnValue(
-        of({
-          did: '0x',
-          connected: true,
-          userClosedModal: false
-        })
-      );
-      iamServiceSpy.getPublicKey.and.returnValue(of('public key'));
-      const getSpy = jasmine.createSpy().and.returnValue(ProviderType.MetaMask);
-      Object.defineProperty(IamService, 'providerType', { get: getSpy });
+  it('should return true when login is successful', waitForAsync(() => {
+    iamServiceSpy.initializeConnection.and.returnValue(
+      of({
+        did: '0x',
+        connected: true,
+        userClosedModal: false,
+      })
+    );
+    iamServiceSpy.getPublicKey.and.returnValue(of('public key'));
+    const getSpy = jasmine.createSpy().and.returnValue(ProviderType.MetaMask);
+    Object.defineProperty(IamService, 'providerType', { get: getSpy });
 
-      from(service.login()).subscribe(({ success }) => {
-        expect(success).toBe(true);
+    from(service.login()).subscribe(({ success }) => {
+      expect(success).toBe(true);
+    });
+  }));
+
+  it('should display random error with toastr', waitForAsync(() => {
+    iamServiceSpy.initializeConnection.and.returnValue(
+      throwError({ message: 'Sample Error' })
+    );
+    service
+      .login()
+      .pipe(take(1))
+      .subscribe(({ success }) => {
+        expect(success).toBe(false);
+        expect(toastrSpy.error).toHaveBeenCalledWith('Sample Error');
       });
-    })
-  );
-
-  it(
-    'should display random error with toastr',
-    waitForAsync(() => {
-      iamServiceSpy.initializeConnection.and.returnValue(
-        throwError({ message: 'Sample Error' })
-      );
-      service
-        .login()
-        .pipe(take(1))
-        .subscribe(({ success }) => {
-          expect(success).toBe(false);
-          expect(toastrSpy.error).toHaveBeenCalledWith('Sample Error');
-        });
-    })
-  );
+  }));
 
   it('should display error with toastr about pending notifications', () => {
     iamServiceSpy.initializeConnection.and.returnValue(

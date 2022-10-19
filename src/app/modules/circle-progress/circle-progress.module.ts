@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import {
   CircleProgressComponent,
   CircleProgressOptions,
-  CircleProgressOptionsInterface
+  CircleProgressOptionsInterface,
 } from './circle-progress.component';
 
 @NgModule({
   declarations: [CircleProgressComponent],
   imports: [CommonModule],
-  exports: [CircleProgressComponent]
+  exports: [CircleProgressComponent],
 })
 export class CircleProgressModule {
   static forRoot(
@@ -17,7 +17,7 @@ export class CircleProgressModule {
   ): ModuleWithProviders<CircleProgressModule> {
     return {
       ngModule: CircleProgressModule,
-      providers: [{ provide: CircleProgressOptions, useValue: options }]
+      providers: [{ provide: CircleProgressOptions, useValue: options }],
     };
   }
 }

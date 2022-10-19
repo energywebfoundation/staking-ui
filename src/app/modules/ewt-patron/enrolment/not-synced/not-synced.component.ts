@@ -5,7 +5,7 @@ import { RoleEnrolmentActions } from '@state';
 @Component({
   selector: 'app-not-synced',
   templateUrl: './not-synced.component.html',
-  styleUrls: ['./not-synced.component.scss']
+  styleUrls: ['./not-synced.component.scss'],
 })
 export class NotSyncedComponent {
   constructor(private store: Store) {}

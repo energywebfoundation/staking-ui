@@ -11,7 +11,7 @@ environment.SENTRY_DNS &&
   Sentry.init({
     dsn: environment.SENTRY_DNS,
     environment: environment.SENTRY_ENVIRONMENT,
-    release: environment.SENTRY_RELEASE
+    release: environment.SENTRY_RELEASE,
   });
 
 if (environment.production) {

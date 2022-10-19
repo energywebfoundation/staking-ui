@@ -7,7 +7,7 @@ enum MessageType {
   error = 'toast-error',
   info = 'toast-info',
   success = 'toast-success',
-  warning = 'toast-warning'
+  warning = 'toast-warning',
 }
 
 export interface SwitchboardToastr {
@@ -17,7 +17,7 @@ export interface SwitchboardToastr {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SwitchboardToastrService {
   private readonly maxMessagesNumber = 20;
@@ -35,7 +35,7 @@ export class SwitchboardToastrService {
 
   readAllItems(): void {
     this.messageList.next(
-      this.messageList.getValue().map(item => ({ ...item, isNew: false }))
+      this.messageList.getValue().map((item) => ({ ...item, isNew: false }))
     );
   }
 
@@ -88,7 +88,7 @@ export class SwitchboardToastrService {
   private updateMessageList(message: string, type: string): void {
     const list = [
       { message, type, isNew: true },
-      ...this.messageList.getValue()
+      ...this.messageList.getValue(),
     ].slice(0, this.maxMessagesNumber);
     this.messageList.next(list);
   }

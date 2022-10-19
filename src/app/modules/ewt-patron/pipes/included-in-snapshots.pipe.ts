@@ -22,7 +22,6 @@ export class IncludedInSnapshotsPipe implements PipeTransform {
           return `${val} `;
         }
 
-
         const isLastElement = value.length === index + 1;
         if (isLastElement) {
           return `and ${val}`;

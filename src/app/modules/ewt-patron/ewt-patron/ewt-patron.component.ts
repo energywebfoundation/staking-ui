@@ -6,28 +6,28 @@ import {
   AuthActions,
   PoolActions,
   PoolSelectors,
-  RoleEnrolmentSelectors
+  RoleEnrolmentSelectors,
 } from '@state';
 import { LoginService } from 'src/app/shared/services/login/login.service';
-import * as poolSelectors from '../../../state/pool/pool.selectors';
 import { EnvService } from '../../../shared/services/env/env.service';
+import { canDisplayNFTSection } from '../../../state/snapshot/snapshot.selectors';
 
 @Component({
   selector: 'app-ewt-patron',
   templateUrl: './ewt-patron.component.html',
-  styleUrls: ['./ewt-patron.component.scss']
+  styleUrls: ['./ewt-patron.component.scss'],
 })
 export class EwtPatronComponent implements OnInit, OnDestroy {
-  hardCap$ = this.store.select(PoolSelectors.getOrganizationLimit);
   getTotalStakedPercent$ = this.store.select(
     PoolSelectors.getTotalStakedPercent
   );
-  getTotalStaked$ = this.store.select(PoolSelectors.getTotalStaked);
-  ratio$ = this.store.select(poolSelectors.ratio);
   isStakingVerificationEnabled = this.envService.checkStakingVerification;
   isPatronSynced = this.store.select(RoleEnrolmentSelectors.isSynced);
   destroy$ = new Subject<void>();
   numberOfSnapshots: number = this.envService.snapshotRoles.length;
+  showNFTContainer$ = this.store.select(
+    canDisplayNFTSection
+  );
 
   constructor(
     private store: Store,
