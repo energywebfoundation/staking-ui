@@ -7,3 +7,4 @@ lerna.json
 yarn.lock
 coverage
 tslint-to-eslint-config.log
+src/app/typechain-types

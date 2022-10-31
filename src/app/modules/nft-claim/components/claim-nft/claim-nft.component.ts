@@ -5,6 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { NftService } from '../../../../shared/services/nft/nft.service';
 
 @Component({
   selector: 'app-claim-nft',
@@ -15,5 +16,9 @@ import {
 export class ClaimNftComponent {
   @Input() imageUrl: string;
   @Output() claim = new EventEmitter<void>();
-  claimNFT() {}
+  constructor(private nftService: NftService) {
+  }
+  claimNFT() {
+    this.nftService.claimReward().subscribe()
+  }
 }
