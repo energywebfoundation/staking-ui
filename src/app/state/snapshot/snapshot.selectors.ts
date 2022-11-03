@@ -45,23 +45,22 @@ export const getUserAcceptedSnapshotsIds = createSelector(
   (acceptedSnapshots) => acceptedSnapshots.map((snapshot) => snapshot.index)
 );
 
-export const canDisplayNFTSection = createSelector(
-  getSnapshotRoles,
-  getUserAcceptedSnapshots,
-  (snapshotRoles, userAcceptedSnapshots) => {
-    const requiredForNFT = snapshotRoles.filter(
-      (role) => !(role.includes('5') || role.includes('6'))
-    );
-
-    const approvedUserSnapshots = userAcceptedSnapshots.map(
-      (snapshot) => snapshot.roleName
-    );
-
-    return requiredForNFT.every((snapshot) =>
-      approvedUserSnapshots.includes(snapshot)
-    );
-  }
+export const isEligibleToClaimNFT = createSelector(
+  getSnapshotState,
+  (state) => state.isEligible
 );
+
+
+export const getNFTUrl = createSelector(
+  getSnapshotState,
+  (state) => state.nftUrl
+)
+
+export const isNFTClaimed = createSelector(
+  getNFTUrl,
+  (nftUrl) => Boolean(nftUrl)
+);
+
 
 export const getSnapshotStatus = (snapshotRoles, id) => {
   const isSynced = (role): boolean => role.isSyncedOnChain;
