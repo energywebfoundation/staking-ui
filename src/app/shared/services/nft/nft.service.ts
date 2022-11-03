@@ -54,13 +54,11 @@ export class NftService {
       }),
       filter(() => !hasError),
       switchMap((link: string) =>
-        this.http.get(link, { responseType: 'text' }).pipe(
-          map((data: string) => {
-            console.log(data);
-            console.log();
-            return JSON.parse(data.split('}')[0] + '}')?.image;
-          })
-        )
+        this.http
+          .get(link, { responseType: 'text' })
+          .pipe(
+            map((data: string) => JSON.parse(data.split('}')[0] + '}')?.image)
+          )
       )
     );
   }
