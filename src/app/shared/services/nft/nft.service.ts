@@ -32,10 +32,13 @@ export class NftService {
     );
   }
 
-  claimReward(): Observable<ContractTransaction> {
-    return from(
-      this.snapshotRewarder.connect(this.signerService.signer).claimReward()
-    );
+  async claimReward(): Promise<ContractTransaction> {
+    const contract = await this.snapshotRewarder
+      .connect(this.signerService.signer)
+      .claimReward();
+    await contract.wait();
+
+    return contract;
   }
 
   getRewardedNFT(): Observable<string> {

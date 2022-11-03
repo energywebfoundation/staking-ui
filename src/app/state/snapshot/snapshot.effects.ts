@@ -183,7 +183,7 @@ export class SnapshotEffects {
       ofType(claimReward),
       tap(() => this.loadingService.show()),
       switchMap(() =>
-        this.nftService.claimReward().pipe(
+        from(this.nftService.claimReward()).pipe(
           map(() => checkIfUserHaveNFT()),
           finalize(() => this.loadingService.hide())
         )
