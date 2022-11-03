@@ -24,6 +24,7 @@ import { from } from 'rxjs';
 import { LoginOptions } from './login/login.service';
 import { truthy } from '@operators';
 import { EnvService } from './env/env.service';
+import { NftService } from './nft/nft.service';
 
 export const PROVIDER_TYPE = 'ProviderType';
 
@@ -49,7 +50,7 @@ export class IamService {
   stakingService: StakingFactoryService;
   cacheClient: CacheClient;
 
-  constructor(private envService: EnvService) {
+  constructor(private envService: EnvService, private nftService: NftService) {
     // Set Cache Server
     setCacheConfig(envService.chainId, {
       url: envService.cacheServerUrl,
@@ -87,6 +88,7 @@ export class IamService {
         await this.initSignerService(providerType);
       this.signerService = signerService;
       this.messagingService = messagingService;
+      this.nftService.init(signerService);
       if (initCacheServer) {
         const {
           domainsService,

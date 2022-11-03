@@ -13,7 +13,7 @@
     "build-prod": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --configuration production --aot -c=production",
     "build": "node --max_old_space_size=8048 node_modules/@angular/cli/bin/ng build --configuration production --aot -c=development",
     "analyze": "npm run build -- --statsJson=true && webpack-bundle-analyzer dist/stats.json",
-    "postinstall": "node patch.js && patch-package",
+    "build:typechain:nft": "typechain --target ethers-v5 --out-dir ethers-nft \"./node_modules/@energyweb/staking-NFT-rewards/dist/contracts/SnapshotsRewarder.sol/SnapshotsRewarder.json\"",
     "test": "ng test --code-coverage",
     "test:headless": "ng test --karma-config=karma-headless.conf.js",
     "lint": "ng lint"

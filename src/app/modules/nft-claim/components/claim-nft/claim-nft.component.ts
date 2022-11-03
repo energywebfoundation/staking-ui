@@ -1,10 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { claimReward } from '../../../../state/snapshot/snapshot.actions';
 
 @Component({
   selector: 'app-claim-nft',
@@ -14,6 +10,11 @@ import {
 })
 export class ClaimNftComponent {
   @Input() imageUrl: string;
-  @Output() claim = new EventEmitter<void>();
-  claimNFT() {}
+  @Input() hideClaimButton = false;
+
+  constructor(private store: Store) {}
+
+  claimNFT(): void {
+    this.store.dispatch(claimReward());
+  }
 }
