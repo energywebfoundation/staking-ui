@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./snapshot-success.component.scss'],
 })
 export class SnapshotSuccessComponent {
-  acceptedSnapshots$: Observable<number[]> =
-    this.store.select(getUserAcceptedSnapshotsIds);
+  acceptedSnapshots$: Observable<number[]> = this.store.select(
+    getUserAcceptedSnapshotsIds
+  );
   constructor(private store: Store) {}
 }

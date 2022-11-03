@@ -50,17 +50,14 @@ export const isEligibleToClaimNFT = createSelector(
   (state) => state.isEligible
 );
 
-
 export const getNFTUrl = createSelector(
   getSnapshotState,
   (state) => state.nftUrl
-)
-
-export const isNFTClaimed = createSelector(
-  getNFTUrl,
-  (nftUrl) => Boolean(nftUrl)
 );
 
+export const isNFTClaimed = createSelector(getNFTUrl, (nftUrl) =>
+  Boolean(nftUrl)
+);
 
 export const getSnapshotStatus = (snapshotRoles, id) => {
   const isSynced = (role): boolean => role.isSyncedOnChain;

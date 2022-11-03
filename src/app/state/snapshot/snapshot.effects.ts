@@ -15,7 +15,7 @@ import {
   userNFTUrl,
 } from './snapshot.actions';
 import {
-  catchError, delay,
+  catchError,
   filter,
   finalize,
   map,

@@ -1,5 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { checkEligibility, checkRevealedSnapshotsSuccess, userNFTUrl } from './snapshot.actions';
+import {
+  checkEligibility,
+  checkRevealedSnapshotsSuccess,
+  userNFTUrl,
+} from './snapshot.actions';
 import { Claim } from 'iam-client-lib';
 import { environment } from '../../../environments/environment';
 
@@ -16,7 +20,7 @@ export const initialState: SnapshotState = {
   userSnapshotRoles: [],
   snapshotRoles: environment.snapshotRoles,
   isEligible: false,
-  nftUrl: null
+  nftUrl: null,
 };
 
 const snapshotReducer = createReducer(
@@ -25,8 +29,11 @@ const snapshotReducer = createReducer(
     ...state,
     userSnapshotRoles: snapshotRoles,
   })),
-  on(checkEligibility, (state, {eligible}) => ({...state, isEligible: eligible})),
-  on(userNFTUrl, (state, {nftUrl}) => ({...state, nftUrl: nftUrl})),
+  on(checkEligibility, (state, { eligible }) => ({
+    ...state,
+    isEligible: eligible,
+  })),
+  on(userNFTUrl, (state, { nftUrl }) => ({ ...state, nftUrl: nftUrl }))
 );
 
 export function reducer(state: SnapshotState | undefined, action: Action) {

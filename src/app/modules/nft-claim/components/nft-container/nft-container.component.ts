@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getNFTUrl, isEligibleToClaimNFT, isNFTClaimed } from '../../../../state/snapshot/snapshot.selectors';
+import {
+  getNFTUrl,
+  isEligibleToClaimNFT,
+  isNFTClaimed,
+} from '../../../../state/snapshot/snapshot.selectors';
 
 @Component({
   selector: 'app-nft-container',
@@ -14,6 +18,5 @@ export class NftContainerComponent {
   isNFTClaimed$ = this.store.select(isNFTClaimed);
   getNFTUrl$ = this.store.select(getNFTUrl);
 
-  constructor(private store: Store) {
-  }
+  constructor(private store: Store) {}
 }

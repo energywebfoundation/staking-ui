@@ -35,20 +35,16 @@ export const syncSnapshotEnrolmentSuccess = createAction(
   props<{ status: RoleEnrolmentStatus }>()
 );
 
-export const checkIfUserHaveNFT = createAction(
-  '[Snapshot] Check NFT'
-);
+export const checkIfUserHaveNFT = createAction('[Snapshot] Check NFT');
 
 export const checkEligibility = createAction(
   '[Snapshot] Is User Eligible',
-  props<{eligible: boolean}>()
+  props<{ eligible: boolean }>()
 );
 
 export const userNFTUrl = createAction(
   '[Snapshot] Get User NFT Url',
-  props<{nftUrl: string}>()
+  props<{ nftUrl: string }>()
 );
 
-export const claimReward = createAction(
-  '[Snapshot] Claim Reward'
-);
+export const claimReward = createAction('[Snapshot] Claim Reward');

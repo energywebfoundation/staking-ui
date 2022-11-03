@@ -4,10 +4,10 @@ import {
 } from '../../../typechain-types';
 import { SignerService } from 'iam-client-lib';
 import { environment } from '../../../../environments/environment';
-import { BigNumberish, ContractTransaction } from 'ethers';
+import { ContractTransaction } from 'ethers';
 import { Injectable } from '@angular/core';
 import { from, Observable, of } from 'rxjs';
-import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, map, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -45,7 +45,7 @@ export class NftService {
         .connect(this.signerService.signer)
         .getRewardedNFT(this.signerService.address)
     ).pipe(
-      catchError(_ => {
+      catchError((_) => {
         hasError = true;
         return of();
       }),
