@@ -2,6 +2,7 @@
   <img [src]="imageUrl" class="img-fluid card-img nft-card mb-4" />
   <button
     *ngIf="!hideClaimButton"
+    [disabled]="disableButton"
     mat-raised-button
     class="stake-btn text-color text-uppercase w-100 mb-5"
     data-qa-id="claim-nft"

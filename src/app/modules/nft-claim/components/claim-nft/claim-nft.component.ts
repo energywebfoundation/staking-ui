@@ -11,6 +11,7 @@ import { claimReward } from '../../../../state/snapshot/snapshot.actions';
 export class ClaimNftComponent {
   @Input() imageUrl: string;
   @Input() hideClaimButton = false;
+  @Input() disableButton = false;
 
   constructor(private store: Store) {}
 
