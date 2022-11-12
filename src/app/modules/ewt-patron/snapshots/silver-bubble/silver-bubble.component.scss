@@ -1,0 +1,115 @@
+:host {
+  position: relative;
+  display: inline-block;
+  .center {
+    //background: radial-gradient(
+    //    103.74% 103.74% at 55.08% 9.89%,
+    //    #ffd700 0%,
+    //    rgba(239, 202, 0, 0.898536) 23.44%,
+    //    rgba(255, 224, 54, 0.771706) 74.48%,
+    //    rgba(255, 215, 0, 0.557292) 99.99%,
+    //    rgba(255, 215, 0, 0) 100%
+    //  )
+    background: #BABABA;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 3;
+  }
+  .middle {
+    position: absolute;
+    width: 147px;
+    height: 147px;
+    top: -10px;
+    left: -10px;
+    border-radius: 50%;
+    background: radial-gradient(
+        351.92% 130.17% at 336.54% -20.19%,
+        #d6d6d6 66.62%,
+        #929090 88.34%,
+        #6f6f6f 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    box-shadow: -66.2205px 6.62205px 35.0449px rgba(0, 0, 0, 0.12);
+    z-index: 2;
+  }
+
+  .glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: -36px;
+    left: -36px;
+    background: #50b0b0;
+    mix-blend-mode: overlay;
+    filter: blur(23.9333px);
+    z-index: 1;
+  }
+
+  .ring {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -26px;
+    left: -26px;
+    border-radius: 50%;
+    border: 3px solid #BABABA;
+    background: transparent;
+    z-index: 2;
+  }
+}
+
+.snapshot-circle {
+  position: relative;
+  width: 127px;
+  height: 127px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    351.92% 330.17% at 336.54% -20.19%,
+    #d6d6d6 66.62%,
+    #929090 88.34%,
+    #6f6f6f 100%
+  );
+
+  -webkit-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7),
+    -66.22054290771484px 6.622053623199463px 35.044921875px 0px #0000001f;
+  -moz-box-shadow: 0px 0px 48px 46px rgba(191, 255, 255, 0.7),
+    -66.22054290771484px 6.622053623199463px 35.044921875px 0px #0000001f;
+  box-shadow: -66.22054290771484px 6.622053623199463px 35.044921875px 0px
+      #0000001f,
+    0px 0px 48px 46px rgba(191, 255, 255, 0.7);
+
+  .text {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.title {
+  font-size: 18px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 700;
+  line-height: 16px;
+  background: linear-gradient(
+    182.25deg,
+    #daeaff 42.95%,
+    #f0f6fc 49.61%,
+    #e1f2ff 54.75%
+  );
+}
+
+.number {
+  font-size: 52px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: 700;
+  line-height: 52px;
+  background: linear-gradient(
+    182.2deg,
+    #d7e4ff 2.8%,
+    #e8f0ff 36.02%,
+    #cfe1ff 63.26%
+  );
+}

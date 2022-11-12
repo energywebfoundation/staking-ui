@@ -26,6 +26,14 @@ export class SnapshotComponent {
 
   @HostBinding('class') enrolmentStatus: string;
 
+  get isSilver(): boolean {
+    return this.snapshotStatus === RoleEnrolmentStatus.ENROLED_SYNCED && this.number === 4;
+  }
+
+  get isGolden(): boolean {
+    return this.snapshotStatus === RoleEnrolmentStatus.ENROLED_SYNCED && this.number === 5;
+  }
+
   private getEnrolmentStatus(value: RoleEnrolmentStatus): string {
     return snapshotInfo.has(value) ? snapshotInfo.get(value).cssClass : '';
   }
