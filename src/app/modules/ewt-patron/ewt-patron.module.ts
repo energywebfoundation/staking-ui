@@ -51,7 +51,6 @@ import { EnrolmentStatusHeaderDescriptionPipe } from './pipes/enrolment-status-h
 import { EnrolmentStatusLinkPipe } from './pipes/enrolment-status-link.pipe';
 import { SnapshotRewardDescriptionComponent } from './snapshot-reward-description/snapshot-reward-description.component';
 import { SnapshotProcessComponent } from './snapshot-process/snapshot-process.component';
-import { NftClaimModule } from '../nft-claim/nft-claim.module';
 import { GoldBubbleComponent } from './snapshots/gold-bubble/gold-bubble.component';
 import { SilverBubbleComponent } from './snapshots/silver-bubble/silver-bubble.component';
 import { BubbleComponent } from './snapshots/bubble/bubble.component';
@@ -115,7 +114,6 @@ import { BubbleComponent } from './snapshots/bubble/bubble.component';
     HourlyToDailyRewardModule,
     MatProgressSpinnerModule,
     CircleProgressModule.forRoot(),
-    NftClaimModule,
   ],
 })
 export class EwtPatronModule {}

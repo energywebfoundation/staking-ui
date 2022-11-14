@@ -116,8 +116,6 @@ export class AuthEffects {
         userActions.setUpUser(),
         StakeActions.initStakingPool(),
         RoleEnrolmentActions.detectActualStatus(),
-        // checkRevealedSnapshots(),
-        // checkIfUserHaveNFT(),
       ])
     )
   );

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  AccountInfo,
   CacheClient,
   ChainConfig,
   ClaimsService,
@@ -18,25 +17,13 @@ import {
   SignerService,
   StakingFactoryService,
 } from 'iam-client-lib';
-import { IDIDDocument } from '@ew-did-registry/did-resolver-interface';
 import { safeAppSdk } from './gnosis.safe.service';
 import { from } from 'rxjs';
 import { LoginOptions } from './login/login.service';
 import { truthy } from '@operators';
 import { EnvService } from './env/env.service';
-import { NftService } from './nft/nft.service';
 
 export const PROVIDER_TYPE = 'ProviderType';
-
-export type InitializeData = {
-  did: string | undefined;
-  connected: boolean;
-  userClosedModal: boolean;
-  didDocument: IDIDDocument | null;
-  identityToken?: string;
-  realtimeExchangeConnected: boolean;
-  accountInfo: AccountInfo | undefined;
-};
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +37,7 @@ export class IamService {
   stakingService: StakingFactoryService;
   cacheClient: CacheClient;
 
-  constructor(private envService: EnvService, private nftService: NftService) {
+  constructor(private envService: EnvService) {
     // Set Cache Server
     setCacheConfig(envService.chainId, {
       url: envService.cacheServerUrl,
@@ -88,7 +75,6 @@ export class IamService {
         await this.initSignerService(providerType);
       this.signerService = signerService;
       this.messagingService = messagingService;
-      // this.nftService.init(signerService);
       if (initCacheServer) {
         const {
           domainsService,
