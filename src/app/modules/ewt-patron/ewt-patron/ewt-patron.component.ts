@@ -10,7 +10,6 @@ import {
 } from '@state';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import { EnvService } from '../../../shared/services/env/env.service';
-import { canDisplayNFTSection } from '../../../state/snapshot/snapshot.selectors';
 
 @Component({
   selector: 'app-ewt-patron',
@@ -25,9 +24,6 @@ export class EwtPatronComponent implements OnInit, OnDestroy {
   isPatronSynced = this.store.select(RoleEnrolmentSelectors.isSynced);
   destroy$ = new Subject<void>();
   numberOfSnapshots: number = this.envService.snapshotRoles.length;
-  showNFTContainer$ = this.store.select(
-    canDisplayNFTSection
-  );
 
   constructor(
     private store: Store,

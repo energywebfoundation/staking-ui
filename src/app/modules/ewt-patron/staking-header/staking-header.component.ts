@@ -5,7 +5,6 @@ import * as AuthActions from '../../../state/auth/auth.actions';
 import { combineLatest } from 'rxjs';
 import { AuthSelectors, UserClaimSelectors } from '@state';
 import { map } from 'rxjs/operators';
-import { canDisplayNFTSection } from '../../../state/snapshot/snapshot.selectors';
 
 @Component({
   selector: 'app-staking-header',
@@ -29,7 +28,6 @@ export class StakingHeaderComponent {
       };
     })
   );
-  showNFTSection$ = this.store.select(canDisplayNFTSection);
 
   constructor(private store: Store) {}
 

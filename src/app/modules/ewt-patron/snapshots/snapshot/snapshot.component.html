@@ -1,8 +1,10 @@
 <div class="d-flex flex-column align-items-center justify-content-center">
-  <div class="circle-glow snapshot-circle mb-5" (click)="bubbleClick.emit()">
-    <div class="title text text-uppercase mt-3">Snapshot</div>
-    <div class="number text mt-1">{{ number + 1 }}</div>
-  </div>
+
+  <app-bubble class="mb-5 {{enrolmentStatus}}" *ngIf="!isSilver && !isGolden" (click)="bubbleClick.emit()" [number]="number"></app-bubble>
+
+  <app-silver-bubble *ngIf="isSilver" [status]="enrolmentStatus" [number]="number"></app-silver-bubble>
+  <app-gold-bubble *ngIf="isGolden" [status]="enrolmentStatus" [number]="number"></app-gold-bubble>
+
   <div style="max-width: 260px" class="d-flex flex-column justify-content-center align-items-center mr-2 ml-2">
     <h5 class="description-header">{{ snapshotStatus | enrolmentStatusHeaderDescription }}</h5>
     <p class="description">

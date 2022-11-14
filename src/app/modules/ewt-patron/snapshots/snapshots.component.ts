@@ -11,6 +11,7 @@ import { snapshotInfo } from './models/snapshot-info';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SnapshotsComponent {
+  status = RoleEnrolmentStatus;
   constructor(private store: Store) {}
 
   snapshotStatus$(value: number): any {

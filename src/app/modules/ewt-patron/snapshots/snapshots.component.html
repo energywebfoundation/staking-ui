@@ -24,13 +24,25 @@
       </div>
 
       <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between">
-        <ng-container *ngFor="let num of [3, 4, 5]">
-          <ng-container *ngIf="snapshotStatus$(num) | async as snapshotStatus">
-            <app-snapshot
-              [status]="snapshotStatus"
-              [number]="num"
-              (click)="dotClickHandler(num, snapshotStatus)"></app-snapshot>
-          </ng-container>
+        <ng-container *ngIf="snapshotStatus$(3) | async as snapshotStatus">
+          <app-snapshot
+            [status]="snapshotStatus"
+            [number]="3"
+            (click)="dotClickHandler(3, snapshotStatus)"></app-snapshot>
+        </ng-container>
+        <ng-container *ngIf="snapshotStatus$(4) | async as snapshotStatus">
+          <app-snapshot
+            circle="silver-ring"
+            [status]="snapshotStatus"
+            [number]="4"
+            (click)="dotClickHandler(4, snapshotStatus)"></app-snapshot>
+        </ng-container>
+        <ng-container *ngIf="snapshotStatus$(5) | async as snapshotStatus">
+          <app-snapshot
+            circle="gold-ring"
+            [status]="snapshotStatus"
+            [number]="5"
+            (click)="dotClickHandler(5, snapshotStatus)"></app-snapshot>
         </ng-container>
       </div>
     </div>

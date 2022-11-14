@@ -1,6 +1,8 @@
 :host {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 
 .stake-btn {
@@ -35,5 +37,6 @@
 }
 
 .nft-card {
+  max-width: 240px;
   border-radius: 17px;
 }

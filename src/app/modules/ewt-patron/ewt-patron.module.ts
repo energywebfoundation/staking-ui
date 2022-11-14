@@ -52,6 +52,9 @@ import { EnrolmentStatusLinkPipe } from './pipes/enrolment-status-link.pipe';
 import { SnapshotRewardDescriptionComponent } from './snapshot-reward-description/snapshot-reward-description.component';
 import { SnapshotProcessComponent } from './snapshot-process/snapshot-process.component';
 import { NftClaimModule } from '../nft-claim/nft-claim.module';
+import { GoldBubbleComponent } from './snapshots/gold-bubble/gold-bubble.component';
+import { SilverBubbleComponent } from './snapshots/silver-bubble/silver-bubble.component';
+import { BubbleComponent } from './snapshots/bubble/bubble.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +93,9 @@ import { NftClaimModule } from '../nft-claim/nft-claim.module';
     EnrolmentStatusLinkPipe,
     SnapshotRewardDescriptionComponent,
     SnapshotProcessComponent,
+    GoldBubbleComponent,
+    SilverBubbleComponent,
+    BubbleComponent,
   ],
   imports: [
     CommonModule,

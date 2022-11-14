@@ -19,12 +19,23 @@ export class SnapshotComponent {
     this.enrolmentStatus = this.getEnrolmentStatus(value);
     this.snapshotStatus = value;
   }
+  @Input() circle: 'silver-ring' | 'gold-ring' | '' = '';
+
   @Output() bubbleClick = new EventEmitter<void>();
   snapshotStatus: RoleEnrolmentStatus;
   header: string;
   description: string;
 
+
   @HostBinding('class') enrolmentStatus: string;
+
+  get isSilver(): boolean {
+    return this.number === 4;
+  }
+
+  get isGolden(): boolean {
+    return this.number === 5;
+  }
 
   private getEnrolmentStatus(value: RoleEnrolmentStatus): string {
     return snapshotInfo.has(value) ? snapshotInfo.get(value).cssClass : '';

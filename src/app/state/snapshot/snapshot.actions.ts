@@ -34,3 +34,17 @@ export const syncSnapshotEnrolmentSuccess = createAction(
   '[Snapshot] Sync Snapshot Role Success',
   props<{ status: RoleEnrolmentStatus }>()
 );
+//
+// export const checkIfUserHaveNFT = createAction('[Snapshot] Check NFT');
+//
+// export const checkEligibility = createAction(
+//   '[Snapshot] Is User Eligible',
+//   props<{ eligible: boolean }>()
+// );
+//
+// export const userNFTUrl = createAction(
+//   '[Snapshot] Get User NFT Url',
+//   props<{ nftUrl: string }>()
+// );
+//
+// export const claimReward = createAction('[Snapshot] Claim Reward');

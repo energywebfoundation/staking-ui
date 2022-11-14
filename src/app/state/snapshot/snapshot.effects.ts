@@ -11,6 +11,7 @@ import {
   updateRevealedSnapshots,
 } from './snapshot.actions';
 import {
+  catchError,
   filter,
   finalize,
   map,
@@ -23,11 +24,12 @@ import {
 import { EnvService } from '../../shared/services/env/env.service';
 import { ClaimsService } from '../../shared/services/claims/claims.service';
 import { getSnapshotStatus, getUserSnapshotRoles } from './snapshot.selectors';
-import { forkJoin, from, timer } from 'rxjs';
+import { forkJoin, from, of, timer } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Claim } from 'iam-client-lib';
 import { LoadingService } from '../../shared/services/loading.service';
 import { RoleEnrolmentStatus } from '../role-enrolment/models/role-enrolment-status.enum';
+import { NftService } from '../../shared/services/nft/nft.service';
 
 @Injectable()
 export class SnapshotEffects {
@@ -143,6 +145,48 @@ export class SnapshotEffects {
     { dispatch: false }
   );
 
+  // checkNFT$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(checkIfUserHaveNFT),
+  //     switchMap(() =>
+  //       this.nftService
+  //         .checkEligibility()
+  //         .pipe(map((res) => checkEligibility({ eligible: res })))
+  //     )
+  //   )
+  // );
+
+  // getUserNFTUrl$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(checkEligibility),
+  //     filter(Boolean),
+  //     tap(() => this.loadingService.show()),
+  //     switchMap(() =>
+  //       this.nftService.getRewardedNFT().pipe(
+  //         map((nftUrl) => userNFTUrl({ nftUrl })),
+  //         catchError((err) => {
+  //           console.log(err);
+  //           return of(err);
+  //         }),
+  //         finalize(() => this.loadingService.hide())
+  //       )
+  //     )
+  //   )
+  // );
+
+  // claimReward$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(claimReward),
+  //     tap(() => this.loadingService.show()),
+  //     switchMap(() =>
+  //       from(this.nftService.claimReward()).pipe(
+  //         map(() => checkIfUserHaveNFT()),
+  //         finalize(() => this.loadingService.hide())
+  //       )
+  //     )
+  //   )
+  // );
+
   get pool() {
     return this._pool;
   }
@@ -184,6 +228,7 @@ export class SnapshotEffects {
     private envService: EnvService,
     private claimService: ClaimsService,
     private dialog: MatDialog,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private nftService: NftService
   ) {}
 }
