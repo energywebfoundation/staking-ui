@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { claimReward } from '../../../../state/snapshot/snapshot.actions';
 
 @Component({
   selector: 'app-claim-nft',
@@ -16,6 +15,6 @@ export class ClaimNftComponent {
   constructor(private store: Store) {}
 
   claimNFT(): void {
-    this.store.dispatch(claimReward());
+    // this.store.dispatch(claimReward());
   }
 }

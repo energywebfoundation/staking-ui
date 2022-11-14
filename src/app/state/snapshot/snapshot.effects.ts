@@ -2,17 +2,13 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import {
-  checkEligibility,
-  checkIfUserHaveNFT,
   checkRevealedSnapshots,
   checkRevealedSnapshotsSuccess,
-  claimReward,
   enrolToSnapshotRole,
   enrolToSnapshotRoleSuccess,
   syncSnapshotEnrolment,
   syncSnapshotEnrolmentSuccess,
   updateRevealedSnapshots,
-  userNFTUrl,
 } from './snapshot.actions';
 import {
   catchError,
@@ -149,47 +145,47 @@ export class SnapshotEffects {
     { dispatch: false }
   );
 
-  checkNFT$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(checkIfUserHaveNFT),
-      switchMap(() =>
-        this.nftService
-          .checkEligibility()
-          .pipe(map((res) => checkEligibility({ eligible: res })))
-      )
-    )
-  );
+  // checkNFT$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(checkIfUserHaveNFT),
+  //     switchMap(() =>
+  //       this.nftService
+  //         .checkEligibility()
+  //         .pipe(map((res) => checkEligibility({ eligible: res })))
+  //     )
+  //   )
+  // );
 
-  getUserNFTUrl$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(checkEligibility),
-      filter(Boolean),
-      tap(() => this.loadingService.show()),
-      switchMap(() =>
-        this.nftService.getRewardedNFT().pipe(
-          map((nftUrl) => userNFTUrl({ nftUrl })),
-          catchError((err) => {
-            console.log(err);
-            return of(err);
-          }),
-          finalize(() => this.loadingService.hide())
-        )
-      )
-    )
-  );
+  // getUserNFTUrl$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(checkEligibility),
+  //     filter(Boolean),
+  //     tap(() => this.loadingService.show()),
+  //     switchMap(() =>
+  //       this.nftService.getRewardedNFT().pipe(
+  //         map((nftUrl) => userNFTUrl({ nftUrl })),
+  //         catchError((err) => {
+  //           console.log(err);
+  //           return of(err);
+  //         }),
+  //         finalize(() => this.loadingService.hide())
+  //       )
+  //     )
+  //   )
+  // );
 
-  claimReward$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(claimReward),
-      tap(() => this.loadingService.show()),
-      switchMap(() =>
-        from(this.nftService.claimReward()).pipe(
-          map(() => checkIfUserHaveNFT()),
-          finalize(() => this.loadingService.hide())
-        )
-      )
-    )
-  );
+  // claimReward$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(claimReward),
+  //     tap(() => this.loadingService.show()),
+  //     switchMap(() =>
+  //       from(this.nftService.claimReward()).pipe(
+  //         map(() => checkIfUserHaveNFT()),
+  //         finalize(() => this.loadingService.hide())
+  //       )
+  //     )
+  //   )
+  // );
 
   get pool() {
     return this._pool;

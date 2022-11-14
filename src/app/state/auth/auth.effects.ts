@@ -24,10 +24,6 @@ import * as StakeActions from '../stake/stake.actions';
 import * as AuthSelectors from './auth.selectors';
 import { EnvService } from '../../shared/services/env/env.service';
 import * as RoleEnrolmentActions from '../role-enrolment/role-enrolment.actions';
-import {
-  checkIfUserHaveNFT,
-  checkRevealedSnapshots,
-} from '../snapshot/snapshot.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -120,8 +116,8 @@ export class AuthEffects {
         userActions.setUpUser(),
         StakeActions.initStakingPool(),
         RoleEnrolmentActions.detectActualStatus(),
-        checkRevealedSnapshots(),
-        checkIfUserHaveNFT(),
+        // checkRevealedSnapshots(),
+        // checkIfUserHaveNFT(),
       ])
     )
   );

@@ -88,7 +88,7 @@ export class IamService {
         await this.initSignerService(providerType);
       this.signerService = signerService;
       this.messagingService = messagingService;
-      this.nftService.init(signerService);
+      // this.nftService.init(signerService);
       if (initCacheServer) {
         const {
           domainsService,
