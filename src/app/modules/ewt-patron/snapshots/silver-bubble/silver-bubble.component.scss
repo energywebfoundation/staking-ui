@@ -44,18 +44,6 @@
     filter: blur(23.9333px);
     z-index: 1;
   }
-
-  .ring {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    top: -26px;
-    left: -26px;
-    border-radius: 50%;
-    border: 3px solid #BABABA;
-    background: transparent;
-    z-index: 2;
-  }
 }
 
 .snapshot-circle {

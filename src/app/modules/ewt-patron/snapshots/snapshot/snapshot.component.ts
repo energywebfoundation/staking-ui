@@ -19,19 +19,22 @@ export class SnapshotComponent {
     this.enrolmentStatus = this.getEnrolmentStatus(value);
     this.snapshotStatus = value;
   }
+  @Input() circle: 'silver-ring' | 'gold-ring' | '' = '';
+
   @Output() bubbleClick = new EventEmitter<void>();
   snapshotStatus: RoleEnrolmentStatus;
   header: string;
   description: string;
 
+
   @HostBinding('class') enrolmentStatus: string;
 
   get isSilver(): boolean {
-    return this.snapshotStatus === RoleEnrolmentStatus.ENROLED_SYNCED && this.number === 0;
+    return this.snapshotStatus === RoleEnrolmentStatus.ENROLED_SYNCED && this.number === 4;
   }
 
   get isGolden(): boolean {
-    return this.snapshotStatus === RoleEnrolmentStatus.ENROLED_SYNCED && this.number === 1;
+    return this.snapshotStatus === RoleEnrolmentStatus.ENROLED_SYNCED && this.number === 5;
   }
 
   private getEnrolmentStatus(value: RoleEnrolmentStatus): string {

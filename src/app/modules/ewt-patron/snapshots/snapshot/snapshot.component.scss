@@ -1,4 +1,3 @@
-
 :host {
   margin: 70px 0 0 0;
   &.gold.gold .snapshot-circle {
@@ -128,6 +127,38 @@
     #e8f0ff 36.02%,
     #cfe1ff 63.26%
   );
+}
+
+.gold-ring {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -26px;
+    left: -26px;
+    border-radius: 50%;
+    border: 3px solid #c6b30c;
+    background: transparent;
+    z-index: 2;
+  }
+}
+
+.silver-ring {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -26px;
+    left: -26px;
+    border-radius: 50%;
+    border: 3px solid #bababa;
+    background: transparent;
+    z-index: 2;
+  }
 }
 
 .description-header {
