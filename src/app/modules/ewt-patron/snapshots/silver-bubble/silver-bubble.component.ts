@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SilverBubbleComponent {
   @Input() number: number;
+  @Input() status: string;
 }

@@ -54,6 +54,7 @@ import { SnapshotProcessComponent } from './snapshot-process/snapshot-process.co
 import { NftClaimModule } from '../nft-claim/nft-claim.module';
 import { GoldBubbleComponent } from './snapshots/gold-bubble/gold-bubble.component';
 import { SilverBubbleComponent } from './snapshots/silver-bubble/silver-bubble.component';
+import { BubbleComponent } from './snapshots/bubble/bubble.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { SilverBubbleComponent } from './snapshots/silver-bubble/silver-bubble.c
     SnapshotProcessComponent,
     GoldBubbleComponent,
     SilverBubbleComponent,
+    BubbleComponent,
   ],
   imports: [
     CommonModule,
