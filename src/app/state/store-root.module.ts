@@ -9,7 +9,6 @@ import { AuthEffects } from './auth/auth.effects';
 import { StakeEffects } from './stake/stake.effects';
 import { environment } from 'src/environments/environment';
 import { RoleEnrolmentStoreSliceModule } from './role-enrolment/role-enrolment-store-slice.module';
-import { SnapshotStoreSliceModule } from './snapshot/snapshot-store-slice.module';
 
 @NgModule({
   imports: [
@@ -25,7 +24,6 @@ import { SnapshotStoreSliceModule } from './snapshot/snapshot-store-slice.module
       PoolEffects,
     ]),
     RoleEnrolmentStoreSliceModule,
-    SnapshotStoreSliceModule,
   ],
 })
 export class StoreRootModule {}

@@ -48,14 +48,6 @@
                   Consortia Relay Chain <br />
                   SNAPSHOTS
                 </div>
-                <div class="mt-1">
-                  <!-- Empty dots -->
-                  <ng-container *ngFor="let num of [1, 2, 3, 4, 5, 6]">
-                    <app-dot
-                      class="small default-grey"
-                      [ngClass]="num <= numberOfSnapshots ? 'filled-' + num : ''"></app-dot>
-                  </ng-container>
-                </div>
               </div>
               <div class="position-relative" style="z-index: 13">
                 <circle-progress
@@ -89,25 +81,6 @@
           <app-enrolment-status-check></app-enrolment-status-check>
         </div>
         <app-terms class="staking-terms mt-4"></app-terms>
-      </div>
-      <div class="col-md-12 mb-md-0 mb-lg-0 mt-5 mt-lg-4">
-        <div class="staking-card widget-main row">
-          <div class="col-xl-6 d-flex align-items-center">
-            <div class="d-flex flex-column">
-              <div>
-                <h5 class="mb-0 small letter-spacing text-uppercase">Snapshots</h5>
-                <h2>Check your <br /><span>snapshots</span></h2>
-              </div>
-              <app-snapshot-reward-description class="my-3 d-block"></app-snapshot-reward-description>
-            </div>
-          </div>
-          <div class="col-xl-6 d-flex align-items-center justify-content-center">
-            <img class="snapshots-atoms-wrapper" src="../../../../assets/img/staking/snapshots-atom.png" />
-          </div>
-        </div>
-      </div>
-      <div class="col-12 mt-4 mt-xl-4">
-        <app-snapshots id="snapshot"></app-snapshots>
       </div>
     </div>
   </div>

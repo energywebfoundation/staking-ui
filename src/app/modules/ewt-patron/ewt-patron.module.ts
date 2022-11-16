@@ -33,27 +33,9 @@ import { HourlyToDailyRewardModule } from '../../shared/pipes/hourly-to-daily-re
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CircleProgressModule } from '../circle-progress/circle-progress.module';
 import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-verified-info.component';
-import { SnapshotsComponent } from './snapshots/snapshots.component';
-import { DotComponent } from './dot/dot.component';
-import { SnapshotComponent } from './snapshots/snapshot/snapshot.component';
-import { SnapshotSuccessComponent } from './snapshot-success/snapshot-success.component';
-import { SnapshotBoxComponent } from './snapshot-box/snapshot-box.component';
-import { SnapshotStatsComponent } from './snapshot-stats/snapshot-stats.component';
 import { LabelComponent } from './label/label.component';
-import { SnapshotBtnComponent } from './snapshot-btn/snapshot-btn.component';
 import { H4Component } from './h4/h4.component';
 import { TermsComponent } from './terms/terms.component';
-import { EnrolmentStatusDescriptionPipe } from './pipes/enrolment-status-description.pipe';
-import { UserSnapshotsComponent } from './user-snapshots/user-snapshots.component';
-import { IncludedInSnapshotsPipe } from './pipes/included-in-snapshots.pipe';
-import { ImagePathPipe } from './snapshot-success/pipes/image-path.pipe';
-import { EnrolmentStatusHeaderDescriptionPipe } from './pipes/enrolment-status-header-description.pipe';
-import { EnrolmentStatusLinkPipe } from './pipes/enrolment-status-link.pipe';
-import { SnapshotRewardDescriptionComponent } from './snapshot-reward-description/snapshot-reward-description.component';
-import { SnapshotProcessComponent } from './snapshot-process/snapshot-process.component';
-import { GoldBubbleComponent } from './snapshots/gold-bubble/gold-bubble.component';
-import { SilverBubbleComponent } from './snapshots/silver-bubble/silver-bubble.component';
-import { BubbleComponent } from './snapshots/bubble/bubble.component';
 
 @NgModule({
   declarations: [
@@ -74,27 +56,9 @@ import { BubbleComponent } from './snapshots/bubble/bubble.component';
     ConfirmationDialogComponent,
     ProgressBarComponent,
     NotVerifiedInfoComponent,
-    SnapshotsComponent,
-    DotComponent,
-    SnapshotComponent,
-    SnapshotSuccessComponent,
-    SnapshotBoxComponent,
-    SnapshotStatsComponent,
     LabelComponent,
-    SnapshotBtnComponent,
     H4Component,
     TermsComponent,
-    EnrolmentStatusDescriptionPipe,
-    UserSnapshotsComponent,
-    IncludedInSnapshotsPipe,
-    ImagePathPipe,
-    EnrolmentStatusHeaderDescriptionPipe,
-    EnrolmentStatusLinkPipe,
-    SnapshotRewardDescriptionComponent,
-    SnapshotProcessComponent,
-    GoldBubbleComponent,
-    SilverBubbleComponent,
-    BubbleComponent,
   ],
   imports: [
     CommonModule,
