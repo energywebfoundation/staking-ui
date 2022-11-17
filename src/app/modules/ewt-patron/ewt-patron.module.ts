@@ -37,6 +37,8 @@ import { LabelComponent } from './label/label.component';
 import { H4Component } from './h4/h4.component';
 import { TermsComponent } from './terms/terms.component';
 import { SectionComponent } from './section/section.component';
+import { TermsIconComponent } from './terms-icon/terms-icon.component';
+import { EwLogoComponent } from './ew-logo/ew-logo.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { SectionComponent } from './section/section.component';
     H4Component,
     TermsComponent,
     SectionComponent,
+    TermsIconComponent,
+    EwLogoComponent,
   ],
   imports: [
     CommonModule,

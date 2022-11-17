@@ -32,10 +32,10 @@ html {
 
 // silver
 :root {
-  --loader-color: #7D8DA8;
+  --loader-color: #7d8da8;
 
   --container-bg: linear-gradient(180deg, #7a7b7f 0%, #7a7c80 100%);
-  --h1-color: #8290A9;
+  --h1-color: #8290a9;
   --h2-color: #bac7e2;
   --h2-sub-color: linear-gradient(
     269.82deg,
@@ -43,9 +43,9 @@ html {
     #ffffff 53.8%,
     #d6e3ff 102.92%
   );
-  --h3-color: radial-gradient(50% 50% at 50% 50%, #ADB6C8 0%, #808EA7 100%);
-  --h4-color: #7D8DA8;
-  --h5-color: #7D8DA8;;
+  --h3-color: radial-gradient(50% 50% at 50% 50%, #adb6c8 0%, #808ea7 100%);
+  --h4-color: #7d8da8;
+  --h5-color: #7d8da8;
   --h5-color-small: #f8f8f8;
   --p-color: #dedede;
   --learn-more-btn-bg: linear-gradient(
@@ -87,15 +87,27 @@ html {
   );
 
   --label-color: #4d4d4d;
-  --info-color: #4D4D4D;
-  --text-details: #5770A3;
+  --info-color: #4d4d4d;
+  --text-details: #5770a3;
 
   --divider-color: #484848;
 
-  --li-dot-color: #8594AE;
-  --li-color: #4C4C4C;
+  --li-dot-color: #8594ae;
+  --li-color: #4c4c4c;
 
-  --link-color: #5770A3;
+  --terms-color-1: #8493ad;
+  --terms-color-2: #b1bdd1;
+
+  --logo-radial-color-1: #c8d3e4;
+  --logo-radial-color-2: #b3bbcc;
+  --logo-radial-color-3: #8592aa;
+  --logo-radial-color-4: #7f8ea7;
+
+  --logo-linear-color-1: #E0E6F2
+;
+  --logo-linear-color-2: #FFFFFF;
+
+  --link-color: #5770a3;
 }
 
 // green
@@ -103,12 +115,12 @@ html {
   --loader-color: #0f5156;
 
   --container-bg: #0f5156;
-  --h1-color: #084D51;
+  --h1-color: #084d51;
   --h2-color: #feefd0;
-  --h2-sub-color: radial-gradient(50% 50% at 50% 50%, #34BC85 0%, #279775 100%);
-  --h3-color: #074B50;
-  --h4-color: #0B5055;
-  --h5-color: #0D4F55;
+  --h2-sub-color: radial-gradient(50% 50% at 50% 50%, #34bc85 0%, #279775 100%);
+  --h3-color: #074b50;
+  --h4-color: #0b5055;
+  --h5-color: #0d4f55;
   --h5-color-small: #e0dcc1;
   --p-color: #feefd0;
   --learn-more-btn-bg: transparent;
@@ -124,21 +136,32 @@ html {
   );
   --section-shadow-color: rgba(55, 42, 2, 0.15);
 
-  --stake-btn-bg: #34BC85;
+  --stake-btn-bg: #34bc85;
   --stake-btn-shadow-color: rgba(0, 0, 0, 0.08);
   --stake-btn-color: #feefd0;
   --stake-text-shadow-color: rgba(0, 0, 0, 0.11);
-  --stake-btn-hover-bg: #3DCE93;
+  --stake-btn-hover-bg: #3dce93;
 
   --label-color: #084d52;
-  --info-color: #0B4F54;
-  --text-details: #0E4F55;
+  --info-color: #0b4f54;
+  --text-details: #0e4f55;
 
-  --divider-color: #084D51;
-  --li-dot-color: #084C52;
-  --li-color: #0B4F54;
+  --divider-color: #084d51;
+  --li-dot-color: #084c52;
+  --li-color: #0b4f54;
 
-  --link-color: #34BC85;
+  --terms-color-1: #084c52;
+  --terms-color-2: #258c94;
+
+  --logo-radial-color-1: #077177;
+  --logo-radial-color-2: #0f6267;
+  --logo-radial-color-3: #084d51;
+  --logo-radial-color-4: #002426;
+
+  --logo-linear-color-1: #feefd0;
+  --logo-linear-color-2: #feefd0;
+
+  --link-color: #34bc85;
   .learn-more {
     border: 1px solid #fdb53b;
   }
@@ -146,14 +169,14 @@ html {
 
 // gold
 :root {
-  --loader-color: #C9A42E;
+  --loader-color: #c9a42e;
   --container-bg: linear-gradient(360deg, #242424 39.06%, #4c4a46 100%);
-  --h1-color: #8290A9;
+  --h1-color: #8290a9;
   --h2-color: #c9a42e;
   --h2-sub-color: radial-gradient(50% 50% at 50% 50%, #f2e3b6 0%, #c9a42e 100%);
-  --h3-color: #C9A42E;
-  --h4-color: #866C1A;
-  --h5-color: #866C1A;
+  --h3-color: #c9a42e;
+  --h4-color: #866c1a;
+  --h5-color: #866c1a;
   --h5-color-small: #cca836;
   --p-color: #ffffff;
   --learn-more-btn-bg: linear-gradient(
@@ -191,13 +214,24 @@ html {
   );
 
   --label-color: #372a02;
-  --info-color: #372A02;
-  --text-details: #826C2D;
+  --info-color: #372a02;
+  --text-details: #826c2d;
 
-  --divider-color: #614A04;
+  --divider-color: #614a04;
 
-  --li-dot-color: #A07D0D;
-  --li-color: #372A02;
+  --li-dot-color: #a07d0d;
+  --li-color: #372a02;
 
-  --link-color: #372A02;
+  --terms-color-1: #9e7b0b;
+  --terms-color-2: #c9a531;
+
+  --logo-radial-color-1: #fff8e4;
+  --logo-radial-color-2: #e6d08c;
+  --logo-radial-color-3: #c99f18;
+  --logo-radial-color-4: #bb9316;
+
+  --logo-linear-color-1: #6d5509;
+  --logo-linear-color-2: #a98c32;
+
+  --link-color: #372a02;
 }
