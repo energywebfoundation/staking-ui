@@ -16,7 +16,7 @@
     font-weight: 400;
     font-family: 'BW-Gradual-Medium';
     font-size: 24px;
-    color: #4b25c7;
+    color: var(--label-color);
     letter-spacing: 0.25px;
   }
 
@@ -24,7 +24,7 @@
     font-weight: 600;
     font-family: 'BW-Gradual-Medium';
     font-size: 36px;
-    color: #4b25c7;
+    color: var(--label-color);
     line-height: 46px;
   }
 }

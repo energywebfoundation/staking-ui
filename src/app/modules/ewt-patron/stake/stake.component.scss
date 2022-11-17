@@ -6,12 +6,9 @@
 .staking-widget {
   position: relative;
   border-radius: 144px;
-  background: linear-gradient(
-    349.41deg,
-    rgba(220, 255, 255, 0.22) -17.31%,
-    rgba(220, 255, 255, 0.26) 4.93%,
-    rgba(255, 255, 255, 0.28) 129.23%
-  );
+  background: var(--section-bg);
+  box-shadow: 1px 1px 12px var(--section-shadow-color);
+  backdrop-filter: blur(3.5px);
   background-clip: padding-box;
   padding: 100px;
 
@@ -35,12 +32,13 @@ h3 {
   font-weight: 700 !important;
   letter-spacing: 0.25px !important;
   font-size: 64px !important;
-  color: #4b25c7;
-
-  .staking-currency {
-    font-size: 16px !important;
-    color: #4b25c7;
-  }
+  background: var(--h3-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 
   @media screen and (max-width: 800px) {
     font-size: 36px !important;
@@ -52,7 +50,7 @@ h3 {
 h4 {
   font-family: Rajdhani, sans-serif;
   font-size: 42px !important;
-  color: #4b25c7;
+  color: var(--h4-color);
   font-weight: 700;
 
   span {
@@ -74,7 +72,7 @@ h5 {
   font-size: 21px !important;
   letter-spacing: 1.25px !important;
   font-weight: 700 !important;
-  color: #4b25c7;
+  color: var(--h5-color);
 }
 
 h6 {
@@ -87,7 +85,7 @@ h6 {
 .text-color {
   font-family: 'Sequel-Sans';
   font-weight: bold;
-  color: #4b25c7;
+  color: var(--text-details);
 }
 
 .circular-text {
@@ -100,7 +98,7 @@ h6 {
   font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #2e2e2e;
+  color: var(--label-color);
 }
 
 .limit-text {
@@ -222,7 +220,7 @@ h6 {
 }
 
 .payment-details {
-  border-bottom: 1px solid #b3c6d2;
+  border-bottom: 1px solid rgba(72, 72, 72, 0.2);
 }
 
 .currently-staking {
@@ -239,14 +237,10 @@ h6 {
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.25px;
-  background: linear-gradient(
-    82.68deg,
-    #4c26c7 -5.81%,
-    #6de9e9 98.14%,
-    #bfffff 121.71%
-  );
-  color: #ffffff !important;
-  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+  background: var(--stake-btn-bg) !important;
+ color: var(--stake-btn-color) !important;
+  box-shadow: 0px 4px 8px var(--stake-btn-shadow-color);
+  text-shadow: 0px 1px 1px var(--stake-text-shadow-color);
   border-radius: 34px;
   padding: 0 0 !important;
   height: 48px;
@@ -268,18 +262,12 @@ h6 {
   font-weight: bold;
   font-size: 16px;
   line-height: 16px;
-  border-radius: 16px;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #c7f5fd 0%, #e6fdff 32.23%, #c1d7fb 100%),
-    radial-gradient(
-      184.5% 68.24% at 169.12% 8.09%,
-      #edffff 32.52%,
-      #dbedff 71.15%,
-      #cbdff4 91.96%
-    );
-  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+  background: var(--stake-btn-bg) !important;
+  color: var(--stake-btn-color) !important;
+  box-shadow: 0px 4px 8px var(--stake-btn-shadow-color);
+  text-shadow: 0px 1px 1px var(--stake-text-shadow-color);
   border-radius: 50px;
-  color: #4b25c7 !important;
   padding: 0 0 !important;
   height: 48px;
   width: 172px;
@@ -289,13 +277,13 @@ h6 {
   }
 
   &:hover {
-    background-color: #aff6fc;
+    background: var(--stake-btn-hover-bg);
   }
 }
 
 .color-grey {
   font-family: 'BW-Gradual-Regular';
-  color: #474747;
+  color: var(--info-color);
 }
 
 .color-red {
@@ -303,7 +291,8 @@ h6 {
 }
 
 .highlight {
-  color: #63bdfe;
+  color: var(--link-color);
+  font-weight: bold;
 }
 
 mat-progress-bar {

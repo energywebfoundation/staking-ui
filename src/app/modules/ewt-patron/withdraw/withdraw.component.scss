@@ -29,14 +29,10 @@ p {
   font-weight: bold;
   font-size: 14px;
   letter-spacing: 1.25px;
-  background: linear-gradient(
-    82.68deg,
-    #4c26c7 -5.81%,
-    #6de9e9 98.14%,
-    #bfffff 121.71%
-  );
-  color: #ffffff !important;
-  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
+  background: var(--stake-btn-bg) !important;
+  color: var(--stake-btn-color) !important;
+  box-shadow: 0px 4px 8px var(--stake-btn-shadow-color);
+  text-shadow: 0px 1px 1px var(--stake-text-shadow-color);
   border-radius: 34px;
   padding: 0 0 !important;
   height: 48px;

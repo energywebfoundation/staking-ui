@@ -1,14 +1,5 @@
 :host {
   display: block;
-  background: linear-gradient(
-    353.04deg,
-    #fefefe -176.13%,
-    rgba(152, 195, 205, 0.744792) -176.09%,
-    rgba(255, 255, 255, 0) 174.24%
-  );
-  backdrop-filter: blur(200px);
-  border-radius: 144px;
-  padding: 70px 24px 40px 24px;
 }
 
 ul li {
@@ -24,7 +15,7 @@ ul li:before {
   content: '';
   position: absolute;
   border-radius: 50px;
-  background-color: #4b25c7;
+  background-color: var(--li-dot-color);
   width: 12px;
   height: 12px;
   top: calc(5% - -10px);
@@ -34,7 +25,7 @@ ul li:before {
 
 li {
   font-family: 'BW-Gradual-Regular';
-  color: #4f4f4f;
+  color: var(--li-color);
   font-size: 16px;
   letter-spacing: 0.3px;
   left: 17px;

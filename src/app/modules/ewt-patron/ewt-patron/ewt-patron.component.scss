@@ -1,8 +1,6 @@
 .staking-container {
-  background-color: #ecf0f3;
-  background-image: url('../../../../assets/img/staking/staking-gradient-background.png');
-  background-position: top;
-  background-repeat: no-repeat;
+  background: var(--container-bg);
+
   background-size: cover;
 }
 
@@ -12,20 +10,14 @@
 
 h2 {
   font-family: 'Bw-Gradual-Medium';
-  color: #492cc7;
+  color: var(--h2-color);
   font-style: normal;
   font-weight: 600;
   font-size: 64px;
   line-height: 84px;
 
   span {
-    background: #492cc7;
-    background: linear-gradient(
-      90deg,
-      rgba(73, 44, 199, 1) 0%,
-      rgba(82, 227, 227, 1) 48%,
-      rgba(73, 44, 199, 1) 100%
-    );
+    background: var(--h2-sub-color);
     background-clip: text;
     -webkit-background-clip: text;
     text-fill-color: transparent;
@@ -71,11 +63,11 @@ h5 {
 }
 
 .small {
-  color: #33cbcb !important;
+  color: var(--h5-color-small) //#33cbcb !important;
 }
 
 p {
-  color: #1a1a1a;
+  color: var(--p-color);
   font-family: 'BW-Gradual-Light';
   font-weight: 200;
   font-size: 18px;
@@ -87,7 +79,7 @@ p {
 }
 
 a {
-  color: #106cc8;
+  color: var(--link-color);
   letter-spacing: 1.25px;
 
   &:hover {
@@ -163,7 +155,7 @@ a {
   font-size: 16px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #2e2e2e;
+  color: var();
 }
 
 .staking-widget-sm-label {
@@ -206,18 +198,6 @@ a {
     font-size: 18px;
     font-weight: 500;
   }
-}
-
-.staking-terms {
-  background: linear-gradient(
-    353.04deg,
-    #fefefe -176.13%,
-    rgba(152, 195, 205, 0.744792) -176.09%,
-    rgba(255, 255, 255, 0) 174.24%
-  );
-  backdrop-filter: blur(200px);
-  border-radius: 144px;
-  padding: 70px 24px 40px 24px;
 }
 
 .staking-widget {
@@ -329,21 +309,9 @@ a {
   color: #63bdfe;
 }
 
-.link-btn {
-  font-family: Rajdhani, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
-  border-radius: 16px;
-  letter-spacing: 1.25px;
-  background-color: #a566ff;
-  color: #ffffff;
-
-  &:hover {
-    background-color: #ad74ff !important;
-    opacity: 1 !important;
-  }
+.learn-more {
+  background: var(--learn-more-btn-bg);
+  box-shadow: 0px 4.41667px 9.9375px var(--learn-more-shadow);
 }
 
 .circle-progress-circle {

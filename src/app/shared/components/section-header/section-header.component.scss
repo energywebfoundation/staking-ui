@@ -1,9 +1,16 @@
 .snapshot-title {
-  color: #4b25c7;
+  background: var(--snapshot-title-color);
   font-family: Rajdhani, sans-serif;
   font-size: 64px;
   font-weight: bold;
   margin-right: 10px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
 
   @media screen and (max-width: 800px) {
     font-size: 36px !important;

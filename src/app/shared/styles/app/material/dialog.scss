@@ -352,8 +352,7 @@ mat-checkbox {
 }
 
 .backdrop-hide-content {
-  background-color: #ecf0f3;
-  background-image: url(../../../../../assets/img/staking/staking-gradient-background.png);
+  background: var(--container-bg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;

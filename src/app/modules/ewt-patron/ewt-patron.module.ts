@@ -36,6 +36,7 @@ import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-veri
 import { LabelComponent } from './label/label.component';
 import { H4Component } from './h4/h4.component';
 import { TermsComponent } from './terms/terms.component';
+import { SectionComponent } from './section/section.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { TermsComponent } from './terms/terms.component';
     LabelComponent,
     H4Component,
     TermsComponent,
+    SectionComponent,
   ],
   imports: [
     CommonModule,

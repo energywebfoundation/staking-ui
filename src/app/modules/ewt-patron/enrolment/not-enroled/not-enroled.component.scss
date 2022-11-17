@@ -100,7 +100,8 @@ h5 {
 }
 
 .highlight {
-  color: #63bdfe;
+  color: var(--link-color);
+  font-weight: bold;
 }
 
 .staking-widget-xs-label {
