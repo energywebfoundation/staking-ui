@@ -43,6 +43,8 @@ import { TwitterIconComponent } from './twitter-icon/twitter-icon.component';
 import { TelegramIconComponent } from './telegram-icon/telegram-icon.component';
 import { GlobeIconComponent } from './globe-icon/globe-icon.component';
 import { DiscordIconComponent } from './discord-icon/discord-icon.component';
+import { SwitchThemeComponent } from './switch-theme/switch-theme.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import { DiscordIconComponent } from './discord-icon/discord-icon.component';
     TelegramIconComponent,
     GlobeIconComponent,
     DiscordIconComponent,
+    SwitchThemeComponent,
   ],
   imports: [
     CommonModule,
@@ -92,6 +95,7 @@ import { DiscordIconComponent } from './discord-icon/discord-icon.component';
     HourlyToDailyRewardModule,
     MatProgressSpinnerModule,
     CircleProgressModule.forRoot(),
+    MatSelectModule,
   ],
 })
 export class EwtPatronModule {}
