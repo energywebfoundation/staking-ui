@@ -172,7 +172,6 @@ ul.menu-top {
    Component: sidebar
  ========================================================================== */
 
-
 // Items
 
 .mat-menu-panel {
@@ -383,13 +382,11 @@ tr.mat-row {
 }
 
 .did-wrapper {
-  background-color: #f4fdff;
-  color: #aaaaaa;
+  background-color: var(--did-bg);
+  color: var(--did-color);
 
-  &:hover {
-    mat-icon {
-      color: #4c2cdf;
-    }
+  mat-icon {
+    color: var(--did-icon);
   }
 }
 
@@ -487,11 +484,11 @@ tr.mat-row {
 .mat-select-arrow {
   color: #4d4d4d;
 }
-.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
-  color: var(--error-color)
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-outline-thick {
+  color: var(--error-color);
 }
 // Button
-
 
 .btn-connect {
   background-color: #ffffff;
@@ -777,7 +774,6 @@ tr.mat-row {
   color: rgba(255, 255, 255, 0.5);
 }
 
-
 ::ng-deep
   .mat-checkbox-disabled:not(.mat-checkbox-checked)
   .mat-checkbox-frame {
@@ -899,7 +895,7 @@ tr.mat-row {
   font-size: 14px;
   letter-spacing: 1.25px;
   background: var(--stake-btn-bg) !important;
- color: var(--stake-btn-color) !important;
+  color: var(--stake-btn-color) !important;
   box-shadow: 0px 4px 8px var(--stake-btn-shadow-color);
   text-shadow: 0px 1px 1px var(--stake-text-shadow-color);
   border-radius: 34px;
