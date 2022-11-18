@@ -1,7 +1,5 @@
-<ng-container [ngSwitch]="getStatus$ | async">
-  <app-not-enroled *ngSwitchCase="roleEnrolmentStatus.NOT_ENROLED"></app-not-enroled>
-  <app-not-approved *ngSwitchCase="roleEnrolmentStatus.ENROLED_NOT_APPROVED"></app-not-approved>
+  <app-not-enroled ></app-not-enroled>
+  <app-not-approved ></app-not-approved>
 
-  <app-not-synced *ngSwitchCase="roleEnrolmentStatus.ENROLED_APPROVED"></app-not-synced>
-  <app-approved-synced *ngSwitchCase="roleEnrolmentStatus.ENROLED_SYNCED"></app-approved-synced>
-</ng-container>
+  <app-not-synced ></app-not-synced>
+  <app-approved-synced ></app-approved-synced>

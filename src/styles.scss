@@ -130,6 +130,18 @@ html {
   --link-color: #5770a3;
 
   --terms-title-color: #8290a9;
+  --congratulations-url: 'assets/img/staking/congratulations-silver.png';
+  --dialog-bg: linear-gradient(180deg, #FFFFFF 0%, #D6DEEE 100%);
+  --dialog-shadow: 0px 16px 40px #8795AC;
+  --dialog-title: #5770A3;
+  --dialog-text-color: #4D4D4D;
+
+  --secondary-btn-color: #445578;
+  --secondary-btn-bg: linear-gradient(0deg, #FFFFFF, #FFFFFF), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-bg-hover: linear-gradient(0deg, #F7F7F7, #F7F7F7), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-shadow: rgba(0, 0, 0, 0.16);
+
+
 }
 
 // green
@@ -202,6 +214,17 @@ html {
   --link-color: #34bc85;
 
   --terms-title-color: #074b50;
+  --congratulations-url: 'assets/img/staking/congratulations-green.png';
+
+  --dialog-bg: linear-gradient(359.43deg, #C2D2D3 0.16%, #FFFFFF 99.19%);
+  --dialog-shadow: none;
+  --dialog-title: #074B50;
+  --dialog-text-color: #0B4F54;
+
+  --secondary-btn-color: #105157;
+  --secondary-btn-bg: linear-gradient(0deg, #FFFFFF, #FFFFFF), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-bg-hover: linear-gradient(0deg, #FEEFD0, #FEEFD0), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-shadow: rgba(0, 0, 0, 0.16);
   .learn-more {
     border: 1px solid #fdb53b;
   }
@@ -297,4 +320,22 @@ html {
   --link-color: #372a02;
 
   --terms-title-color: #c9a42e;
+  --congratulations-url: 'assets/img/staking/congratulations-gold.png';
+
+  --dialog-bg: linear-gradient(180deg, #FFFFFF 0%, #C8C8C7 100%);
+  --dialog-shadow: none;
+  --dialog-title: #C9A42E;
+  --dialog-text-color: #372A02;
+
+  --secondary-btn-color: #372A02;
+  --secondary-btn-bg: linear-gradient(0deg, #FFFFFF, #FFFFFF), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-bg-hover: linear-gradient(0deg, #FFF9E7, #FFF9E7), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-shadow: rgba(0, 0, 0, 0.16);
+
+  --input-label-color: #372A02;
+  --input-placeholder-color: rgba(55, 42, 2, 0.4);
+  --input-color: #372A02;
+  --input-bg: #E2DECE;
+  --input-bg-disabled: '';
+  --error-color: #FF5C63;
 }

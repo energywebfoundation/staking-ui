@@ -1,11 +1,6 @@
 .container {
-  background: linear-gradient(
-      349.41deg,
-      rgba(220, 255, 255, 0.22) -17.31%,
-      rgba(220, 255, 255, 0.26) 4.93%,
-      rgba(255, 255, 255, 0.28) 129.23%
-    ),
-    #ecf0f3;
+  background: var(--dialog-bg);
+  box-shadow: var(--dialog-shadow);
   padding: 32px;
 }
 
@@ -47,16 +42,11 @@
   font-size: 16px;
   line-height: 16px;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #c7f5fd 0%, #e6fdff 32.23%, #c1d7fb 100%),
-    radial-gradient(
-      184.5% 68.24% at 169.12% 8.09%,
-      #edffff 32.52%,
-      #dbedff 71.15%,
-      #cbdff4 91.96%
-    );
-  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+
+  background: var(--secondary-btn-bg);
+  box-shadow: 0px 5px 6px var(--secondary-btn-shadow);
   border-radius: 50px;
-  color: #4b25c7 !important;
+  color: var(--secondary-btn-color) !important;
   padding: 0 0 !important;
   margin-top: 38px;
   height: 48px;
@@ -67,7 +57,7 @@
   }
 
   &:hover {
-    background-color: #aff6fc;
+    background: var(--secondary-btn-bg-hover);
   }
 }
 
@@ -75,7 +65,7 @@ h3 {
   font-family: 'BW-Gradual-Medium';
   font-size: 24px !important;
   font-weight: 600 !important;
-  color: #000;
+  color: var(--dialog-title);
 }
 
 ::ng-deep {

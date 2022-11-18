@@ -6,4 +6,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./stake-success.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StakeSuccessComponent {}
+export class StakeSuccessComponent {
+  imgUrl = getComputedStyle(document.documentElement)
+    .getPropertyValue('--congratulations-url')
+    .replace('"', '')
+    .replace('"', '')
+    .trim();
+}

@@ -339,13 +339,8 @@ tr.mat-row {
 }
 
 .mat-dialog-container {
-  background: linear-gradient(
-      349.41deg,
-      rgba(220, 255, 255, 0.22) -17.31%,
-      rgba(220, 255, 255, 0.26) 4.93%,
-      rgba(255, 255, 255, 0.28) 129.23%
-    ),
-    #ecf0f3;
+  background: var(--dialog-bg);
+  box-shadow: var(--dialog-shadow);
 }
 
 .mat-dialog-title {

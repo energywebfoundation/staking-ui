@@ -7,7 +7,7 @@ h3 {
   font-family: 'BW-Gradual-Medium';
   font-size: 24px !important;
   font-weight: 600 !important;
-  color: #000;
+  color: var(--dialog-title);
 }
 
 p {
@@ -15,12 +15,8 @@ p {
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.44px;
-  color: #000000;
+  color: var(--dialog-text-color);
   font-weight: 400;
-}
-
-.text-color {
-  color: #ffffff;
 }
 
 .stake-btn {
@@ -44,7 +40,7 @@ p {
   }
 
   &:hover {
-    background-color: #4c2cdf;
+    background: var(--stake-btn-hover-bg);
   }
 }
 
@@ -54,18 +50,12 @@ p {
   font-weight: bold;
   font-size: 16px;
   line-height: 16px;
-  border-radius: 16px;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #c7f5fd 0%, #e6fdff 32.23%, #c1d7fb 100%),
-    radial-gradient(
-      184.5% 68.24% at 169.12% 8.09%,
-      #edffff 32.52%,
-      #dbedff 71.15%,
-      #cbdff4 91.96%
-    );
-  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
+
+  background: var(--secondary-btn-bg);
+  box-shadow: 0px 5px 6px var(--secondary-btn-shadow);
   border-radius: 50px;
-  color: #4b25c7 !important;
+  color: var(--secondary-btn-color) !important;
   padding: 0 0 !important;
   margin-top: 38px;
   height: 48px;
@@ -76,7 +66,7 @@ p {
   }
 
   &:hover {
-    background-color: #aff6fc;
+    background: var(--secondary-btn-bg-hover);
   }
 }
 
@@ -90,6 +80,10 @@ p {
   .mat-progress-bar-background {
     fill: transparent;
   }
+}
+
+:host ::ng-deep mat-label{
+  color: var(--input-label-color)
 }
 
 .amount-input {
