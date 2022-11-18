@@ -120,29 +120,23 @@ h5 {
   font-family: Rajdhani, sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
-  line-height: 16px;
-  border-radius: 16px;
-  letter-spacing: 2px;
-  background: linear-gradient(180deg, #c7f5fd 0%, #e6fdff 32.23%, #c1d7fb 100%),
-    radial-gradient(
-      184.5% 68.24% at 169.12% 8.09%,
-      #edffff 32.52%,
-      #dbedff 71.15%,
-      #cbdff4 91.96%
-    );
-  box-shadow: 0px 9px 6px rgba(32, 71, 169, 0.3);
-  border-radius: 50px;
-  color: #4b25c7 !important;
+  font-size: 14px;
+  letter-spacing: 1.25px;
+  background: var(--stake-btn-bg) !important;
+  color: var(--stake-btn-color) !important;
+  box-shadow: 0px 4px 8px var(--stake-btn-shadow-color);
+  text-shadow: 0px 1px 1px var(--stake-text-shadow-color);
+  border-radius: 34px;
   padding: 0 0 !important;
   height: 48px;
-  width: 172px;
+  width: 180px;
+  opacity: 1;
 
   &.mat-raised-button[disabled] {
     opacity: 0.5;
   }
 
   &:hover {
-    background-color: #aff6fc;
+    background-color: #4c2cdf;
   }
 }
