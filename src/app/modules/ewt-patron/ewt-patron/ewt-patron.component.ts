@@ -10,9 +10,6 @@ import {
 } from '@state';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import { EnvService } from '../../../shared/services/env/env.service';
-import { StakeSuccessComponent } from '../stake-success/stake-success.component';
-import { MatDialog } from '@angular/material/dialog';
-import { WithdrawComponent } from '../withdraw/withdraw.component';
 
 @Component({
   selector: 'app-ewt-patron',
@@ -26,14 +23,12 @@ export class EwtPatronComponent implements OnInit, OnDestroy {
   isStakingVerificationEnabled = this.envService.checkStakingVerification;
   isPatronSynced = this.store.select(RoleEnrolmentSelectors.isSynced);
   destroy$ = new Subject<void>();
-  numberOfSnapshots: number = this.envService.snapshotRoles.length;
 
   constructor(
     private store: Store,
     private activatedRoute: ActivatedRoute,
     private loginService: LoginService,
     private envService: EnvService,
-    private dialog: MatDialog,
   ) {}
 
   ngOnDestroy(): void {
@@ -44,12 +39,6 @@ export class EwtPatronComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.setOrganization();
     this.login();
-    this.dialog.open(WithdrawComponent, {
-      width: '400px',
-      maxWidth: '100%',
-      disableClose: true,
-      backdropClass: 'backdrop-shadow',
-    });
   }
 
   private login() {
