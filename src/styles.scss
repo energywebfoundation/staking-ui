@@ -31,7 +31,7 @@ html {
 }
 
 // silver
-:root {
+:root[data-theme=silver] {
   --loader-color: #7d8da8;
 
   --container-bg: linear-gradient(180deg, #7a7b7f 0%, #7a7c80 100%);
@@ -124,6 +124,13 @@ html {
     #949496 91.96%
   );
 
+  --circle-progress-color-1: #7D8DA8;
+  --circle-progress-offset-1: 7.38%;
+  --circle-progress-color-2: #A0AABE;
+  --circle-progress-offset-2: 43.37%;
+  --circle-progress-color-3: #D2DAE8;
+  --circle-progress-offset-3:99.53%;
+
   --icon-stroke: #c3d7ff;
   --footer-text: #fafcff;
 
@@ -172,7 +179,7 @@ html {
 }
 
 // green
-:root {
+:root[data-theme=green] {
   --loader-color: #0f5156;
 
   --container-bg: #0f5156;
@@ -234,6 +241,12 @@ html {
     #19666d 73.04%,
     #0e5056 91.96%
   );
+  --circle-progress-color-1: #2B8C64;
+  --circle-progress-offset-1: 7.38%;
+  --circle-progress-color-2: #33AE7D;
+  --circle-progress-offset-2: 61.61%;
+  --circle-progress-color-3: #44CD96;
+  --circle-progress-offset-3: 99.53%;
 
   --icon-stroke: #fdb53b;
   --footer-text: #feefd0;
@@ -286,7 +299,7 @@ html {
 }
 
 // gold
-:root {
+:root[data-theme=gold] {
   --loader-color: #c9a42e;
   --container-bg: linear-gradient(360deg, #242424 39.06%, #4c4a46 100%);
   --h1-color: #8290a9;
@@ -368,6 +381,13 @@ html {
     #5b584d 73.04%,
     #43413d 91.96%
   );
+
+  --circle-progress-color-1: #866C1B;
+  --circle-progress-offset-1: #866C1B;
+  --circle-progress-color-2: #C9A42E;
+  --circle-progress-offset-2: #C9A42E;
+  --circle-progress-color-3: #E6D08D;
+  --circle-progress-offset-3: #E6D08D;
 
   --icon-stroke: #cda938;
   --footer-text: #cca836;

@@ -150,20 +150,35 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
           *ngIf="options.outerStrokeGradient"
           [attr.id]="svg.outerLinearGradient.id"
           gradientTransform="rotate(-90 0.45 0.45)">
-          <stop offset="6.77%" stop-color="#866C1B" [attr.stop-opacity]="1" />
-          <stop offset="35.33%" stop-color="#C9A42E" [attr.stop-opacity]="1" />
-          <stop offset="94.25%" stop-color="#E6D08D" [attr.stop-opacity]="1" />
-<!--          <stop offset="105.94%" stop-color="#BFFFFF" [attr.stop-opacity]="1" />-->
+          <stop
+            [attr.offset]="gradientOffset1"
+            [attr.stop-color]="gradientColor1"
+            [attr.stop-opacity]="1" />
+          <stop
+            [attr.offset]="gradientOffset2"
+            [attr.stop-color]="gradientColor2"
+            [attr.stop-opacity]="1" />
+          <stop
+            [attr.offset]="gradientOffset3"
+            [attr.stop-color]="gradientColor3"
+            [attr.stop-opacity]="1" />
         </linearGradient>
-<!--        linear-gradient(359.28deg, #866C1B 6.77%, #C9A42E 35.33%, #E6D08D 94.25%)-->
         <radialGradient
           *ngIf="options.backgroundGradient"
           [attr.id]="svg.radialGradient.id"
           gradientTransform="rotate(-90 0.4 0.4)">
-          <stop offset="6.77%" stop-color="#866C1B" [attr.stop-opacity]="1" />
-          <stop offset="35.33%" stop-color="#C9A42E" [attr.stop-opacity]="1" />
-          <stop offset="94.25%" stop-color="#E6D08D" [attr.stop-opacity]="1" />
-<!--          <stop offset="105.94%" stop-color="#BFFFFF" [attr.stop-opacity]="1" />-->
+          <stop
+            [attr.offset]="gradientOffset1"
+            [attr.stop-color]="gradientColor1"
+            [attr.stop-opacity]="1" />
+          <stop
+            [attr.offset]="gradientOffset2"
+            [attr.stop-color]="gradientColor2"
+            [attr.stop-opacity]="1" />
+          <stop
+            [attr.offset]="gradientOffset3"
+            [attr.stop-color]="gradientColor3"
+            [attr.stop-opacity]="1" />
         </radialGradient>
       </defs>
       <ng-container *ngIf="options.showBackground">
@@ -340,6 +355,24 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
   @Input() lazy: boolean;
 
   @Input('options') templateOptions: CircleProgressOptions;
+  gradientColor1 = getComputedStyle(document.documentElement).getPropertyValue(
+    '--circle-progress-color-1'
+  ).trim();
+  gradientOffset1 = getComputedStyle(document.documentElement).getPropertyValue(
+    '--circle-progress-offset-1'
+  ).trim();
+  gradientColor2 = getComputedStyle(document.documentElement).getPropertyValue(
+    '--circle-progress-color-2'
+  ).trim();
+  gradientOffset2 = getComputedStyle(document.documentElement).getPropertyValue(
+    '--circle-progress-offset-2'
+  ).trim();
+  gradientColor3 = getComputedStyle(document.documentElement).getPropertyValue(
+    '--circle-progress-color-3'
+  ).trim();
+  gradientOffset3 = getComputedStyle(document.documentElement).getPropertyValue(
+    '--circle-progress-offset-3'
+  ).trim();
 
   // <svg> of component
   svgElement: HTMLElement = null;

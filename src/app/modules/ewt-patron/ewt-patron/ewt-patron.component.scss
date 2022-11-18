@@ -294,7 +294,7 @@ a {
   width: 228px;
   height: 228px;
   padding: 25px;
-  background: radial-gradient(351.92% 130.17% at 336.54% -20.19%, #615E5A 66.62%, #5B584D 73.04%, #43413D 91.96%);
+  background: var(--circle-inner-circle-bg);
   background-size: 278px 278px;
   backdrop-filter: blur(27.8158px);
   border-radius: 100%;
