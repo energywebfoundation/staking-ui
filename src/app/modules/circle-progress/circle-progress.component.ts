@@ -91,7 +91,9 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
   units = '%';
   unitsFontSize = '18';
   unitsFontWeight = 'bold';
-  unitsColor = '#4B25C7';
+  unitsColor = getComputedStyle(document.documentElement).getPropertyValue(
+    '--circle-default-color'
+  );
   outerStrokeGradient = true;
   outerStrokeWidth = 8;
   outerStrokeColor = '#78C000';
@@ -101,7 +103,9 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
   innerStrokeWidth = 4;
   titleFormat = undefined;
   title: string | Array<String> = 'auto';
-  titleColor = '#4B25C7';
+  titleColor = getComputedStyle(document.documentElement).getPropertyValue(
+    '--circle-default-color'
+  );
   titleFontSize = '18';
   titleFontWeight = 'bold';
   subtitleFormat = undefined;
@@ -146,19 +150,20 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
           *ngIf="options.outerStrokeGradient"
           [attr.id]="svg.outerLinearGradient.id"
           gradientTransform="rotate(-90 0.45 0.45)">
-          <stop offset="-0.03%" stop-color="#4C26C7" [attr.stop-opacity]="1" />
-          <stop offset="46.66%" stop-color="#70B8F2" [attr.stop-opacity]="1" />
-          <stop offset="69.91%" stop-color="#6DE9E9" [attr.stop-opacity]="1" />
-          <stop offset="105.94%" stop-color="#BFFFFF" [attr.stop-opacity]="1" />
+          <stop offset="6.77%" stop-color="#866C1B" [attr.stop-opacity]="1" />
+          <stop offset="35.33%" stop-color="#C9A42E" [attr.stop-opacity]="1" />
+          <stop offset="94.25%" stop-color="#E6D08D" [attr.stop-opacity]="1" />
+<!--          <stop offset="105.94%" stop-color="#BFFFFF" [attr.stop-opacity]="1" />-->
         </linearGradient>
+<!--        linear-gradient(359.28deg, #866C1B 6.77%, #C9A42E 35.33%, #E6D08D 94.25%)-->
         <radialGradient
           *ngIf="options.backgroundGradient"
           [attr.id]="svg.radialGradient.id"
           gradientTransform="rotate(-90 0.4 0.4)">
-          <stop offset="-0.03%" stop-color="#4C26C7" [attr.stop-opacity]="1" />
-          <stop offset="46.66%" stop-color="#70B8F2" [attr.stop-opacity]="1" />
-          <stop offset="69.91%" stop-color="#6DE9E9" [attr.stop-opacity]="1" />
-          <stop offset="105.94%" stop-color="#BFFFFF" [attr.stop-opacity]="1" />
+          <stop offset="6.77%" stop-color="#866C1B" [attr.stop-opacity]="1" />
+          <stop offset="35.33%" stop-color="#C9A42E" [attr.stop-opacity]="1" />
+          <stop offset="94.25%" stop-color="#E6D08D" [attr.stop-opacity]="1" />
+<!--          <stop offset="105.94%" stop-color="#BFFFFF" [attr.stop-opacity]="1" />-->
         </radialGradient>
       </defs>
       <ng-container *ngIf="options.showBackground">

@@ -315,10 +315,10 @@ a {
 }
 
 .circle-progress-circle {
-  width: 278px;
-  height: 278px;
+  width: 228px;
+  height: 228px;
   padding: 25px;
-  background-image: url(../../../../assets/img/preloader/circle-center.png);
+  background: radial-gradient(351.92% 130.17% at 336.54% -20.19%, #615E5A 66.62%, #5B584D 73.04%, #43413D 91.96%);
   background-size: 278px 278px;
   backdrop-filter: blur(27.8158px);
   border-radius: 100%;
@@ -335,7 +335,7 @@ a {
   width: 325px;
   height: 325px;
   padding: 25px;
-  background-image: url(../../../../assets/img/preloader/circle-inner.png);
+  background-image: var(--circle-inner-url);
   background-size: 325px 325px;
   border-radius: 100%;
   margin: auto;
@@ -357,7 +357,13 @@ a {
   line-height: 13px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: #4b25c7;
+  background: var(--circle-title-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
   z-index: 12;
 }
 
@@ -370,7 +376,7 @@ a {
   font-size: 54px;
   letter-spacing: 0.18px;
   text-transform: uppercase;
-  background: linear-gradient(180deg, #492cc7 40%, #52e3e3 100%);
+  background: var(--circle-percent-color);
   background-clip: text;
   -webkit-background-clip: text;
   text-fill-color: transparent;
@@ -390,65 +396,4 @@ a {
   letter-spacing: 0.8px;
   color: #4c83d1;
   z-index: 12;
-}
-
-.dot {
-  height: 9px;
-  width: 9px;
-  background-color: #e2ebff;
-  box-shadow: inset 0px 1.97286px 1.97286px #b5bece;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 2px;
-}
-
-.dot-filled-wrapper {
-  margin-top: -21px;
-}
-
-.dot-filled {
-  height: 9px;
-  width: 9px;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 2px;
-}
-
-.dot-filled.dot-filled-1 {
-  background: #5e44d4;
-}
-
-.dot-filled.dot-filled-2 {
-  background: #8d98fa;
-}
-
-.dot-filled.dot-filled-3 {
-  background: #6bc4f5;
-}
-
-.dot-filled.dot-filled-4 {
-  background: #8d98fa;
-}
-
-.dot-filled.dot-filled-5 {
-  background: #59f1f1;
-}
-
-.dot-filled.dot-filled-6 {
-  background: #acfbfb;
-}
-
-.snapshots-notify {
-  position: relative;
-  background: linear-gradient(
-    353.64deg,
-    rgba(65, 15, 227, 0) -63.58%,
-    rgba(114, 108, 238, 0.08) 3.96%,
-    rgba(165, 206, 249, 0.34001) 39.82%,
-    rgba(191, 255, 255, 0.47) 96.52%
-  );
-  -webkit-backdrop-filter: blur(200px);
-  backdrop-filter: blur(200px);
-  border-radius: 144px;
-  padding: 10px;
 }

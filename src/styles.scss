@@ -103,9 +103,26 @@ html {
   --logo-radial-color-3: #8592aa;
   --logo-radial-color-4: #7f8ea7;
 
-  --logo-linear-color-1: #E0E6F2
-;
-  --logo-linear-color-2: #FFFFFF;
+  --logo-linear-color-1: #e0e6f2;
+  --logo-linear-color-2: #ffffff;
+
+  --circle-inner-url: url('assets/img/preloader/circle-inner-silver.png');
+  --circle-inner-sm-url: url('assets/img/preloader/circle-inner-silver-sm.png');
+
+  --circle-title-color: #4c4c4c;
+  --circle-percent-color: linear-gradient(
+    0deg,
+    #d3dbed 6.17%,
+    #ffffff 38.87%,
+    #d3dbed 99.88%
+  );
+  --circle-default-color: #666666;
+  --circle-inner-circle-bg: radial-gradient(
+    351.92% 130.17% at 336.54% -20.19%,
+    #c7cad7 66.62%,
+    #c0c1c5 73.04%,
+    #949496 91.96%
+  );
 
   --link-color: #5770a3;
 }
@@ -160,6 +177,19 @@ html {
 
   --logo-linear-color-1: #feefd0;
   --logo-linear-color-2: #feefd0;
+
+  --circle-inner-url: url('assets/img/preloader/circle-inner-green.png');
+  --circle-inner-sm-url: url('assets/img/preloader/circle-inner-green-sm.png');
+
+  --circle-title-color: #feefd0;
+  --circle-percent-color: #feefd0;
+  --circle-default-color: #0b4f54;
+  --circle-inner-circle-bg: radial-gradient(
+    351.92% 130.17% at 336.54% -20.19%,
+    #0d7a81 66.62%,
+    #19666d 73.04%,
+    #0e5056 91.96%
+  );
 
   --link-color: #34bc85;
   .learn-more {
@@ -232,6 +262,24 @@ html {
 
   --logo-linear-color-1: #6d5509;
   --logo-linear-color-2: #a98c32;
+
+  --circle-inner-url: url('assets/img/preloader/circle-inner-gold.png');
+  --circle-inner-sm-url: url('assets/img/preloader/circle-inner-gold-sm.png');
+
+  --circle-title-color: #c9a42e;
+  --circle-percent-color: linear-gradient(
+    180deg,
+    #c9a42e 0%,
+    #fef1c8 58.85%,
+    #dcc47d 100%
+  );
+  --circle-default-color: #866c1a;
+  --circle-inner-circle-bg: radial-gradient(
+    351.92% 130.17% at 336.54% -20.19%,
+    #615e5a 66.62%,
+    #5b584d 73.04%,
+    #43413d 91.96%
+  );
 
   --link-color: #372a02;
 }
