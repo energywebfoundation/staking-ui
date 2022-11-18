@@ -8,43 +8,6 @@
   }
 }
 
-mat-datetimepicker-content {
-  background-color: #2d3358 !important;
-}
-
-.mat-datetimepicker-calendar-table-header {
-  color: rgba(255, 255, 255, 0.38) !important;
-}
-
-.mat-datetimepicker-calendar-body-cell-content,
-.mat-datetimepicker-clock-cell {
-  color: #fff !important;
-  font-size: 16px !important;
-}
-
-.mat-datetimepicker-calendar-body-cell-content.mat-datetimepicker-calendar-body-today:not(.mat-datetimepicker-calendar-body-selected) {
-  border-color: #fff !important;
-}
-
-.mat-datetimepicker-clock {
-  background-color: #23294e !important;
-}
-
-.mat-datetimepicker-calendar-header {
-  background-color: #23294e !important;
-}
-
-.mat-datetimepicker-clock-center,
-.mat-datetimepicker-clock-hand,
-.mat-datetimepicker-clock-cell.mat-datetimepicker-clock-cell-selected {
-  background-color: #a466ff !important;
-}
-
-.mat-datetimepicker-calendar-next-button,
-.mat-datetimepicker-calendar-previous-button {
-  color: #7fadff !important;
-}
-
 .mat-dialog-title {
   padding: 10px 24px 10px 24px;
   font-weight: 600;
@@ -113,77 +76,6 @@ mat-datetimepicker-content {
 .mat-dialog-actions {
   margin: 10px 0 !important;
   padding: 20px 24px !important;
-}
-
-.timepicker-overlay {
-  z-index: 10000000 !important;
-}
-
-.timepicker-backdrop-overlay {
-  z-index: 10000000 !important;
-}
-
-.timepicker {
-  .timepicker__header {
-    background-color: #26203a !important;
-  }
-
-  .timepicker__body {
-    background-color: #322b46 !important;
-  }
-
-  .timepicker__actions {
-    justify-content: center !important;
-    background-color: #161320 !important;
-  }
-
-  .timepicker-button {
-    border-radius: 50px !important;
-    min-width: 100px !important;
-    margin-right: 2px;
-    margin-left: 2px;
-
-    > span {
-      font-size: 16px !important;
-      padding: 8px 16px !important;
-      letter-spacing: 0.33px;
-      text-transform: capitalize !important;
-    }
-
-    &:hover {
-      background-color: #a466ff !important;
-    }
-  }
-
-  .clock-face {
-    background-color: #27213a !important;
-  }
-
-  .clock-face__clock-hand {
-    background-color: #a466ff !important;
-
-    &::after {
-      background-color: #a466ff !important;
-    }
-
-    &::before {
-      border-color: #a466ff !important;
-    }
-  }
-
-  .clock-face__number {
-    > span.active {
-      background-color: #a466ff !important;
-    }
-  }
-
-  .clock-face__number > span {
-    color: #fff !important;
-  }
-
-  button:not(.timepicker-dial__item) {
-    color: #fff !important;
-  }
 }
 
 .result-filter {
