@@ -87,7 +87,7 @@ p {
 }
 
 .amount-input {
-  color: #1a1a1a;
+  color: var(--input-color);
   font-family: 'Sequel Sans', sans-serif;
 
   &::-webkit-outer-spin-button,
@@ -98,4 +98,8 @@ p {
   &[type='number'] {
     -moz-appearance: textfield; /* Firefox */
   }
+}
+
+.close {
+  color: var(--loader-color)
 }

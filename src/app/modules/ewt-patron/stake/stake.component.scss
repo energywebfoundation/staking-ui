@@ -109,7 +109,7 @@ h6 {
 }
 
 ::ng-deep mat-label {
-  color: #a6a5ac !important;
+  color: var(--input-label-color);
   font-family: 'Roboto', sans-serif !important;
   font-weight: 400 !important;
 }
@@ -117,7 +117,7 @@ h6 {
 ::ng-deep {
   .staking-textfield {
     &.mat-form-field-appearance-outline .mat-form-field-outline {
-      background: #ffffff !important;
+      background: var(--input-bg) !important;
       box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.08);
       border-radius: 48px;
       color: transparent;
@@ -157,7 +157,8 @@ h6 {
 
   .staking-textfield.mat-form-field-appearance-outline.mat-focused
     .mat-form-field-outline-thick {
-    color: #4b25c7;
+    color: var(--input-border-focus);
+    background: var(--input-bg-focus);
   }
 
   .staking-textfield .mat-form-field-subscript-wrapper {
@@ -189,7 +190,7 @@ h6 {
 }
 
 .amount-input {
-  color: #1a1a1a;
+  color: var(--input-label-color);
   font-family: 'Sequel Sans', sans-serif;
 
   &::-webkit-outer-spin-button,

@@ -460,7 +460,7 @@ tr.mat-row {
 }
 
 .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: #a567ff;
+  color: red;
 }
 
 .mat-input-element {
@@ -476,7 +476,7 @@ tr.mat-row {
 
 .mat-form-field-outline {
   background: #181522 !important;
-  color: #554675;
+  color: red;
 }
 
 .mat-select-value {
@@ -487,46 +487,11 @@ tr.mat-row {
 .mat-select-arrow {
   color: #4d4d4d;
 }
-
-mat-label {
-  color: #1a1a1a;
-  opacity: 0.8;
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+  color: var(--error-color)
 }
-
-.mat-filter-sort {
-  .mat-label {
-    color: #ffffff;
-  }
-
-  .mat-input-element {
-    color: #fff;
-  }
-
-  .mat-form-field-outline {
-    background: #181522 !important;
-    color: #554675;
-  }
-
-  .mat-select-placeholder {
-    color: #9080bb !important;
-  }
-}
-
 // Button
 
-.btn-primary {
-  background-color: #33cbcb;
-  color: #ffffff;
-
-  &:hover {
-    background-color: #5bd6d6;
-    color: #ffffff;
-  }
-}
-
-.btn-color-primary {
-  color: #33cbcb;
-}
 
 .btn-connect {
   background-color: #ffffff;
@@ -562,53 +527,6 @@ mat-label {
 
 .mat-slide-toggle-bar {
   background-color: rgba(51, 46, 70, 1);
-}
-
-.mat-stroked-filter-button {
-  border-color: #33cbcb !important;
-  color: #33cbcb !important;
-
-  &:hover {
-    border-color: #5bd6d6 !important;
-    color: #5bd6d6 !important;
-  }
-}
-
-.md-search.mat-form-field .mat-input-element {
-  color: #ffffff;
-}
-
-.mat-stroked-button {
-  border-color: #33cbcb !important;
-  color: #33cbcb !important;
-  text-transform: uppercase;
-
-  &:hover {
-    border-color: #5bd6d6 !important;
-    color: #5bd6d6 !important;
-  }
-}
-
-.mat-stroked-table-button {
-  border-color: #8677ae !important;
-  color: #8677ae !important;
-
-  &:hover {
-    border-color: #33cbcb !important;
-    color: #33cbcb !important;
-  }
-}
-
-.mat-button-toggle-group {
-  border: solid 1px #33cbcb;
-}
-
-.mat-button-toggle {
-  color: #33cbcb !important;
-}
-
-.mat-button-toggle-checked {
-  background-color: #33cbcb;
 }
 
 .mat-button-toggle-checked .mat-button-toggle-label-content {
@@ -764,10 +682,6 @@ mat-label {
   border-bottom: 1px solid #3c3b4c;
 }
 
-.color-link {
-  color: #b6b2e1;
-}
-
 .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent
   .mat-ripple-element,
 .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
@@ -834,60 +748,9 @@ mat-label {
 
 // Calendar
 
-.mat-datepicker-content {
-  background-color: #2a2937 !important;
-  color: rgba(255, 255, 255, 0.87) !important;
-}
-
-.mat-calendar-body-cell-content {
-  color: rgba(255, 255, 255, 0.87) !important;
-}
-
-.mat-datepicker-content .mat-calendar-next-button,
-.mat-datepicker-content .mat-calendar-previous-button,
-.mat-datepicker-toggle {
-  color: rgba(255, 255, 255, 0.54);
-}
-
-.mat-calendar-body-label {
-  color: rgba(255, 255, 255, 0.54) !important;
-}
-
-.mat-calendar-table-header-divider {
-  color: rgba(255, 255, 255, 0.38) !important;
-}
-
-.mat-calendar-arrow {
-  border-top-color: rgba(255, 255, 255, 0.54) !important;
-}
-
-.mat-calendar-table-header {
-  color: rgba(255, 255, 255, 0.38) !important;
-}
-
-.mat-calendar-body-today:not(.mat-calendar-body-selected) {
-  border-color: rgba(255, 255, 255, 0.38) !important;
-}
-
-.mat-calendar-body-selected {
-  background-color: #673ab7 !important;
-}
-
-.mat-calendar-table-header-divider::after {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.mat-datetimepicker-calendar-body-selected {
-  background-color: #a466ff !important;
-}
-
 .text-blur {
   color: transparent;
   text-shadow: 0 0 5px rgb(255 255 255 / 50%);
-}
-
-.history-list-item {
-  background-color: #363446;
 }
 
 .border-vertical {

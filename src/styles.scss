@@ -131,17 +131,40 @@ html {
 
   --terms-title-color: #8290a9;
   --congratulations-url: 'assets/img/staking/congratulations-silver.png';
-  --dialog-bg: linear-gradient(180deg, #FFFFFF 0%, #D6DEEE 100%);
-  --dialog-shadow: 0px 16px 40px #8795AC;
-  --dialog-title: #5770A3;
-  --dialog-text-color: #4D4D4D;
+  --dialog-bg: linear-gradient(180deg, #ffffff 0%, #d6deee 100%);
+  --dialog-shadow: 0px 16px 40px #8795ac;
+  --dialog-title: #5770a3;
+  --dialog-text-color: #4d4d4d;
 
   --secondary-btn-color: #445578;
-  --secondary-btn-bg: linear-gradient(0deg, #FFFFFF, #FFFFFF), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
-  --secondary-btn-bg-hover: linear-gradient(0deg, #F7F7F7, #F7F7F7), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-bg: linear-gradient(0deg, #ffffff, #ffffff),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
+  --secondary-btn-bg-hover: linear-gradient(0deg, #f7f7f7, #f7f7f7),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
   --secondary-btn-shadow: rgba(0, 0, 0, 0.16);
 
+  --input-label-color: #7D8DA8;
+  --input-placeholder-color: #7D8DA8;
+  --input-color: #5770A3;
+  --input-bg: #EFF5FC;
+  --input-bg-focus: #FFFFFF;
+  --input-bg-disabled: linear-gradient(0deg, #EFF5FC, #EFF5FC), #FFFFFF;
+  --input-color-disabled: #5770A3;
+  --input-border-focus: #5770A3;
 
+  --error-color: #FF5C63;
+
+  --cancel-icon: #97aac7;
 }
 
 // green
@@ -216,15 +239,39 @@ html {
   --terms-title-color: #074b50;
   --congratulations-url: 'assets/img/staking/congratulations-green.png';
 
-  --dialog-bg: linear-gradient(359.43deg, #C2D2D3 0.16%, #FFFFFF 99.19%);
+  --dialog-bg: linear-gradient(359.43deg, #c2d2d3 0.16%, #ffffff 99.19%);
   --dialog-shadow: none;
-  --dialog-title: #074B50;
-  --dialog-text-color: #0B4F54;
+  --dialog-title: #074b50;
+  --dialog-text-color: #0b4f54;
 
   --secondary-btn-color: #105157;
-  --secondary-btn-bg: linear-gradient(0deg, #FFFFFF, #FFFFFF), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
-  --secondary-btn-bg-hover: linear-gradient(0deg, #FEEFD0, #FEEFD0), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-bg: linear-gradient(0deg, #ffffff, #ffffff),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
+  --secondary-btn-bg-hover: linear-gradient(0deg, #feefd0, #feefd0),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
   --secondary-btn-shadow: rgba(0, 0, 0, 0.16);
+
+  --input-label-color: #0A4D52;
+  --input-placeholder-color: rgba(11, 79, 84, 0.4);
+  --input-color: #074B50;
+  --input-bg: rgba(9, 75, 80, 0.11);
+  --input-bg-focus: #FFFFFF;
+  --input-bg-disabled: linear-gradient(0deg, #E4EBEC, #E4EBEC), #FFFFFF;
+  --input-color-disabled: rgba(7, 75, 80, 0.6);
+  --input-border-focus: #0A4D52;
+  --error-color: #FF5C63;
+
+  --cancel-icon: #0a4d52;
   .learn-more {
     border: 1px solid #fdb53b;
   }
@@ -322,20 +369,41 @@ html {
   --terms-title-color: #c9a42e;
   --congratulations-url: 'assets/img/staking/congratulations-gold.png';
 
-  --dialog-bg: linear-gradient(180deg, #FFFFFF 0%, #C8C8C7 100%);
+  --dialog-bg: linear-gradient(180deg, #ffffff 0%, #c8c8c7 100%);
   --dialog-shadow: none;
-  --dialog-title: #C9A42E;
-  --dialog-text-color: #372A02;
+  --dialog-title: #c9a42e;
+  --dialog-text-color: #372a02;
 
-  --secondary-btn-color: #372A02;
-  --secondary-btn-bg: linear-gradient(0deg, #FFFFFF, #FFFFFF), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
-  --secondary-btn-bg-hover: linear-gradient(0deg, #FFF9E7, #FFF9E7), radial-gradient(184.5% 68.24% at 169.12% 8.09%, #EDFFFF 32.52%, #DBEDFF 71.15%, #CBDFF4 91.96%);
+  --secondary-btn-color: #372a02;
+  --secondary-btn-bg: linear-gradient(0deg, #ffffff, #ffffff),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
+  --secondary-btn-bg-hover: linear-gradient(0deg, #fff9e7, #fff9e7),
+    radial-gradient(
+      184.5% 68.24% at 169.12% 8.09%,
+      #edffff 32.52%,
+      #dbedff 71.15%,
+      #cbdff4 91.96%
+    );
   --secondary-btn-shadow: rgba(0, 0, 0, 0.16);
 
-  --input-label-color: #372A02;
+  --input-label-color: #372a02;
   --input-placeholder-color: rgba(55, 42, 2, 0.4);
-  --input-color: #372A02;
-  --input-bg: #E2DECE;
-  --input-bg-disabled: '';
-  --error-color: #FF5C63;
+  --input-color: #372a02;
+  --input-bg: #e2dece;
+  --input-bg-focus: #ffffff;
+  --input-bg-disabled: linear-gradient(0deg, #e2dece, #e2dece), #ffffff;
+  --input-color-disabled:rgba(55, 42, 2, 0.6);
+  --input-border-focus: #372a02;
+  --error-color: #ff5c63;
+
+  --cancel-icon: #fedc71;
+}
+
+.mat-error {
+  color: var(--error-color);
 }
