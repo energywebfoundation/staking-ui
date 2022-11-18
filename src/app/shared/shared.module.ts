@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MinifiedDidViewerDirective } from './directives/minified-did-viewer/minified-did-viewer.directive';
-import { MinifiedDidViewerDialogComponent } from './directives/minified-did-viewer/minified-did-viewer-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -45,8 +43,6 @@ const MATERIAL_MODULES = [
     MATERIAL_MODULES,
   ],
   declarations: [
-    MinifiedDidViewerDirective,
-    MinifiedDidViewerDialogComponent,
     SectionHeaderComponent,
     SectionContainerComponent,
   ],
@@ -55,7 +51,6 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    MinifiedDidViewerDirective,
     MATERIAL_MODULES,
     CopyToClipboardModule,
     DidFormatMinifierModule,

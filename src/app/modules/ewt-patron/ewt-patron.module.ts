@@ -39,6 +39,10 @@ import { TermsComponent } from './terms/terms.component';
 import { SectionComponent } from './section/section.component';
 import { TermsIconComponent } from './terms-icon/terms-icon.component';
 import { EwLogoComponent } from './ew-logo/ew-logo.component';
+import { TwitterIconComponent } from './twitter-icon/twitter-icon.component';
+import { TelegramIconComponent } from './telegram-icon/telegram-icon.component';
+import { GlobeIconComponent } from './globe-icon/globe-icon.component';
+import { DiscordIconComponent } from './discord-icon/discord-icon.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +69,10 @@ import { EwLogoComponent } from './ew-logo/ew-logo.component';
     SectionComponent,
     TermsIconComponent,
     EwLogoComponent,
+    TwitterIconComponent,
+    TelegramIconComponent,
+    GlobeIconComponent,
+    DiscordIconComponent,
   ],
   imports: [
     CommonModule,

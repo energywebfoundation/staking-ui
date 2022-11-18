@@ -33,25 +33,6 @@ h2 {
   }
 }
 
-h3 {
-  font-family: Rajdhani, sans-serif;
-  font-weight: 600 !important;
-  letter-spacing: 0.25px !important;
-  font-size: 34px !important;
-
-  .staking-currency {
-    font-size: 16px !important;
-    color: #a6a5ac;
-  }
-}
-
-h4 {
-  color: #492cc7;
-  font-family: 'BW-Gradual-Medium';
-  font-weight: 700 !important;
-  font-size: 36px !important;
-}
-
 .text-color {
   color: #ffffff;
 }
@@ -241,13 +222,8 @@ a {
 
 .role-req {
   position: relative;
-  background: linear-gradient(
-    353.64deg,
-    rgba(65, 15, 227, 0) -63.58%,
-    rgba(114, 108, 238, 0.08) 3.96%,
-    rgba(165, 206, 249, 0.34001) 39.82%,
-    rgba(191, 255, 255, 0.47) 96.52%
-  );
+  background: var(--section-bg);
+  box-shadow: 1px 1px 12px var(--section-shadow-color);
   backdrop-filter: blur(200px);
   border-radius: 144px;
   padding: 10px;

@@ -1,8 +1,15 @@
 h4 {
-  color: #492cc7;
   font-family: 'BW-Gradual-Medium';
   font-weight: 700 !important;
   font-size: 36px !important;
+  color: var(--h2-color);
+  background: var(--snapshot-title-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 h5 {

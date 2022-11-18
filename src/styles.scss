@@ -124,7 +124,12 @@ html {
     #949496 91.96%
   );
 
+  --icon-stroke: #c3d7ff;
+  --footer-text: #fafcff;
+
   --link-color: #5770a3;
+
+  --terms-title-color: #8290a9;
 }
 
 // green
@@ -191,7 +196,12 @@ html {
     #0e5056 91.96%
   );
 
+  --icon-stroke: #fdb53b;
+  --footer-text: #feefd0;
+
   --link-color: #34bc85;
+
+  --terms-title-color: #074b50;
   .learn-more {
     border: 1px solid #fdb53b;
   }
@@ -281,5 +291,10 @@ html {
     #43413d 91.96%
   );
 
+  --icon-stroke: #cda938;
+  --footer-text: #cca836;
+
   --link-color: #372a02;
+
+  --terms-title-color: #c9a42e;
 }

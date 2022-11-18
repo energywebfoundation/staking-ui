@@ -1,9 +1,11 @@
 .snapshot-title {
-  background: var(--snapshot-title-color);
+
   font-family: Rajdhani, sans-serif;
   font-size: 64px;
   font-weight: bold;
   margin-right: 10px;
+  color: var(--h2-color);
+  background: var(--snapshot-title-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
