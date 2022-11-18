@@ -52,13 +52,7 @@ mat-datetimepicker-content {
 }
 
 .connect-to-wallet .mat-dialog-container {
-  background: linear-gradient(
-      349.41deg,
-      rgba(220, 255, 255, 0.22) -17.31%,
-      rgba(220, 255, 255, 0.26) 4.93%,
-      rgba(255, 255, 255, 0.28) 129.23%
-    ),
-    #ecf0f3;
+  background:var(--dialog-bg);
   box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
   border-radius: 48px;
 
