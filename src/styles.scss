@@ -32,6 +32,11 @@ html {
 
 // silver
 :root[data-theme=silver] {
+  --gradient-bg: url('assets/img/staking/silver/staking-gradient-background-silver-min.png');
+  --preloader-empty-bg: url('/assets/img/preloader/silver/preloader-silver-empty.png');
+  --preloader-full-bg: url('/assets/img/preloader/silver/preloader-silver-full.png');
+  --bg-atoms: '/assets/img/staking/silver/bg-atoms.png';
+  --preloader-bg-color: #7a7c80;
   --loader-color: #7d8da8;
 
   --container-bg: linear-gradient(180deg, #7a7b7f 0%, #7a7c80 100%);
@@ -180,6 +185,11 @@ html {
 
 // green
 :root[data-theme=green] {
+  --gradient-bg: url('assets/img/staking/green/staking-gradient-background-green-min.png');
+  --preloader-empty-bg: url('/assets/img/preloader/green/preloader-green-empty.png');
+  --preloader-full-bg: url('/assets/img/preloader/green/preloader-green-full.png');
+  --bg-atoms: '/assets/img/staking/green/bg-atoms.png';
+  --preloader-bg-color: #279775;
   --loader-color: #0f5156;
 
   --container-bg: #0f5156;
@@ -300,6 +310,12 @@ html {
 
 // gold
 :root[data-theme=gold] {
+  --gradient-bg: url('assets/img/staking/gold/staking-gradient-background-gold-min.png');
+  --preloader-empty-bg: url('/assets/img/preloader/gold/preloader-gold-empty.png');
+  --preloader-full-bg: url('/assets/img/preloader/gold/preloader-gold-full.png');
+  --bg-atoms: '/assets/img/staking/gold/bg-atoms.png';
+  --preloader-bg-color: #4c4a46;
+
   --loader-color: #c9a42e;
   --container-bg: linear-gradient(360deg, #242424 39.06%, #4c4a46 100%);
   --h1-color: #8290a9;

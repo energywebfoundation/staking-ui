@@ -914,30 +914,26 @@ tr.mat-row {
   border-top: 1px solid rgba(0, 0, 0, 0.16) !important;
 }
 
-// Preloader
-
-.preloader {
-  background-color: #ecf0f3;
-}
 
 // Preloader
 .preloader {
-  background-color: #ecf0f3;
-  background-image: url('../../../../assets/img/staking/staking-gradient-background.png');
+  // TODO: set proper background color.
+  background-color: #4c4a46;
+  background-image: var(--gradient-bg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .preloader-progress {
-  background: url('/assets/img/preloader/preloader.empty.png') no-repeat;
+  background: var(--preloader-empty-bg) no-repeat;
   width: 200px;
   height: 65.5px;
   background-size: 200px 65.5px;
 }
 
 .preloader-progress-bar {
-  background: url('/assets/img/preloader/preloader.full.png') no-repeat;
+  background: var(--preloader-full-bg) no-repeat;
   width: 200px;
   height: 65.5px;
   background-size: 200px 65.5px;
