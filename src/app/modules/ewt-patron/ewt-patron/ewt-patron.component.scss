@@ -1,6 +1,8 @@
 .staking-container {
   background: var(--container-bg);
-
+  background-image: var(--gradient-bg);
+  background-position: top;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
