@@ -20,6 +20,7 @@ export class LoadingComponent implements AfterViewInit {
   public msg = '';
   public msgList: string[];
   loaderColor: string;
+  loaderBg: string;
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -28,10 +29,15 @@ export class LoadingComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(
-      () =>
-        (this.loaderColor = getComputedStyle(
+      () => {
+        this.loaderColor = getComputedStyle(
           document.documentElement
-        ).getPropertyValue('--loader-color')),
+        ).getPropertyValue('--loader-color');
+        this.loaderBg = getComputedStyle(
+          document.documentElement
+        ).getPropertyValue('--preloader-bg-color')
+      }
+        ,
       100
     );
     // Subscribe to cancellable event
