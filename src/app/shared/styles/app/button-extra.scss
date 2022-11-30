@@ -62,13 +62,13 @@
 
   &.btn-connect-metamask {
     &:hover {
-      color: #f6851b;
-      background-color: rgb(255 223 192);
+      color: var(--metamask-btn-color);
+      background: var(--metamask-btn-bg);
       box-shadow: none !important;
     }
 
     &:focus {
-      background-color: rgb(255 223 192);
+      background: var(--metamask-btn-bg);
     }
   }
 

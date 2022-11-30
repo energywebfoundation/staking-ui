@@ -491,12 +491,16 @@ tr.mat-row {
 // Button
 
 .btn-connect {
-  background-color: #ffffff;
-  color: #000000;
+  background: var(--metamask-btn-bg);
+  color: var(--metamask-btn-color);
   box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.16);
   border-radius: 34px !important;
   padding: 0 0 !important;
   height: 48px;
+  &.mat-button-disabled {
+    background: var(--metamask-btn-disabled-bg) !important;
+    color: var(--metamask-btn-color-disabled) !important;
+  }
 }
 
 .mat-slide-toggle-thumb {

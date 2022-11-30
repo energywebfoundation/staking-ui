@@ -39,6 +39,11 @@ html {
   --preloader-bg-color: #7a7c80;
   --loader-color: #7d8da8;
 
+  --metamask-btn-bg: linear-gradient(87.32deg, #CEDAE8 3.04%, #F1F8FF 60.58%, #D3DEEB 89.74%);;
+  --metamask-btn-color: #445578;
+  --metamask-btn-disabled-bg: rgba(206, 218, 232, 0.3);
+  --metamask-btn-color-disabled: rgba(68, 85, 120, 0.3);
+
   --container-bg: #7B7C80;
   --h1-color: #8290a9;
   --h2-color: #bac7e2;
@@ -191,6 +196,11 @@ html {
   --preloader-bg-color: #279775;
   --loader-color: #0f5156;
 
+  --metamask-btn-bg: #34BC85;
+  --metamask-btn-color: #FEEFD0;
+  --metamask-btn-disabled-bg: rgba(16, 81, 87, 0.2);
+  --metamask-btn-color-disabled: rgba(68, 85, 120, 0.3);
+
   --container-bg: #0f5156;
   --h1-color: #084d51;
   --h2-color: #feefd0;
@@ -314,6 +324,11 @@ html {
   --preloader-full-bg: url('/assets/img/preloader/gold/preloader-gold-full.png');
   --bg-atoms: '/assets/img/staking/gold/bg-atoms.png';
   --preloader-bg-color: #4c4a46;
+
+  --metamask-btn-bg: linear-gradient(89.9deg, #C8A32D 1.5%, #F7E09B 69.67%, #E1C469 99.91%);
+  --metamask-btn-color: #445578;
+  --metamask-btn-disabled-bg: rgba(200, 163, 45, 0.2);
+  --metamask-btn-color-disabled: rgba(68, 85, 120, 0.3);;
 
   --loader-color: #c9a42e;
   --container-bg: #4c4a46;

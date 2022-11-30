@@ -17,16 +17,8 @@ export class ConnectButtonsComponent {
 
   constructor(private metamaskProviderService: MetamaskProviderService) {}
 
-  connectToWalletConnect() {
-    this.connectTo.emit(ProviderType.WalletConnect);
-  }
-
   connectToMetamask() {
     this.connectTo.emit(ProviderType.MetaMask);
-  }
-
-  connectToEKC() {
-    this.connectTo.emit(ProviderType.EKC);
   }
 
   async importMetamaskConf() {
