@@ -1,5 +1,4 @@
 <div class="header-wrapper d-flex flex-grow-1 align-items-center justify-content-end">
-  <app-switch-theme></app-switch-theme>
   <ng-container *ngIf="loggedIn$ | async">
     <ng-container *ngIf="accountInfo$ | async as info">
       <div class="btn-user-info" [matMenuTriggerFor]="menu" data-qa-id="menu-trigger">

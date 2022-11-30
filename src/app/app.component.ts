@@ -74,10 +74,5 @@ export class AppComponent implements OnInit {
     });
 
     this.store.dispatch(AuthActions.init());
-    if (localStorage.getItem('theme')) {
-      document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
-    } else {
-      document.documentElement.setAttribute('data-theme', localStorage.getItem('gold'));
-    }
   }
 }

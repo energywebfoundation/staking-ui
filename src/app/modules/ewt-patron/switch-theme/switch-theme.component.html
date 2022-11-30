@@ -1,8 +1,0 @@
-<mat-form-field appearance="fill">
-  <mat-label>Favorite theme</mat-label>
-  <mat-select (selectionChange)="onChangeHandler($event)">
-    <mat-option *ngFor="let theme of themes" [value]="theme">
-      {{theme}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
