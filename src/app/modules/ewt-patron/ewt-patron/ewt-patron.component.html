@@ -71,12 +71,6 @@
         </div>
       </div>
       <div class="col-xl-4 mt-4 mt-xl-4">
-        <div
-          [ngClass]="{ 'role-req': (isPatronSynced | async) === false }"
-          class="staking-terms text-color p-4"
-          *ngIf="isStakingVerificationEnabled">
-          <app-enrolment-status-check></app-enrolment-status-check>
-        </div>
         <app-terms class="staking-terms mt-4"></app-terms>
       </div>
     </div>

@@ -22,17 +22,10 @@ import { ConnectToWalletModule } from '../connect-to-wallet/connect-to-wallet.mo
 import { StakingHeaderComponent } from './staking-header/staking-header.component';
 import { StakingFooterComponent } from './staking-footer/staking-footer.component';
 import { UserMenuModule } from '../../layout/components/user-menu/user-menu.module';
-import { EnrolmentStatusCheckComponent } from './enrolment/enrolment-status-check/enrolment-status-check.component';
-import { NotEnroledComponent } from './enrolment/not-enroled/not-enroled.component';
-import { NotApprovedComponent } from './enrolment/not-approved/not-approved.component';
-import { NotSyncedComponent } from './enrolment/not-synced/not-synced.component';
-import { ApprovedSyncedComponent } from './enrolment/approved-synced/approved-synced.component';
-import { ConfirmationDialogComponent } from './enrolment/confirmation-dialog/confirmation-dialog.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { HourlyToDailyRewardModule } from '../../shared/pipes/hourly-to-daily-reward/hourly-to-daily-reward.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CircleProgressModule } from '../circle-progress/circle-progress.module';
-import { NotVerifiedInfoComponent } from './enrolment/not-verified-info/not-verified-info.component';
 import { LabelComponent } from './label/label.component';
 import { H4Component } from './h4/h4.component';
 import { TermsComponent } from './terms/terms.component';
@@ -56,14 +49,7 @@ import { MatSelectModule } from '@angular/material/select';
     LastDigitsPipe,
     StakingHeaderComponent,
     StakingFooterComponent,
-    EnrolmentStatusCheckComponent,
-    NotEnroledComponent,
-    NotApprovedComponent,
-    NotSyncedComponent,
-    ApprovedSyncedComponent,
-    ConfirmationDialogComponent,
     ProgressBarComponent,
-    NotVerifiedInfoComponent,
     LabelComponent,
     H4Component,
     TermsComponent,
