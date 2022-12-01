@@ -15,8 +15,8 @@
 }
 
 .connect-to-wallet .mat-dialog-container {
-  background:var(--dialog-bg);
-  box-shadow: 0px 16px 40px rgba(32, 71, 169, 0.32);
+  background:var(--metamask-dialog-bg);
+  box-shadow: var(--metamask-dialog-shadow);
   border-radius: 48px;
 
   .mat-dialog-title {

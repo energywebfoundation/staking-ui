@@ -922,7 +922,7 @@ tr.mat-row {
 // Preloader
 .preloader {
   // TODO: set proper background color.
-  background-color: #4c4a46;
+  background-color: var(--container-bg);
   background-image: var(--gradient-bg);
   background-position: top;
   background-repeat: no-repeat;
