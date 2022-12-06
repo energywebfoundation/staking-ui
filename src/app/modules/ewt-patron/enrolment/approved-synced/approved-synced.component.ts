@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './approved-synced.component.html',
   styleUrls: ['./approved-synced.component.scss'],
 })
-export class ApprovedSyncedComponent {}
+export class ApprovedSyncedComponent {
+  imgUrl = getComputedStyle(document.documentElement)
+    .getPropertyValue('--congratulations-url')
+    .replace('"', '')
+    .replace('"', '')
+    .trim();
+}

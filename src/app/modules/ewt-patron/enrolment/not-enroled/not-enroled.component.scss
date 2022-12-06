@@ -13,7 +13,7 @@ h4 {
 }
 
 h5 {
-  color: #1a1a1a;
+  color: var(--h5-color);
   font-family: 'BW-Gradual-Regular';
 }
 
@@ -23,84 +23,8 @@ h5 {
   height: auto;
 }
 
-:host ::ng-deep {
-  .staking-textfield {
-    &.mat-form-field-appearance-outline .mat-form-field-outline {
-      background: #ffffff !important;
-      box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.08);
-      border-radius: 48px;
-      color: transparent;
-    }
-  }
-
-  .staking-textfield .mat-form-field-label-wrapper {
-    left: -5px;
-  }
-
-  .staking-textfield .mat-form-field-appearance-outline .mat-form-field-infix {
-    padding: 0.9em 0.3em !important;
-  }
-
-  .staking-textfield.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
-    .mat-form-field-label,
-  .mat-form-field-appearance-outline.mat-form-field-can-float
-    .mat-input-server:focus
-    + .mat-form-field-label-wrapper
-    .mat-form-field-label {
-    transform: translateY(-0.65em) scale(0.75) !important;
-  }
-
-  .staking-textfield.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
-    .mat-form-field-outline-gap {
-    border-top-color: initial;
-  }
-
-  .staking-textfield .mat-input-element {
-    top: 1.3px !important;
-    color: #1a1a1a;
-    opacity: 0.8;
-  }
-
-  .staking-textfield.mat-form-field-appearance-outline .mat-form-field-prefix,
-  .mat-form-field-appearance-outline .mat-form-field-suffix {
-    right: 0.35em;
-  }
-
-  .staking-textfield.mat-form-field-appearance-outline.mat-focused
-    .mat-form-field-outline-thick {
-    color: #4b25c7;
-  }
-
-  .staking-textfield .mat-form-field-subscript-wrapper {
-    top: calc(100% - 2.1em) !important;
-  }
-
-  .staking-textfield.mat-form-field-appearance-outline .mat-form-field-label {
-    top: 1.59em;
-  }
-
-  .staking-textfield.mat-form-field-appearance-outline
-    .mat-form-field-outline-start {
-    border-radius: 48px 0 0 48px;
-    width: 50px !important;
-  }
-
-  .staking-textfield.mat-form-field-appearance-outline
-    .mat-form-field-outline-end {
-    border-radius: 0 48px 48px 0;
-  }
-
-  .staking-textfield.mat-form-field-appearance-outline .mat-form-field-flex {
-    padding: 0.1em 0.6em !important;
-
-    @media screen and (max-width: 800px) {
-      padding: 0.35em 0.6em !important;
-    }
-  }
-}
-
 .staking-widget-sm-label {
-  color: #000000;
+  color: var(--li-color);
   font-weight: 400;
   font-family: 'BW-Gradual-Regular';
   font-size: 18px;

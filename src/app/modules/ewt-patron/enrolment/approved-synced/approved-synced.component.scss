@@ -1,12 +1,12 @@
 .staking-widget-sm-label {
-  color: #000000;
+  color: var(--li-color);
   font-weight: 400;
   font-family: 'BW-Gradual-Regular';
   font-size: 18px;
 }
 
 h4 {
-  color: #492cc7;
+  color: var(--h4-color);
   font-family: 'BW-Gradual-Medium';
   font-weight: 700 !important;
   font-size: 36px !important;
@@ -14,6 +14,7 @@ h4 {
 
 .success-icon {
   position: relative;
-  width: 155px;
+  width: 255px;
+  margin-bottom: -55px;
   height: auto;
 }
