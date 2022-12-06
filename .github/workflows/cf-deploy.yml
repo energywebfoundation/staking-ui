@@ -2,7 +2,7 @@ name: Deploy to bucket
 
 on:
   push:
-    branches: ['develop', 'release']
+    branches: ['gold-dev']
 jobs:
   cancel-previous:
     name: 'Cancel Previous Runs'
@@ -19,8 +19,8 @@ jobs:
         id: env_name
         run: |
           echo "Running on branch ${{ github.ref }}"
-          if [ "${{ github.ref }}" = "refs/heads/develop" ]; then
-            echo "::set-output name=env_name::dev"
+          if [ "${{ github.ref }}" = "refs/heads/gold-dev" ]; then
+            echo "::set-output name=env_name::gold-dev"
             echo "::set-output name=env_file::src/environments/environment.dev.ts"
             echo "::set-output name=build_script::npm run build"
           elif [ "${{ github.ref }}" = "refs/heads/release" ]; then
