@@ -64,3 +64,16 @@ h5 {
     background: var(--stake-btn-hover-bg);
   }
 }
+.amount-input {
+  color: var(--input-label-color);
+  font-family: 'Sequel Sans', sans-serif;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+}

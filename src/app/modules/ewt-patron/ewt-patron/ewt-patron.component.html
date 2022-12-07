@@ -73,7 +73,7 @@
       <div class="col-xl-4 mt-4 mt-xl-4">
         <app-section style="padding-top: 0px">
           <div
-            [ngClass]="{ 'role-req': (isPatronSynced | async) === false }"
+            [ngClass]="{ '': (isPatronSynced | async) === false }"
             class="staking-terms text-color p-4"
             *ngIf="isStakingVerificationEnabled">
             <app-enrolment-status-check></app-enrolment-status-check>
