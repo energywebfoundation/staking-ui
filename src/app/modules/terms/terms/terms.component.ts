@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './terms.component.html',
   styleUrls: ['./terms.scss'],
 })
-export class TermsComponent {}
+export class TermsComponent {
+  hostname = location.hostname;
+}
