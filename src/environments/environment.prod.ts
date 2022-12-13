@@ -27,6 +27,8 @@ const env: Partial<typeof commonEnv> = {
     'snapshot2.roles.consortiapool.apps.energyweb.auth.ewc',
     'snapshot3.roles.consortiapool.apps.energyweb.auth.ewc',
     'snapshot4.roles.consortiapool.apps.energyweb.auth.ewc',
+    'silverpool.roles.consortiapool.apps.energyweb.auth.ewc',
+    'goldpool.roles.consortiapool.apps.energyweb.auth.ewc',
   ],
 };
 
