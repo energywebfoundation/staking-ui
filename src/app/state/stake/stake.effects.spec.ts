@@ -21,11 +21,11 @@ describe('StakeEffects', () => {
   const stakingService = jasmine.createSpyObj('StakingPoolServiceFacade', [
     'init',
     'createPool',
-    'putStake'
+    'putStake',
   ]);
   const stakingPoolFacadeSpy = jasmine.createSpyObj('StakingPoolFacade', [
     'putStake',
-    'isPoolDefined'
+    'isPoolDefined',
   ]);
   let actions$: ReplaySubject<any>;
   let effects: StakeEffects;
@@ -42,8 +42,8 @@ describe('StakeEffects', () => {
         { provide: StakingPoolServiceFacade, useValue: stakingService },
         { provide: StakingPoolFacade, useValue: stakingPoolFacadeSpy },
         provideMockStore(),
-        provideMockActions(() => actions$)
-      ]
+        provideMockActions(() => actions$),
+      ],
     });
     store = TestBed.inject(MockStore);
 
@@ -55,24 +55,21 @@ describe('StakeEffects', () => {
       actions$ = new ReplaySubject(1);
     });
 
-    it(
-      'should return initPool action, getAccountBalance action and redirect action',
-      waitForAsync(() => {
-        actions$.next(StakeActions.initStakingPool());
-        stakingService.init.and.returnValue(of(true));
+    it('should return initPool action, getAccountBalance action and redirect action', waitForAsync(() => {
+      actions$.next(StakeActions.initStakingPool());
+      stakingService.init.and.returnValue(of(true));
 
-        effects.initStakingPoolService$
-          .pipe(take(1))
-          .subscribe(resultAction => {
-            expect(resultAction).toEqual(PoolActions.initPool());
-          });
+      effects.initStakingPoolService$
+        .pipe(take(1))
+        .subscribe((resultAction) => {
+          expect(resultAction).toEqual(PoolActions.initPool());
+        });
 
-        effects.initStakingPoolService$
-          .pipe(skip(1), take(1))
-          .subscribe(resultAction => {
-            expect(resultAction).toEqual(PoolActions.getAccountBalance());
-          });
-      })
-    );
+      effects.initStakingPoolService$
+        .pipe(skip(1), take(1))
+        .subscribe((resultAction) => {
+          expect(resultAction).toEqual(PoolActions.getAccountBalance());
+        });
+    }));
   });
 });

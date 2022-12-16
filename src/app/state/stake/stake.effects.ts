@@ -20,10 +20,7 @@ export class StakeEffects {
       switchMap(() =>
         from(this.stakingService.init()).pipe(
           mergeMap(() => {
-            return [
-              PoolActions.initPool(),
-              PoolActions.getAccountBalance(),
-            ];
+            return [PoolActions.initPool(), PoolActions.getAccountBalance()];
           })
         )
       )

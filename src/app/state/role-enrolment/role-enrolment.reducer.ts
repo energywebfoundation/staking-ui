@@ -11,30 +11,30 @@ export interface RoleEnrolmentState {
 
 export const initialState: RoleEnrolmentState = {
   status: RoleEnrolmentStatus.ENROLED_SYNCED,
-  enrolment: null
+  enrolment: null,
 };
 
 const roleEnrolmentReducer = createReducer(
   initialState,
   on(RoleEnrolmentActions.setStatus, (state, { status }) => ({
     ...state,
-    status
+    status,
   })),
   on(RoleEnrolmentActions.setEnrolment, (state, { enrolment }) => ({
     ...state,
-    enrolment
+    enrolment,
   })),
   on(
     RoleEnrolmentActions.enrolmentRejected,
     RoleEnrolmentActions.claimDoNotExist,
-    state => ({
+    (state) => ({
       ...state,
-      status: RoleEnrolmentStatus.NOT_ENROLED
+      status: RoleEnrolmentStatus.NOT_ENROLED,
     })
   ),
-  on(RoleEnrolmentActions.enrolmentApproved, state => ({
+  on(RoleEnrolmentActions.enrolmentApproved, (state) => ({
     ...state,
-    status: RoleEnrolmentStatus.ENROLED_APPROVED
+    status: RoleEnrolmentStatus.ENROLED_APPROVED,
   }))
 );
 

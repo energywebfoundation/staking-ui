@@ -19,13 +19,11 @@ describe('ConnectButtonsComponent', () => {
     component.metamaskDisabled = options.metamaskDisabled;
     fixture.detectChanges();
   };
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ConnectButtonsComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ConnectButtonsComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ConnectButtonsComponent);
@@ -108,6 +106,6 @@ const selectors = (hostDebug: DebugElement) => {
     noVolta: getElement(hostDebug)('no-volta'),
     mobileWalletBtn: getElement(hostDebug)('mobile-wallet'),
     ewKeyBtn: getElement(hostDebug)('ew-key'),
-    azureBtn: getElement(hostDebug)('azure')
+    azureBtn: getElement(hostDebug)('azure'),
   };
 };

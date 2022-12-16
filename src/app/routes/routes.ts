@@ -6,16 +6,16 @@ export const routes = [
     path: '',
     loadChildren: () =>
       import('../modules/ewt-patron/ewt-patron.module').then(
-        m => m.EwtPatronModule
-      )
+        (m) => m.EwtPatronModule
+      ),
   },
   {
     path: 'terms',
     loadChildren: () =>
-      import('../modules/terms/terms.module').then(m => m.TermsModule)
+      import('../modules/terms/terms.module').then((m) => m.TermsModule),
   },
   // Not found
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
@@ -24,9 +24,9 @@ export const routes = [
       onSameUrlNavigation: 'reload',
       relativeLinkResolution: 'legacy',
       useHash: false,
-      preloadingStrategy: NoPreloading
-    })
+      preloadingStrategy: NoPreloading,
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class RoutingModule {}

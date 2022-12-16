@@ -21,9 +21,7 @@ describe('SnapshotEffects', () => {
   let envService;
 
   beforeEach(() => {
-    claimsServiceSpy = jasmine.createSpyObj('ClaimsService', [
-      'getClaims'
-    ]);
+    claimsServiceSpy = jasmine.createSpyObj('ClaimsService', ['getClaims']);
 
     TestBed.configureTestingModule({
       providers: [
@@ -93,11 +91,12 @@ describe('SnapshotEffects', () => {
     });
 
     it('should return first three snapshots', (done) => {
-      const snapshotRoles: any[] = [          {
-        claimType: 'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc',
-        isRejected: false,
-        isAccepted: true,
-      },
+      const snapshotRoles: any[] = [
+        {
+          claimType: 'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc',
+          isRejected: false,
+          isAccepted: true,
+        },
         {
           claimType: 'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
           isRejected: false,
@@ -107,7 +106,8 @@ describe('SnapshotEffects', () => {
           claimType: 'snapshot3.roles.consortiapool.apps.energyweb.iam.ewc',
           isRejected: false,
           isAccepted: true,
-        },]
+        },
+      ];
       claimsServiceSpy.getClaims.and.returnValue(
         of([
           ...snapshotRoles,

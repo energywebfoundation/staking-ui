@@ -50,6 +50,10 @@ import { ImagePathPipe } from './snapshot-success/pipes/image-path.pipe';
 import { EnrolmentStatusHeaderDescriptionPipe } from './pipes/enrolment-status-header-description.pipe';
 import { EnrolmentStatusLinkPipe } from './pipes/enrolment-status-link.pipe';
 import { SnapshotRewardDescriptionComponent } from './snapshot-reward-description/snapshot-reward-description.component';
+import { SnapshotProcessComponent } from './snapshot-process/snapshot-process.component';
+import { GoldBubbleComponent } from './snapshots/gold-bubble/gold-bubble.component';
+import { SilverBubbleComponent } from './snapshots/silver-bubble/silver-bubble.component';
+import { BubbleComponent } from './snapshots/bubble/bubble.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +91,10 @@ import { SnapshotRewardDescriptionComponent } from './snapshot-reward-descriptio
     EnrolmentStatusHeaderDescriptionPipe,
     EnrolmentStatusLinkPipe,
     SnapshotRewardDescriptionComponent,
+    SnapshotProcessComponent,
+    GoldBubbleComponent,
+    SilverBubbleComponent,
+    BubbleComponent,
   ],
   imports: [
     CommonModule,

@@ -13,19 +13,19 @@ import { UserMenuTriggerComponent } from './user-menu-trigger/user-menu-trigger.
     ConnectedNetworkComponent,
     UserDidComponent,
     UserNameComponent,
-    UserMenuTriggerComponent
+    UserMenuTriggerComponent,
   ],
   imports: [
     CommonModule,
     MatIconModule,
     CopyToClipboardModule,
-    DidFormatMinifierModule
+    DidFormatMinifierModule,
   ],
   exports: [
     ConnectedNetworkComponent,
     UserDidComponent,
     UserNameComponent,
-    UserMenuTriggerComponent
-  ]
+    UserMenuTriggerComponent,
+  ],
 })
 export class UserMenuModule {}

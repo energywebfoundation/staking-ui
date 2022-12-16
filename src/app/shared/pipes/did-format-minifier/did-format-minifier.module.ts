@@ -5,6 +5,6 @@ import { DidFormatMinifierPipe } from './did-format-minifier.pipe';
 @NgModule({
   declarations: [DidFormatMinifierPipe],
   imports: [CommonModule],
-  exports: [DidFormatMinifierPipe]
+  exports: [DidFormatMinifierPipe],
 })
 export class DidFormatMinifierModule {}

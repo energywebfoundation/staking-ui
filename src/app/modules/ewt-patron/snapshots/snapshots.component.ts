@@ -11,9 +11,10 @@ import { snapshotInfo } from './models/snapshot-info';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SnapshotsComponent {
+  status = RoleEnrolmentStatus;
   constructor(private store: Store) {}
 
-  snapshotStatus$(value: number): any{
+  snapshotStatus$(value: number): any {
     return this.store.select(getSnapshotStatusByNumber(value));
   }
 

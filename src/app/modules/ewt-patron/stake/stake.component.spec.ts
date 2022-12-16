@@ -10,32 +10,30 @@ xdescribe('StakeComponent', () => {
   let fixture: ComponentFixture<StakeComponent>;
   let store: MockStore;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [StakeComponent, LastDigitsPipe],
-        providers: [
-          provideMockStore({
-            initialState: {
-              pool: {
-                balance: '0',
-                performance: 100,
-                annualReward: 10,
-                reward: '0',
-                organization: '',
-                userStake: null,
-                withdrawing: false,
-                organizationDetails: null
-              }
-            }
-          })
-        ],
-        schemas: [NO_ERRORS_SCHEMA]
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [StakeComponent, LastDigitsPipe],
+      providers: [
+        provideMockStore({
+          initialState: {
+            pool: {
+              balance: '0',
+              performance: 100,
+              annualReward: 10,
+              reward: '0',
+              organization: '',
+              userStake: null,
+              withdrawing: false,
+              organizationDetails: null,
+            },
+          },
+        }),
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
-      store = TestBed.inject(MockStore);
-    })
-  );
+    store = TestBed.inject(MockStore);
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(StakeComponent);

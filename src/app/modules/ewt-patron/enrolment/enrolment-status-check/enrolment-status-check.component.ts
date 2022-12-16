@@ -6,7 +6,7 @@ import { RoleEnrolmentStatus } from '../../../../state/role-enrolment/models/rol
 @Component({
   selector: 'app-enrolment-status-check',
   templateUrl: './enrolment-status-check.component.html',
-  styleUrls: ['./enrolment-status-check.component.scss']
+  styleUrls: ['./enrolment-status-check.component.scss'],
 })
 export class EnrolmentStatusCheckComponent {
   getStatus$ = this.store.select(RoleEnrolmentSelectors.getStatus);

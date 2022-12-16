@@ -1,0 +1,63 @@
+:host {
+  position: relative;
+  display: inline-block;
+  .center {
+
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 3;
+
+    .synced {
+      background: radial-gradient(
+                      103.74% 103.74% at 55.08% 9.89%,
+                      #ffd700 0%,
+                      rgba(239, 202, 0, 0.898536) 23.44%,
+                      rgba(255, 224, 54, 0.771706) 74.48%,
+                      rgba(255, 215, 0, 0.557292) 99.99%,
+                      rgba(255, 215, 0, 0) 100%
+      )
+    }
+  }
+  .middle {
+    position: absolute;
+    width: 147px;
+    height: 147px;
+    top: -10px;
+    left: -10px;
+    border-radius: 50%;
+    background: radial-gradient(
+        351.92% 130.17% at 336.54% -20.19%,
+        #fff495 66.62%,
+        #c6b30c 88.34%,
+        #bfac00 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    box-shadow: -66.2205px 6.62205px 35.0449px rgba(0, 0, 0, 0.12);
+    z-index: 2;
+  }
+
+  .glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: -36px;
+    left: -36px;
+    background: #50b0b0;
+    mix-blend-mode: overlay;
+    filter: blur(23.9333px);
+    z-index: 1;
+  }
+
+  .ring {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -26px;
+    left: -26px;
+    border-radius: 50%;
+    border: 3px solid #c6b30c;
+    background: transparent;
+    z-index: 2;
+  }
+}

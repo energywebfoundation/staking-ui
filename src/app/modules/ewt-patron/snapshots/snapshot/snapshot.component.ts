@@ -1,4 +1,10 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output,
+} from '@angular/core';
 import { RoleEnrolmentStatus } from '../../../../state/role-enrolment/models/role-enrolment-status.enum';
 import { snapshotInfo } from '../models/snapshot-info';
 
@@ -13,15 +19,25 @@ export class SnapshotComponent {
     this.enrolmentStatus = this.getEnrolmentStatus(value);
     this.snapshotStatus = value;
   }
-  @Output() bubbleClick = new EventEmitter<void>()
+  @Input() circle: 'silver-ring' | 'gold-ring' | '' = '';
+
+  @Output() bubbleClick = new EventEmitter<void>();
   snapshotStatus: RoleEnrolmentStatus;
   header: string;
   description: string;
 
+
   @HostBinding('class') enrolmentStatus: string;
+
+  get isSilver(): boolean {
+    return this.number === 4;
+  }
+
+  get isGolden(): boolean {
+    return this.number === 5;
+  }
 
   private getEnrolmentStatus(value: RoleEnrolmentStatus): string {
     return snapshotInfo.has(value) ? snapshotInfo.get(value).cssClass : '';
   }
-
 }

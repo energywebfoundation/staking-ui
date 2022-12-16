@@ -6,6 +6,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   imports: [SharedModule, NgxSpinnerModule],
   declarations: [LoadingComponent],
-  exports: [LoadingComponent]
+  exports: [LoadingComponent],
 })
 export class LayoutModule {}

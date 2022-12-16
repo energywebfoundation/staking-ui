@@ -10,13 +10,17 @@ import {
   mergeMap,
   switchMap,
   takeWhile,
-  tap
+  tap,
 } from 'rxjs/operators';
 import { EnvService } from '../../shared/services/env/env.service';
 import { LoadingService } from '../../shared/services/loading.service';
 import { from, of, timer } from 'rxjs';
 import { IamService } from '../../shared/services/iam.service';
-import { Claim, RegisterOnchainOptions, RegistrationTypes } from 'iam-client-lib';
+import {
+  Claim,
+  RegisterOnchainOptions,
+  RegistrationTypes,
+} from 'iam-client-lib';
 import { RoleEnrolmentStatus } from './models/role-enrolment-status.enum';
 import { SwitchboardToastrService } from '../../shared/services/switchboard-toastr.service';
 import { truthy } from '@operators';
@@ -32,18 +36,18 @@ export class RoleEnrolmentEffects {
       tap(() => this.loadingService.show()),
       switchMap(() =>
         this.getClaims().pipe(
-          map(roles =>
+          map((roles) =>
             roles
-              .filter(item => !item.isRejected)
+              .filter((item) => !item.isRejected)
               .filter(
-                item =>
+                (item) =>
                   item.claimType === this.envService.patronRole &&
                   item.registrationTypes.includes(RegistrationTypes.OnChain)
               )
           ),
-          mergeMap(roles => [
+          mergeMap((roles) => [
             RoleEnrolmentActions.setStatus({ status: this.getStatus(roles) }),
-            RoleEnrolmentActions.setEnrolment({ enrolment: roles[0] })
+            RoleEnrolmentActions.setEnrolment({ enrolment: roles[0] }),
           ]),
           finalize(() => this.loadingService.hide())
         )
@@ -67,7 +71,7 @@ export class RoleEnrolmentEffects {
           truthy(),
           map(() =>
             RoleEnrolmentActions.setStatus({
-              status: RoleEnrolmentStatus.ENROLED_SYNCED
+              status: RoleEnrolmentStatus.ENROLED_SYNCED,
             })
           ),
           finalize(() => this.loadingService.hide())
@@ -82,15 +86,19 @@ export class RoleEnrolmentEffects {
       tap(() => this.loadingService.show('Adding role...')),
       switchMap(() =>
         this.getClaims().pipe(
-          map(roles => roles.filter(item => !item.isRejected)),
+          map((roles) => roles.filter((item) => !item.isRejected)),
           switchMap((roles: Claim[]) =>
-            from(this.iamService.claimsService.registerOnchain(roles[0] as RegisterOnchainOptions)).pipe(
+            from(
+              this.iamService.claimsService.registerOnchain(
+                roles[0] as RegisterOnchainOptions
+              )
+            ).pipe(
               map(() =>
                 RoleEnrolmentActions.setStatus({
-                  status: RoleEnrolmentStatus.ENROLED_SYNCED
+                  status: RoleEnrolmentStatus.ENROLED_SYNCED,
                 })
               ),
-              catchError(err => {
+              catchError((err) => {
                 console.log(err);
                 this.toastrService.error(err?.message);
                 return of(RoleEnrolmentActions.addRoleFailure({ error: err }));
@@ -115,20 +123,20 @@ export class RoleEnrolmentEffects {
               requestorFields: [
                 {
                   key: 'email',
-                  value: email
-                }
+                  value: email,
+                },
               ],
               claimType: this.envService.patronRole,
-              claimTypeVersion: PATRON_ROLE_VERSION
-            }
+              claimTypeVersion: PATRON_ROLE_VERSION,
+            },
           })
         ).pipe(
           map(() =>
             RoleEnrolmentActions.setStatus({
-              status: RoleEnrolmentStatus.ENROLED_NOT_APPROVED
+              status: RoleEnrolmentStatus.ENROLED_NOT_APPROVED,
             })
           ),
-          catchError(err => {
+          catchError((err) => {
             console.log(err);
             this.toastrService.error(err?.message);
             return of(RoleEnrolmentActions.enrolForFailure({ error: err }));
@@ -145,8 +153,8 @@ export class RoleEnrolmentEffects {
       tap(() => this.loadingService.show('Checking enrolment request...')),
       switchMap(() =>
         this.getClaims().pipe(
-          map(roles => roles.filter(item => !item.isRejected)[0]),
-          map(role => {
+          map((roles) => roles.filter((item) => !item.isRejected)[0]),
+          map((role) => {
             if (!role) {
               return RoleEnrolmentActions.claimDoNotExist();
             }
@@ -166,10 +174,10 @@ export class RoleEnrolmentEffects {
         from(this.iamService.claimsService.deleteClaim({ id })).pipe(
           map(() =>
             RoleEnrolmentActions.setStatus({
-              status: RoleEnrolmentStatus.NOT_ENROLED
+              status: RoleEnrolmentStatus.NOT_ENROLED,
             })
           ),
-          catchError(err => {
+          catchError((err) => {
             console.log(err);
             this.toastrService.error(err?.message);
             return of(
@@ -193,13 +201,15 @@ export class RoleEnrolmentEffects {
         timer(0, 30000).pipe(
           switchMap(() =>
             this.getClaims().pipe(
-              map(roles => {
-                const isNotRejected = roles.filter(item => !item.isRejected)[0];
+              map((roles) => {
+                const isNotRejected = roles.filter(
+                  (item) => !item.isRejected
+                )[0];
                 if (isNotRejected?.isAccepted) {
                   return RoleEnrolmentActions.enrolmentApproved();
                 }
 
-                const allRejected = roles.filter(item => item.isRejected);
+                const allRejected = roles.filter((item) => item.isRejected);
                 if (!isNotRejected && allRejected) {
                   return RoleEnrolmentActions.enrolmentRejected();
                 }
@@ -259,7 +269,7 @@ export class RoleEnrolmentEffects {
     return from(
       this.iamService.claimsService.getClaimsByRequester({
         did: this.iamService.signerService.did,
-        namespace: this.envService.patronRole.split('.roles.').pop()
+        namespace: this.envService.patronRole.split('.roles.').pop(),
       })
     );
   }

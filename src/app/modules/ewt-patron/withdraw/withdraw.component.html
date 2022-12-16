@@ -1,8 +1,6 @@
 <div class="d-flex justify-content-center align-items-center flex-column stake-success-container">
   <h3 class="mt-3 mb-3">Unstake?</h3>
-  <p class="text-center mt-1 mb-5">
-    EWT will be transferred to your wallet. You will be charged with gas fee.
-  </p>
+  <p class="text-center mt-1 mb-5">EWT will be transferred to your wallet. You will be charged with gas fee.</p>
 </div>
 
 <mat-form-field class="staking-textfield" appearance="outline">
@@ -17,8 +15,7 @@
     [max]="maxAmount$ | async"
     min="0"
     maxlength="256"
-    (focus)="inputFocused = true"
-  />
+    (focus)="inputFocused = true" />
   <div matSuffix class="d-flex" *ngIf="inputFocused">
     <button mat-icon-button class="bg-transparent" (click)="clear($event)">
       <mat-icon>close</mat-icon>
@@ -32,13 +29,12 @@
 
 <app-divider></app-divider>
 
-<div class="d-flex flex-wrap justify-content-center ">
+<div class="d-flex flex-wrap justify-content-center">
   <button
     mat-raised-button
     class="mt-3 stake-btn text-color text-uppercase"
     [disabled]="isAmountInvalid"
-    (click)="withdraw()"
-  >
+    (click)="withdraw()">
     Confirm
   </button>
 
@@ -46,7 +42,5 @@
     Unstake All
   </button>
 
-  <button mat-raised-button mat-dialog-close class="mt-3 stake-secondary-btn color-white text-uppercase ">
-    Cancel
-  </button>
+  <button mat-raised-button mat-dialog-close class="mt-3 stake-secondary-btn color-white text-uppercase">Cancel</button>
 </div>

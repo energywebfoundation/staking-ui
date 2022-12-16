@@ -8,13 +8,13 @@ export const swalLoginError = (
   if (message.includes(METAMASK_WRONG_NETWORK_ERROR)) {
     return {
       title: 'Wrong Network',
-      text: `Please check if you are connected to correct network.`
+      text: `Please check if you are connected to correct network.`,
     };
   }
   if (message === CACHE_SERVER_401_ERROR) {
     return {
       title: 'Session Expired',
-      text: 'Please proceed to login again'
+      text: 'Please proceed to login again',
     };
   }
 
@@ -23,7 +23,7 @@ export const swalLoginError = (
   if (message === CACHE_SERVER_500_ERROR) {
     return {
       title: 'Session Expired',
-      text: 'Please proceed to login again'
+      text: 'Please proceed to login again',
     };
   }
 

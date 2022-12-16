@@ -3,7 +3,7 @@ import {
   APP_INITIALIZER,
   ErrorHandler,
   NgModule,
-  Provider
+  Provider,
 } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -28,16 +28,16 @@ const providers: Provider[] = [
     deps: [ConfigService],
     useFactory: (configService: ConfigService) => () =>
       configService.loadConfigData(),
-    multi: true
-  }
+    multi: true,
+  },
 ];
 
 if (environment.SENTRY_DNS) {
   providers.push({
     provide: ErrorHandler,
     useValue: Sentry.createErrorHandler({
-      showDialog: false
-    })
+      showDialog: false,
+    }),
   });
 }
 
@@ -52,11 +52,11 @@ if (environment.SENTRY_DNS) {
     ToastrModule.forRoot(),
     RoutesModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
+      enabled: environment.production,
     }),
-    StoreRootModule
+    StoreRootModule,
   ],
   providers,
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

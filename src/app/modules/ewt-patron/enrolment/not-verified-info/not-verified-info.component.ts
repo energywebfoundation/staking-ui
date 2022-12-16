@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-not-verified-info',
   templateUrl: './not-verified-info.component.html',
-  styleUrls: ['./not-verified-info.component.scss']
+  styleUrls: ['./not-verified-info.component.scss'],
 })
 export class NotVerifiedInfoComponent {
   emailNotApproved$ = this.store.select(

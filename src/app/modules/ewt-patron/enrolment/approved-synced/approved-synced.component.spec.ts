@@ -8,7 +8,7 @@ describe('ApprovedSyncedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ApprovedSyncedComponent]
+      declarations: [ApprovedSyncedComponent],
     }).compileComponents();
   });
 

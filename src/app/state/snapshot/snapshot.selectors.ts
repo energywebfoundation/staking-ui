@@ -12,32 +12,41 @@ export const getUserSnapshotRoles = createSelector(
   (state) => state.userSnapshotRoles
 );
 
+export const getSnapshotRoles = createSelector(
+  getSnapshotState,
+  (state) => state.snapshotRoles
+);
+
 export const getSnapshotStatusByNumber = (value: number) => {
   return createSelector(getUserSnapshotRoles, (userSnapshotRoles) => {
     return getSnapshotStatus(userSnapshotRoles, value);
   });
 };
 
-export const getAcceptedSnapshots = createSelector(
+export const getUserAcceptedSnapshots = createSelector(
   getUserSnapshotRoles,
-  (userSnapshotRoles) => {
-    return environment.snapshotRoles
+  getSnapshotRoles,
+  (userSnapshotRoles, snapshotRoles) =>
+    snapshotRoles
       .map((roleName, index) => {
         return {
           index,
+          roleName,
           status:
             getSnapshotStatus(userSnapshotRoles, index) ===
             RoleEnrolmentStatus.ENROLED_SYNCED,
         };
       })
       .filter((snapshot) => snapshot.status)
-      .map((snapshot) => snapshot.index);
-  }
+);
+
+export const getUserAcceptedSnapshotsIds = createSelector(
+  getUserAcceptedSnapshots,
+  (acceptedSnapshots) => acceptedSnapshots.map((snapshot) => snapshot.index)
 );
 
 export const getSnapshotStatus = (snapshotRoles, id) => {
-  const isSynced = (role): boolean =>
-    role.isSyncedOnChain
+  const isSynced = (role): boolean => role.isSyncedOnChain;
   const isAccepted = (role: Claim): boolean => role.isAccepted;
   const isRejected = (role: Claim): boolean => role.isRejected;
 

@@ -8,7 +8,7 @@ describe('SnapshotBoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SnapshotBoxComponent]
+      declarations: [SnapshotBoxComponent],
     }).compileComponents();
   });
 

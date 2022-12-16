@@ -16,8 +16,7 @@
     autocomplete="off"
     type="email"
     min="0"
-    maxlength="256"
-  />
+    maxlength="256" />
 
   <mat-error *ngIf="email.hasError('required')">Email is required</mat-error>
   <mat-error *ngIf="email.hasError('email')">Minimum value is</mat-error>
@@ -33,8 +32,7 @@
     class="stake-btn text-color text-uppercase"
     data-qa-id="stake"
     [disabled]="email.invalid"
-    (click)="enrol()"
-  >
+    (click)="enrol()">
     Submit
   </button>
 </div>

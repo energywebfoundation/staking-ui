@@ -8,10 +8,10 @@ const env: Partial<typeof commonEnv> = {
   theme: 'default',
   rpcUrl: 'https://consortia-rpc.energyweb.org/',
   chainId: 246,
-  cacheServerUrl: "https://identitycache.energyweb.org/v1",
-  natsServerUrl: "https://identityevents.energyweb.org/",
-  kmsServerUrl: "https://kms.energyweb.org/connect/new",
-  stakingPoolFactoryAddress: "0x181A8b2a5AEb25941F6A79b4aE43dBb1968c417A",
+  cacheServerUrl: 'https://identitycache.energyweb.org/v1',
+  natsServerUrl: 'https://identityevents.energyweb.org/',
+  kmsServerUrl: 'https://kms.energyweb.org/connect/new',
+  stakingPoolFactoryAddress: '0x181A8b2a5AEb25941F6A79b4aE43dBb1968c417A',
   checkStakingVerification: true,
   showAzureLoginOption: false,
   isWalletConnectEnabled: false,
@@ -22,7 +22,14 @@ const env: Partial<typeof commonEnv> = {
   currencyName: 'EWT',
   currencySymbol: 'EWT',
   blockExlorerUrl: 'https://explorer.energyweb.org',
-  snapshotRoles: ['snapshot1.roles.consortiapool.apps.energyweb.auth.ewc']
+  snapshotRoles: [
+    'snapshot1.roles.consortiapool.apps.energyweb.auth.ewc',
+    'snapshot2.roles.consortiapool.apps.energyweb.auth.ewc',
+    'snapshot3.roles.consortiapool.apps.energyweb.auth.ewc',
+    'snapshot4.roles.consortiapool.apps.energyweb.auth.ewc',
+    'silverpool.roles.consortiapool.apps.energyweb.auth.ewc',
+    'goldpool.roles.consortiapool.apps.energyweb.auth.ewc',
+  ],
 };
 
 export const environment = { ...commonEnv, ...env };

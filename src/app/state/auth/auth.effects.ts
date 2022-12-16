@@ -10,7 +10,7 @@ import {
   map,
   mergeMap,
   switchMap,
-  tap
+  tap,
 } from 'rxjs/operators';
 import { isMetamaskExtensionPresent, ProviderType } from 'iam-client-lib';
 import { from, of } from 'rxjs';
@@ -37,7 +37,7 @@ export class AuthEffects {
           map(({ isMetamaskPresent, chainId }) =>
             AuthActions.setMetamaskLoginOptions({
               present: isMetamaskPresent,
-              chainId
+              chainId,
             })
           ),
           finalize(() => this.loadingService.hide())
@@ -51,7 +51,7 @@ export class AuthEffects {
       ofType(AuthActions.init),
       map(() =>
         AuthActions.setDefaultChainId({
-          defaultChainId: this.envService.chainId
+          defaultChainId: this.envService.chainId,
         })
       )
     )
@@ -68,7 +68,7 @@ export class AuthEffects {
           .login(
             {
               providerType: provider,
-              reinitializeMetamask: provider === ProviderType.MetaMask
+              reinitializeMetamask: provider === ProviderType.MetaMask,
             },
             navigateOnTimeout
           )
@@ -80,7 +80,7 @@ export class AuthEffects {
               }
               return AuthActions.loginFailure();
             }),
-            catchError(err => {
+            catchError((err) => {
               console.log(err);
               return of(AuthActions.loginFailure());
             }),
@@ -100,10 +100,10 @@ export class AuthEffects {
             panelClass: 'connect-to-wallet',
             backdropClass: 'backdrop-hide-content',
             data: {
-              navigateOnTimeout: false
+              navigateOnTimeout: false,
             },
             maxWidth: '100%',
-            disableClose: true
+            disableClose: true,
           });
         })
       ),
@@ -117,7 +117,7 @@ export class AuthEffects {
         userActions.setUpUser(),
         StakeActions.initStakingPool(),
         RoleEnrolmentActions.detectActualStatus(),
-        checkRevealedSnapshots(),
+        checkRevealedSnapshots()
       ])
     )
   );
@@ -152,7 +152,7 @@ export class AuthEffects {
               }
               return AuthActions.loginFailure();
             }),
-            catchError(err => {
+            catchError((err) => {
               console.log(err);
               return of(AuthActions.loginFailure());
             }),
@@ -168,7 +168,7 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.reinitializeAuth),
-        filter(e => !this.loginService.isSessionActive()),
+        filter((e) => !this.loginService.isSessionActive()),
         map(() => {
           this.router.navigate(['welcome']);
         })
@@ -181,7 +181,7 @@ export class AuthEffects {
       ofType(AuthActions.loginSuccess),
       map(() =>
         AuthActions.setProvider({
-          walletProvider: this.loginService.getProviderType()
+          walletProvider: this.loginService.getProviderType(),
         })
       )
     )

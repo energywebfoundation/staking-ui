@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getAcceptedSnapshots } from '../../../state/snapshot/snapshot.selectors';
+import { getUserAcceptedSnapshotsIds } from '../../../state/snapshot/snapshot.selectors';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./snapshot-success.component.scss'],
 })
 export class SnapshotSuccessComponent {
-  acceptedSnapshots$: Observable<number[]> =
-    this.store.select(getAcceptedSnapshots);
+  acceptedSnapshots$: Observable<number[]> = this.store.select(
+    getUserAcceptedSnapshotsIds
+  );
   constructor(private store: Store) {}
 }

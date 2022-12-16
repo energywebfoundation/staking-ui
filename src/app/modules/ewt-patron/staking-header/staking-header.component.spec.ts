@@ -32,18 +32,16 @@ describe('StakingHeaderComponent', () => {
     );
     store.overrideSelector(AuthSelectors.getAccountInfo, data?.accountInfo);
   };
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [StakingHeaderComponent],
-        imports: [MatMenuModule, NoopAnimationsModule],
-        providers: [provideMockStore()],
-        schemas: [NO_ERRORS_SCHEMA]
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [StakingHeaderComponent],
+      imports: [MatMenuModule, NoopAnimationsModule],
+      providers: [provideMockStore()],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
-      store = TestBed.inject(MockStore);
-    })
-  );
+    store = TestBed.inject(MockStore);
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(StakingHeaderComponent);
@@ -79,6 +77,6 @@ const selectors = (hostDebug: DebugElement) => {
     hostDebug.query(By.css(`[data-qa-id=${id}] ${postSelector}`));
   return {
     logout: getElement('logout'),
-    menuTrigger: getElement('menu-trigger')
+    menuTrigger: getElement('menu-trigger'),
   };
 };

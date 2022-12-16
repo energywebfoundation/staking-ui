@@ -9,7 +9,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Subscription, timer } from 'rxjs';
@@ -140,14 +140,12 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
       [attr.height]="svg.height"
       [attr.width]="svg.width"
       (click)="emitClickEvent($event)"
-      [attr.class]="options.class"
-    >
+      [attr.class]="options.class">
       <defs>
         <linearGradient
           *ngIf="options.outerStrokeGradient"
           [attr.id]="svg.outerLinearGradient.id"
-          gradientTransform="rotate(-90 0.45 0.45)"
-        >
+          gradientTransform="rotate(-90 0.45 0.45)">
           <stop offset="-0.03%" stop-color="#4C26C7" [attr.stop-opacity]="1" />
           <stop offset="46.66%" stop-color="#70B8F2" [attr.stop-opacity]="1" />
           <stop offset="69.91%" stop-color="#6DE9E9" [attr.stop-opacity]="1" />
@@ -156,8 +154,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
         <radialGradient
           *ngIf="options.backgroundGradient"
           [attr.id]="svg.radialGradient.id"
-          gradientTransform="rotate(-90 0.4 0.4)"
-        >
+          gradientTransform="rotate(-90 0.4 0.4)">
           <stop offset="-0.03%" stop-color="#4C26C7" [attr.stop-opacity]="1" />
           <stop offset="46.66%" stop-color="#70B8F2" [attr.stop-opacity]="1" />
           <stop offset="69.91%" stop-color="#6DE9E9" [attr.stop-opacity]="1" />
@@ -174,8 +171,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
           [attr.fill]="svg.backgroundCircle.fill"
           [attr.fill-opacity]="svg.backgroundCircle.fillOpacity"
           [attr.stroke]="svg.backgroundCircle.stroke"
-          [attr.stroke-width]="svg.backgroundCircle.strokeWidth"
-        />
+          [attr.stroke-width]="svg.backgroundCircle.strokeWidth" />
         <circle
           *ngIf="options.backgroundGradient"
           class="outer-circle"
@@ -187,8 +183,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
           }})"
           [attr.fill-opacity]="svg.backgroundCircle.fillOpacity"
           [attr.stroke]="svg.backgroundCircle.stroke"
-          [attr.stroke-width]="svg.backgroundCircle.strokeWidth"
-        />
+          [attr.stroke-width]="svg.backgroundCircle.strokeWidth" />
       </ng-container>
       <circle
         *ngIf="options.showInnerStroke"
@@ -198,19 +193,16 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
         [attr.r]="svg.circle.r"
         [attr.fill]="svg.circle.fill"
         [attr.stroke]="svg.circle.stroke"
-        [attr.stroke-width]="svg.circle.strokeWidth"
-      />
+        [attr.stroke-width]="svg.circle.strokeWidth" />
       <ng-container
-        *ngIf="+options.percent !== 0 || options.showZeroOuterStroke"
-      >
+        *ngIf="+options.percent !== 0 || options.showZeroOuterStroke">
         <path
           *ngIf="!options.outerStrokeGradient"
           [attr.d]="svg.path.d"
           [attr.stroke]="svg.path.stroke"
           [attr.stroke-width]="svg.path.strokeWidth"
           [attr.stroke-linecap]="svg.path.strokeLinecap"
-          [attr.fill]="svg.path.fill"
-        />
+          [attr.fill]="svg.path.fill" />
         <path
           *ngIf="options.outerStrokeGradient"
           [attr.d]="svg.path.d"
@@ -219,8 +211,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
           }})"
           [attr.stroke-width]="svg.path.strokeWidth"
           [attr.stroke-linecap]="svg.path.strokeLinecap"
-          [attr.fill]="svg.path.fill"
-        />
+          [attr.fill]="svg.path.fill" />
       </ng-container>
       <text
         *ngIf="
@@ -230,8 +221,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
         alignment-baseline="baseline"
         [attr.x]="svg.circle.cx"
         [attr.y]="svg.circle.cy"
-        [attr.text-anchor]="svg.title.textAnchor"
-      >
+        [attr.text-anchor]="svg.title.textAnchor">
         <ng-container *ngIf="options.showTitle">
           <tspan
             *ngFor="let tspan of svg.title.tspans"
@@ -240,8 +230,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
             [attr.dy]="tspan.dy"
             [attr.font-size]="svg.title.fontSize"
             [attr.font-weight]="svg.title.fontWeight"
-            [attr.fill]="svg.title.color"
-          >
+            [attr.fill]="svg.title.color">
             {{ tspan.span }}
           </tspan>
         </ng-container>
@@ -249,8 +238,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
           *ngIf="options.showUnits"
           [attr.font-size]="svg.units.fontSize"
           [attr.font-weight]="svg.units.fontWeight"
-          [attr.fill]="svg.units.color"
-        >
+          [attr.fill]="svg.units.color">
           {{ svg.units.text }}
         </tspan>
         <ng-container *ngIf="options.showSubtitle">
@@ -261,8 +249,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
             [attr.dy]="tspan.dy"
             [attr.font-size]="svg.subtitle.fontSize"
             [attr.font-weight]="svg.subtitle.fontWeight"
-            [attr.fill]="svg.subtitle.color"
-          >
+            [attr.fill]="svg.subtitle.color">
             {{ tspan.span }}
           </tspan>
         </ng-container>
@@ -274,11 +261,10 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
         [attr.width]="svg.image.width"
         [attr.xlink:href]="svg.image.src"
         [attr.x]="svg.image.x"
-        [attr.y]="svg.image.y"
-      />
+        [attr.y]="svg.image.y" />
     </svg>
   `,
-  styleUrls: ['./circle-progress.component.scss']
+  styleUrls: ['./circle-progress.component.scss'],
 })
 export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
   @Output() onClick = new EventEmitter<MouseEvent>();
@@ -423,7 +409,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
       x: centre.x,
       y:
         centre.y +
-        (circlePercent === 100 ? -this.options.radius : this.options.radius)
+        (circlePercent === 100 ? -this.options.radius : this.options.radius),
     };
     // get the end point of the arc
     let endPoint = this.polarToCartesian(
@@ -464,7 +450,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
       fontSize: this.options.titleFontSize,
       fontWeight: this.options.titleFontWeight,
       texts: [],
-      tspans: []
+      tspans: [],
     };
     // from v0.9.9, both title and titleFormat(...) may be an array of string.
     if (
@@ -497,7 +483,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
       fontSize: this.options.subtitleFontSize,
       fontWeight: this.options.subtitleFontWeight,
       texts: [],
-      tspans: []
+      tspans: [],
     };
     // from v0.9.9, both subtitle and subtitleFormat(...) may be an array of string.
     if (
@@ -522,7 +508,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
       text: `${this.options.units}`,
       fontSize: this.options.unitsFontSize,
       fontWeight: this.options.unitsFontWeight,
-      color: this.options.unitsColor
+      color: this.options.unitsColor,
     };
     // get total count of text lines to be shown
     let rowCount = 0,
@@ -534,7 +520,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
       for (let span of title.texts) {
         title.tspans.push({
           span: span,
-          dy: this.getRelativeY(rowNum, rowCount)
+          dy: this.getRelativeY(rowNum, rowCount),
         });
         rowNum++;
       }
@@ -544,7 +530,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
       for (let span of subtitle.texts) {
         subtitle.tspans.push({
           span: span,
-          dy: this.getRelativeY(rowNum, rowCount)
+          dy: this.getRelativeY(rowNum, rowCount),
         });
         rowNum++;
       }
@@ -569,7 +555,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
         fill: this.options.backgroundColor,
         fillOpacity: this.options.backgroundOpacity,
         stroke: this.options.backgroundStroke,
-        strokeWidth: this.options.backgroundStrokeWidth
+        strokeWidth: this.options.backgroundStrokeWidth,
       },
       path: {
         // A rx ry x-axis-rotation large-arc-flag sweep-flag x y (https://developer.mozilla.org/en/docs/Web/SVG/Tutorial/Paths#Arcs)
@@ -578,7 +564,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
         stroke: this.options.outerStrokeColor,
         strokeWidth: this.options.outerStrokeWidth,
         strokeLinecap: this.options.outerStrokeLinecap,
-        fill: 'none'
+        fill: 'none',
       },
       circle: {
         cx: centre.x,
@@ -590,7 +576,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
           this.options.innerStrokeWidth / 2,
         fill: 'none',
         stroke: this.options.innerStrokeColor,
-        strokeWidth: this.options.innerStrokeWidth
+        strokeWidth: this.options.innerStrokeWidth,
       },
       title: title,
       units: units,
@@ -600,7 +586,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
         y: centre.y - this.options.imageHeight / 2,
         src: this.options.imageSrc,
         width: this.options.imageWidth,
-        height: this.options.imageHeight
+        height: this.options.imageHeight,
       },
       outerLinearGradient: {
         id: 'outer-linear-' + this._gradientUUID,
@@ -608,7 +594,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
         colorStop2:
           this.options.outerStrokeGradientStopColor === 'transparent'
             ? '#FFF'
-            : this.options.outerStrokeGradientStopColor
+            : this.options.outerStrokeGradientStopColor,
       },
       radialGradient: {
         id: 'radial-' + this._gradientUUID,
@@ -616,8 +602,8 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
         colorStop2:
           this.options.backgroundGradientStopColor === 'transparent'
             ? '#FFF'
-            : this.options.backgroundGradientStopColor
-      }
+            : this.options.backgroundGradientStopColor,
+      },
     };
   };
   getAnimationParameters = (
@@ -776,13 +762,14 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
   private uuid = () => {
     // https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
     var dt = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(
-      c
-    ) {
-      var r = (dt + Math.random() * 16) % 16 | 0;
-      dt = Math.floor(dt / 16);
-      return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
-    });
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+      /[xy]/g,
+      function (c) {
+        var r = (dt + Math.random() * 16) % 16 | 0;
+        dt = Math.floor(dt / 16);
+        return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
+      }
+    );
     return uuid;
   };
 
@@ -841,7 +828,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
       this.ngZone.run(() => {
         this.onViewportChanged.emit({
           oldValue: previousValue,
-          newValue: this.isInViewport
+          newValue: this.isInViewport,
         });
       });
     }

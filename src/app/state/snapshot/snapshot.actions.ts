@@ -8,7 +8,7 @@ export const checkRevealedSnapshots = createAction(
 
 export const updateRevealedSnapshots = createAction(
   '[Snapshot] Update Revealed Snapshots'
-)
+);
 
 export const checkRevealedSnapshotsSuccess = createAction(
   '[Snapshot] Check Revealed Snapshots Success',

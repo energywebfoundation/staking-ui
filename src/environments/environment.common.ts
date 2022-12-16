@@ -30,5 +30,9 @@ export const commonEnv = {
   snapshotRoles: [
     'snapshot1.roles.consortiapool.apps.energyweb.iam.ewc',
     'snapshot2.roles.consortiapool.apps.energyweb.iam.ewc',
-  ]
+    'snapshot3.roles.consortiapool.apps.energyweb.iam.ewc',
+    'snapshot4.roles.consortiapool.apps.energyweb.iam.ewc',
+    'silverpool.roles.consortiapool.apps.energyweb.iam.ewc',
+    'goldpool.roles.consortiapool.apps.energyweb.iam.ewc'
+  ],
 };

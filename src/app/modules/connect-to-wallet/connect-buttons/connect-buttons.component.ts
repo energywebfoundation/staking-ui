@@ -5,7 +5,7 @@ import { MetamaskProviderService } from '../../../shared/services/metamask-provi
 @Component({
   selector: 'app-connect-buttons',
   templateUrl: './connect-buttons.component.html',
-  styleUrls: ['./connect-buttons.component.scss']
+  styleUrls: ['./connect-buttons.component.scss'],
 })
 export class ConnectButtonsComponent {
   @Input() metamaskPresent: boolean;

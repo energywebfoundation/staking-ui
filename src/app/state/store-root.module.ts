@@ -16,16 +16,16 @@ import { SnapshotStoreSliceModule } from './snapshot/snapshot-store-slice.module
     StoreModule.forRoot(rootReducer, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production
+      logOnly: environment.production,
     }),
     EffectsModule.forRoot([
       UserEffects,
       StakeEffects,
       AuthEffects,
-      PoolEffects
+      PoolEffects,
     ]),
     RoleEnrolmentStoreSliceModule,
-    SnapshotStoreSliceModule
-  ]
+    SnapshotStoreSliceModule,
+  ],
 })
 export class StoreRootModule {}
