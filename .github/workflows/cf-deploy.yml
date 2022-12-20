@@ -40,6 +40,7 @@ jobs:
       env_file: ${{ steps.env_name.outputs.env_file }}
       build_script: ${{ steps.env_name.outputs.build_script }}
   deploy:
+    if: ${{ false }}
     environment:
       name: ${{ needs.env_name.outputs.env_name }}
     needs: [cancel-previous, env_name]
